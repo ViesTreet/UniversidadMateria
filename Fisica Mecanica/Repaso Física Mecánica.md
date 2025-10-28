@@ -56,6 +56,7 @@ $$f=\frac{rev}{t}$$
 se usan unidades de medida como rev/s=rps=hz.
 * Rapidez angular($\omega$): Angulo que recorre en una cierta cantidad de tiempo. 
 $$\omega=\frac{\Delta{\theta}}{t}$$
+$$\omega=\frac{2\pi}{T}=2\pi{f}$$
 
 * Rapidez tangencial o lineal: es la velocidad a cierta distancia del centro, se mide en (m/s):
 $$v=\omega*r$$
@@ -77,3 +78,30 @@ $$\alpha=\frac{\Delta{\omega}}{t}$$
 Similar al MRUR y al MRUA, pero en movimientos circulares:
 $$\omega(t)=\omega_0+\alpha{t}$$
 $$\theta(t)=\theta_{0}+\omega_{0}t+\frac{\alpha{t}^2}{2}$$
+
+# Leyes de newton
+* **Primera ley:** Todo objeto continua en reposo o en MRU hasta que se aplique una fuerza:
+$$\sum{\vec{F}}=0$$
+* **Segunda ley:** La aceleración es proporcional a la fuerza neta:
+$$\sum{\vec{F}}=ma$$
+* **Tercera ley:** Cuando un objeto ejerce fuerza sobre otro, el otro objeto ejerce fuerza sobre el primero.
+
+# Trabajo y energía mecánica
+
+**Energía:** Es una cantidad escalar, que sea asocia a un sistema de uno mas objetos.
+
+* **Trabajo(W):** se define como la energía transferida desde un objeto hacia otro a través de una fuerza que actúa sobre el. La energía transferida hacia el objeto es W **positivo** y la energía transferida desde el objeto representa W **negativo** 
+$$W=Fdcos(\theta)$$
+![[Pasted image 20251028000254.png]]
+corresponde en términos simples al producto punto entre el vector fuerza y el vector desplazamiento.
+$$W=\int_{x_1}^{x_2}F(x)dx$$
+![[Pasted image 20251028000504.png]]
+
+* **Potencia mecánica:** Se refiere a la "rapidez" con la que se realiza un trabajo mecánico:
+$$p=\frac{W}{t}$$
+
+* **Energía cinética:**  capacidad de realizar trabajo debido al movimiento:
+$$K=\frac{1}{2}mv^2$$
+* **Teorema del trabajo y la energía cinética:** Se puede relacionar el trabajo realizado sobre un objeto con el CAMBIO de su energía cinética:
+$$W=\Delta{K}=\frac{m}{2}(v_2^2-v_1^2)$$
+* **Energía total:** Es la suma de las dos energía, energía potencial y la energía cinética.
