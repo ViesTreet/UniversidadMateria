@@ -1,7 +1,7 @@
 # Datos bivariados 
 ### Tabla de registro de datos bivariados 
 * Es una tabla de datos compuesta por 3 columnas, la primera siendo los datos en análisis y las otras dos siendo las variables X e Y.
-*![Pasted image 20251015233947.png](screenshots/Pasted image 20251015233947.png)
+*![[Pasted image 20251015233947.png]]
 
 ### Tabla de frecuencia bidimensional
 * Es una tabla que resume los datos de dos variables simultáneamente, mostrando la frecuencia.
@@ -35,11 +35,11 @@ $$f_{ij} = \frac{n_{ij}}{n}$$
 
 ### Distribuciones marginales
 Muestra como se distribuye una de las variables, ya sea X o Y, sin tomar en cuenta la otra.
-![Pasted image 20251016232305.png](screenshots/Pasted image 20251016232305.png)
-![Pasted image 20251016232315.png](screenshots/Pasted image 20251016232315.png)
+![[Pasted image 20251016232305.png]]
+![[Pasted image 20251016232315.png]]
 ### Distribuciones condicionadas
 Muestra como se distribuye una de las variables X o Y en base a una condición dada.
-![Pasted image 20251016232439.png](screenshots/Pasted image 20251016232439.png)
+![[Pasted image 20251016232439.png]]
 las frecuencia se obtiene en base al total de datos de una variable.
 
 ### Covarianza
@@ -54,7 +54,7 @@ $$S_{xy}=\frac{\sum_{i=1}^n(x_i-\bar{X})(y_i-\bar{Y})}{n-1}$$
  se define como:
  $$r=\frac{S_{XY}}{S_XS_Y}$$
  El coeficiente de correlación de Pearson mide la asociación lineal entre dos variables, mide que tan bien se asocian en relación a una función lineal las variables. 
- ![Pasted image 20251016233703.png](screenshots/Pasted image 20251016233703.png)
+ ![[Pasted image 20251016233703.png]]
 ### Modelo de regresión lineal simple
 Busca crear una función lineal que se ajuste lo mas posible a lo datos, buscando que los datos estén relativamente cerca de la función creada.
 Se define como:
@@ -96,7 +96,7 @@ $$\frac{n!}{n_1!*n_2!...n_k!}$$
 Es el conjunto de todos los posibles resultados asociados a un experimento. Su símbolo es Ω, si el espacio muestral tiene numero finito de elementos o infinitos numerables entonces se dice que es discreto, si el intervalo son todos los puntos de algún intervalo real, entonces es continuo. 
 
 Se denomina Evento o Suceso a cualquier subconjunto del espacio muestral y se denota por las letras mayúsculas.
-![Pasted image 20251018234530.png](screenshots/Pasted image 20251018234530.png)
+![[Pasted image 20251018234530.png]]
 
 En particular el propio espacio muestral es un evento y se llama suceso seguro, mientras que el conjunto vacío ϕ, es un evento y se llama suceso imposible.
 
@@ -123,14 +123,14 @@ Se conoce como regla de Laplace y solo funciona en un espacio finito equiprobabl
 #### Probabilidad Condicional:
 Cuando se calcula la probabilidad de un evento A en particular y se tiene información de la ocurrencia de otro evento B, se le conoce como probabilidad condicional, se denota por $P(A|B)$ se lee "Probabilidad de A dado B" y se define como:
 $$P(A|B)=\frac{P(A\cap B)}{P(B)}$$ con $P(B)\neq0$
-![Pasted image 20251019000741.png](screenshots/Pasted image 20251019000741.png)
+![[Pasted image 20251019000741.png]]
 
 #### Regla multiplicativa:
 **Eventos independientes:**
 $$P(A\cap B)=P(A)*P(B)$$
 **Evento Dependiente:**
 $$P(A\cap B)=P(A)*P(B|A)$$
-$$P(A\cap B)=P(B)*P(A|B)$$![Pasted image 20251019001029.png](screenshots/Pasted image 20251019001029.png)
+$$P(A\cap B)=P(B)*P(A|B)$$![[Pasted image 20251019001029.png]]
 
 #### Probabilidad total:
 ##### Teorema(probabilidad total)
@@ -139,12 +139,12 @@ Sea $A_1,A_2,...,A_n$ una partición de $\Omega$
 2) $A_i\cap A_j=\emptyset$
 Sea A otro evento de $\Omega$, entonces 
 $$P(A)=\sum_{i=1}^nP(A|A_i)*P(A_i)$$
-![Pasted image 20251019001647.png](screenshots/Pasted image 20251019001647.png)
+![[Pasted image 20251019001647.png]]
 
 #### Teorema de Bayes:
 Sea $A_1,A_2,...,A_n$ una partición de $\Omega$ y B otro evento de $\Omega$, entonces
 $$P(A_i|B)=\frac{P(B|A_i)*P(A_i)}{\sum_{i=1}^nP(B|A_i)*P(A_i)}$$
-![Pasted image 20251019001925.png](screenshots/Pasted image 20251019001925.png)
+![[Pasted image 20251019001925.png]]
 
 # Certamen 3
 ## Variable aleatoria
@@ -152,14 +152,14 @@ $$P(A_i|B)=\frac{P(B|A_i)*P(A_i)}{\sum_{i=1}^nP(B|A_i)*P(A_i)}$$
 sea una variable aleatoria X en una función que asigna un número real a cada resultado en el espacio muestra $\Omega$ de un experimento aleatorio:
 $$X:\Omega \to \mathbb{R}$$
 $$w_i \to X(w_i)=x_i$$
-![Pasted image 20251116155058.png](screenshots/Pasted image 20251116155058.png)
+![[Pasted image 20251116155058.png]]
 
 Una vez definida la variable aleatoria tenemos que definir su rango, denotado por $R_X$ , que son todos los valores posibles de X
 
 Dependiendo cual es el recorrido numérica de X podemos agruparla en :
 **V.A. Discreta:** si el recorrido de X es un conjunto finito o infinito numerable.
 **V.A. Continua:** si el recorrido de X es un conjunto no contable.
-![Pasted image 20251116160116.png](screenshots/Pasted image 20251116160116.png)
+![[Pasted image 20251116160116.png]]
 
 ### Función de probabilidad
 
@@ -191,19 +191,19 @@ $$P(a \leq X \leq b)=P(X \leq b)-P(x \leq a)$$
 describe el centro de la distribución de probabilidad de una variable aleatoria y es un valor promedio esperado a largo plazo si se repitiera el experimento aleatorio muchas veces.
 
 Sea X un v.a. con función de probabilidad o función de densidad f(x). Sea g(X) una función de la v.a. X. El valor esperado de g(X), simbolizado por E[g(x)] es:
-![Pasted image 20251116163317.png](screenshots/Pasted image 20251116163317.png)
+![[Pasted image 20251116163317.png]]
 
 ### Esperanza y Varianza
 
 1. Si g(X) = X entonces si está calculando la Esperanza de la v.a. X.
-![Pasted image 20251116163431.png](screenshots/Pasted image 20251116163431.png)
+![[Pasted image 20251116163431.png]]
 2. Si $g(X)=(X-\mu)²$ entonces E[g(x)] se llama varianza de la v.a. y se simboliza como $\sigma ²$ .
-![Pasted image 20251116163711.png](screenshots/Pasted image 20251116163711.png)
+![[Pasted image 20251116163711.png]]
 
 Aplicando propiedades de la esperanza se obtiene el siguiente resultado
 $$Var(X)=\sigma ² =E(X²)-[E(X)]²$$
 así,
-![Pasted image 20251116164023.png](screenshots/Pasted image 20251116164023.png)
+![[Pasted image 20251116164023.png]]
 
 ## Modelos de probabilidad
 
@@ -216,21 +216,21 @@ Cualquier experimento de bernoulli se puede denotar A como éxito y $A^c$ como f
 Depende de un solo parámetro p, probabilidad de éxito, y entonces 1-p es la probabilidad de fracaso(1-p=q), donde 0<P<1.
 
 sea $\Omega$ el espacio muestral de un experimento, sea $A \subseteq \Omega$ cualquier evento con P(A) = p, 0<p<1 y sea X la v.a. definida por
-![Pasted image 20251116165104.png](screenshots/Pasted image 20251116165104.png)
+![[Pasted image 20251116165104.png]]
  entonces se llama v.a Bernoulli con parámetro p, y se denota 
  
  X~b(p) o bien X~ Ber(p)
 
-![Pasted image 20251116165652.png](screenshots/Pasted image 20251116165652.png)
+![[Pasted image 20251116165652.png]]
 
  Si el experimento de Bernoulli se repite n veces, podemos definir una variable aleatoria X como la cantidad de éxitos de un total de n, esto es un experimento binomial.
 
 Sea X el número total de éxitos en un experimento binomial con n ensayos y parámetro p. Entonces se llama v.a. binomial con parámetro n y p y se denota por
-![Pasted image 20251116170013.png](screenshots/Pasted image 20251116170013.png)
-![Pasted image 20251116170102.png](screenshots/Pasted image 20251116170102.png)
+![[Pasted image 20251116170013.png]]
+![[Pasted image 20251116170102.png]]
 
 ### Distribución hipergeométrica
-![Pasted image 20251116170235.png](screenshots/Pasted image 20251116170235.png)
+![[Pasted image 20251116170235.png]]
 ### Distribución Poisson
 
 Los experimentos que resultan en valores numéricos de una variable aleatoria X y que representan el número de resultados durante un intervalo de tiempo dado o en una región específica frecuentemente se llaman experimentos Poisson.
@@ -252,7 +252,7 @@ $\lambda t :$ El parámetro de la distribución($\mu$ o media): Frecuentemente a
 ### Distribución normal
 
 Una distribución de probabilidades que se da con gran frecuencia en la naturaleza es la distribución normal.
-![Pasted image 20251116171638.png](screenshots/Pasted image 20251116171638.png)
+![[Pasted image 20251116171638.png]]
 Gauss plante que la función de densidad $f_X(x)=ke^{-\frac{x²}{2}}$ cuyo núcleo esta dado por la expresión $e^{-\frac{x²}{2}}$ (le da forma de campana) y la constante k la deduce de tal forma que el área bajo dicha curva sume 1, para que cumpla la función de densidad:
 $$f_X(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x²}{2}}$$
 
