@@ -56,7 +56,7 @@ Existen dos aproximaciones:
 
 ### Introducción 
 
-- **Scheduling**: Decide qué tarea se ejecuta en el procesador durante un cambio de contexto.
+- Scheduling: Decide qué tarea se ejecuta en el procesador durante un cambio de contexto.
 
 - Se aplica en recursos escasos: CPU, disco, red, energía.
 
@@ -66,37 +66,37 @@ Existen dos aproximaciones:
 
  ### Definiciones básicas
 
-- **Tarea (task/job)**: Requerimiento del usuario.
+- Tarea (task/job): Requerimiento del usuario.
 
-- **Tiempo de respuesta**: Tiempo percibido por el usuario para completar la tarea.
+- Tiempo de respuesta: Tiempo percibido por el usuario para completar la tarea.
 
-- **Predictibilidad**: Baja varianza en tiempos de respuesta.
+- Predictibilidad: Baja varianza en tiempos de respuesta.
 
-- **Throughput**: Tasa de ejecución de tareas.
+- Throughput: Tasa de ejecución de tareas.
 
-- **Overhead**: Costo de cambiar de tarea.
+- Overhead: Costo de cambiar de tarea.
 
-- **Equidad**: Igualdad en recursos.
+- Equidad: Igualdad en recursos.
 
-- **Starvation**: Tarea no avanza por falta de recursos.
+- Starvation: Tarea no avanza por falta de recursos.
 
-- **Workload**: Conjunto de tareas con tiempos de llegada y duración.
+- Workload: Conjunto de tareas con tiempos de llegada y duración.
 
-- **Preemptive**: Recursos pueden ser quitados.
+- Preemptive: Recursos pueden ser quitados.
 
-- **Conservador de trabajo**: Nunca deja CPU ociosa si hay tareas.
+- Conservador de trabajo: Nunca deja CPU ociosa si hay tareas.
 
   
 
  ### Criterios de optimización
 
-- Maximizar **utilización CPU**.
+- Maximizar utilización CPU.
 
-- Maximizar **throughput**.
+- Maximizar throughput.
 
-- Minimizar **tiempo de espera**.
+- Minimizar tiempo de espera.
 
-- Minimizar **tiempo de respuesta**.
+- Minimizar tiempo de respuesta.
 
   
 
@@ -106,11 +106,11 @@ Existen dos aproximaciones:
 
  ### Perfiles de carga
 
-- **CPU bound**: Uso intensivo de CPU (ej: cálculos numéricos).
+- CPU bound: Uso intensivo de CPU (ej: cálculos numéricos).
 
-- **I/O bound**: Espera E/S (ej: descarga de archivo).
+- I/O bound: Espera E/S (ej: descarga de archivo).
 
-- **Mixto**: Compilador, navegador, juegos.
+- Mixto: Compilador, navegador, juegos.
 
   
 
@@ -126,7 +126,7 @@ Existen dos aproximaciones:
 
 - Ventajas: Bajo overhead, buen throughput, equidad.
 
-- Desventaja: **Problema con tareas largas seguidas de cortas** → alto tiempo de espera promedio.
+- Desventaja: Problema con tareas largas seguidas de cortas → alto tiempo de espera promedio.
 
 - Ejemplo:
 
@@ -138,13 +138,13 @@ Existen dos aproximaciones:
 
  #### SJF (Shortest Job First)
 
-- Elige la tarea con **menor tiempo restante**.
+- Elige la tarea con menor tiempo restante.
 
 - Ideal para minimizar tiempo de respuesta.
 
 - Problemas:
 
-  - **Starvation** para tareas largas.
+  - Starvation para tareas largas.
 
   - Difícil saber tiempo restante.
 
@@ -154,7 +154,7 @@ Existen dos aproximaciones:
 
  #### Round Robin (RR)
 
-- Cada tarea recibe un **quantum (q)**.
+- Cada tarea recibe un quantum (q).
 
 - Si no termina en q → se interrumpe y pasa a la siguiente.
 ![[Pasted image 20251122155507.png]]
@@ -245,11 +245,11 @@ Existen dos aproximaciones:
 
 - Estrategias:
 
-  - **MFQ por procesador** (evita contención).
+  - MFQ por procesador (evita contención).
 ![[Pasted image 20251122160053.png]]
-  - **Afinidad de procesador**: Mejora uso de caché.
+  - Afinidad de procesador: Mejora uso de caché.
 
-  - **Robo de tareas**: CPUs ocupados pueden tomar tareas de otros (penalización posible).
+  - Robo de tareas: CPUs ocupados pueden tomar tareas de otros (penalización posible).
 
   
 
@@ -259,13 +259,13 @@ Existen dos aproximaciones:
 
  ### Casos prácticos
 
-- **Servidor Web**:
+- Servidor Web:
 
   - Muchas hebras E/S bound → favorecer tareas cortas.
 
   - MFQ centralizado puede causar contención → mejor MFQ por CPU.
 ![[Pasted image 20251122160150.png]]
-- **Datacenter**:
+- Datacenter:
 
   - Balanceo de carga entre back-ends.
 
@@ -279,7 +279,7 @@ Existen dos aproximaciones:
 
  ### Introducción
 
-- **Objetivo**: Crear una realidad virtual para los programas.
+- Objetivo: Crear una realidad virtual para los programas.
 
 - El programa no debe preocuparse por dónde está almacenado.
 
@@ -295,29 +295,29 @@ Existen dos aproximaciones:
 
  ### ¿Qué puede hacer el SO con memoria virtual?
 
-- **Aislar procesos**: Protección de espacios de memoria.
+- Aislar procesos: Protección de espacios de memoria.
 
-- **Comunicación entre procesos**: Compartir memoria de forma transparente.
+- Comunicación entre procesos: Compartir memoria de forma transparente.
 
-- **Compartir código**: Reduce huella de memoria.
+- Compartir código: Reduce huella de memoria.
 
-- **Inicialización parcial**: Ejecutar sin cargar todo en memoria.
+- Inicialización parcial: Ejecutar sin cargar todo en memoria.
 
-- **Asignación dinámica**: Expandir espacios de forma transparente.
+- Asignación dinámica: Expandir espacios de forma transparente.
 
-- **Manejo de caché**: Coloreo de páginas.
+- Manejo de caché: Coloreo de páginas.
 
-- **E/S eficiente**: Transferencias seguras.
+- E/S eficiente: Transferencias seguras.
 
-- **Archivos memory-mapped**: Mapear archivos al espacio de direcciones.
+- Archivos memory-mapped: Mapear archivos al espacio de direcciones.
 
-- **Checkpoint & restart**: Reanudar tras falla.
+- Checkpoint & restart: Reanudar tras falla.
 
-- **Migración de procesos**: Balanceo de carga.
+- Migración de procesos: Balanceo de carga.
 
-- **Control de flujo**: Seguridad adicional.
+- Control de flujo: Seguridad adicional.
 
-- **Memoria compartida distribuida**: Sistemas paralelos.
+- Memoria compartida distribuida: Sistemas paralelos.
 
   
 
@@ -327,19 +327,19 @@ Existen dos aproximaciones:
 
  ### Objetivos de la traducción de direcciones
 
-- **Protección**: No toda memoria accesible por todos.
+- Protección: No toda memoria accesible por todos.
 
-- **Compartir memoria**: Reduce presión del recurso.
+- Compartir memoria: Reduce presión del recurso.
 
-- **Ubicación flexible**: Procesos en cualquier parte.
+- Ubicación flexible: Procesos en cualquier parte.
 
-- **Dispersión**: Regiones dinámicas.
+- Dispersión: Regiones dinámicas.
 
-- **Eficiencia**: Conversión rápida (cada instrucción).
+- Eficiencia: Conversión rápida (cada instrucción).
 
-- **Tablas compactas**: Bajo overhead.
+- Tablas compactas: Bajo overhead.
 
-- **Portabilidad**: Independencia de arquitectura.
+- Portabilidad: Independencia de arquitectura.
 
   
 
@@ -357,9 +357,9 @@ Existen dos aproximaciones:
 
 - Direcciones virtuales comienzan en 0; físicas = base + offset.
 
-- **Ventajas**: Protección general.
+- Ventajas: Protección general.
 
-- **Desventajas**: Difícil compartir memoria.
+- Desventajas: Difícil compartir memoria.
 
 ![[Pasted image 20251122161209.png]]  
 
@@ -369,13 +369,13 @@ Existen dos aproximaciones:
 
 - Cada segmento contiguo en espacio virtual, disperso en físico.
 
-- **Permisos por segmento**.
+- Permisos por segmento.
 
-- **Falla de segmentación**: Referencia fuera de segmento.
+- Falla de segmentación: Referencia fuera de segmento.
 
-- **Compartir segmentos** entre procesos.
+- Compartir segmentos entre procesos.
 
-- **Copy on Write (CoW)**:
+- Copy on Write (CoW):
 
   - Fork copia tabla de segmentos.
 - Se copia la tabla de segmentos al hijo. 
@@ -384,13 +384,13 @@ Existen dos aproximaciones:
 - Si el padre o el hijo intentan modificar datos en sus segmentos, se genera un trap en el kernel. En este caso, señaliza al kernel que haga una copia del segmento para el proceso que desea escribir, al retornar el control.
   - Marca readonly; si se escribe → trap → copia real.
 ![[Pasted image 20251122161517.png]]
-- **Zero on Reference**:
+- Zero on Reference:
 
   - Limpia memoria bajo demanda.
 
   - Permite iniciar procesos con heap/stack en 0.
 
-- **Limitaciones de la segmentación**:
+- Limitaciones de la segmentación:
 
   - Overhead por muchos segmentos.
 
@@ -400,21 +400,21 @@ Existen dos aproximaciones:
 
  #### Paginación
 
-- Memoria en **frames fijos**.
+- Memoria en frames fijos.
 
-- Conversión mediante **tabla de páginas**.
+- Conversión mediante tabla de páginas.
 
 - Espacio virtual continuo, físico disperso.
 
-- **Mapa de bits** para frames libres.
+- Mapa de bits para frames libres.
 ![[Pasted image 20251122161728.png]]
-- **Carga bajo demanda**:
+- Carga bajo demanda:
 
   - Páginas inválidas → trap → carga → marcar válida.
 
-- **Core Map**: Registra qué procesos usan cada frame.
+- Core Map: Registra qué procesos usan cada frame.
 
-- **Limitaciones**:
+- Limitaciones:
 
   - Tabla proporcional a memoria virtual.
 
@@ -428,9 +428,9 @@ Existen dos aproximaciones:
 
  ### Traducciones multinivel
 
-- Reemplaza tablas por **árboles**.
+- Reemplaza tablas por árboles.
 
-- **Ventajas**:
+- Ventajas:
 
   - Asignación eficiente (mapa de bits).
 
@@ -442,7 +442,7 @@ Existen dos aproximaciones:
 
   - Granularidad en permisos.
 
-- **Implementaciones**:
+- Implementaciones:
 
   - Segmentación paginada.
 ![[Pasted image 20251122161952.png]]
@@ -462,17 +462,17 @@ Existen dos aproximaciones:
 
 - Entrada TLB: {Página virtual, Frame físico, Permisos}.
 
-- **TLB hit**: Traducción rápida.
+- TLB hit: Traducción rápida.
 
-- **TLB miss**: Conversión completa.
+- TLB miss: Conversión completa.
 ![[Pasted image 20251122162205.png]]
-- **Costo**:$Costo=Costo(TLB lookup)+Costo(conversion real)*(1-P(Hit))$
+- Costo:$Costo=Costo(TLB lookup)+Costo(conversion real)*(1-P(Hit))$
 - Alta P(Hit) = eficiencia.  
 ## Sistemas de Archivos
 
  ### Introducción
 
-- **Objetivos del sistema de archivos**:
+- Objetivos del sistema de archivos:
 
   - Confiabilidad: Datos intactos incluso ante fallas.
 
@@ -484,7 +484,7 @@ Existen dos aproximaciones:
 
   - Seguridad: Control de acceso.
 
-- **Persistencia**:
+- Persistencia:
 
   - RAM es volátil; almacenamiento no-volátil (HDD/SSD) más lento pero persistente.
 
@@ -502,11 +502,11 @@ Existen dos aproximaciones:
 
 - Archivos grandes con auto-guardado:
 
-  - **Desempeño bajo**: Reescribir completo por cambios pequeños.
+  - Desempeño bajo: Reescribir completo por cambios pequeños.
 
-  - **Corrupción**: Fallo durante escritura → inconsistencia.
+  - Corrupción: Fallo durante escritura → inconsistencia.
 
-  - **Pérdida total**: Si se sobrescribe original y falla.
+  - Pérdida total: Si se sobrescribe original y falla.
 
   
 
@@ -516,11 +516,11 @@ Existen dos aproximaciones:
 
  ### Abstracción del sistema de archivos
 
-- **Definición**: Conjunto de datos (archivo) + nombres (directorios).
+- Definición: Conjunto de datos (archivo) + nombres (directorios).
 
 - Ejemplo: `/home/javier/Documentos/Filesystem.pdf`.
 
-- **Metadata**: Tamaño, fecha, permisos.
+- Metadata: Tamaño, fecha, permisos.
 
 - Datos = arreglo de bytes sin tipo (interpretación por el proceso).
 
@@ -542,13 +542,13 @@ Existen dos aproximaciones:
 
   - `~` home usuario.
 
-- **Volumen**:
+- Volumen:
 
   - Recurso lógico que agrupa almacenamiento físico.
 
   - Puede ser un disco, partición o conjunto de discos.
 
-- **Montaje**:
+- Montaje:
 
   - Volumen debe montarse en un punto del sistema (`/media/disk-1`).
 
@@ -560,19 +560,19 @@ Existen dos aproximaciones:
 
  ### Arquitectura del sistema de archivos
 ![[Pasted image 20251122162926.png]]
-- **Cache de bloques**:
+- Cache de bloques:
 
   - Mantiene bloques en RAM para optimizar lecturas/escrituras.
 
   - Prefetching: Leer anticipadamente bloques próximos.
 
-- **Dispositivos físicos**:
+- Dispositivos físicos:
 
   - HDD: Sectores 512B, seek ~12ms, rotación 7200RPM.
 
   - SSD: Celdas 128KB-512KB, borrado antes de escribir, desgaste limitado.
 
-- **Comparativa HDD vs SSD**:
+- Comparativa HDD vs SSD:
 
   - HDD: Mejor costo/capacidad, peor velocidad aleatoria.
 
@@ -586,13 +586,13 @@ Existen dos aproximaciones:
 
  ### Archivos y directorios: desafíos
 ![[Pasted image 20251122163059.png]]
-- **Rendimiento**: Independiente del medio físico.
+- Rendimiento: Independiente del medio físico.
 
-- **Flexibilidad**: Diferentes tamaños, tipos, dueños.
+- Flexibilidad: Diferentes tamaños, tipos, dueños.
 
-- **Persistencia**: Datos y metadatos consistentes.
+- Persistencia: Datos y metadatos consistentes.
 
-- **Confiabilidad**: Mantener datos ante fallas.
+- Confiabilidad: Mantener datos ante fallas.
 
   
 
@@ -602,13 +602,13 @@ Existen dos aproximaciones:
 
  ### Implementación
 
-- **Directorios**: Mapean nombres a bloques.
+- Directorios: Mapean nombres a bloques.
 
-- **Índices**: Árboles que relacionan nombres con bloques físicos.
+- Índices: Árboles que relacionan nombres con bloques físicos.
 
-- **Mapas de espacio libre**: Bitmap para bloques disponibles.
+- Mapas de espacio libre: Bitmap para bloques disponibles.
 
-- **Heurísticas de localidad**: Minimizar seek entre datos y metadatos.
+- Heurísticas de localidad: Minimizar seek entre datos y metadatos.
 
   
 
@@ -636,7 +636,7 @@ Existen dos aproximaciones:
 
  ### Comparativa de sistemas
 ![[Pasted image 20251122163315.png]]
-- **FAT**:
+- FAT:
 
   - Lista enlazada de clusters.
 
@@ -645,7 +645,7 @@ Existen dos aproximaciones:
   - Desventajas: Fragmentación, acceso aleatorio lento, sin journaling.
 ![[Pasted image 20251122163419.png]]
 ![[Pasted image 20251122163436.png]]
-- **EXT3/EXT4**:
+- EXT3/EXT4:
 
   - Tabla de inodos.
 
@@ -671,27 +671,27 @@ Existen dos aproximaciones:
 
  ### Disponibilidad y redundancia
 
-- **Problemas**:
+- Problemas:
 
   - Fallas eléctricas → inconsistencia.
 
   - Fallas físicas → pérdida de datos.
 
-- **Soluciones**:
+- Soluciones:
 
-  - **Transacciones**: Propiedades ACID (Atomicity, Consistency, Isolation, Durability).
+  - Transacciones: Propiedades ACID (Atomicity, Consistency, Isolation, Durability).
 
-  - **Redundancia**: Replicación en múltiples dispositivos.
+  - Redundancia: Replicación en múltiples dispositivos.
 ![[Pasted image 20251122164047.png]]
-- **Técnicas**:
+- Técnicas:
 
   - Códigos de corrección de errores:Estrategia útil para detectar y corregir errores menores en la transferencia y almacenamiento de datos. Al transferir datos para almacenarlos en el discos se agregan bits de redundancia adicional. Estos bits permiten corregir en forma transparente un error, o en casos graves detectar que se produjo un error. Normalmente los errores varían de un sector por cada $10^{14}$ a $10^{16}$ bits
 
   - Re-mapeo de sectores dañados:Tanto en discos mecánicos como en los de estado sólido se consideran sectores de repuesto. Al detectar fallas en un sector, el controlador intenta re-asignar el sector dañado. En discos de estado sólido puede realizarse de manera transparente al incluir celdas adicionales
 
-- **MTTF y CAFR**: Métricas de confiabilidad.
+- MTTF y CAFR: Métricas de confiabilidad.
 ![[Pasted image 20251122164330.png]]
-- **SMART**: Monitoreo preventivo.
+- SMART: Monitoreo preventivo.
 
   
 
@@ -701,9 +701,9 @@ Existen dos aproximaciones:
 
  ### RAID
 
-- **Objetivo**: Redundancia y disponibilidad.
+- Objetivo: Redundancia y disponibilidad.
 
-- **Niveles**:
+- Niveles:
 
   - RAID 0: Sin redundancia, solo mejora rendimiento.
 ![[Pasted image 20251122164407.png]]
@@ -719,11 +719,205 @@ Existen dos aproximaciones:
 ![[Pasted image 20251122164527.png]]
   - RAID 50: Combina RAID 5 + RAID 0.
 ![[Pasted image 20251122164545.png]]
-- **RAID + Spare**: Disco de repuesto para reconstrucción automática.
+- RAID + Spare: Disco de repuesto para reconstrucción automática.
+
+  
+
+---
+
+  ## Caché y Memoria Virtual
+
+  
+
+ ### Introducción a las memorias caché
+
+- Objetivo: Mejorar el desempeño mediante jerarquías de memoria.
+
+- Basado en localidad temporal (datos usados recientemente) y localidad espacial (datos cercanos).
+
+- Ejemplos:
+
+  - TLB: Traducción rápida de páginas.
+
+  - Caché de direcciones virtuales y físicas.
+
+- Desafíos del diseño:
+
+  - Localizar copia cacheada.
+
+  - Política de reemplazo.
+
+  - Coherencia (mantener datos actualizados).
 
   
 
 ---
 
   
+
+ ### Jerarquía de memoria (tiempos aproximados)
+
+- L1 / TLB: 1 ns, 64 KB.
+
+- L2: 4 ns, 256 KB.
+
+- L3: 12 ns, 2 MB.
+
+- DRAM local: 100 ns, 10 GB.
+
+- DRAM datacenter: 100 µs, 100 TB.
+
+- Disco local: 10 ms, 1 TB.
+
+- Disco remoto: 200 ms, 1 EB.
+
+  ![[Pasted image 20251122165332.png]]
+
+---
+
+  
+
+ ### Operación de caché
+
+- Cache hit: Dato encontrado en caché.
+
+- Cache miss: Buscar en nivel inferior.
+
+- Condición: `costo(hit) < costo(miss)`.
+
+  
+
+---
+
+  
+
+ ### Estrategias de búsqueda en caché
+
+- Completamente asociativa:
+
+  - Máxima flexibilidad.
+
+  - Verifica toda la tabla (costoso).
+![[Pasted image 20251122165424.png]]
+- Directamente mapeada:
+
+  - Cada dirección en un único lugar (hash).
+
+  - Rápida pero menos flexible.
+![[Pasted image 20251122165442.png]]
+- Set associative:
+
+  - Mezcla de ambas.
+
+  - Búsquedas en paralelo.
+![[Pasted image 20251122165459.png]]
+  
+
+---
+
+  
+
+ ### Políticas de reemplazo
+
+- Random: Entrada aleatoria (rápido, impredecible).
+
+- FIFO: Reemplaza la más antigua (mal rendimiento en ciclos).
+
+- MIN (óptimo): Bloque usado más tarde (no implementable).
+
+- LRU: Menos recientemente usado (considera localidad temporal).
+
+- LFU: Menos frecuentemente usado (mantiene páginas populares).
+
+  
+
+---
+
+  
+
+ ### Efectividad y Working Set
+
+- Working Set: Conjunto mínimo de páginas para buena tasa de hits.
+
+- Thrashing: Caché muy pequeña → muchos misses.
+
+- Tasa de hits aumenta con tamaño de caché hasta punto de inflexión.
+![[Pasted image 20251122165700.png]]
+  
+
+---
+
+  
+
+ ### Paginación bajo demanda
+
+- Permite usar más memoria que la física disponible.
+
+- Fallo de página: SO carga página desde disco.
+
+- Usado en:
+
+  - Archivos mapeados en memoria:
+
+    - Archivo tratado como segmento de memoria.
+
+    - Ventajas:
+
+      - Transparencia.
+
+      - Zero copy I/O.
+
+      - Pipelining.
+
+      - IPC (compartir memoria entre procesos).
+![[Pasted image 20251122165815.png]]
+  - Memoria virtual:
+
+    - Frames del proceso pueden copiarse al disco.
+    - Todas los frames del proceso (codigo, heap, stack, bibliotecas, etc) pueden ser copiados al disco, como estrategia para liberar memoria física del sistema. Aquí es donde se pone lento el pc.
+    - Flexibilidad: SO sigue funcionando aunque memoria física esté llena.
+
+  
+
+---
+
+  
+
+ ### Problemas y soluciones
+
+- Thrashing:
+
+  - Si suma de Working Sets ≥ memoria física.
+
+  - Disco maneja ~100 fallos/s vs CPU 10^10 instrucciones/s.
+![[Pasted image 20251122165951.png]]
+- Auto-paginación:
+
+  - Distribuye marcos equitativamente.
+
+  - Evita que procesos monopolicen memoria.
+
+- Swapping:
+
+  - Desaloja procesos completos al disco para liberar memoria.
+
+  - Impacta rendimiento global.
+
+  
+
+---
+
+  
+
+ ### Herramientas
+
+- vmstat: Muestra estado de memoria virtual en sistemas POSIX.
+
+  
+
+---
+
+  
+
+
 
