@@ -126,3 +126,141 @@ En general la organización social.
 * Cultura trabajo en equipo
 ![[Pasted image 20251029221815.png]]
 ![[Pasted image 20251029222111.png]]
+## Oportunidades de Negocio
+
+### Características
+- Deben perdurar en el tiempo.
+- Económicamente atractivos para las empresas.
+- Mantener clientes y aumentar ventas.
+- Generar ingresos y cumplir el propósito del productor.
+- No todas las empresas son buenas en todo → especialización.
+
+---
+
+## Segmentación de Mercado
+
+### Definición
+División del mercado en grupos homogéneos para identificar clientes potenciales.
+
+### Requisitos
+- Sustancial (estandarizado).
+- Accesible.
+
+### Variables de Segmentación
+- Etaria (edad).
+- Geográfica.
+- Nivel socioeconómico.
+- Género.
+- Estilos de vida (psicográficas).
+
+### Ejemplo
+| Región / Segmento | Población |
+|-------------------|-----------|
+| R. Biobío         | 1.000.000 |
+| Sim Concept +     | 500.000   |
+| Concepción        | 250.000   |
+| San Pedro (PIJPEN)| 100.000   |
+| Etaria (18-30)    | 10.000    |
+| Nivel socioeconómico | 1.000 |
+| 50% del mercado   | 500.000   |
+
+---
+
+## Análisis F.O.D.A. (similar a FODA)
+
+### Interna
+- **Fortalezas**: se reconocen y potencian.
+- **Debilidades**: se identifican y se mitigan.
+
+### Externa
+- **Oportunidades**: se aprovechan (ejemplo: TLC).
+- **Amenazas**: se identifican y se preparan.
+
+---
+
+## BRICS
+- Brasil
+- Rusia
+- India
+- China
+- Sudáfrica
+
+---
+
+## Función de la Empresa
+
+### Objetivos
+- Producción.
+- Venta.
+- Utilidad.
+
+### Fórmula de Utilidad
+$$
+Utilidad\ Neta = (Ingresos - Costos\ Directos - Costos\ Indirectos - Gastos\ Generales) - Impuestos
+$$
+
+---
+
+## Estado de Resultados
+
+### Componentes
+- Ventas.
+- Costos directos → Utilidad bruta.
+- Costos indirectos.
+- Gastos generales (sueldos, seguros, publicidad, arriendo, etc.).
+- Utilidad operativa.
+- Otros ingresos y gastos.
+- Intereses.
+- Impuestos (27%).
+- **Utilidad Neta**.
+## Fórmulas de Utilidad
+
+### Utilidad Bruta
+$$
+\text{Utilidad Bruta} = \text{Ventas} - \text{Costos}
+$$
+
+### Utilidad Operativa
+$$
+\text{Utilidad Operativa} = \text{Utilidad Bruta} - \text{Gastos\ Indirectos}
+$$
+
+### Utilidad Neta
+$$
+\text{Utilidad Neta} = \text{Utilidad Operativa} - \text{Intereses} - \text{Impuestos}
+$$
+
+---
+![[Pasted image 20251126234842.png]]
+### Notas
+- **Costos**: se refiere a los costos directos de producción o venta.  
+- **Gastos indirectos**: administración, logística, publicidad, etc.  
+- **Intereses**: costo financiero de la deuda.  
+- **Impuestos**: carga tributaria aplicable sobre la utilidad.  
+### Ejemplo de Cálculo
+- Ventas: $1.000.000
+- Descuentos sociales: 7% salud, 13% previsión.
+- Productiva: $150.000
+- Sueldos: $70.000
+- Impuestos: 27%
+
+---
+
+## Finanzas y Recursos Humanos
+- Administración de sueldos.
+- Costos de producción.
+- Gastos generales (servicios).
+- Evaluación de la situación financiera.
+
+---
+
+## Liderazgo
+- "Se hace líder, no se nace."
+- Evaluación de factores fuertes y débiles para diagnosticar la situación interna de la organización.
+
+---
+
+## Consistencia Empresarial
+- Instrumento para comprobar que las empresas cumplen sus objetivos.
+- Búsqueda de consistencia entre producción, ventas y utilidad.
+- Público objetivo homogéneo: todas las empresas necesitan definirlo.
