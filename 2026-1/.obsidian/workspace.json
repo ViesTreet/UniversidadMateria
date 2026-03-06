@@ -11,14 +11,12 @@
             "id": "ccf6e8310ffd5b3c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Ingeniería de software/Ingeniería de software.md",
-                "mode": "source",
-                "source": false
+                "file": "Redes de Computadores/Screenshots/Pasted image 20260306110307.png"
               },
-              "icon": "lucide-file",
-              "title": "Ingeniería de software"
+              "icon": "lucide-image",
+              "title": "Pasted image 20260306110307"
             }
           }
         ]
@@ -78,8 +76,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d1f88e34273470f1",
@@ -196,8 +193,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "ccf6e8310ffd5b3c",
+  "active": "dc412155648a309c",
   "lastOpenFiles": [
+    "Redes de Computadores/Redes de Computadores.md",
+    "Redes de Computadores/Screenshots/Pasted image 20260306110307.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260306104210.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260306103116.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260306102214.png",
+    "Ingeniería de software/Ingeniería de software.md",
     "Ingeniería de software/Draw/InSoftwareDraw1.excalidraw.md",
     "Excalidraw/Drawing 2026-03-05 10.35.06.excalidraw.md",
     "Excalidraw/Drawing 2026-03-05 10.34.57.excalidraw.md",
@@ -205,7 +208,6 @@
     "Excalidraw/Drawing 2026-03-05 10.23.13.excalidraw.md",
     "Excalidraw/Drawing 2026-03-05 10.10.34.excalidraw.md",
     "Excalidraw/Drawing 2026-03-05 09.51.18.excalidraw.md",
-    "Ingeniería de software/Ingeniería de software.md",
     "Ingeniería de software/Draw",
     "test.html",
     "test.py",
@@ -228,18 +230,13 @@
     "Excalidraw/Scripts/Downloaded/Concatenate lines.md",
     "Excalidraw/Scripts/Downloaded/Change shape of selected elements.svg",
     "Excalidraw/Scripts/Downloaded/Change shape of selected elements.md",
-    "Excalidraw/Scripts/Downloaded/Box Selected Elements.svg",
     "Excalidraw/Scripts/Downloaded/Box Selected Elements.md",
-    "Excalidraw/Scripts/Downloaded/Box Each Selected Groups.svg",
     "Excalidraw/Scripts/Downloaded/Box Each Selected Groups.md",
-    "Excalidraw/Scripts/Downloaded/Boolean Operations.svg",
     "Excalidraw/Scripts/Downloaded/Boolean Operations.md",
-    "Excalidraw/Scripts/Downloaded/Auto Layout.svg",
     "Excalidraw/Scripts/Downloaded/Auto Layout.md",
     "Excalidraw/Scripts/Downloaded/Add Link to Existing File and Open.md",
     "Excalidraw/Scripts/Downloaded/Add Link to New Page and Open.md",
     "Excalidraw/Scripts/Downloaded/Add Next Step in Process.md",
-    "Excalidraw/Scripts/Downloaded/Add Connector Point.md",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
     "Excalidraw",
