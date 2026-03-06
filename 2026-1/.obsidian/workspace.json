@@ -8,61 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d73edad0506b0380",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Sistemas Integrados de Gestion/Sistemas Integrados de Gestion.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Sistemas Integrados de Gestion"
-            }
-          },
-          {
-            "id": "ffc6bcd7d7fee1d1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Finanzas/Finanzas.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Finanzas"
-            }
-          },
-          {
-            "id": "4ee1cd635af86128",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Drawing 2026-03-05 10.34.57.excalidraw.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2026-03-05 10.34.57.excalidraw"
-            }
-          },
-          {
             "id": "ccf6e8310ffd5b3c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Finanzas/Finanzas.md",
+                "file": "Ingeniería de software/Ingeniería de software.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Finanzas"
+              "title": "Ingeniería de software"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -119,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d1f88e34273470f1",
@@ -238,12 +198,24 @@
   },
   "active": "ccf6e8310ffd5b3c",
   "lastOpenFiles": [
-    "Sin título.canvas",
-    "Finanzas/Finanzas.md",
+    "Ingeniería de software/Draw/InSoftwareDraw1.excalidraw.md",
     "Excalidraw/Drawing 2026-03-05 10.35.06.excalidraw.md",
     "Excalidraw/Drawing 2026-03-05 10.34.57.excalidraw.md",
     "Excalidraw/Drawing 2026-03-05 10.32.29.excalidraw.md",
     "Excalidraw/Drawing 2026-03-05 10.23.13.excalidraw.md",
+    "Excalidraw/Drawing 2026-03-05 10.10.34.excalidraw.md",
+    "Excalidraw/Drawing 2026-03-05 09.51.18.excalidraw.md",
+    "Ingeniería de software/Ingeniería de software.md",
+    "Ingeniería de software/Draw",
+    "test.html",
+    "test.py",
+    "Drawing 2026-03-05 14.54.51.excalidraw.md",
+    "Ingeniería de software/screenshoot",
+    "Ingeniería de software",
+    "Finanzas/Finanzas.md",
+    "2026-03-05.md",
+    "Drawing 2026-03-05 14.51.50.excalidraw.md",
+    "Sin título.canvas",
     "Excalidraw/Scripts/Downloaded/Copy Selected Element Styles to Global.svg",
     "Excalidraw/Scripts/Downloaded/Copy Selected Element Styles to Global.md",
     "Excalidraw/Scripts/Downloaded/Convert selected text elements to sticky notes.svg",
@@ -270,13 +242,8 @@
     "Excalidraw/Scripts/Downloaded/Add Connector Point.md",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
-    "Excalidraw/Drawing 2026-03-05 10.10.34.excalidraw.md",
-    "Sistemas Integrados de Gestion/Sistemas Integrados de Gestion.md",
-    "Excalidraw/Drawing 2026-03-05 09.51.18.excalidraw.md",
     "Excalidraw",
     "Sistemas Integrados de Gestion/Screenshoot",
-    "Finanzas/Screenshot",
-    "Finanzas",
-    "Sistemas Integrados de Gestion"
+    "Finanzas/Screenshot"
   ]
 }
