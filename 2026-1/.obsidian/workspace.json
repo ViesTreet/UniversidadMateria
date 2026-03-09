@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "Redes de Computadores"
             }
+          },
+          {
+            "id": "9cc8772d302f10a6",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Drawing 2026-03-09 17.32.06.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2026-03-09 17.32.06.excalidraw"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -195,10 +208,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "ccf6e8310ffd5b3c",
+  "active": "9cc8772d302f10a6",
   "lastOpenFiles": [
-    "Redes de Computadores/Screenshots/Pasted image 20260309122610.png",
     "Redes de Computadores/Redes de Computadores.md",
+    "Drawing 2026-03-09 17.32.06.excalidraw.md",
+    "Redes de Computadores/Screenshots/Pasted image 20260309122610.png",
     "Redes de Computadores/Screenshots/Pasted image 20260309121134.png",
     "Redes de Computadores/Screenshots/Pasted image 20260309121031.png",
     "Redes de Computadores/Screenshots/Pasted image 20260309121011.png",
