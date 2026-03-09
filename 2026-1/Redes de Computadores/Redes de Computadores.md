@@ -62,3 +62,52 @@ En la casa para conectarse se usa un módem de cable que va conectado por  el pu
 **Fibra a casa (FTTH)**
 El concepto es tener un cable de fibra óptica que  sale de la oficina central y va hacia las casas. En el sistema PON, cada casa tiene un terminador óptico de red que se conecta a un splitter del vecindario,habitualmente menos de 100 casas, luego va a un OLT que realiza la transformación de señales.
 ![[Pasted image 20260306110307.png]]
+## Circuit switching: FDM and TPM
+## Frecuency Division Multiplexing
+Dividimos la frecuencia depende la cantidad de usuarios, si tenemos 4 usuarios, a cada uno les corresponde el 25% del ancho de banda
+## Time division Multiplexing
+Usamos el tiempo para dividir a los usuarios, los usuarios cuenta con el 100% de la red por un tiempo limitado, si fueran 10 segundos y 4 usuarios, serian 2,5 segundos por usuario
+## Packet switching vs circuit switching
++ circuit switching: 10 usuarios  activos
++ Packet switching: podemos tener 35 usuarios activos, donde tenemos una probabilidad de 10 activos, este es mas eficiente.
+	+ Se consume en base a si el usuario esta activo, consume solo cuando  esta en uso
+	+ hay una posible congestión, lo que provocaría perdida de datos y retraso en los paquetes
+## Estructura de la red de redes
+![[Pasted image 20260309113117.png]]
+tenemos que dividir la red para no colapsarla, usar provedores locales que se conectan a proveedores mas grandes   
+![[Pasted image 20260309113634.png]]
+# Performance
+## Perdida de paquetes 
+los routers tienen bufers, cuando este buffer se llena esto genera perdida de los paquetes
+![[Pasted image 20260309113836.png]]
+esta es la formula paca calcular el delay del nodo, el delay de transmisión es distinto al de propagación
+## Delay de paquetes en cola
+![[Pasted image 20260309114429.png]]
+es una manera de calcular el delay de la cola, si es cercano a 0, el delay es pequeño, si se acerca a 1 el delay es alto y si es mayor a 1 es infinito
+## Comando traceroute 
+nos permite ver el delay, envia 3 paquetes al destino
+![[Pasted image 20260309115012.png]]
+## Throughput 
+es el ratio entre el que envia y el que recibe
+![[Pasted image 20260309115714.png]]
+aqui se genera un cuello de botella debido a que el mas pequeño pone el limite
+# Seguridad
+## Sniffing de paquetes
+la tarjeta en modo promiscuo puede leer todos los paquetes, escucha todo
+![[Pasted image 20260309121011.png]]
+## Falsa identidad
+IP spoofing: inyecta un paquete con un origen de direccion falso
+![[Pasted image 20260309121031.png]]
+## Denegación de servicios
+sobrecargan el objetivo, mediante peticiones mal formadas
+![[Pasted image 20260309121134.png]]
+### lineas de defensas
++ autenticacion
++ confidencialidad
++ chequeo de integridad
++ restriccion de acceso
++ firewall
+## Capas de protocolos y servicios
+Cada capa presenta un servicio
+![[Pasted image 20260309122610.png]]
+Usar el modelo de capas mejora la mantencion 
