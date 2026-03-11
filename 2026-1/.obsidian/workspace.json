@@ -25,16 +25,30 @@
             "id": "9cc8772d302f10a6",
             "type": "leaf",
             "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Finanzas/Finanzas.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Finanzas"
+            }
+          },
+          {
+            "id": "9b6edf250885324a",
+            "type": "leaf",
+            "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Drawing 2026-03-09 17.32.06.excalidraw.md"
+                "file": "Finanzas/Dibujo1F.md"
               },
               "icon": "excalidraw-icon",
-              "title": "Drawing 2026-03-09 17.32.06.excalidraw"
+              "title": "Dibujo1F"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -208,10 +222,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "9cc8772d302f10a6",
+  "active": "9b6edf250885324a",
   "lastOpenFiles": [
-    "Redes de Computadores/Redes de Computadores.md",
+    "Finanzas/Finanzas.md",
+    "Finanzas/Dibujo1F.md",
     "Drawing 2026-03-09 17.32.06.excalidraw.md",
+    "Redes de Computadores/Redes de Computadores.md",
     "Redes de Computadores/Screenshots/Pasted image 20260309122610.png",
     "Redes de Computadores/Screenshots/Pasted image 20260309121134.png",
     "Redes de Computadores/Screenshots/Pasted image 20260309121031.png",
@@ -239,7 +255,6 @@
     "Drawing 2026-03-05 14.54.51.excalidraw.md",
     "Ingeniería de software/screenshoot",
     "Ingeniería de software",
-    "Finanzas/Finanzas.md",
     "2026-03-05.md",
     "Drawing 2026-03-05 14.51.50.excalidraw.md",
     "Sin título.canvas",
@@ -253,7 +268,6 @@
     "Excalidraw/Scripts/Downloaded/Box Each Selected Groups.md",
     "Excalidraw/Scripts/Downloaded/Boolean Operations.md",
     "Excalidraw/Scripts/Downloaded/Auto Layout.md",
-    "Excalidraw/Scripts/Downloaded/Add Link to Existing File and Open.md",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
     "Excalidraw"
