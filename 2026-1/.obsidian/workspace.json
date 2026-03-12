@@ -39,12 +39,14 @@
             "id": "9b6edf250885324a",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Finanzas/Dibujo1F.md"
+                "file": "Finanzas/Finanzas.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Dibujo1F"
+              "icon": "lucide-file",
+              "title": "Finanzas"
             }
           }
         ],
@@ -224,8 +226,11 @@
   },
   "active": "9b6edf250885324a",
   "lastOpenFiles": [
-    "Finanzas/Finanzas.md",
+    "WhatsApp Image 2026-03-12 at 10.59.43.jpeg",
+    "WhatsApp Image 2026-03-12 at 10.54.51.jpeg",
+    "Ciencia de datos/Ciencia de datos.md",
     "Finanzas/Dibujo1F.md",
+    "Finanzas/Finanzas.md",
     "Drawing 2026-03-09 17.32.06.excalidraw.md",
     "Redes de Computadores/Redes de Computadores.md",
     "Redes de Computadores/Screenshots/Pasted image 20260309122610.png",
@@ -237,9 +242,7 @@
     "Redes de Computadores/Screenshots/Pasted image 20260309114429.png",
     "Redes de Computadores/Screenshots/Pasted image 20260309113836.png",
     "Redes de Computadores/Screenshots/Pasted image 20260309113634.png",
-    "Redes de Computadores/Screenshots/Pasted image 20260309113117.png",
     "Ingeniería de software/Ingeniería de software.md",
-    "Ciencia de datos/Ciencia de datos.md",
     "Ciencia de datos/screenshot",
     "Ciencia de datos",
     "Ingeniería de software/Draw/InSoftwareDraw1.excalidraw.md",
@@ -267,7 +270,6 @@
     "Excalidraw/Scripts/Downloaded/Box Selected Elements.md",
     "Excalidraw/Scripts/Downloaded/Box Each Selected Groups.md",
     "Excalidraw/Scripts/Downloaded/Boolean Operations.md",
-    "Excalidraw/Scripts/Downloaded/Auto Layout.md",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
     "Excalidraw"
