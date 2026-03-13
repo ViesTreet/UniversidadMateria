@@ -7,7 +7,7 @@
 
 **Economía**
 + Necesidades
-+ Recursos
++ Recursos     
 + Escasez
 **Preguntas básicas de la economía**
 + Como?
