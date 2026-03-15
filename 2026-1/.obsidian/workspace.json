@@ -8,49 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ccf6e8310ffd5b3c",
+            "id": "95f7a32a0c5db7a2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "Redes de Computadores/Redes de Computadores.md",
-                "mode": "source",
-                "source": false
+                "file": "Redes de Computadores/Screenshots/Pasted image 20260315184559.png"
               },
-              "icon": "lucide-file",
-              "title": "Redes de Computadores"
-            }
-          },
-          {
-            "id": "9cc8772d302f10a6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Finanzas/Finanzas.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Finanzas"
-            }
-          },
-          {
-            "id": "9b6edf250885324a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Finanzas/Finanzas.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Finanzas"
+              "icon": "lucide-image",
+              "title": "Pasted image 20260315184559"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -224,27 +193,27 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "9b6edf250885324a",
+  "active": "dc412155648a309c",
   "lastOpenFiles": [
+    "Redes de Computadores/Redes de Computadores.md",
+    "Redes de Computadores/Screenshots/Pasted image 20260315184559.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260315184546.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260315184513.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260315184448.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260315183239.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260315183102.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260315164943.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260315164340.png",
+    "Redes de Computadores/Screenshots/Pasted image 20260315164302.png",
+    "Ciencia de datos/Ciencia de datos.md",
+    "Drawing 2026-03-09 17.32.06.excalidraw.md",
+    "Redes de Computadores/Screenshots/Pasted image 20260313132959.png",
+    "Finanzas/Finanzas.md",
     "Ciencia de datos/Materia/Salary Data.csv",
     "Ciencia de datos/Materia/Sin confirmar 194249.crdownload",
     "Ciencia de datos/Materia/LAB1_Procesamiento_datos.ipynb",
     "Ciencia de datos/Materia",
-    "WhatsApp Image 2026-03-12 at 10.59.43.jpeg",
-    "WhatsApp Image 2026-03-12 at 10.54.51.jpeg",
-    "Ciencia de datos/Ciencia de datos.md",
     "Finanzas/Dibujo1F.md",
-    "Finanzas/Finanzas.md",
-    "Drawing 2026-03-09 17.32.06.excalidraw.md",
-    "Redes de Computadores/Redes de Computadores.md",
-    "Redes de Computadores/Screenshots/Pasted image 20260309122610.png",
-    "Redes de Computadores/Screenshots/Pasted image 20260309121134.png",
-    "Redes de Computadores/Screenshots/Pasted image 20260309121031.png",
-    "Redes de Computadores/Screenshots/Pasted image 20260309121011.png",
-    "Redes de Computadores/Screenshots/Pasted image 20260309115714.png",
-    "Redes de Computadores/Screenshots/Pasted image 20260309115012.png",
-    "Redes de Computadores/Screenshots/Pasted image 20260309114429.png",
-    "Redes de Computadores/Screenshots/Pasted image 20260309113836.png",
     "Ingeniería de software/Ingeniería de software.md",
     "Ciencia de datos/screenshot",
     "Ciencia de datos",
@@ -260,7 +229,6 @@
     "test.py",
     "Drawing 2026-03-05 14.54.51.excalidraw.md",
     "Ingeniería de software/screenshoot",
-    "Ingeniería de software",
     "2026-03-05.md",
     "Drawing 2026-03-05 14.51.50.excalidraw.md",
     "Sin título.canvas",
