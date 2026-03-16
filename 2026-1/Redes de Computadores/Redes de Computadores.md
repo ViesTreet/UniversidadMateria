@@ -174,31 +174,32 @@ Usar el modelo de capas mejora la mantención.
 ![[Pasted image 20260315184559.png]]
 En resumen los protocolos tienen una estructura al enviarse "se arma de una manera", y al llegar al destino se "desarma" para extraer la información
 # ch2: capa de aplicación
-### paradigma cliente-servidor
+### Principios
+#### paradigma cliente-servidor
 + **Host:** Ip estática, siempre hosteando y aveces en datacenters.
 + **Cliente:** Ip dinámica, se contacta con el servidor, no se comunica con otros clientes.
 ![[Pasted image 20260313125617.png]]
-### P2P Arquitectura
+#### P2P Arquitectura
 + No siempre en servidor
 + Sistema arbitrario de fin del sistema
 + los pares hace peticiones de un servicio al otro y otro par lo retorna
 + cambia de ip 
 ![[Pasted image 20260313125633.png]]
 ![[Pasted image 20260313130725.png]]
-### Socket
+#### Socket
 El socket es un análogo a una puerta, es una comunicación donde se reciben y se envían mensajes, es como una comunicación entre dos extremos donde no se interactua con el exterior, tienen que estar en el mismo socket para comunicarse.
-### Proceso de direcciones
+#### Proceso de direcciones
 Para enviar algo necesitamos la ip y el puerto, esa son las direcciones en internet.
-#### Protocolos
+##### Protocolos
 Existen protocolos abiertos y cerrados, donde los cerrados solo los propietarios saben como funciona 
 ![[Pasted image 20260313131731.png]]
-### Que necesitan los servicios?
+#### Que necesitan los servicios?
 + Necesitan integridad de datos(algunos aceptan perdida)
 + Timing, necesitamos un delay bajo
 + throughput, muchas apps necesitan poco, bits/s
 + Seguridad, encriptacion de datos
 ![[Pasted image 20260313132232.png]]
-### Protocolos de servicio
+#### Protocolos de servicio
 1. TCP
 	+ Garantiza la integridad de los datos
 	+ El enviador no puede saturar al receptor
@@ -210,3 +211,59 @@ Existen protocolos abiertos y cerrados, donde los cerrados solo los propietarios
 	+ no provee. integridad, control de flujo, control de congestión, timing, throughput, seguridad o conexión.
 ![[Pasted image 20260313132602.png]]
 ![[Pasted image 20260313132959.png]]
+#### Seguridad TCP
+1. Vanilla TCP y UDP
+	+ Esta todo en texto plano
+	+ No es seguro
+2. Transport Layer Security(TLS)
+	+ Esta encriptado
+	+ Integridad de datos
+	+ Autenticacion por endpoint
+### Web y HTTP
+Para acceder a una web primero ponemos el nombre del host y luego el path
+![[Pasted image 20260316114808.png]]
+#### Vista de HTTP
+http(hypertext transfer protocol) es un protocolo, que el cliente recibe y permite al navegador desplegar la pagina y el servidor envía este protocolo.
+http usa TCP, o sea el cliente manda una petición por el puerto 80, es recibido y se cierra la conexión, este protocolo no guarda la información del cliente anterior.
+#### Conexiones HTTP: dos tipos:
+1. **No persistente HTTP**
+	+ Se abre la conexión
+	+ se envía el objeto
+	+ se cierra la conexión
+	+ ![[Pasted image 20260316115521.png]] ![[Pasted image 20260316115542.png]]
+2. **HTTP persistente**
+	+ se abre la conexión TCP
+	+ Muchos objetos se envían por este socket
+	+ se cierra la conexión
+
+#### HTTP no persistente 
+
+| Palabra | Definicion                                                                 |
+| ------- | -------------------------------------------------------------------------- |
+| RTT     | Tiempo en que un paquete pequeño viaja del cliente al servidor y de vuelta |
+**HTTP response time(per object):**
++ Un RTT inicia la conexión TCP
++ Se crea una respuesta
++ Object/File transmisión
+$$NonPersistentHTTPResponseTime = 2RTT+FileTransmisionTime$$
+La conexiones no persistentes tienen unos problemas, requiere dos RTTs por objeto, el sistema crea overhead por cada conexión TCP y los navegadores ofrecen múltiples conexiones TCP de manera paralela, para referenciar objetos
+#### HTTP persistente (HTTP1.1)
+Se mantiene la conexión abierta por lo que no requerimos de muchas llamadas RTT para cargar los objetos, si no que se abre la conexión y se mantiene abierta para el envío de objetos, logrando reducir el tiempo de carga
+#### Request mensajes
+se hace en ASCII.
+Formato general
+![[Pasted image 20260316120925.png]]
+Estas son peticiones request:
+![[Pasted image 20260316121013.png]]
+y existen varios códigos de respuestas:
+![[Pasted image 20260316121052.png]]
+#### Cookies
+Muchos navegadores usan cookies para mantener el estado de una transacción, las cookies se mantienen el el host de usuario administrado por el navegador y también una parte se guarda en la base de datos el sitio web.
+![[Pasted image 20260316122553.png]]
+![[Pasted image 20260316123015.png]]
+#### Web Caches
+La web cache es una copia del html que se guarda de manera local en el navegador, este hace una consulta en el servidor para ver si la versión guardada sigue estando actualizada, se devuelve una cache al cliente(una versión guardada de manera local de la pagina).
+También se conocen como proxy servers, actúa en ambos lados(cliente/servidor), el header dice como almacenar la cache
+![[Pasted image 20260316124120.png]]
+Reduce el tiempo de petición, la cache esta mas cerca del cliente, reduce el trafico en los enlaces de instituciones y el Internet esta lleno  de cache
+![[Pasted image 20260316124335.png]]
