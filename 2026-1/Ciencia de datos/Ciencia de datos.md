@@ -36,3 +36,12 @@ registro, sensores, bases de datos, investigaciones, métodos de consulta,etc. T
 ![[Pasted image 20260306115840.png]]
 ![[Pasted image 20260306120007.png]]
 ![[Pasted image 20260306120021.png]]
+### Histograma de imagen blanco y negro
+Imaginemos un histograma de una imagen en blanco y negro donde :
+$$h(t)=n_k$$
+donde k es = {0,...,L} donde L es el nivel de grises y $n_k$ el numero de píxeles con valores de grises, también podemos normalizarlo por el valor de grises como 
+$$p(k)=\frac{n_k}{n}$$
+n = numero total de  pixeles en la imagen
+### Distribución gausiana (normal)
+Una variable X que sigue la distribución normal:
+$$f(x)=\frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x-\mu)²}{2\sigma²}}$$

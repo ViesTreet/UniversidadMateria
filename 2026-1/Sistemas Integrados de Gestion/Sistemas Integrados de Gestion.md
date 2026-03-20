@@ -66,3 +66,8 @@ Ejemplos de actividades:
 * Principio de eficiencia
 	* Cada departamento busca ser lo mas eficiente posibles sin importar si esto tienes efectos en otros departamentos 
 * Burocracia y formalismo
+### Tipos de administración
++ Autonomía y autocontrol
++ Ciclo de deaming
+![[IMG_20260319_090509.jpg]]
+![[IMG_20260319_093034.jpg]]![[IMG_20260319_091648.jpg]]
