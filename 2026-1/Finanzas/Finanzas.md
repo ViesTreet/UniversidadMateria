@@ -22,7 +22,8 @@
 Que buscan saciar las necesidades básicas: salud, educación, vivienda, etc.
 
 ---
-![[Dibujo1F]]
+![[Pasted image 20260323172411.png]]
+
 Para crear una empresa, se hace una notaria y se crea una sociedad(SA,SPA,etc...), Luego se va al SII y se asigna un rut y una clave única, cada mes hay que rellenar el formulario 29 y declarar movimientos
 1. **Capital:** Monto  inicial con el que la empresa empieza, este puede aumentar o decrecer en el tiempo, debido a que la utilidad de la empresa se suma al capital. 
 2. **Liquidez:** Dinero con el que la empresa cuenta en este momento, todo el dinero con el que la empresa pueda acceder al instante, efectivo, cuentas, etc, por ejemplo el dinero de inversiones no es liquido, en corto plazo(1 año)

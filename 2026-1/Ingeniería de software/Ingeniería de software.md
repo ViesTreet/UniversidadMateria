@@ -39,4 +39,4 @@
 * Análisis técnico
 * Roadmap
 * Prototipo 
-![[InSoftwareDraw1.excalidraw]]
+![[Pasted image 20260323172619.png]]
