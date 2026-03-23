@@ -174,7 +174,7 @@ Usar el modelo de capas mejora la mantención.
 ![[Pasted image 20260315184559.png]]
 En resumen los protocolos tienen una estructura al enviarse "se arma de una manera", y al llegar al destino se "desarma" para extraer la información
 # ch2: capa de aplicación
-### Principios
+## Principios
 #### paradigma cliente-servidor
 + **Host:** Ip estática, siempre hosteando y aveces en datacenters.
 + **Cliente:** Ip dinámica, se contacta con el servidor, no se comunica con otros clientes.
@@ -219,7 +219,7 @@ Existen protocolos abiertos y cerrados, donde los cerrados solo los propietarios
 	+ Esta encriptado
 	+ Integridad de datos
 	+ Autenticacion por endpoint
-### Web y HTTP
+## Web y HTTP
 Para acceder a una web primero ponemos el nombre del host y luego el path
 ![[Pasted image 20260316114808.png]]
 #### Vista de HTTP
@@ -267,3 +267,63 @@ También se conocen como proxy servers, actúa en ambos lados(cliente/servidor),
 ![[Pasted image 20260316124120.png]]
 Reduce el tiempo de petición, la cache esta mas cerca del cliente, reduce el trafico en los enlaces de instituciones y el Internet esta lleno  de cache
 ![[Pasted image 20260316124335.png]]
+En la actualidad las web caches no son del todo necesarias debido   a que la mayoría de paginas son dinámicas(con backend) y que tenemos altas velocidades de red
+## Email, SMTP, IMAP
+#### Email
+![[Pasted image 20260323112105.png]]
+**Tiene 3 componentes mayores**
++ User agents
++ Mail servers:
+	+ MailBox:Contiene los mensajes entrantes para el usuario
+	+ Message queue: cola de mensajes salientes que van a ser enviados
++ Simple mail transfer protocol(SMTP):
+	+ Entre servidores de emails para enviar mensajes
+		+ Cliente: envía al servidor de mails
+		+ "Servidor": Recibiendo servidores de mails
+#### SMTP RFC(5321)
+usa TCP para garantizar la correcta transacción de información entre datos, se usa el puerto 25
++ Transferencia directa: Envía al servidor(actuando como cliente) para recibir al servidor
+Hay 3 fases de la transferencia:
+1. SMTP Handshaking 
+2. SMTP transferencia de mensajes
+3. SMTP cierre
+Los comandos son en ASCII y las respuestas son con códigos y frases como en HTTP
+![[Pasted image 20260323113030.png]]
+
+![[Pasted image 20260323114134.png]]
+![[Pasted image 20260323114422.png]]
+#### Recuperando mails
+El SMTP almacena y envía mensajes, es un servidor. Luego tenemos IMAP(Internet Mail Access Protocol) que nos permite acceder vía web a nuestros correos almacenados, podemos eliminar, almacenar,etc. 
+Gmail, Outlook, Hotmail, etc nos dan una interfaz web para acceder a nuestros correos.
+![[Pasted image 20260323115036.png]]
+## DNS: Domain Name System
+Nos permite acceder mas fácil a las paginas, ya que crea un enlace entre un nombre y una ip, de esta manera accedemos a usm.cl y no a 213.133.12.1.
+Es una base de datos distribuida que esta implementada en las librerias de muchos servidores.
+Esta en la capa de aplicación: host, DNS resuelve nombres.
++ Es el núcleo del Internet
++ es complejo en los limites de la  red
+### DNS: Servicios y estructura
++ Hostnames a direcciones ip.
++ Alias de host.
++ Alias de servidores de mail.
++ Distribución de carga.
+**No podemos tener un DNS centralizado debido a que si falla se cae internet, tiene un volumen de trafico alto, una base de datos distante y el mantenimiento**
+Si pensamos en los DNS: 
++ Es una base  de datos distribuidas y homogenia
++ Maneja trillones de consultas
++ Organizado pero físicamente descentralizado
++ Aprueba de balas
+### DNS: distribuido y jerárquico
+![[Pasted image 20260323121752.png]]
+### DNS: root name servers
+Lo ideal es que a nivel top y autoritativo pueda resolver todas mis consultas, la ultima opción es consultar al root.
++ El internet no funciona sin el
++ DNSSEC provee seguridad(autenticación e integridad de mensajes)
+ICANN(Internet Corporation for assigned Names and Numbers) Administra los root DNS
+![[Pasted image 20260323122514.png]]
+![[Pasted image 20260323124244.png]]
+Los DNS locales suelen tener cache para acelerar la operación
+![[Pasted image 20260323124331.png]]
+![[Pasted image 20260323124346.png]]
+![[Pasted image 20260323124413.png]]
+![[Pasted image 20260323124443.png]]
