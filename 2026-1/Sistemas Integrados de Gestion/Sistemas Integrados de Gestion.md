@@ -71,3 +71,4 @@ Ejemplos de actividades:
 + Ciclo de deaming
 ![[IMG_20260319_090509.jpg]]
 ![[IMG_20260319_093034.jpg]]![[IMG_20260319_091648.jpg]]
+![[IMG_20260324_103129.jpg]]

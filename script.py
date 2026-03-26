@@ -4,7 +4,6 @@ import re
 import os
 
 timestamp = int(time.time())
-print(timestamp)
 
 # Crear carpeta si no existe
 os.makedirs("2026-1/archivosPDF", exist_ok=True)
@@ -68,3 +67,6 @@ for res in respuesta:
 
             # Borrar temporal
             os.remove(temp_md)
+print("="*3+"Subiendo a git"+"="*3)
+subprocess.run(f"git add . && git commit -m '{timestamp}' && git push origin main",shell=True)
+print("Completado")

@@ -40,3 +40,13 @@
 * Roadmap
 * Prototipo 
 ![[Pasted image 20260323172619.png]]
+**Recordar**
++ Tradicional
++ Evolutivo
++ Desarrollo rápido,etc
++ Modelo o metodología de desarrollo 
++ Puede establecer estrategias que ven lineamientos de mas de un modelo
++ Monolítico?
++ traer hojas blancas
++ [[https://profesorezequielruizgarcia.wordpress.com/wp-content/uploads/2015/01/ingenieria-del-software-un-enfoque-practico-roger-s-pressman.pdf]]
++ 
