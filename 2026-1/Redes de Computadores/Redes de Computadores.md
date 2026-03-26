@@ -327,3 +327,58 @@ Los DNS locales suelen tener cache para acelerar la operación
 ![[Pasted image 20260323124346.png]]
 ![[Pasted image 20260323124413.png]]
 ![[Pasted image 20260323124443.png]]
+## P2P aplicaciones
+### Arquitectura
++ No siempre hay servidores activos.
++ Sistemas arbitrarios de comunicación.
++ Un sistema solícito y el otro retorna.
++ Hay un intercambio de direcciones de IP.
++ Tiene auto escalabilidad.
+![[Pasted image 20260326145626.png]]
+El tiempo que demoran los archivos en descargarse es el tiempo mayor entre el "servidor" subiendo y el "cliente" descargando.
+![[Pasted image 20260326145735.png]]
+Mientras más clientes hay más óptimo es el modelo de P2P sobre cliente-servidor.
+### BitTorrent
+![[Pasted image 20260326145922.png]]
+la tecnología Torrent divide los archivos en chunks de 256kb, los peers reciben y envían chunks
++ tracker: trackea los peers que participan en torrent.
++ Torrent: grupo de peer que intercambian chunks del archivo.
+Cuando uno entra a la red P2P no tiene chunks, pero se irán acumulando con el tiempo y con el tiempo uno también compartirá
++ churn: peers que vienen y se van 
+### Peticiones y envío de chunks de archivos 
+- Si hay carencia de ciertos chunks la red P2P automáticamente empezará a distribuir más estos chunks.
+- Se usa un hash para todo el Torrent para verificar que no se está modificando él .torrent original, y además por cada chunk hay hash para verificar que no fue modificado.
++ Cada 30 segundos, aleatoriamente se selecciona otro peer, este compuesto se llama tit-for-tat
+## Video streaming y distribución de contenido
++ CDN(content distribution network)
++ El streaming de video es lo que consume el mayor ancho de banda 
+### Video
++ Los videos son secuencias de imágenes
++ Cada imagen son un array de píxeles
+	+ cada pixel es representado por bits
++ Coding: usa redundancia sin y entre imágenes para disminuir la cantidad de bits
+	+ Codificación espacial: Ve qué bits entre fotogramas no cambian y envían una instrucción para mantenerlos y de esa manera reducimos los bits que se envían
+	+ Codificación temporal: Solo envían los cambios que se realizan entre dos frames, para no recargar toda la imagen.
+	![[Pasted image 20260326152724.png]]
+#### Codecs
++ CBR(constant Bit Rate): siempre se gastan los mismos bits
++ VBR(variable Bit Rate): con base en el movimiento de la imagen se gastan bits
+![[Pasted image 20260326153144.png]]
+Pero este es el mundo ideal, puesto que el internet no es constante
+En la vida real existe el buffer que guarda bits de esa manera se compensa el delay
+![[Pasted image 20260326153336.png]]
+### Dash(Dynamic, Adaptive Streaming over HTTP)
+1. Servidor
+	+ Divide el video en chunks
+	+ Cada chunks codifica en diferentes ratios
+	+ diferentes rate de encoding se almacenan en distintos archivos
+	+ los archivos se replican en varios nodos de CDN
+	+ **Manifest file:** provee las direcciones de los diferentes chunks
+2. Cliente
+	+ Estima constantemente el ancho de banda entre cliente-servidor
+	+ Consulta el manifiesto
+	+ Elige un coding rate óptimo para su conexión
+	![[Pasted image 20260326153851.png]]
+### CDN
++ Realiza copias del contenido en los nodos CDN
++ El suscriptor solicita contenido y el servicio provee el manifiesto y la dirección cambiara en base al ancho de banda
