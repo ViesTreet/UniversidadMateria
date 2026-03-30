@@ -382,3 +382,115 @@ En la vida real existe el buffer que guarda bits de esa manera se compensa el de
 ### CDN
 + Realiza copias del contenido en los nodos CDN
 + El suscriptor solicita contenido y el servicio provee el manifiesto y la dirección cambiara en base al ancho de banda
+# CH3: capa de transporte
+## Servicio de la capa de transporte
+Provee comunicación lógica entre aplicaciones, funciona de la siguiente manera
++ El emisor: rompe el mensaje en segmentos que pasan por la capa de red
++ El receptor: reensambla los segmentos para obtener el mensaje
+existen 2 protocolos **TCP** y **UDP**
+La acción sería más o menos a si:
+![[Pasted image 20260330112553.png]]
+![[Pasted image 20260330112607.png]]
+### Los dos principales protocolos de internet
++ **TCP(Transmission Control Protocol):** 
+	+ Entrega en orden y es confiable
+	+ Control de congestion
+	+ Control de flujo
+	+ Setup de conexion
++ **UDP(User Datagram Protocol):**
+	+ no es confiable, entrega desordenado
+	+ Una extención basica del protocolo IP, e base al mejor esfuerzo
++ **Servicio no disponible:*
+	+ Garantiza delay
+	+ Garantiza ancho de banda
+## Multiplexación y desmultiplexación
+![[Pasted image 20260330113324.png]]
+La multiplexación es una manera de juntar datos para su envío, imagínate  que en un celular tenemos muchas apps ejecutándose, cada una enviando información, pero solo disponemos de un cable para enviar información, entonces el computador realiza una multiplexación en la cual realiza lo siguiente:
++ Recoge  datos de múltiples sockets
++ Les agrega header
++ Y mete segmentos
+Los datos se envian y listo, pero por ejemplo un servidor que recibe peticiones hace el proceso inverso la desmultiplexación:
++ Lee los header
++ Identifica que segmento le pertenece a que socket
++ Entrega la app correcta
+### Como funciona la desmultiplexación
++ Cada host recibe el datagrama del IP
+	+ Cada datagrama tiene como origen una IP y un destino que también es una IP
+	+ Cada datagrama lleva un segmento de la capa de transporte
+	+ Cada segmento tiene un origen y un puerto de destino
++ Los hosts usan direcciones IP y puertos para que el segmento llegue al socket correcto
+![[Pasted image 20260330114156.png]]
+### Desmultiplexación sin conexión
++ Cuando creamos un socket debemos especificar el puerto del host local
++ Cuando creamos un datagrama que  envia en UDP socket, debemos especificar
+	+ IP de destino
+	+ Puerto de destino
++ Cuando el host recibe la conexión UDP
+	+ Checa el puerto del destino del segmento
+	+ Dirige el segmento UDP al socket que tiene el puerto
++ IP/UDP datagramas con el mismo puerto de destino pero distintas IP y/o puerto, van a a ser dirigidos al mismo socket
+![[Pasted image 20260330114614.png]]
+### Conexión orientada a desmultiplexación
+Los **TCP Socket** se identifican por 4 tuplas
++ IP de origen
++ Puerto de origen
++ IP de destino
++ Puerto de destino
+El demux recibe los 4 valores y los dirige al socket correcto.
+Los servidores pueden soportar simultáneos sockets TCP, cada socket identificado por esas 4 tuplas y cada socket asociado a distintos clientes
+![[Pasted image 20260330114927.png]]
+La multiplexación y desmultiplexación ocurre en todas las capas
+Porque en cada capa:
+
+- hay **múltiples “fuentes” de datos**
+- se **combinan en una sola transmisión**
+- y luego se **separan usando algún identificador**
+
+Lo único que cambia es **qué campo se usa para separar**:
+
+- Aplicación → procesos
+- Transporte → puertos
+- Red → protocolo (TCP/UDP)
+- Enlace → tipo (EtherType)
+## Transporte no orientado a conexión: UDP
+## UDP
++ Un protocolo sin nada
++ El mejor esfuerzo
+	+ Se pierde.
+	+ Se puede  entregar en distinto orden.
++ Sin conexión
+	+ NO hay handshake entre el emisor y el receptor
++ Pero tiene una utilidad, es más rápido, tiene un header pequeño, no hay RTT delay, es simple, no hay control de congestión por lo que usara todo el ancho de banda y puede funcionar con congestión
+Cosas que usan UDP:
++ Streaming multimedia
++ DNS
++ SNMP
++ HTTP/3
+Para poder mejorar UDP tenemos que hacerlo desde  la aplicación(HTTP/3):
++ añadir confiabilidad
++ añadir control de congestion
+![[Pasted image 20260330120517.png]]![[Pasted image 20260330120530.png]]
+### Header del segmento UDP
+![[Pasted image 20260330120744.png]]
+### UDP Checksum
+![[Pasted image 20260330120922.png]]
+el objetivo de esto es detectar errores
++ Emisor
+	+ Trata el contenido en segmentos UDP como secuencia de integrales de 16 bits
+	+ Checksum: se añade al segmento del contenido
+	+ El checksum se pone en el campo del checksum
++ Receptor
+	+ El computador recibe el segmento con el checksum
+	+ checa que el cheksum recibido es el mismo que el calculado
+		+ Si no es igual, hay error
+		+ Si es igual, no hay errores, de momento
+![[Pasted image 20260330121238.png]]
+![[Pasted image 20260330121427.png]]
+## Principio de la confiabilidad de la transferencia de datos
+La complejidad de la confiablilidad de la data depende de un canal no confiable, estopuede probocar muchos problemas y para mas complejidad, el emisor y el receptor no conocen el estado del otro, por eso nace:
+### Reliable data transfer protocol (rtd): interfaces
+![[Pasted image 20260330122329.png]]
+En la vida real esta comunicación funciona en ambos sentidos
+### rdt1.0: transferencia confiable sobre un canal no confiable
+Vamos a usar una maquina de estado finito entre el  emisor  y el receptor
+![[Pasted image 20260330122652.png]]
