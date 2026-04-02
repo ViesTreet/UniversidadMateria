@@ -61,3 +61,9 @@ Las cuentas contables representa de manera esquemática, permite identificar los
 | Saldo    | Debito | Credito |
 $$Debito>Creditos = Saldo deudor$$
 $$Debitos<Creditos=saldo acreedor$$
+# Los 3 informes financieros
+**Balance(8 columnas):** Entre el 31 de diciembre y el 1 de enero se hace una especie de foto del estado de la empresa en el sentido de la contabilidad.
+Utilidad de ejercicio: Lo que se ganó en la empresa, se agrega al patrimonio de la empresa.
+**Estado de resultado:** Como un informe sobre la utilidad que genera la empresa
+**Estado de flujo de efectivo:** Muestra una clasificación de los ingresos y egreso de efectivo, producido en un determinado tiempo, refleja la disponibilidad en dinero que una empresa posee. Refleja mejor que el estado de resultado a la empresa, ya que toma el stock, puesto que el estado de resultado solo muestra las ventas, mientras que el flujo de efectivo muestra todo, ya que puede que haya perdida por exceso de stock
+![[Pasted image 20260402104055.png]]
