@@ -118,3 +118,71 @@ Frecuentemente se encuentra conflictos con los clientes y eso genera clientes in
 + Eliminación de defectos. Acción correctiva y preventiva
 + Aseguramiento de la optimización del proceso. Mejora continua 
 + ![[Pasted image 20260405001446.png]]
+### Comparación entre el modelo de administración funcional y gestion de procesos
+
+| Administración funcional                | Gestion de procesos                    |
+| --------------------------------------- | -------------------------------------- |
+| Departamento especializados             | Procesos con valor agregado            |
+| Jefes funcionales                       | Responsables de procesos               |
+| Jerarquía y control                     | Autonomía y control                    |
+| Decisiones centralizadas                | Decisiones centralizadas               |
+| Principio de eficiencia: ser productivo | Principio de eficacia: ser competitivo |
+| Como hacer mejor las tareas             | Que tarea hacer y para que             |
+| Burocracia y formalismo                 | Flexibilidad, cambio e innovación      |
+## Conceptos
+**Gestión:** Actividad coordinada para dirigir y controlar una organización.
+**Sistema integrado de gestión(SIG):** Sistema que contiene más de un ámbito de gestión y que integra sistema que son comunes en todas partes.
+**Procesos:** Conjunto de actividades relacionadas que utilizan las entradas para proporcionar un resultado previsto, se representa con rectángulos o cuadrados.
+![[Pasted image 20260405213254.png]]
+![[Pasted image 20260405213321.png]]
+**Productividad:** Es el cociente que se obtiene al dividir la producción o servicios, por uno de los factores de producción
+![[Pasted image 20260405213539.png]]
+## Ciclo de deming
+Consta de las siguientes 4 fases:
+1. **Planificar:** Establecer objetivos y procesos de acuerdo a la política
+2. **Hacer:** Implementar y operar los procesos
+3. **Verificar:** Realizar seguimiento e informar resultados.
+4. **Actuar:** Tomar acciones para mejorar el desempeño
+![[Pasted image 20260405214027.png]]
+## Modelo normativo
+![[Pasted image 20260405214109.png]]
+Todas las **normas ISO** de gestion desde 2015 tienen el siguiente temario:
+1. Objetivo y campo de aplicación
+2. Referencias normativas
+3. Términos y definiciones
+4. Contexto de la organización
+5. Liderazgo
+6. Planificación
+7. Apoyo
+8. Operación
+9. Evaluación de desempeño
+10. Mejora
+Desde el 4 al 10 pertenecen al sistema integrado de gestión, esto se audita y certifica.
+![[Pasted image 20260405214433.png]]
+### Los 7 principios de la gestión de calidad en la ISO 9001:2015
+Estas llevan a un mejor desempeño de la empresa.
+1. **Enfoque en el cliente:** Cumplir con los requisitos del cliente y exceder sus expectativas
+2. **Liderazgo:** Los líderes en todos los ámbitos establecen la unidad de propósito y la dirección de la organización.
+3. **Compromiso de las personas:** Personas comprometidas y empoderadas para proporcionar valor.
+4. **Enfoque a procesos:** Se logra gestionar mejor y se alcanzan mejores resultados cuando las actividades se gestionan como procesos.
+5. **Mejora:** Se debe tener un enfoque continuo hacia la mejora.
+6. **Toma de decisiones en base a la evidencia:** Decisiones en base a la evidencia, pruebas y datos proporcionados por los resultados.
+7. **Gestión de relaciones:** Se deben gestionar las relaciones con las partes interesadas.
+
+### Objeto y campo de aplicación
+
+| ISO 9001                                                                                                                        | ISO 14001                                | ISO 45001                                               |
+| ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------------------------------------------------------- |
+| Demostrar la capacidad de proporcionar servicios y productos que satisfagan la necesidad del cliente y respetar el ambito legal | Contribuir a la sostenibilidad ambiental | Proporcionar lugares seguros y saludables para trabajar |
+| Aumentar la satisfacción del cliente a travez del sistema de gestion                                                            | Mejorar el desempeño ambienta            | Eliminar peligros y minimizar riesgos                   |
+|                                                                                                                                 | Cumplir los requisitos legales y otros   | Mejorar el desempeño de SST                             |
+|                                                                                                                                 | Lograr objetivos ambientales             | Cumplir requisitos legales y otros                      |
+|                                                                                                                                 |                                          | Lograr objetivos del SST                                |
+#### Terminos y deficiones de las 3 normas
+1. **Calidad:** Grado de conjunto de características que cumplen los requisitos.
+2. **No conformidad:** incumplimiento de un requisito.
+3. **Acción correctiva:** Acción para eliminar una causa de una o conformidad
+4. **Aspecto ambienta:** Producto o servicio que interactúa con el medio ambiente
+5. **Impacto ambiental:** Cambio en el aspecto ambiental ya sea perjudicial o beneficioso como resultado de la organización
+6. **Peligro:** Fuente de causas de lesiones o deterioro de la salud
+7. **Riesgo para la SST:** Combinación de probabilidades de que ocurran eventos que puedan poner el peligro la vida de las personas
