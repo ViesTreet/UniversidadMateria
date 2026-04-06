@@ -494,3 +494,44 @@ En la vida real esta comunicación funciona en ambos sentidos
 ### rdt1.0: transferencia confiable sobre un canal no confiable
 Vamos a usar una maquina de estado finito entre el  emisor  y el receptor
 ![[Pasted image 20260330122652.png]]
+En este formato imaginamos que no hay perdida de paquetes y no hay errores de bits, por lo que se envía la data de un emisor a un receptor
+### rtd2.0: canal con errores de bits
+imaginemos que un bit se da vuelta ya sea por interferencia en el cable, etc. Para recuperarlo usamos 
++ acknowledgements(ACKs): el emisor explícitamente envía un OK
++ negative acknowlegements(NAKs): el emisor envía un mensaje de que se envió mal
+Entonces el emisor reenvía el mensaje 
+**Sin errores**
+![[Pasted image 20260406112710.png]]
+**Con errores**
+![[Pasted image 20260406112725.png]]
+#### Debilidad de este modelo
+Se puede corromper el ACK/NAK y como sabemos el emisor no sabe lo que pasa con el receptor por lo que se puede enviar data duplicada, cada emisor envía un pkt por cada respuesta a la cual le agrega un número lo cual puede duplicar pkt(ACK/NAK)
+#### rtd2.1
+![[Pasted image 20260406113502.png]]
+![[Pasted image 20260406113518.png]]
+El emisor envía un pkt en secuencias de 0 y 1, entonces el emisor verifica este número para ver si está repetido.
+#### rtd2.2 un protocolo libre de NAK
++ Es lo mismo que rtd2.1 pero libre de NAK
++ El receptor envía un ACK, debe incluir explícitamente la secuencia de pkt
++ Los ACK duplicados son lo mismo que un NAK
+![[Pasted image 20260406114211.png]]
+### rtd3.0 canal con error y perdida
+El emisor espera un tiempo razonable para esperar el ACK, si no responde un ACK, el emisor reenvía el paquete, pero la secuencia ya maneja duplicados, el receptor debe especificar el número de secuencia
+![[Pasted image 20260406114508.png]]
+![[Pasted image 20260406114537.png]]
+Como vemos si el ACK se pierde el emisor lo vuelve a enviar
+![[Pasted image 20260406114718.png]]
+![[Pasted image 20260406114858.png]]
+El protocolo es muy lento, por lo que se usa pipelining, en donde el emisor envía muchos paquetes los cuales están en espera de confirmación, el rango de secuencia se va a incrementar, hay un buffer entre el emisor y receptor
+![[Pasted image 20260406115145.png]]
+![[Pasted image 20260406115202.png]]
+#### Go-Back-N: emisor
++ Una ventana es la cantidad de paquetes que están buenos
+	+ k-bit secuencia en el header del paquete
+![[Pasted image 20260406115649.png]]
++ **ACK acomulativos:** son todos los paquetes incluidos en la secuencia, cuando se recibe un ACK la ventan se mueve
++ el timer es para el paquete en vuelo más viejo
++ al haber timeout se envia el paquete n y todos los siguientes.
+#### Go-Back-N: receptor
+El receptor solo recibe paquetes en orden, si no lo están se ignoran o lo guarda en el buffer, el receptor solo debe recordar el último paquete correcto que se envió
+![[Pasted image 20260406120404.png]]
