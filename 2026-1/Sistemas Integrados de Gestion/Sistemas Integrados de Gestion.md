@@ -186,3 +186,45 @@ Estas llevan a un mejor desempeño de la empresa.
 5. **Impacto ambiental:** Cambio en el aspecto ambiental ya sea perjudicial o beneficioso como resultado de la organización
 6. **Peligro:** Fuente de causas de lesiones o deterioro de la salud
 7. **Riesgo para la SST:** Combinación de probabilidades de que ocurran eventos que puedan poner el peligro la vida de las personas
+#### Contexto de la organización
+**4.1 Comprensión de la organización y de su contexto**
+La organización debe determinar las cuestiones externas e internas pertinentes para la empresa y su estrategia
+**4.2 Comprensión de las necesidades y expectativas de los trabajadores y otras
+partes interesadas**
+La organización debe determinar 
++ Sus partes interesadas incluyendo sus trabajadores
++ Necesidades y expectativas pertinentes de sus trabajadores y otras partes interesadas
++ Necesidades y expectativas que se convertirán en requisitos legales o podrían hacerlo.
+#### A tener en cuenta
+
+| Cuestiones internas               | Cuestiones externas |
+| --------------------------------- | ------------------- |
+| Infraestructura                   | Económicos          |
+| Competencia del personal          | Medioambientales    |
+| Red de procesos                   | Políticos           |
+| Tecnología                        | Sociales            |
+| Ambiente de operación de procesos | Tecnológicos        |
+Ejemplo de partes interesadas: Municipalidad, trabajadores, proveedores, en general todos los stakeholders
+#### 4.3 Determinación del alcance del sistema integrado de gestión
+Se debe considerar
++ Las cuestiones externas e internas
++ Requisitos, necesidades y expectativas de las partes interesadas
++ Actividades, productos y servicios de la organización
++ Los requisitos legales y otros
++ Unidades, funciones y limites físicos de la organización 
++ Autoridad y capacidad para ejercer control e influencia
+![[Pasted image 20260406215735.png]]
+![[Pasted image 20260406215830.png]]
+![[Pasted image 20260406215903.png]]
+![[Pasted image 20260406215925.png]]
+### Recordar lo siguiente:
++ La norma iso 9001 (calidad) es la unica que se puede declarar un requisito como "no puede ser aplicable" pero se debe justificar
++ La norma ISO 14001 (Medioambiente) y la ISO 45001 (Seguridad y salud) exige que se aplique todos los requisitos
+## EVALUACIÓN DE POTENCIALIDADES, DESAFÍOS, RIESGOS Y LIMITACIONES
++ La alta direccion elije las potencialidades, desafíos, riesgos y limitaciones con base en evidencia objetivas para tomar sus decisiones.
++ Esta es una evaluación cualitativa basada en experiencia de la alta dirección
++ Se realiza una evaluación cuantitativa donde se realizan acciones con base en evaluar los resultados obtenidos, o sea datos comprobables
+$$EvaluacionP/D=ProbabilidadP/D*ImpactoP/D$$
+$$EvaluacionR/L=ProbabilidadR/L*ImpactoR/L$$
+![[Pasted image 20260406221645.png]]
+![[Pasted image 20260406221752.png]]
