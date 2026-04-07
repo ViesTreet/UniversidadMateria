@@ -228,3 +228,61 @@ $$EvaluacionP/D=ProbabilidadP/D*ImpactoP/D$$
 $$EvaluacionR/L=ProbabilidadR/L*ImpactoR/L$$
 ![[Pasted image 20260406221645.png]]
 ![[Pasted image 20260406221752.png]]
+#### 4.4 Sistema integrado de gestión y sus procesos
+Se deben determinar los procesos "necesarios" para el SIG, la organización debe:
++ Determinar entradas y salidas
++ Determinar secuencia e interacción
++ Determinar criterios y métodos
++ Determinar recursos y su disponibilidad 
++ Asignar responsabilidades y autoridades
++ Abordar riesgos y oportunidades
++ Evaluar que se logran los objetivos de los procesos
++ Implementar cambios para mejorar los procesos
+Se debe mantener información documentada para apoyar los procesos y se debe conservar esta información.
+Y todo lo anterior nos lleva a la gestión de procesos
+![[Pasted image 20260406225348.png]]
+![[Pasted image 20260406225413.png]]
+### Liderazgo
+#### Liderazgo y compromiso
+##### Generalidades
+La alta dirección debe demostrar su compromiso con el sistema de gestión, el cual llamamos SIG:
++ Rindiendo cuenta de la eficacia del sistema de gestión
++ Estableciendo política y los objetivos de la gestión
++ Integrando los requisitos del SIG con los procesos del negocio
++ Asegurando que los recursos estén disponibles
++ Comprometiendo, dirigiendo y apoyando a las personas
++ Tienen que promover la mejora, proteger a los trabajadores minimizando riesgos, e informando oportunidades, etc.
++ Asegurando que se establezcan e implementen procesos para la consulta y participación de los trabajadores
++ Apoyando el establecimiento y funcionamiento de comités de seguridad y salud
+Uno de los puntos más relevantes es la responsabilidad y la obligación de rendir de cuentas de la eficacia del sistema de gestión de calidad, medio ambiente y seguridad-salud, lo que incluye aprovisionar actividades y lugares seguros de trabajo.
+![[Pasted image 20260406230611.png]]
+##### Enfoque al cliente 
+La alta dirección debe demostrar liderazgo y compromiso con respecto al enfoque del cliente.
++ Se determinan, comprenden y cumplen los requisitos del cliente, los legales y los reglamentarios
++ Se deben identificar los riesgos y oportunidades 
++ Se debe enfocar en aumentar la satisfacción del cliente
+##### Política del sistema integrado de gestión
+La política debe:
++ Proporcionar condiciones de trabajos segura y saludable
++ Ser marco de referencia para establecer objetivos de gestión
++ Cumplir los requisitos legales y otros requisitos
++ Eliminar peligros según SST
++ Incluir el compromiso de protección al medio ambiente
++ Incluir el compromiso de mejora continua
++ Incluir el compromiso para la consulta y participación de los trabajadores
++ Ser apropiado el propósito de la organización
++ Apoyar la dirección estratégica
+![[Pasted image 20260406231457.png]]
+##### Comunicación de la política
+La política debe:
++ Mantenerse como información documentada
++ Comunicarse, entenderse y explicarse
++ Estar disponible para los stake holders
+##### Roles, responsabilidades y autoridades en la organización
++ La alta dirección debe proporcionar roles claros y sus responsabilidades
++ Asegurar que el sistema de gestión este conforme con los requisitos normativos
++ Asegurar que la salida este prevista
++ Informar sobre el desempeño del sistema y oportunidades de mejora
++ Asegurar que se promueve el enfoque al cliente
++ Asegurar la integridad del sistema de gesión.
+
