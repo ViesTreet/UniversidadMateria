@@ -1,4 +1,17 @@
-# Procesamiento y visualización de datos
+# Introducción a el aprendizaje estadístico(Libro) 
+![[Pasted image 20260408154858.png]]
+En este diagrama podemos ver que según el método que usemos hay algunos que son mas interpretables mientras que otros son mas flexibles.
+## División por supervisación
+Podemos dividir el machine learning en dos:
++ **Supervisado:** Nosotros le entregamos "alimentación" a la máquina para de esta manera explicarle que es lo que estamos buscando
++ **No supervisado:** El sistema trata de aprender sin un "profesor"
++ **Semi-supervisado:** Nosotros alimentamos a algoritmo, pero este decide ciertas cosas, como google photos cuando agrupa por persona
++ **Auto-supervisado:** En este el algoritmo trata de elegir la mejor opcion en base a una gran cantidad de data
+	![[Pasted image 20260408165451.png]]
++ **Aprendizaje reforzado:** En este el sistema recibe una recompensa o un castigo dependiendo del resultado que tiene
+	![[Pasted image 20260408165715.png]]
+
+# Procesamiento y visualización de datos(Materia)
 - variable: característica que se mide u observa en un conjunto de datos
 - Observación: conjunto de valores que se registran para una variable en particular
 - Distribución: característica o atributo que se mide

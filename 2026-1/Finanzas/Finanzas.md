@@ -67,3 +67,217 @@ Utilidad de ejercicio: Lo que se ganó en la empresa, se agrega al patrimonio de
 **Estado de resultado:** Como un informe sobre la utilidad que genera la empresa
 **Estado de flujo de efectivo:** Muestra una clasificación de los ingresos y egreso de efectivo, producido en un determinado tiempo, refleja la disponibilidad en dinero que una empresa posee. Refleja mejor que el estado de resultado a la empresa, ya que toma el stock, puesto que el estado de resultado solo muestra las ventas, mientras que el flujo de efectivo muestra todo, ya que puede que haya perdida por exceso de stock
 ![[Pasted image 20260402104055.png]]
+## Estado de balance y de resultado
+$$Activos=Pasivos$$
+![[WhatsApp Image 2026-04-08 at 08.34.02.jpeg]]
+<table>
+    <tr>
+        <td>Activos</td>
+        <td></td>
+        <td></td>
+        <td>Pasivos</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Estado de resultado</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Activo circulante</td>
+        <td></td>
+        <td></td>
+        <td>Pasivo circulante</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Ingreso</td>
+        <td>100000</td>
+    </tr>
+    <tr>
+        <td>Banco</td>
+        <td>50000</td>
+        <td></td>
+        <td>Anticipo clientes</td>
+        <td>6000</td>
+        <td></td>
+        <td></td>
+        <td>Dividendos percibidos</td>
+        <td>1000</td>
+    </tr>
+    <tr>
+        <td>Caja</td>
+        <td>100000</td>
+        <td></td>
+        <td>Proveedores</td>
+        <td>60000</td>
+        <td></td>
+        <td></td>
+        <td>sub total</td>
+        <td>101000</td>
+    </tr>
+    <tr>
+        <td>Mercaderia</td>
+        <td>150000</td>
+        <td></td>
+        <td>Letras por pagar</td>
+        <td>148000</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Deposito a plazo</td>
+        <td>80000</td>
+        <td></td>
+        <td>sub total</td>
+        <td>214000</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Acciones</td>
+        <td>20000</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Clientes</td>
+        <td>65000</td>
+        <td></td>
+        <td>Pasivo a largo plazo</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Sub total</td>
+        <td>465000</td>
+        <td></td>
+        <td>sub total</td>
+        <td>0</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Activo fijo</td>
+        <td></td>
+        <td></td>
+        <td>Patrimonio</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Costos</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Muebles</td>
+        <td>99000</td>
+        <td></td>
+        <td>capital</td>
+        <td>300000</td>
+        <td></td>
+        <td></td>
+        <td>gastos generales</td>
+        <td>5000</td>
+    </tr>
+    <tr>
+        <td>Sub total</td>
+        <td>99000</td>
+        <td></td>
+        <td>utilidad</td>
+        <td>50000</td>
+        <td></td>
+        <td></td>
+        <td>Arriendo</td>
+        <td>20000</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>sub total</td>
+        <td>350000</td>
+        <td></td>
+        <td></td>
+        <td>Propaganda</td>
+        <td>10000</td>
+    </tr>
+    <tr>
+        <td>Otros activos</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Depreciación</td>
+        <td>1000</td>
+    </tr>
+    <tr>
+        <td>Sub total</td>
+        <td>0</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Personal</td>
+        <td>15000</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>51000</td>
+    </tr>
+    <tr>
+        <td>Total activos</td>
+        <td>564000</td>
+        <td></td>
+        <td>Total pasivos</td>
+        <td>564000</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Utilidad</td>
+        <td>50000</td>
+    </tr>
+</table>
