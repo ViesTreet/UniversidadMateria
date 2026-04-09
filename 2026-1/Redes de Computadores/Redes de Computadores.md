@@ -535,3 +535,83 @@ El protocolo es muy lento, por lo que se usa pipelining, en donde el emisor env�
 #### Go-Back-N: receptor
 El receptor solo recibe paquetes en orden, si no lo están se ignoran o lo guarda en el buffer, el receptor solo debe recordar el último paquete correcto que se envió
 ![[Pasted image 20260406120404.png]]
+![[Pasted image 20260409153046.png]]
+### Selective repeat
+Este es un tanto diferente al Go-Back-N, puesto que en este solo se reenvia el paquete faltante o dañado, por ejemplo si el emisor envía los paquetes {p1, p2 y p3} y el receptor recibe {p1 y p3}, confirma estos con un ACK y si el emisor no recibe un ACK en un tiempo dado por un paquete lo reenvía, como al emisor le falta un paquete intermedio guarda el p3 en el buffer esperando que llegue el p2, hay un número máximo de paquetes que pueden ser enviados antes de confirmar su recepción.
+![[Pasted image 20260409153635.png]]
+#### Parte 1: EMISOR (sender)
+
+**Cuando llegan datos de arriba:*
+- Si el número de secuencia está dentro de la ventana → **envía el paquete**
+- No espera ACK inmediato → puede mandar varios seguidos
+
+---
+
+ Si hay timeout:
+- Si el paquete **n no fue confirmado**:
+    - Lo vuelve a enviar
+    - Reinicia su temporizador
+
+clave: **solo reenvía ese paquete**, no todos
+
+---
+
+ Cuando recibe un ACK:
+- Marca el paquete como **recibido**
+- Si ese paquete era el más antiguo sin confirmar:
+    - **mueve la ventana hacia adelante**
+
+Ejemplo:
+
+- Enviados: 1,2,3,4
+- Llega ACK de 1 → la ventana avanza
+- Llega ACK de 2 → sigue avanzando
+
+---
+
+#### Parte 2: RECEPTOR (receiver)
+
+ Cuando llega un paquete dentro de la ventana:
+- Envía **ACK(n)**
+- Si está fuera de orden:
+    - lo guarda (buffer)
+- Si está en orden:
+    - lo entrega a la capa superior
+    - entrega también los que tenía guardados en orden
+
+---
+
+ Si llega un paquete “viejo”:
+- Ya lo había recibido antes
+- Igual manda ACK(n) otra vez
+
+esto ayuda si el ACK original se perdió
+
+---
+
+Si está fuera de todo rango:
+- Lo ignora completamente
+
+---
+
+**La clave de todo esto**
+
+Selective Repeat funciona porque:
+
+- El receptor **acepta paquetes desordenados**
+- El emisor **maneja cada paquete individualmente**
+- Ambos usan **ventanas** para limitar el flujo
+![[Pasted image 20260409154433.png]]
+#### Intuición (lo importante de verdad)
+Si la ventana es muy grande:
+- Se “superpone” con números antiguos
+- El receptor **no puede distinguir pasado vs presente**
+Si la ventana es pequeña:
+- Nunca confunde paquetes viejos con nuevos
+---
+#### Resumen corto
+- Selective Repeat reutiliza números → peligro
+- El receptor puede aceptar paquetes viejos por error
+- Para evitarlo:
+**Ventana ≤ mitad del espacio de secuencia**
+![[Pasted image 20260409154805.png]]
