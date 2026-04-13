@@ -615,3 +615,109 @@ Si la ventana es pequeña:
 - Para evitarlo:
 **Ventana ≤ mitad del espacio de secuencia**
 ![[Pasted image 20260409154805.png]]
+### Causes/costs of congestion: insights
++ El throughput no puede exceder la capacidad
++ El delay aumenta
++ Las perdidas y retransmisiones disminuyen la efectividad del throughput
++ Los duplicados reducen la efectividad
++ La capacidad de subida puede limitar la velocidad de bajada
+### Enfoque en el control de congestion
++ End-End congestion control
+	+ No hay un feedback que enviar desde la red
++ La congestión se infiere a travez de la perdida de paquetes y el delay
++ Observar las perdidas y el delay, en eso se enfoca TCP
++ La red asiste al control de congestion
+	+ Los routers envian un feedback al host para reducir un poco la carga
+	+ Puede indicar el nivel de congestion
+	+ TCP EN
+## TCP control de congestion
+### TCP congestion control: AIMD
+**Enfoque:** el emisor puede reducir la tasa de envío si una congestión ocurre, empieza a aumentar en 1 los paquetes hasta que haya perdida, si hay perdida corta a la mitad el ratio de envío
+![[Pasted image 20260413113223.png]]
+### TCP AIMD: more
+**Multiplicative decrease** detail: el ratio de envio se
++ Corta a la mitad si recibe un triple ACK
++ corta a 1 MMS (tamaño maximo de segmento) cuando detecta una perdida
+Porque AIMD?
++ AIMD es distribucion, asincrona de algoritmo
++ optimiza la congestion
++ Estabiliza
+### Detalles
+* El TCP limita la transmision: $LastByteSent-LastByteAcked \leq cwnd$
+* CWND se ajusta dinamica a la respuesta observada
+### TCP empieza lento
+El sistema envia 1MSS pero empieza a aumentar rápidamente
+![[Pasted image 20260413113918.png]]
+![[Pasted image 20260413113940.png]]
+![[Pasted image 20260413114013.png]]
+### TCP Cubic
+![[Pasted image 20260413114158.png]]
+Hay una mejor manera, mas eficiente que el TCP clásico, se recupera de manera mas rapido si hay una perdida, como vemos se descarga mucho mas con la manera cúbica, llega mas rapido al W maximo
+![[Pasted image 20260413114513.png]]
+Si llegamos a la ventana maxima, podemos incrementar la ventana, se es precavido cuando llegamos a la ventana $k$
+![[Pasted image 20260413114652.png]]
+se genera un cuello de botella en los routers
+![[Pasted image 20260413114737.png]]
+El objetivo es mantenerlo lo más lleno si desbordar 
+### Delay basado en el control de congestion TCP
+Entonces el delay se enfoca en:
++ $RTT_{min}$  de un canal no congestionado
+![[Pasted image 20260413115104.png]]
+Se trata de aumentar el throughput sin generar perdida y mantener un delay bajo
+### Explicit congestion notification (ECN)
+Se dedsplego un asistente de red que:
++ Hay dos bits en en header marcado por el router de la red que indica la congestion
++ El nivel de congestion llega al destino
++ El destinatario setea ECE bit en el ack para notificar que hay congestion
++ involves both IP (IP header ECN bit marking) and TCP (TCP header C,E bit marking)
+![[Pasted image 20260413115452.png]]
+![[Pasted image 20260413115525.png]]
+Ambas conexiones deberian llegar a un acuerdo para ambos tener el mismo ancho de banda
+![[Pasted image 20260413115632.png]]
+### Sin justicia: la mayoría de apps en la red no son justas
+**Fairness and UDP:**
++ La multimedia no usa comúnmente TCP
++ UDP envía a un ratio constante para tolerar solo pequeñas perdidas de paquetes
+**Equidad de las conexiones paralelas TCP:**
++ Las aplicaciones pueden abrir conexiones paralelas entre dos host
++ ![[Pasted image 20260413120120.png]]
+# Unidad 4: Data plane
+Los segmentos son transportados a través de routers, mueven el datagrama de un puerto de origen a uno de destino
+## Introducción
+### las dos funciones principales de la capa de red
+**forwarding:** Mueve el paquete de un router a otro router apropiado
+**Routing:** determina la ruta que tomara el paquete al destino
+### Plano de datos
++ **local,** funcion entre routers
++ determina como el datagrama llega al router por el puerto de entrada y es llevado al puerto de salida del router
++ **Networl-wide** logic
++ determina como el datagrama es enviado a travez de lo router, el camino que toma
++ Hay dos plano de datos:
+### Plano de control por router(tradicional)
+Cada componente de algoritmo en cada router interactúa con el plano de control
+### Software-defined networking(SDN) control plane
+Controladores remotos instalan tablas forwarding en los routers
+### Modelo de servicio de red
++ Entrega garantizada para datagramas individuales
++ Pero para un flujo de datagramas:
+	+ 
+### Modelo del mejor esfuerzo
++ Es un mecanismo simple y garantizo que la red haya sido desplegada de manera masiva
++ suficiente ancho de banda provee rendimiento en tiempo real
++ Replicación en la capa de aplicación distribuido por servicios
+## Que hay dentro de un router
+### Introducción
+hay puertos, un switcher de alta velocidad y un procesador de routing, por lo que el forwardng esta a nivel de hardware 
+### Input port function
+se recibe el bit, se entra a la capa de enlace y llega a un switching desentralizado:
++ mira el header y toma decisiones
++ El objetivo es procesar a la velocidad que llega
++ se puede formar una cola si los bits llegan mas rapido de lo que se procesan
++ hay dos maneras de hacer forwarding
+	+ Basado en IP
+	+ General basado en cualquier dato en el header
+### Match por el prefijo mas largo
+Usa el prefijo más largo para hacer match con la dirección de 32 bits
+Para hacer match se tiene que hacer rapido para eso usa TCAMs
+
+
