@@ -281,3 +281,6 @@ $$Activos=Pasivos$$
         <td>50000</td>
     </tr>
 </table>
+## Ejercicio 
+![[WhatsApp Image 2026-04-15 at 09.40.43.jpeg]]
+![[Pasted image 20260415101913.png]]
