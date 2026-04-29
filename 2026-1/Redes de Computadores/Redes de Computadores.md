@@ -699,15 +699,22 @@ Cada componente de algoritmo en cada router interactúa con el plano de control
 Controladores remotos instalan tablas forwarding en los routers
 ### Modelo de servicio de red
 + Entrega garantizada para datagramas individuales
+	+ garantiza el envio
+	+ garantiza el envio en menos de 40 msec de delay
 + Pero para un flujo de datagramas:
-	+ 
+	+ datagramas en orden
+	+ garantiza un minimo de ancho de banda 
+	+ restricciones en el cambio de inter-paquetes
 ### Modelo del mejor esfuerzo
+![[Pasted image 20260427113420.png]]
 + Es un mecanismo simple y garantizo que la red haya sido desplegada de manera masiva
 + suficiente ancho de banda provee rendimiento en tiempo real
 + Replicación en la capa de aplicación distribuido por servicios
++ control de congestion elastico
 ## Que hay dentro de un router
+![[Pasted image 20260427113501.png]]
 ### Introducción
-hay puertos, un switcher de alta velocidad y un procesador de routing, por lo que el forwardng esta a nivel de hardware 
+hay puertos, un switcher de alta velocidad y un procesador de routing, por lo que el forwarding esta a nivel de hardware 
 ### Input port function
 se recibe el bit, se entra a la capa de enlace y llega a un switching desentralizado:
 + mira el header y toma decisiones
@@ -716,8 +723,77 @@ se recibe el bit, se entra a la capa de enlace y llega a un switching desentrali
 + hay dos maneras de hacer forwarding
 	+ Basado en IP
 	+ General basado en cualquier dato en el header
-### Match por el prefijo mas largo
+![[Pasted image 20260427113614.png]]
+### Destino basado en forwarding
+#### Match por el prefijo mas largo
 Usa el prefijo más largo para hacer match con la dirección de 32 bits
 Para hacer match se tiene que hacer rapido para eso usa TCAMs
+![[Pasted image 20260427113853.png]]
+vamos relevando bits hasta que uno encaje, no busca una precisión perfecta si no eficiencia, el que mas se parezca con menos bits relevados se elegirá, en el ejemplo 2 elegirá la interfaz 2, ya que mas bits coinciden, el prefijo mas largo.
+##### 1. ¿Por qué usamos el "Longest Prefix Match" (LPM)?
+
+El texto menciona que se verá más adelante, pero en términos de redes, se usa porque **las tablas de enrutamiento tienen entradas superpuestas**.
+
+- A veces, un router tiene una ruta general (ej. una red grande) y una ruta más específica (ej. una subred dentro de esa red).
+
+- El LPM permite que el router tenga flexibilidad: enviar la mayoría del tráfico a un destino general, pero poder "desviar" o tratar de forma distinta subconjuntos específicos de direcciones IP.
+
+
+---
+
+##### 2. TCAM (Ternary Content Addressable Memory)
+
+Esta es la tecnología clave que permite que Internet funcione a la velocidad actual.
+
+- **¿Qué es una memoria normal (RAM)?** Le das una **dirección** (índice) y te devuelve el **dato** almacenado ahí.
+- **¿Qué es una TCAM?** Es una memoria de **"búsqueda por contenido"**. Tú no le das una dirección; tú le das el **dato** (la dirección IP de destino) y la TCAM busca en toda la tabla en paralelo para ver si coincide.
+- **La característica "Ternaria":** Se llama "ternaria" porque, además de poder buscar `0` y `1`, admite un tercer estado: el **"Don't Care"** (representado por los asteriscos `*` en tu imagen anterior). Esto permite que el hardware compare bloques de bits ignorando las partes que no importan para la coincidencia.
+---
+
+##### 3. Rendimiento en un solo ciclo de reloj
+
+Este es el beneficio más importante:
+
+- **Escalabilidad:** En una búsqueda de software normal (como un algoritmo de búsqueda binaria o una tabla hash), a medida que tu tabla de enrutamiento crece, el tiempo de búsqueda aumenta (es $O(\log n)$ o $O(n)$).
+- **Velocidad constante:** Con una TCAM, **no importa si tienes 10 entradas o 1 millón**; el hardware compara todas las entradas al mismo tiempo (en paralelo). Por lo tanto, el router encuentra la interfaz de salida en **un solo ciclo de reloj**.
+
+##### 4. Caso de uso: Cisco Catalyst
+
+El ejemplo de Cisco que mencionas ilustra que los switches/routers de grado empresarial utilizan este hardware especializado para manejar tablas de enrutamiento gigantescas (cerca de 1 millón de rutas) sin que la velocidad de procesamiento de paquetes disminuya, manteniendo la capacidad de línea (_wire speed_).
+### Fabricaciónde switching
++ Transfiere paquete de un input a un output
++ **Switching rate:** es el ratio en que un paquete puede ser transferido del input al output
+![[Pasted image 20260427114734.png]]
+![[Pasted image 20260427114757.png]]
+### Switching via memoria
+**Primera generación de routers**
++ El  switching estaba a cargo de la CPU
++ los paquetes se copian en la memoria del sistema
++ la velocidad estaba limitada por el ancho de memoria
+![[Pasted image 20260427114939.png]]
+### Switching via bus
++ Los datagramas entrantes se redirigian a la salida mediante un bus
++ tenia limite en ancho de banda
+![[Pasted image 20260427115119.png]]
+### Switching via red interconectada
++ Clossbar, Clos network, entre otros inicalmente fueron desarrolladas para conectar procesadores en multiprocesadores
++ **Multistage switch:** $n*n$ switch de multiple fases en switch pequeños
++ **Explotando el paralelismo:** 
+	+ Se fragmente el datagrama en entrada fijas de celdas
+	+ Luego se reensambla el datagrama al salir
+![[Pasted image 20260427115610.png]]
++ Se escala usando multiples planes de switching en paralelo
+	+ Aumento de velocidad en base a paralelismo
+![[Pasted image 20260427115745.png]]
+### Cola de inputs en el puerto
++ Si el switch es lento de fabrica se puede formar una cola
+	+ Genera delay, perdida de paquetes y overflow
++ **Head-of-the-line(HOL) blocking:** es un fenómeno crítico en redes que ocurre cuando el primer paquete en una cola impide que los paquetes que están detrás de él avancen, aunque las interfaces de salida de esos otros paquetes estén libres.
+	Imagina que es una fila en el supermercado:
+	- **Situación normal:** Todos los clientes en la fila van a la misma caja (interfaz de salida).
+	
+	- **HOL Blocking:** Imagina que el primer cliente de la fila tiene un problema con su pago (un paquete corrupto, una dirección de destino desconocida o simplemente un problema de procesamiento). Ese cliente se queda bloqueado en la caja. Aunque los 10 clientes detrás de él tengan sus productos listos y sus tarjetas pagadas, **no pueden avanzar** porque el primero está obstruyendo el paso.
+
+
 
 
