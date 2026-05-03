@@ -793,6 +793,100 @@ El ejemplo de Cisco que mencionas ilustra que los switches/routers de grado empr
 	- **Situación normal:** Todos los clientes en la fila van a la misma caja (interfaz de salida).
 	
 	- **HOL Blocking:** Imagina que el primer cliente de la fila tiene un problema con su pago (un paquete corrupto, una dirección de destino desconocida o simplemente un problema de procesamiento). Ese cliente se queda bloqueado en la caja. Aunque los 10 clientes detrás de él tengan sus productos listos y sus tarjetas pagadas, **no pueden avanzar** porque el primero está obstruyendo el paso.
+### Cola de outputs en el puerto
++ **Buffering** es requerido cuando los datagramas llegan más rápido de lo que pueden ser despachados, esto puede provocar perdidas si es que se genera un overflow
++ **Disciplina del itinerario** Elige en la cola para la transmisión.
+![[Pasted image 20260503134958.png]]
+![[Pasted image 20260503135125.png]]
+#### **1. Regla Tradicional (Basada en un solo flujo)**
+
+Para maximizar la utilización del enlace, el buffer debe ser capaz de absorber las ráfagas de TCP durante su fase de _Additive Increase_:
+
+- **Criterio:** $RTT \times C$
+- **Lógica:** Evita que el enlace quede inactivo mientras la ventana de congestión de TCP se recupera tras una pérdida.
+
+#### **2. Regla Moderna (Basada en $N$ flujos)**
+
+En _backbones_ o routers con múltiples conexiones independientes, los flujos no están sincronizados. Esto permite reducir el tamaño del buffer sin perder eficiencia:
+
+- **Criterio:** $\frac{RTT \times C}{\sqrt{N}}$
+- **Impacto:** Permite construir routers con memorias más pequeñas y rápidas (SRAM en lugar de DRAM).
+
+#### **3. Riesgos del "Over-buffering" (Bufferbloat)**
+
+- **Delay Excesivo:** Buffers gigantescos aumentan el tiempo de encolado.
+- **Apps en Tiempo Real:** Degradación crítica en voz sobre IP (VoIP) y streaming debido a la alta latencia.
+- **Congestión:** Un buffer lleno oculta la congestión real, impidiendo que TCP ajuste su tasa de envío a tiempo.
+
+#### **4. Principio de Diseño Moderno**
+(Mantener el enlace saturado de tráfico útil, pero con la mínima cola posible).
+### Gestión del buffer
++ **Drop:** cuál paquete va a ser agregado y cuál será dropeado cuando el buffer está lleno
+	+ **tail drop:** dropear los paquetes entrantes
+	+ **priority:** dropear en bases a una base de prioridad
++ **Marking:** cuales paquetes van a ser macados como señal de congestión
+![[Pasted image 20260503140117.png]]
+### Itinerario de paquetes: FCFS
++ **Itinerario de paquets:** decide cual paquete va a ser enviado al siguiente link
+	+ El primero en llegar el primero en enviar
+	+ Por prioridad
+	+ round robin
+	+ colas equitativas ponderadas
+	+ ![[Pasted image 20260503140503.png]]
++ **FCFS:** Paquete transmitidos en orden de llegada a la salida del puerto
+	+ Es como un FIFO(first in first out)
+### políticas de itinerario: priority
++ el tráfico entrante es clasificado, en cola por clases 
+	+ cualquier valor del header puede ser usado para clasificar
+	+ ![[Pasted image 20260503140927.png]]
++ Envio de paquetes desde la prioridad mas alta en la cola en los paquetes del buffer
+	+ FCFS sin prioridad de clases
+	+ ![[Pasted image 20260503141035.png]]
+### políticas de itinerario: round robin
++ el tráfico entrante es clasificado, en cola por clases 
+	+ cualquier valor del header puede ser usado para clasificar
++ El servidor revisa cíclica y repetidamente las colas de clases, enviando un paquete completo de cada clase (si está disponible) por turnos
+### políticas de itinerario: weighted fair queueing(WFQ)
++ Es un round robin generalizado
++ cada clase $i$, tiene un peso $w_i$ esto nos da una cantidad de peso en el servicio por cada ciclo: $\frac{w_i}{\sum_{j}w_j}$
++ Ancho de banda minimo garantizado(por clase de trafico)
++ ![[Pasted image 20260503141829.png]]
+### Neutralidad de Red: Conceptos Clave
+
+Se define como el principio de que los proveedores de servicios de internet (ISP) deben tratar todo el tráfico de datos por igual, sin discriminación.
+#### **1. Las Tres Dimensiones**
+- **Técnica:** Se implementa mediante el **packet scheduling** (planificación de paquetes) y el **buffer management** (gestión de colas). Define cómo el ISP reparte sus recursos.
+- **Social/Económica:** Busca proteger la libre expresión y garantizar que las pequeñas _startups_ compitan en igualdad de condiciones con las grandes empresas.
+- **Legal:** Se traduce en leyes y políticas que varían según cada país.
+#### **2. Las 3 Reglas de Oro (Basadas en la FCC 2015)**
+Para que un internet se considere "abierto", los ISP no pueden realizar estas tres acciones:
+1. **No Blocking (Sin Bloqueo):** No pueden prohibir el acceso a contenido, aplicaciones o dispositivos legales.
+2. **No Throttling (Sin Estrangulamiento):** No pueden ralentizar o degradar el tráfico de forma selectiva (por ejemplo, bajar la velocidad solo a los videos para favorecer otros servicios).
+3. **No Paid Prioritization (Sin Priorización de Pago):** No pueden crear "carriles rápidos". Un ISP no puede cobrar a una empresa (como Netflix o Disney+) para que sus paquetes lleguen antes que los de los demás.
+## IP: El protocolo del internet
+### Capa de transporte: internet
+![[Pasted image 20260503142335.png]]
+### IP formato del datagrama
+![[Pasted image 20260503142501.png]]
+### Direcciones IP: introduccion
++ **Direccion IP:** identificado por 32 bits asociados con cada host o router
++ **Interface:** conexion entre host y router con un medio fisico
+	+ Los routers tipicamente tienen muchas interfaces
+	+ Los host suelen tener 2 interfaces (internet cableado, wireless 802.11(WiFi))
+![[Pasted image 20260503142814.png]]
+### Subnets
+**Que es una subnet?**
+interfaces de dispositivos que fisicamente pueden alcanzar otros dispositivos sin pasar por un router (Una oficina conectada por LAN)
+**Las direcciones IP tienen estructuras:**
++ Parte de la subnet: los dispositivos en la misma subnet tiene un alto orden de bits
++ Parte del host: Los bits inferiores restantes
+**Fórmula para definir subredes:** separar cada interfaz de su host o enrutador, creando «islas» de redes aisladas cada red aislada se denomina subred
+![[Pasted image 20260503143457.png]]
+### Direccionse IP: CIDR(Classless InterDomain Routing)
++ las particiones subnet de direcciones de un largo arbitrario
++ el formato de direcciones **a.b.c.d/x** el cual la **x** es la porcion de subnet.
+![[Pasted image 20260503143717.png]]
+
 
 
 
