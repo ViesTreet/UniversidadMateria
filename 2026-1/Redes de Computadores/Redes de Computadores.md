@@ -886,8 +886,106 @@ interfaces de dispositivos que fisicamente pueden alcanzar otros dispositivos si
 + las particiones subnet de direcciones de un largo arbitrario
 + el formato de direcciones **a.b.c.d/x** el cual la **x** es la porcion de subnet.
 ![[Pasted image 20260503143717.png]]
+### DHCP: Dynamic Host Configuration Protocol
+el objetivo es obtener de manera dinamica una dirección IP para conectarse a la red
++ puede renovar su dirección de enlace mientras la esté utilizando
++ permite la reutilización de direcciones (solo mantiene la dirección mientras está conectado/activo)
++ compatibilidad con usuarios móviles que se unen a la red o la abandonan
+#### El Proceso DORA
+1. **Discover (Descubrimiento):**
+    - El dispositivo (host) llega a la red y no tiene IP. Envía un mensaje de _broadcast_ (a todos) diciendo: _"¿Hay algún servidor DHCP por aquí? Necesito una dirección"_.
+2. **Offer (Oferta):**
+    - El servidor DHCP recibe el mensaje y le responde: _"Hola, tengo esta dirección IP libre para ti"_. Este paso y el anterior son opcionales en ciertos casos de renovación, pero estándar en conexiones nuevas.
+3. **Request (Solicitud):**
+    - El dispositivo acepta la oferta y dice formalmente: _"Ok, me gusta esa IP. Por favor, resérvamela"_.
+4. **ACK (Agradecimiento/Confirmación):**
+    - El servidor finaliza el proceso diciendo: _"Entendido. Aquí tienes tu IP, la máscara de red, el gateway y los DNS. Úsalos por un tiempo determinado"_.
+### DHCP client-server scenario
+Tipicamente el DHCP esta en el router sirivendo en la subnet
+![[Pasted image 20260504223318.png]]
+![[Pasted image 20260504223347.png]]
+#### Los 4 Datos Fundamentales que entrega DHCP
 
+1. **Dirección IP Asignada:** Tu identidad única dentro de la red local.
+2. **Máscara de Red (Network Mask):** Indica qué parte de la dirección IP corresponde a la **red** y qué parte al **host** (dispositivo). Es vital para que el equipo sepa si un destino está en su misma red o debe buscarlo fuera.
+3. **Primer Salto o Gateway (First-hop router):** La dirección IP del router. Es la "puerta de salida"; si quieres enviar datos a Google, tu PC se los entrega a esta dirección primero.
+4. **Servidor DNS:** La dirección del servidor que traduce nombres (como google.com) a direcciones IP. Sin esto, tendrías que navegar escribiendo números en lugar de nombres.
+![[Pasted image 20260504223708.png]]
+![[Pasted image 20260504223732.png]]
+![[Pasted image 20260504224334.png]]
+Nosotros o una empresa compra una ip y con ella un rango por ejemplo la organización 0 tiene 200.23.16.0/23 direcciones lo cual es 
+$$32-23 = 9$$
+$$2⁹= 512$$
+La empresa tiene 512 direcciones que puede asignar, eso equivale a este intervalo 200.23.16.1 - 200.23.17.254
+![[Pasted image 20260504224828.png]]
+![[Pasted image 20260504224916.png]]
+### En resumen de esta seccion
++ tenemos al ICANN que esta alojado en 5 registros regionales que es el que asigna las ips
++ Las direcciones IPv4 se acabaron en 2011
++ hay una jerarquia de dominios
+### NAT: network address translation
+#### Qué es y cómo funciona NAT
+- **IP Única hacia el Exterior:** Para el mundo exterior (Internet), todos los dispositivos de la red local comparten una única dirección IP pública (en tu ejemplo: `138.76.29.7`).
+- **IPs Privadas Internas:** Dentro de la red local (LAN), cada dispositivo tiene su propia IP privada (rango `10.0.0/24`). Estas direcciones no son visibles ni alcanzables directamente desde Internet.
+- **El Rol del Router NAT:** El router actúa como un traductor. Cuando un paquete sale de la red local, el router cambia la IP de origen privada por su IP pública.
+---
+#### Mecanismo de Puertos (La Clave)
+Si todos usan la misma IP pública, ¿cómo sabe el router a quién entregarle la respuesta que viene de Internet? La respuesta está en los **números de puerto**:
+1. **Salida:** Cada datagrama que sale de la red local lleva la misma IP pública de origen, pero el router le asigna un **número de puerto de origen único**.
+2. **Tabla de Traducción NAT:** El router guarda una tabla donde anota: _"El puerto 5001 corresponde a la IP interna 10.0.0.2"_.
+3. **Entrada:** Cuando llega un paquete desde Internet, el router mira el puerto de destino, consulta su tabla y redirige el paquete al dispositivo correcto dentro de la red local.
+#### 1. Rangos de Direcciones Privadas
 
+Existen tres prefijos reservados exclusivamente para redes locales. Estas direcciones **no son enrutables** en la Internet pública:
 
+- **Clase A:** `10.0.0.0/8` (Desde 10.0.0.0 hasta 10.255.255.255). Ideal para redes muy grandes.
+- **Clase B:** `172.16.0.0/12` (Desde 172.16.0.0 hasta 172.31.255.255).
+- **Clase C:** `192.168.0.0/16` (Desde 192.168.0.0 hasta 192.168.255.255). El estándar en redes domésticas
+#### 2. Ventajas del Espacio Privado + NAT
+- **Economía de Recursos:** Solo necesitas contratar **una única dirección IP pública** con tu ISP para dar servicio a cientos de dispositivos. Esto mitigó el agotamiento de IPv4 por décadas.
+- **Independencia y Flexibilidad:**
+    - Puedes cambiar el direccionamiento de tus equipos internos (por ejemplo, de `10.0.0.x` a `192.168.x.x`) sin que el mundo exterior se entere.
+    - Puedes cambiar de proveedor de Internet (ISP) y tu estructura de red interna permanecerá idéntica, facilitando la migración.
+- **Seguridad por Oscuridad:** Los dispositivos internos son "invisibles" para el exterior. Un atacante en Internet no puede enviar un paquete directamente a la IP `10.0.0.4` de tu PC porque esa ruta no existe globalmente; el router actúa como un escudo natural.
+![[Pasted image 20260504225727.png]]
+### La Controversia de NAT
+Para un análisis académico o técnico, debes considerar por qué muchos ingenieros de red lo consideran un "mal necesario":
+- **Violación de Capas (Layer Violation):** Según el modelo OSI, un router debería trabajar solo hasta la **Capa 3 (Red)**. Sin embargo, NAT debe modificar los números de puerto, que pertenecen a la **Capa 4 (Transporte)**, rompiendo la independencia entre capas.
+- **Fin del "End-to-End" (Extremo a Extremo):** El principio original de Internet dicta que los hosts deben comunicarse directamente. NAT se interpone en el camino, manipulando los paquetes y rompiendo la transparencia de la conexión.
+- **Obstáculo para IPv6:** Muchos argumentan que NAT retrasó la adopción de IPv6, ya que permitió "estirar" la vida de IPv4 mucho más de lo previsto originalmente.
+- **Problemas de Traversal (Atravesamiento):** Es difícil para un cliente externo iniciar una conexión con un servidor que está detrás de un NAT (por ejemplo, en juegos P2P o servidores web caseros), ya que el router no sabe a qué IP interna redirigir una solicitud entrante no solicitada.
+---
+##### ¿Por qué NAT es "aquí para quedarse"?
+A pesar de las críticas, su adopción es masiva y estructural por razones pragmáticas:
+- **Uso Universal:** Es el estándar absoluto en redes domésticas, corporativas y, crucialmente, en redes celulares **4G/5G** (donde se usa CGNAT o Carrier-Grade NAT debido a la enorme cantidad de dispositivos móviles).
+- **Escalabilidad:** Permite que las instituciones crezcan internamente sin depender de la asignación de nuevas IPs públicas.
+- **Seguridad Básica:** Proporciona una capa de ocultamiento de la red interna que es muy valorada en entornos institucionales.
 
+### IPv6
+![[Pasted image 20260505001144.png]]
+como logramos apreciar el datagrama de IPv6 es diferenteal IPv4, no hay checksum para aumentar la velocidad, no hay fragmentación y no hay opciones.
+![[Pasted image 20260505001432.png]]
+carecemos de opciones pero contamos con un header mucho más simplificado.
+#### El Problema de la Coexistencia
+- **Incompatibilidad:** Un router que solo entiende IPv4 no puede procesar un paquete IPv6 nativo.
+- **Actualización Gradual:** Dado que existen miles de millones de dispositivos, la migración es un proceso lento que requiere que ambos protocolos funcionen en la misma red simultáneamente.
+---
+##### Tunneling (Tunelización): La Solución "Paquete dentro de otro"
+El **Tunneling** es la técnica principal para conectar "islas" de IPv6 a través de un océano de routers IPv4.
+- **Mecanismo:** El datagrama IPv6 se encapsula completamente dentro del campo de datos (payload) de un datagrama IPv4.
+- **Analogía:** Imagina que el paquete IPv6 es una carta que se mete dentro de un sobre con dirección IPv4 para que pueda viajar por el sistema postal antiguo.
+- **El Proceso:**
+    1. **Entrada al túnel:** El router IPv6 de origen toma el paquete IPv6 y le añade una cabecera IPv4.
+    2. **Tránsito:** Los routers intermedios solo ven la cabecera IPv4 y mueven el paquete como si fuera tráfico normal.
+    3. **Salida del túnel:** El router IPv6 de destino recibe el paquete IPv4, quita la cabecera externa ("desencapsula") y procesa el paquete IPv6 original.
+---
+###### resumen:
 
+- **Uso Extenso:** Esta técnica de "packet within a packet" no es exclusiva de esta transición; se usa masivamente en redes móviles **4G/5G** para transportar datos del usuario y en redes **VPN**.
+- **Dual Stack:** Aunque tu texto se centra en tunneling, la otra estrategia común es el _Dual Stack_, donde los routers corren ambos protocolos al mismo tiempo y eligen cuál usar según el destino.
+- **Transparencia:** Para los dispositivos finales (los hosts), el túnel es invisible; ellos creen que están comunicándose por IPv6 nativo de extremo a extremo.
+![[Pasted image 20260505002032.png]]
+![[Pasted image 20260505002103.png]]
+![[Pasted image 20260505002118.png]]
+![[Pasted image 20260505002152.png]]
+Como vemos la adopción de IPv6 ha sido sumamente lenta, 25 años y contando, es un de los problema de la ingenieria mas grande de la epoca moderna.
