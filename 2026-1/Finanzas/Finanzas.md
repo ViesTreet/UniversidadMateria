@@ -4,7 +4,7 @@
 | 30% | 30% | 40% |
 
 --- 
-
+*Compra venta santiago oriente*
 **Economía**
 + Necesidades
 + Recursos     
@@ -378,3 +378,9 @@ $$Activos=Pasivos$$
 ## Ejercicio 
 ![[WhatsApp Image 2026-04-15 at 09.40.43.jpeg]]
 ![[Pasted image 20260415101913.png]]
+# Certamen 2
+## Tratamiento del activo fijo
+El activo fijo por el paso del tiempo o el uso sufre desgaste o sea una perdida de valor (depreciación), se calcula con una convención del SII en donde hay dos modos: lineal y acelerada.
+![[Pasted image 20260506101231.png]]
+### En el flujo de caja
+en el flujo de caja se suma la depreciación debido a que esta no es plata, es un concepto, se resta en el estado de resultado pero se suma en el flujo de caja.
