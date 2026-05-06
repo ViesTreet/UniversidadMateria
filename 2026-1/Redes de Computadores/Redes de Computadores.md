@@ -989,3 +989,113 @@ El **Tunneling** es la técnica principal para conectar "islas" de IPv6 a travé
 ![[Pasted image 20260505002118.png]]
 ![[Pasted image 20260505002152.png]]
 Como vemos la adopción de IPv6 ha sido sumamente lenta, 25 años y contando, es un de los problema de la ingenieria mas grande de la epoca moderna.
+### Para el certamen
++ para saber cuantas redes hay en un ejercicio, necesitamos contar las líneas
+## Generalized forwarding, SDN
+### Generalized forwarding: match plus action
+#### Abstracción "Match plus Action" (Coincidencia y Acción)
+Todos los routers modernos funcionan bajo este concepto simplificado: el router mira el paquete que llega, busca una coincidencia en su tabla y ejecuta una instrucción.
+##### 1. Ruteo Tradicional (Basado en el destino)
+Es el modelo clásico que hemos visto hasta ahora.
+- **Match:** El router solo mira la **dirección IP de destino** en el encabezado.
+- **Action:** La única acción posible es **reenviar (forward)** el paquete por una interfaz específica hacia su destino.
+##### 2. Ruteo Generalizado (El nuevo paradigma)
+Aquí es donde la cosa se pone interesante. Ya no solo importa el destino, sino cualquier parte del paquete.
+- **Match:** Se pueden evaluar **múltiples campos** del encabezado al mismo tiempo (IP de origen, IP de destino, números de puerto de la Capa 4, protocolo, etc.).
+- **Action:** Las acciones son mucho más variadas y flexibles:
+    - **Forward:** Reenviar a una interfaz.
+    - **Drop:** Descartar el paquete (bloqueo/firewall).
+    - **Copy:** Enviar una copia a otro lugar (para monitoreo o análisis).
+    - **Modify:** Cambiar datos del encabezado (como hace NAT con los puertos e IPs).
+    - **Log:** Registrar el paso del paquete para auditoría.
+
+---
+##### ¿Por qué es importante?
+Este modelo de "ruteo generalizado" es el corazón de las **OpenFlow** y las **SDN (Software Defined Networks)**. Permite que un router se comporte como un firewall, un balanceador de carga o un dispositivo NAT, simplemente cambiando las reglas de su **Flow Table**.
+![[Pasted image 20260505221835.png]]
+### Abstraccion de la tabla Flow
++ **Flow:** definido por los header
++ **Generalized forwarding: simple** enrutador de paquetes siguiendo las reglas
+	+ **match:** patron en los valores del header
+	+ **action:** se puede: drop, forward, modify, matched packet or send to matched packet to controller
+	+ **priority:** resolver patrones sobrepuestos 
+	+ **counters:** contar bytes y paquetes
+### OpenFlow
+![[Pasted image 20260505222434.png]]
+en esta imagen usamos los datos que usa para hacer match el modelo de OpenFlow
+#### Ejemplo
+![[Pasted image 20260505222555.png]]
+![[Pasted image 20260505222611.png]]
+### Abstraccion de OpenFlow
+El **match+action** unifica distintos tipos de dispositivos
++ **Router**
+	+ hace match por el prefijo mas largo
+	+ y toma una accion para la salida
++ **Switch**
+	+ hace match por la direccion MAC
+	+ hace forward o flood
++ **Firewall**
+	+ hace match por direccion ip y TCP/UDP numero de puerto
+	+ puede denegar o aceptar
++ **NAT**
+	+ hace match por direccion ip y puerto
+	+ puede reescribir puerto y direccion IP
+![[Pasted image 20260505223059.png]]
+### Resumen
+#### Abstracción "Match plus Action" (Reenvío Generalizado)
+El reenvío generalizado rompe la rigidez del ruteo tradicional, permitiendo que los dispositivos de red (switches/routers) realicen operaciones complejas basadas en reglas programadas.
+##### 1. Coincidencias en múltiples capas (Multi-layer Matching)
+A diferencia del ruteo clásico que solo mira la IP de destino, aquí se pueden evaluar bits de cabeceras en múltiples niveles:
+- **Capa de Enlace (L2):** Direcciones MAC, VLAN IDs.
+- **Capa de Red (L3):** IPs de origen/destino, campos de protocolo (ICMP, IGMP).
+- **Capa de Transporte (L4):** Números de puerto (TCP/UDP).
+##### 2. Acciones Locales Flexibles
+Una vez que un paquete coincide con una regla, el dispositivo puede ejecutar varias acciones:
+- **Drop:** Bloquear el tráfico (función de Firewall).
+- **Forward:** Enviar a una interfaz de salida (función de Switch/Router).
+- **Modify:** Cambiar bits de la cabecera (función de NAT o reetiquetado de prioridad).
+- **Send to Controller:** Enviar el paquete al "cerebro" de la red (controlador SDN) para que este decida qué hacer si no hay una regla establecida.
+##### 3. Programabilidad de la Red
+Este enfoque permite "programar" comportamientos en toda la red de manera centralizada:
+- **Procesamiento por paquete:** Se puede definir qué le ocurre a cada flujo de datos específico.
+- **Evolución técnica:** Sus raíces están en el _Active Networking_, pero hoy ha evolucionado hacia lenguajes de programación de alto nivel para redes, como **P4** (Programming Protocol-independent Packet Processors).
+## Middleboxes
+### ¿Qué es un Middlebox?
+Es cualquier dispositivo intermedio en la ruta de datos que realiza funciones **distintas** a las de un router estándar (reenvío de paquetes basado en IP). Mientras que un router solo se preocupa por "hacia dónde va el paquete", un middlebox "mira" el contenido o manipula el flujo para otros fines.
+
+---
+#### Funciones Comunes de los Middleboxes
+Como has visto en los temas anteriores, estas funciones se alejan del ruteo puro:
+1. **NAT (Network Address Translation):** Modifica las direcciones IP y puertos para permitir el uso de IPs privadas.
+2. **Firewalls:** Inspeccionan el tráfico para bloquear o permitir paquetes basándose en reglas de seguridad.
+3. **Balanceadores de Carga (Load Balancers):** Distribuyen el tráfico entrante entre varios servidores para evitar saturaciones.
+4. **IDS/IPS (Sistemas de Detección de Intrusos):** Analizan patrones de tráfico en busca de firmas de malware o ataques.
+5. **Cachés de Aplicación:** Almacenan contenido web localmente para acelerar la entrega a los usuarios internos.
+![[Pasted image 20260505223749.png]]
+La gestión de red está sufriendo una transformación radical, moviéndose desde hardware rígido hacia soluciones flexibles basadas en software.
+#### 1. Del Hardware Propietario al "Whitebox"
+- **Antes:** Los middleboxes eran soluciones de hardware cerradas y propietarias (Cisco, Juniper, F5). Si querías una función nueva, tenías que comprar un equipo nuevo.
+- **Ahora (Whitebox):** Se utiliza hardware estándar ("cajas blancas") que implementa **APIs abiertas**. El hardware es genérico; la inteligencia reside en el software.
+- **Ventaja:** Esto permite una rápida innovación y diferenciación mediante código, sin depender de los ciclos de fabricación de hardware.
+#### 2. SDN (Software Defined Networking)
+- **Control Centralizado:** SDN propone un control (lógicamente) centralizado de toda la red.
+- **Gestión en la Nube:** La configuración y gestión se realizan a menudo desde nubes públicas o privadas, permitiendo que un administrador cambie el comportamiento de miles de dispositivos con un solo script.
+#### 3. NFV (Network Functions Virtualization)
+- **Definición:** Es la virtualización de las funciones de red. En lugar de tener un firewall físico, corres una instancia de software que hace lo mismo.
+- **Infraestructura:** Proporciona servicios programables sobre una base común de computación, almacenamiento y redes tipo "whitebox".
+- **Relación con Match+Action:** NFV utiliza la abstracción de "coincidencia y acción" para definir cómo se procesan los paquetes de manera local pero programada globalmente.
+![[Pasted image 20260505224145.png]]
+![[Pasted image 20260505224212.png]]
+### Principios arquitectonicos del internet
+Este fragmento del **RFC 1958** define la filosofía fundamental que permitió el crecimiento de Internet. Aquí tienes el resumen ejecutivo:
+#### Principios Arquitectónicos de Internet (RFC 1958)
+La comunidad de Internet sostiene que más que una arquitectura rígida, existe una **tradición** basada en tres creencias pilares:
+1. **El Objetivo es la Conectividad:** La prioridad absoluta de la red es permitir que los puntos se conecten entre sí. La herramienta para lograr esto es el **Protocolo IP**.
+2. **Cintura Estrecha (Narrow Waist):** El protocolo IP actúa como el punto de unión central. Mientras que abajo puede haber muchas tecnologías físicas (Ethernet, WiFi, Fibra) y arriba muchas aplicaciones (Web, Email, Video), todas deben converger y "entenderse" a través de IP.
+3. **Inteligencia de Extremo a Extremo (End-to-End):** La inteligencia y la complejidad deben residir en los **extremos** (en los hosts/dispositivos de los usuarios) y no dentro de la red.
+    - **Red "tonta":** Los routers internos deben ser lo más simples posible, limitándose a mover paquetes.
+    - **Extremos "listos":** El control de errores, la congestión y la lógica de las aplicaciones se gestionan en los dispositivos finales
+---
+**En resumen:** La red debe permanecer simple y dedicada a mover paquetes; la responsabilidad de que los datos lleguen correctamente y sin errores es de los dispositivos que se están comunicando.
+![[Pasted image 20260505224648.png]]
+![[Pasted image 20260505224711.png]]
