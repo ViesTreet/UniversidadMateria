@@ -1,4 +1,4 @@
-Eficiencia = Usar los mínimos recursos buscando cumplir la meta
+}Eficiencia = Usar los mínimos recursos buscando cumplir la meta
 Eficacia = Usar todos los recursos con el objetivo de cumplir la meta
 
 ![[Pasted image 20260305085231.png]]
@@ -284,5 +284,84 @@ La política debe:
 + Asegurar que la salida este prevista
 + Informar sobre el desempeño del sistema y oportunidades de mejora
 + Asegurar que se promueve el enfoque al cliente
-+ Asegurar la integridad del sistema de gesión.
++ Asegurar la integridad del sistema de gestión.
 
+# Certamen II
+## Consulta y participación de los trabajadores (ISO 45001)
+Las empresas deben mantener mecanismos para la consulta y participación de los trabajadores en todos los niveles y funciones:
+1. El desarrollo
+2. La planificación
+3. La implementación
+4. La evaluación de desempeño
+5. La mejora del sistema de gestion del SST
+**La organización debe:**
++ Proporcionar mecanismos, tiempo, formación y recursos para la consulta y participación
++ Proporcionar acceso oportuno a información clara, comprensible y pertinente sobre el SG de SST
++ Deternminar y eliminar los obstaculos a la barrera de la participación y minimizar las que no puedan eliminarse
++ Enfatizar la **consulta** de los trabajadores no directivos sobre:
+	+ La determinación y expectativas de las partes interesadas
+	+ El establecimiento de las politicas SST
+	+ La asignación de roles, responsabilidad y autoridad
+	+ La determinación de cumplir con los requisitos legales y otros
+	+ El establecimiento de las politicas de SST y como lograrlas
+	+ La determinación de los controles para la contratación externa, las compras y los subcontratos
+	+ La determinación de que necesita seguimiento, medición y evaluación 
+	+ La planificación, establecimiento, implementación y mantenimiento de programas de auditorias 
+	+ El aseguramiento de la mejora continua
++ Enfatizar la **participación** de los trabajadores no directivos sobre:
+	+ La identificación de los  peligros y riesgos para el SST y las medidas para eliminar los peligros 
+	+ La determinación de que información se necesita comunicar y como hacerlo
+	+ La determinación de los requisitos de competencia, la necesidad de formación y la evaluación de la formación 
+	+ La investigación de los incidentes y no conformidades y la determinación de las acciones correctivas
+## Planificación
+### Acciones para abordar riesgos y oportunidades
+La organización debe planificar:
++ Acciones para abordar riesgos y oportunidades
++ Integrar e implementar las acciones en los procesos del SIG
++ Evaluar la eficacia de estas acciones
+### Objetivo y planificación para lograrlo
+Se deben establecer objetivos de gestión para las funciones y niveles pertinentes.
+Los objetivos deben:
++ ser coherente con la politica
++ medibles
++ tener en cuenta los requisitos aplicables
++ ser pertinente con la conformidad de los productos y servicios
++ ser objetivo de seguimiento
++ comunicarse
++ actualizarse 
+Se debe tener información documentada de eso.
+Al planificar el logro se debe determinar:
++ Que se va a hacer?
++ Que recursos se requeriran?
++ Quien sera el responsable?
++ Cuando se finalizara?
++ Como se evaluaran los resultados?
+### Aspectos ambientales(ISO 14001)
+La organización debe determinar los aspectos ambientales de las actividades, productos y servicios que puede controlar y en los cuales puede influir.
+La organización debe determinar sus impactos ambientales asociados, desde una perspectiva del ciclo de la vida.
+En los aspectos ambientales se debe tener en cuenta:
++ Los cambios, incluido los desarrollos nuevos o planificados
++ Las condiciones anormales y las situaciones de emergencias
+Se deben tener en cuenta los aspectos que tienen impactos ambientales.
+Las organizaciones debe comunicar sus aspectos ambientales significativos en los diferentes niveles y funciones.
+![[Pasted image 20260525002630.png]]
+### Identificación de peligros y evaluación de los riesgos y oportunidades(ISO 45001)
+La organización debe operar procesos de identificación continua y proactiva de los peligros, teniendo en tener en cuenta:
++ Como organizar el trabajo, los factores sociales, el liderazgo y la cultura de organización
++ Las actividades y las situaciones rutinarias y no rutinarias, incluyendo los peligros que surgan
+	1. La infraestructura, los materiales, el equipo y las condiciones fisicas
+	2. El diseño de productos y servicios, la investigación, el desarrollo, los ensayos, la producción, el montaje, la construccion, la prestacion de servicios, el mantenimiento y la disposicion 
+	3. los factores humanos
+	4. como se realiza el trabajo
++ Los incidentes pasados pertinentes internos o externos a la organización
++ Las situaciones de emergencia potenciales
++ Las personas, incluyendo la consideración de:
+	1. Aquellas con acceso al lugar del trabajo y sus actividades, incluyendo trabajadores, contratistas, visitantes y otras personas
+	2. Aquellas con inmediaciones del lugar de trabajo que pueden verse afectadas
+	3. Los trabajadores en una ubicación que no esta bajo el control directo de la organización
++ Otras cuestiones, incluyendo la consideración de:
+	1. El diseño de las areas de trabajo, los procesos, las instalaciones, la maquinaria/equipos, los procedimientos operativos y la organizacion del trabajo, incluyendo su adaptacion a las necesidades y capacidades de los trabajadores involucrados
+	2. Las situaciones que ocurren en las inmediaciones del lugar de trabajo causadas por actividades relacionadas con el trabajo bajo control de la organización
+	3. Las situaciones no controladas por la organización y que ocurren en las inmediaciones del lugar del trabajo que puedan representar riesgos
++ Los cambios reales o propuestos en la organización, operaciones, procesos, actividades y el sistema de gestion SST
++ Los cambios en el conocimiento y la información sobre los peligros.
