@@ -1,4 +1,4 @@
-}Eficiencia = Usar los mínimos recursos buscando cumplir la meta
+Eficiencia = Usar los mínimos recursos buscando cumplir la meta
 Eficacia = Usar todos los recursos con el objetivo de cumplir la meta
 
 ![[Pasted image 20260305085231.png]]
@@ -365,3 +365,197 @@ La organización debe operar procesos de identificación continua y proactiva de
 	3. Las situaciones no controladas por la organización y que ocurren en las inmediaciones del lugar del trabajo que puedan representar riesgos
 + Los cambios reales o propuestos en la organización, operaciones, procesos, actividades y el sistema de gestion SST
 + Los cambios en el conocimiento y la información sobre los peligros.
+**Evaluación de los riesgos para la SST y otros riesgos para el sistema de gestión de la SST**
++ Evaluar los riesgos al SST a partir de los riesgos identificados
++ Determinar y evaluar otros riegos relacionado con la empresa para el SST
++ *La evaluación de riesgo tiene que ser mas proactiva que reactiva*
+**Matriz de identificación de peligros y evaluación de riesgos de SST (formato propuesto por el profesor)**
+![[Pasted image 20260527191928.png]]
+$$EvaluaciónDelRiesgo=Probabilidad(P)*Severidad(S)$$
+![[Pasted image 20260527192622.png]]
+![[Pasted image 20260527192811.png]]
+![[Pasted image 20260527193210.png]]
+### Apoyo
+#### Competencia
+**Se debe:**
++ Determinar las competencias de las personas que estan bajo control de la organización
++ Asegurar que las personas son competentes en base a la educación, experiencia o formación
++ tomar acciones para adquirir las competencias necesarias
++ evaluar la eficacia de las acciones tomadas
++ Conservar información documentada como evidencia de la formación
+#### Toma de conciencia 
+Los trabajadores deben ser sensibilizado sobre y tomar conciencia de :
++ La politica y los objetivos del sistema de gestion
++ su contribución a la eficacia del sistema de gestion
++ las implicaciones y las consecuencias de no cumplir el sistema de gestion.
++ Los incidentes y los resultados de la investigación, que sean pertinentes a ellos
++ Los peligros y riesgos para el SST
++ La capacidad de alejarse de situaciones de trabajo que consideren un peligro inminente para la salud asi como las acciones para protegerse.
+#### Comunicación
++ que comunicar?
++ cuando comunicar?
++ a quien comunicar?
++ como comunicar?
++ quien comunica?
+#### Control de la información documentada
+**Se deben abordar las siguientes actividades**
++ Distribucion, recuperación, acceso y uso
++ almacenamiento, preservacion y legibilidad
++ Control de cambios
++ Conservación y disposicion
++ Identificación y control de la I.D. externa necesaria para el SIG
++ La I.D debe protegerse contra modificaciones no intencionadas
+### Operación
+Este requisito difiere sustancialmente en su contenido, entre la norma ISO 9001, 14001 y 45001
+
+| **ISO 9001**                                       | **ISO 14001**                            | **ISO 45001**                            |
+| -------------------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| Planificacion y control operacional                | Planificación y control operacional      | Planificacion y control operacional      |
+| Requisitos para los productos y servicios          | Preparación y respuesta ante emergencias | Preparación y respuesta ante emergencias |
+| Diseño y desarrollo para los productos y servicios |                                          |                                          |
+| Control de los procesos suministrados externamente |                                          |                                          |
+| Producción y provision del servicio                |                                          |                                          |
+| Liberación de los productos y servicios            |                                          |                                          |
+| Control de la salida no conforme                   |                                          |                                          |
+#### Planificación y control operacional
+Se deben implementar acciones para:
++ Determinar los requisitos para los productos y servicios
++ Establecer criterio para los procesos y aceptación de productos y servicios
++ Determinar los recursos necesarios para lograr productos y servicios conformes
++ Determinar, mantener y conservar información documentada de los procesos
+*Se deben controlar los cambios planificados y revisar las consecuencias ademas los procesos externos deben ser controlado*
+**Lo anterior corresponde a exigencias de gestión de calidad (ISO 9001) para la Planificación y Control Operacional.**
+**Lo que viene a continuación corresponde a exigencias de Planificación y Control Operacional en gestión medio ambiental y en gestión de seguridad y salud en el trabajo.**
+### Planificación y control operacional de la gestión ambiental
++ Se debe establecer controles para asegurar que los requisitos ambientales se abordan desde el diseño
++ Determinar requisitos ambientales para la compra de productos y servicios
++ Comunicar los requisitos ambientales a externos
++ Se debe entregar información de los impactos ambientales.
++ Se debe tener información documentada
++ Se debe establecer criterio para los procesos
++ Implementar controles en los procesos de acuerdo con los criterios
++ Mantener y conservar información documentada
++ Adaptar el trabajo a los trabajadores
+#### Eliminar peligros y reducir riesgos para el SST
+La empresa debe mitigar riesgos siguiendo la siguiente metodologia:
++ Eliminar el peligro
++ Sustituir por material o procesos menos peligrosos
++ Utilizar controles de ingenieria y reorganización del trabajo
++ Utilizar controles administrativos
++ Utilizar equipo de proteccion personal
+#### Gestion de cambio
+La empresa debe establecer procesos de implementacion para cambios temporales o permanentes que afecten el SST:
+1. Los nuevos productos, servicios o procesos o los cambios de ellos incluyendo: 
+	+ La ubicacion de los lugares de trabajos y sus alrededores
+	+ La organización del trabajo
+	+ La condiciones de trabajo
+	+ Los equipos 
+	+ La fuerza de trabajo
+2. Cambios de requisitos legales y otros requisitos
+3. Cambios en el conocimiento o la información sobre los peligros o riesgos para SST 
+4. Desarrollo en conocimiento y tecnología
+#### Compras 
+##### Contratistas
+La organización debe coordinar sus procesos de compras con sus contratistas para identificar peligros:
++ Las actividades y operaciones de los contratistas que impactan en la organización
++ Las actividades que impactan en los trabajadores contratistas
++ Las actividades de contratistas que impactan en los stakeholders
+Los procesos de compra de la organización deben definir y aplicar los criterios de seguridad y salud en el trabajo 
+##### Contratación externa 
++ La organización debe asegurarse de que las funciones y los procesos contratados externamente estén controlados.
++ En materia de contratación deben estar de acuerdo a los requisitos legales y del SST
++ El grado de control de estas funciones se define con el SST
+### Requisitos para los productos y servicios
+#### Comunicación con el cliente
+Debe incluir:
++ Proporcionar información de producto y servicio
++ Tratar consulta, contratos, pedidos y cambios
++ Retroalimentación, incluyendo quejas
++ Manipular o controlar la propiedades del cliente
++ Establecer requisitos para acciones de contingencia
+#### Determinación de los requisitos para los productos y servicios
+Se debe asegurar que se incluye:
++ Los requisitos legales y reglamentarios aplicables
++ Los requisitos que la empresa considera necesario
+#### Revision de los requisitos para los productos y servicios
+La organización antes de comprometerse con un cliente debe asegurar lo siguiente:
++ Requisitos especificado por el cliente
++ Requisitos no especificado por el cliente pero con uso previsto
++ Requisitos especificados por la organización
++ Requisitos legales y reglamentarios aplicables
++ Diferencia existentes entre el contrato y lo expresado previamente
+Se deben:
++ Resolver las diferencias existentes
++ Confirmar requisitos cuando el cliente no los documente
++ Conservar I.D cuando sea aplicable
+#### Cambios en los requisitos de producto y servicio
+Si hay cambios en los requisitos se debe modificar la I.D. correspondiente y las personas pertinentes estar consciente de ello.
+### Diseño y desarrollo de los productos y servicios
+Consta de las siguientes etapas:
+1. Planificación de D&D
+2. Entradas para el D&D
+3. Controles del D&D
+4. Salida del D&D
+5. Cambios del D&D
+#### Flujograma de actividades del diseño y desarrollo (D&D)
+![[Pasted image 20260527224507.png]]
+#### Cambios del D&D
+Se deben revisar y controlar los cambios para asegurar de que no hayan impactos adversos, se debe considerar:
++ Cambios en el D&D
++ Los resultados de las revisiones
++ La autorización de los cambios
++ Las acciones tomadas para prevenir impactos adeversos
+### Control de los procesos, productos y servicios suministrados externamente
+#### Generalidades
+se deben determinar controles cuando:
++ Los productos y servicios de los proveedores se incorporan dentro de los productos y servicios de la organización.
++ Los productos y servicios son proporcionados directamente a los clientes por proveedores.
++ Un proceso o parte de él, es proporcionado por un proveedor externo.
+### Producción y provision de servicios
+#### Control de la producción y de la provisión del servicio
+La organización debe proporcionar la producción y provisión mediante condiciones controladas.
+las **Condiciones controladas** deben incluir:
++ Tener actividades de liberación, entrega y posteriores
++ Disponibilidad de I.D con caracteristicas de producto y servicios con los resultados a alcanzar
++ Disponibilidad y uso de recursos de seguimiento y medición
++ Implementación de actividades de seguimiento y medicion para verificar que se cumplio con los criterios
++ Uso de infraestructura y entorno adecuado para el proceso
++ Designación de personas competentes
++ Validación de el estado para saber si se alcanzo la meta
++ Implementar acciones para prevenir errores humanos
+### Identificación y trazabilidad
+Se debe identificar el estado de las salida respecto a los requisitos de seguimiento y medición 
+Cuando la trazabilidad sea un requisito, se debe controlar la identificación unica de las salidas y conservar I.D
+*La ISO define la trazabilidad como la capacidad para seguir el historico*
+#### Propiedad perteneciente a los clientes o proveedores externos
+Se debe identificar, verificar, proteger y salvaguardar la propiedad de los clientes o los proveedores externos, si la propiedad se pierde, deteriora o es inadecuada se debe informar al cliente o proveedor externo y conservar I.D sobre lo ocurrido
+*La propiedad de un cliente o de un proveedor externo puede incluir materiales, componentes, herramientas y equipos, propiedad intelectual y datos personales.*
+### Liberación de los productos y servicios
+La liberación de productos y servicios se lleva a cabo solo cuando se hayan completado satisfactoriamente las disposiciones planificadas. Excepción a esto es la liberación por una autoridad pertinente o el cliente.
+Se debe conservar I.D. sobre la liberación de los productos y servicios. Esta debe incluir:
++ Evidencia de conformidad con los criterios de aceptación.
++ Trazabilidad a las personas que autorizan la liberación.
+### Control de salidas no conformes
+*Esto aplica también a los productos y servicios no conformes detectados después de ser entregados o provisionados al cliente.*
+**Se tratan de una de las siguientes maneras:**
++ Correción
++ Separación, contención, devolución o suspención de provision
++ Información al cliente
++ Obtención de una autorización de aceptación bajo conseción
+**Se debe conservar I.D que:**
++ Describa las NC, las acciones tomadas y las conseciónes obtenidas
++ Identifique la autoridad que decida la acción con respecto a la NC
+### Preparación y respuesta ante emergencia(Ambientales y del SST)
+Se debe tener procesos para estas situaciones incluyendo:
++ El establecimiento de una respuesta planificada a la situacion y equipos de primeros auxilios
++ la provisión de formación para la respuesta planificada
++ las pruebas periódicas y el ejercicio de la capacidad de respuesta planificada
++ la evaluación del desempeño y, cuando sea necesario, la revisión de la respuesta planificada
++ la comunicación y provisión de la información pertinente a todos los trabajadores sobre sus deberes y responsabilidades
++ la comunicación de la información pertinente a los contratistas, visitantes, servicios de respuesta ante emergencias, autoridades gubernamentales y, según sea apropiado, a la comunidad local
++ tener en cuenta las necesidades y capacidades de todas las partes interesadas pertinentes y asegurándose que se involucran, según sea apropiado, en el desarrollo de la respuesta planificada
+*La organización debe mantener y conservar información documentada sobre los procesos y sobre los planes de respuesta ante situaciones de emergencia potenciales.*
+![[Pasted image 20260527234252.png]]
+![[Pasted image 20260527234327.png]]
+![[Pasted image 20260527234401.png]]
+![[Pasted image 20260527234417.png]]
