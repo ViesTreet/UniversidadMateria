@@ -1099,3 +1099,198 @@ La comunidad de Internet sostiene que más que una arquitectura rígida, existe 
 **En resumen:** La red debe permanecer simple y dedicada a mover paquetes; la responsabilidad de que los datos lleguen correctamente y sin errores es de los dispositivos que se están comunicando.
 ![[Pasted image 20260505224648.png]]
 ![[Pasted image 20260505224711.png]]
+# ch6: Link layer and LAN's
+## Multiple access protocol
+Hay dos tipos de conexion
++ point-to-point:
+	+ punto a punto entre el switch del internet y el hotst
++ Broadcast(compartido por cable o medio)
+	+ wiresless, 4g, lan, satelite, etc
+Hay un unico canal compartido de broadcast, puede haber colision si llegan dos señales al mismo tiempo
+### El ideal para multiple protocolos de acceso
+**Dar:** multiples canales de acceso(MAC) con un ratio de R bps
+1. Cuando un nodo quiere enviar algo envia un ratio R 
+2. Cuando un nodo M quiere enviar datos , cada uno envia un ratio R/M
+3. totalmente decentralizado
+4. es simple
+### MAC protocolo: taxonomia
+Hay 3 clases:
++ Chanel partition:
+	+ divide el canal en piezas pequeñas 
+	+ estas piezas tienen un nodo para uso inclusivo
++ Random Access:
+	+ El canal no esta dividido, permite colision
+	+ se recupera de las colisiones
++ "taking turn":
+	+ los nodos toman turnos, pero algunos nudos pueden tomar mas tiempo que otros
+### Chanel partition MAC protocol: TDMA
+**TDMA:** time division multiple access
++ cada canal en rondas
++ cada estacion obtiene un slot de largo limpio en cada ronda
++ los slots no usados van a inactiva
++ Ejemplo: 6 estaciones, 1,2 y 3 van a enviar paquetes, 4,5y6 van a inactivo
++ El expectro del canal lo divide en bandas de frecuencias
++ Cada estacion asigna una frecuencia de banda
+![[Pasted image 20260608112848.png]]
+### Random access protocol
+Cuando un paquete tiene cosas que enviar:
++ transmite toda su rata a un ratio R
++ no hay cordinacion a priori
++ Dos canales pueden colisionar
++ El random access protocol especifica:
+	+ Como detectar colisiones
+	+ como recuperarse de colisiones
+#### Slotted ALOHA
+**Asume que:**
++ todos los frames tienen el mismo tamaño
++ los divide en un tiempo equitativo de tiempo
++ los nodos empiezan a transmitir solo en un slot
++ los nodos estan sincronizados
++ si dos nodos transmiten en un slot, detecta colision para todos
+**La operacion:**
++ cuando  un nodo obtiene un nuevo frame, transmite en el proximo slot
+	+ si no hay colision envia en el proximo slot
+	+ si hay colision, se retransmite el frame en cada slot subsecuente, hasta tener una probabilidad p de exito
+![[Pasted image 20260608113511.png]]
+#### Eficiencia
+Calculamos la eficiencia en base a las fracciones de slot correctos, por este medio la eficiencia es de solo 37% en el **Slotted ALOHA**
+Pero en el **Pure ALOHA** que no tiene sinronización es de solo el 18%
+#### CSMA(carrier sence multiple access)
++ Si el canal esta inactivo transmite toda la data
++ Si el canal esta ocupada no transmite
+**CSMA/CD: CSMA con deteccion de colisiones**
++ las colisiones se detecta en un corto periodo de tiempo
++ la conexion colisionada es cancelada, reduciendo el uso del canal
++ la colision se detecta facil en cable pero wireless es complicado
+![[Pasted image 20260608114203.png]]
+Reduce la cantidad de tiempo gastado al abortar la conexion
+##### Algoritmo CSMA/CD en ethernet
+![[Pasted image 20260608114310.png]]
+![[Pasted image 20260608114321.png]]
+Es mas eficiente que aloha, simple barato y decentralizado
+### Taking turn MAC protocol
+**Channel partition:**
+Es lo bueno cuando hay mucha carga, pero no tanto cuando la carga es baja
+**Random Access:**
+es bueno cuando hay baja carga pero no muy bueno cuando hay alta carga
+**Taking Turn:**
+Es lo mejor de los mundos
+
+--- 
++ Crea como una cola para que cada nodo transmita su parte
++ Se usa en dispositivos tontos
++ considerar:
+	+ saturación de la cola
+	+ latencia
+	+ un solo punto de fallo
+**Transferencia de token**
++ Cada token pasa de un nodo al siguiente, en secuencia
+![[Pasted image 20260608114901.png]]
+![[Pasted image 20260608114952.png]]
+![[Pasted image 20260608115016.png]]
+Hay un canal de subida y otro de bajada
+### Resumen
+**Channel partition:** 
++ division en tiempo o en frecuencia
+**Random Access:** 
++ ALOHA, S-ALOHA,CSMA,CSMA/CD
++ facil en cable dificil si es wireless
++ CSMA/CD : usado en cable
++ CSMA/CA:  usado en wireless
+**Taking turn:**
++ cola del sitio central, pasa el token
++ Bluethoot,FDDI, anillo de token
+## LANs
+### MAC addresses
+32 bits ip addresses
++ usado en la capa de conexion
+MAC(o lan o fisico o internet) dirección:
++ Es usada localmente para darle una direccion o una interfaz a los usuarios conectados
++ Es de 48 bit la direccion mac y esta quemada en la NIC ROM
++ ej: 1A-2F-BB-76-09-AD
+#### Direcciones MAC
+cada interfaz LAN:
++ tiene 48 bits de MAC address
++ nos da un unica direccion de 32 bits
+![[Pasted image 20260608120438.png]]
++ Las direcciones MAC estan administradas por IEEE
++ Los diseñaddores compran una porcion de direcciones MAC
++ El MAC es como el RUT y la IP es la direccion 
++ Se puede mover de una red lan a otra
+### ARP: adrress resolution protocol
+**Tabla ARP:** cada nado IP en LAN tiene una tabla
++ IP/MAC la dirección mapea algunos  nodos lan
++ TTL tiempo de vida antes de que la tabla sea olvidada
+![[Pasted image 20260608120953.png]]
+![[Pasted image 20260608121002.png]]
+![[Pasted image 20260608121036.png]]
+![[Pasted image 20260608121042.png]]
+### Ruta desde otra subnet: direccion
+![[Pasted image 20260608121227.png]]
+Vamos a enviar desde A a B mediante R
++ conocemos la direccion IP de B
++ conocemos la dirección IP de R ya que es nuestra puerta de enlace
++ conocemos la MAC de R debido a que nos la da cuando consultamos con la IP usando ARP
+Luego:
++ Creamos un IP datagrama con origen de A y destino de B
++ Creamos una capa  de conexion entre A y B usando un datagrama IP
+	+  la direccion MAC de R es un frame de destino
+![[Pasted image 20260608121958.png]]
+por decir asi la direcion MAC de destino es la de la puerta de enlace del lado que es el emisor, ya que no podemos conocer las MAC de las otras subnet
+![[Pasted image 20260608122658.png]]
+![[Pasted image 20260608122724.png]]
+![[Pasted image 20260608122806.png]]
+### Ethernet
+Es la tecnologia dominante en redes cableadas LAN
++ simple y barata
++ mantiene una velocidad 10 mbps - 400 gbps
++ un chip con multiples velocidades
+#### Topologia
+![[Pasted image 20260608123120.png]]
+![[Pasted image 20260608123222.png]]
+![[Pasted image 20260608123603.png]]
+**Preamble:** 
++ Usado para sinclonizar al receptor a un ratio de reloj
+**Dirección:**
++ 6 byte de de origen y de destino MAC
+**Type:**
++ comun IP pero no  la unica
++ usado por los demultiplexores
+**CRC:**
++ si error es detectado dropea el frame
+#### Ethernet, no confiable y sin conexión
++ no hay handshake
++ no es confiable ya que no existe los Ack
++ el ethernet con protocolo MAC , no tiene slot CSMA/CD con backoff binario
+![[Pasted image 20260608123853.png]]
+#### Port-based vLANs
+![[Pasted image 20260611150751.png]]
+
+**VLAN(virtual local area network) :** si tuvieramos un unico broadcast tendriamos problemas de eficiencia, seguridad y privacidad, y tambien nos genera problemas administrativos. Por eso se crearon las VLANs, para crearlas tenemos switcher que tienen la capacidad de crear estas VLANs
+![[Pasted image 20260611150822.png]]
+En resumen agrupamos lans en unos puertos para que estos queden en una red VLAN aparte
++ Aislación del trafico: frames del 1 al 8 que tiene origenen alguno de estos solo pueden alcanzar desde el puerto 1 al 8, o sea que estan aislados, tambien podemos definirlo por MAC
++ Membresia dinamica: Los puertos pueden ser dinámicamente asignada atravez de las VLANs
++ Forwarding a travez de las VLANs: Es similar a como lo hacen los switches via routing
+#### VLANs que abarcan varios switches
+![[Pasted image 20260611151950.png]]
+**Trunk port:** Lleva frames a travez de las VLANs por un medio fisico 
++ Los frames que se llevan a travez de las VLANs no pueden ser 802.1 estandar ya que requiere un header para saber llegar a la VLANs
++ 802.1 q añaden y remueven headers para que  puedan usar los trunk ports
+![[Pasted image 20260611152047.png]]
+## Link virtualization: MPLS
+### Multiprotocol label switching (MPLS)
+Nuestro objetivo es tener un forwarding de alta velocidad con routers con capacidad de MPLS usando un largo fijo de identificador
++ rapidamente usa el identificador de longitud fija
++ Usa un enfoque parecido a las circuitos virtuales
++ El datagrama sigue usando la IP
+![[Pasted image 20260611153200.png]]
+### Routers con capacidad de MPLS
++ tambien llamados "label switches"
++ Hacen forwarding en base a el valor del identificador no le importa la IP
++ **Flexibilidad :** puede tomar decisiones sin importar la IP, a esto se le llama ingenieria de trafico en donde podemos tomar decisiones sin importar la IP 
+### MPLS vs Rutas IP
+**IP routing:** Solo usa la dirección IP para redireccionar
+**MPLS routing :** La direccion de destio se puede basar en el origenen y en el destino
++ Similar al routing generalizado
++ Puede rapidamente redireccionar en caso de fallo
