@@ -681,7 +681,7 @@ Ambas conexiones deberian llegar a un acuerdo para ambos tener el mismo ancho de
 **Equidad de las conexiones paralelas TCP:**
 + Las aplicaciones pueden abrir conexiones paralelas entre dos host
 + ![[Pasted image 20260413120120.png]]
-# Unidad 4: Data plane
+# ch4: Data plane
 Los segmentos son transportados a través de routers, mueven el datagrama de un puerto de origen a uno de destino
 ## Introducción
 ### las dos funciones principales de la capa de red
@@ -1099,6 +1099,270 @@ La comunidad de Internet sostiene que más que una arquitectura rígida, existe 
 **En resumen:** La red debe permanecer simple y dedicada a mover paquetes; la responsabilidad de que los datos lleguen correctamente y sin errores es de los dispositivos que se están comunicando.
 ![[Pasted image 20260505224648.png]]
 ![[Pasted image 20260505224711.png]]
+# ch5: Control plane
+## Introduccion
+**Entramos en la capa de red**
+![[18edc725033c18cb4e17730287de9f33-3.jpg]]
+En la capa de red tenemos la metas de mover los paquetes de la entrada a la salida y tambien determinar la ruta optima a seguir
+![[18edc725033c18cb4e17730287de9f33-4.jpg]]
+Este es el primer acercamiento, en donde cada router tiene su algoritmo de enrutamiento 
+![[18edc725033c18cb4e17730287de9f33-5.jpg]]
+Y luego tenemos el definido por software, en donde podemos modificar las tablas mediante computadores remotos
+![[18edc725033c18cb4e17730287de9f33-6.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-7.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-8.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-9.jpg]]
+Tenemos 4 clasificaciones de algoritmos de enrutamiento:
++ **Estatico:** cambia lentamente en el tiempo las rutas
++ **Descentralizado:** Proceso iterativo en donde cambiamos información con los vecinos para formar la topologia, inicialmente solo conocemos el costo del vecino directo, tenemos los vectores de distancia
++ **Dinamico:** las rutas cambian rapidamente
++ **Global:** Los routers tienen la topologia completa de los routers
+![[18edc725033c18cb4e17730287de9f33-10.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-11.jpg]]
+**El algoritmo dijkstra** es centralizado, conoce toda la topologia, calcula el menor costo usando esa información, ademas es iterativo ya que de esa manera conoce el camino menos costoso a su destino
+![[18edc725033c18cb4e17730287de9f33-12.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-13.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-14.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-15.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-16.jpg]]
+Es un algoritmo que mientras mas nodos mas complejo se hace
+![[18edc725033c18cb4e17730287de9f33-17.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-18.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-19.jpg]]
+La ecuación de Bellman-Ford nos permite determinar el camino mas rapido de un nodo al otro, partimos con que nuestro origen tiene distancia 0, y todos los que nos rodea tienen distancia $\infty$, entonces vamos probando todos los nodos y asi calculamos la distancia, luego de tener las distancias estimamos la mas corta     
+![[18edc725033c18cb4e17730287de9f33-20.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-21.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-22.jpg]]
+Cada nodo va calculando sus distancias y mandan la actualizacion solo si la topologia cambia
+![[18edc725033c18cb4e17730287de9f33-23.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-24.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-25.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-26.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-27.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-28.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-29.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-30.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-31.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-32.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-33.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-34.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-35.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-36.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-37.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-38.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-39.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-40.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-41.jpg]]
+En el mundo real aplicar todos estos algoritmos implica conocer todos los nodos, lo cual es imposible de almacenar en una sola tabla de enrutamiento
+![[18edc725033c18cb4e17730287de9f33-42.jpg]]
+Por lo que separamos en **Intra-AS(intra-dominio)**, significa que todos estan en la misma red, luego estan los **Inter-AS(Inter-dominio)** estos se comunican mediante gateways
+![[18edc725033c18cb4e17730287de9f33-43.jpg]]
+Los routers estan configurados con ambos, para determinar entradas internas y externas en la red
+![[18edc725033c18cb4e17730287de9f33-44.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-45.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-46.jpg]]
+El OSPF(Open shortest path first) es un protocolo de estado de enlace en donde va calculando la topologia de la red usando la información que recopila y la propuesta por sus vecinos de esta manera se pone como nodo raiz y calcula la distancia mas corta al objetivo usando algoritmos como el Dijkstra, si hay un cambio en la red, no se calcula entero de nuevo, si no que este divide el area en redes, en donde estan los caminos obligatorios y areas menos reguladas, de esa manera no saturamos la red
+![[18edc725033c18cb4e17730287de9f33-47.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-48.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-49.jpg]]
+El internet vive mediante **Sistemas autonomos(AS)** el BGP es el OSPF pero para conectar estos sistemas autonomos, o sea si el OSPF es un gps para ir por tu ciudad, BGP son las rutas de aviones o buses para ir a otras ciudades, estos no se guian mediante el camino mas corto si no que usan politicas y seguridad, por ejemplo si no nos conviene que nuestro trafico pase por una ruta de otra empresa podemos evitar que pase por ahi redirijiendo el trafico por otro lugar, tenemos dos categorias:
+**eBGP:** es para conectar un router de una empresa con otra empresa
+**iBGP:** Vive en las red interna como OSPF, les enseña a los routers como salir de la red y conectarse al exterior.
+![[18edc725033c18cb4e17730287de9f33-50.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-51.jpg]]
+Este tipo de conexion es sumamente formal, se intercambian las tablas de rutas y se mandan mensajes cada minuto para ver si siguen vivo, si pasan 180 segundos sin respuesta se da al vecino por muerto
+![[18edc725033c18cb4e17730287de9f33-52.jpg]]
+El BGP usa el prefijo y atributos:
+**Prefijo:** Es la direccion ip del destino
+**AS-PATH:** es como un visado(ASN(Autonomous System Number, este es unico para cada sistema autonomo)) de por donde va viajando el paquete por las redes, de esta menera evitamos caer en un loop
+**NEXT-HOP:** Es la ip a donde se enviara el trafico
+![[18edc725033c18cb4e17730287de9f33-53.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-54.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-55.jpg]]
+Esta son los mensajes BGP:
++ **OPEN:** es una conexion TCP entre pares
++ **UPDATE:** alerta de nuevos caminos
++ **KEEPALIVE:** mantiene conexiones vivas
++ **NOTIFICATION:** reporta errores y se usa para cerrar conexiones
+![[18edc725033c18cb4e17730287de9f33-56.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-57.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-58.jpg]]
+Dentro de los sistemas autonomos nos enfocamos en el rendimiento, mientras que en la conexion de sistemas autonomos, o sea INTER-AS, se enfoca en politicas
+![[18edc725033c18cb4e17730287de9f33-59.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-60.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-61.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-62.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-63.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-64.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-65.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-66.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-67.jpg]]
+El SDN(software defined networking) llego a revolucionar las tablas de rutas, en vez de implementar un cerebro en cada router, le ponemos un controlador en donde un cluster o servidor tiene toda la topologia y les manda las ordenes a los routers
+![[18edc725033c18cb4e17730287de9f33-68.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-69.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-70.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-71.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-72.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-73.jpg]]
+Las tablas de forwarding son instaladas en los routers bajo la vigilancia del controlador
+![[18edc725033c18cb4e17730287de9f33-74.jpg]]
+el controlador SDN, mantiene la información, interactua con las aplicaciones de arriba con en northbound API, e interactua con los switches via southbound API
+![[18edc725033c18cb4e17730287de9f33-75.jpg]]
+Las aplicaciones del control de red, son el cerebro y les transmite la informacion mediante API al controlador SDN
+![[18edc725033c18cb4e17730287de9f33-76.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-77.jpg]]
+### A. Mensajes Controlador-a-Switch (Controller-to-Switch)
+Son iniciados exclusivamente por el controlador para gestionar o consultar el estado del switch.
+- `Features`: El controlador le pregunta al switch cuáles son sus capacidades (cuántos puertos tiene, qué tablas soporta).
+- `Modify-State (Flow-Mod)`: **El más importante.** Es el mensaje que usa el controlador para agregar, borrar o modificar reglas en las tablas de flujo del switch.
+- `Packet-Out`: Se usa cuando el controlador quiere que el switch envíe un paquete específico por un puerto determinado.
+### B. Mensajes Asincrónicos (Asynchronous)
+Son iniciados por el switch para avisarle al controlador sobre eventos de la red sin que este se los haya pedido.
+- `Packet-In`: Si llega un paquete al switch y este **no encuentra ninguna regla que calce** en sus tablas de flujo, le encapsula el paquete y se lo manda al controlador con este mensaje diciendo: _"Me llegó esto y no sé qué hacer, dime tú"_.
+- `Flow-Removed`: Le avisa al controlador que una regla de flujo expiró (por tiempo de inactividad) y fue borrada.
+- `Port-Status`: Avisa si un puerto físico del switch se cayó o se encendió (cambio de topología).
+### C. Mensajes Simétricos (Symmetric)
+Son mensajes bidireccionales que se envían sin invitación previa.
+- `Hello`: Se envían al inicio de la conexión para negociar la versión de OpenFlow que van a usar.
+- `Echo Request / Echo Reply`: Funcionan como un "Ping" interno para verificar que la sesión entre el switch y el controlador sigue viva.
+![[18edc725033c18cb4e17730287de9f33-78.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-79.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-80.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-81.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-82.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-83.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-84.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-85.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-86.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-87.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-88.jpg]]
+**ICMP** (Protocolo de Mensajes de Control de Internet) es un protocolo de la **Capa 3 (Red)** que no se usa para transportar datos de usuario (como páginas web o videos), sino para que los routers y dispositivos de red se comuniquen entre sí sobre el **estado de la red**. Es el protocolo de diagnóstico por excelencia.
+Cada vez que algo sale mal en la red, o cuando quieres hacer una prueba básica, entra ICMP en acción mediante "mensajes de control".
+- **El uso más común (Ping):** Cuando haces un `ping`, estás enviando un mensaje ICMP llamado _Echo Request_ (Solicitud de eco) y esperando un _Echo Reply_ (Respuesta de eco).
+- **Mensajes de error:** Si un router no sabe cómo llegar a una red, te devuelve un mensaje ICMP del tipo _Destination Unreachable_ (Destino inalcanzable). Si un paquete tarda demasiado en la red, devuelve un _Time Exceeded_ (Tiempo excedido).
+El TTL es un número (un contador) que evita que los paquetes se queden dando vueltas en círculos por internet para siempre si hay un error de ruteo. Cada vez que un paquete pasa por un router, el router le resta `1` al TTL. **Si el TTL llega a 0, el router descarta el paquete y le envía al origen un mensaje ICMP de tipo "Time Exceeded" (Tiempo excedido).**
+Traceroute manipula este contador a propósito con un truco brillante:
+1. **Primer salto:** Tu PC envía un paquete al destino final, pero le pone un **TTL = 1**. El primer router (tu router de casa) recibe el paquete, le resta 1, el TTL queda en 0. El router descarta el paquete y le envía a tu PC un mensaje **ICMP Time Exceeded**. _¡Listo! Tu PC ya sabe la IP del primer router gracias a ese mensaje de error.
+2. **Segundo salto:** Tu PC envía otro paquete, pero ahora con **TTL = 2**. Pasa el primer router (TTL baja a 1) y llega al segundo router (TTL baja a 0). El segundo router descarta el paquete y devuelve un mensaje **ICMP Time Exceeded**. _Tu PC ahora conoce el segundo router.    
+3. **El proceso se repite:** Tu PC va incrementando el TTL (`TTL=3`, `TTL=4`, `TTL=5`...) consecutivamente hasta que el paquete finalmente llega al destino real. Cuando llega al destino, este responde con un mensaje ICMP normal de respuesta (_Echo Reply_ o _Port Unreachable_), y traceroute sabe que el viaje terminó.
+![[18edc725033c18cb4e17730287de9f33-89.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-90.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-91.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-92.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-93.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-94.jpg]]
+### 1. CLI (Command Line Interface)
+La **Interfaz de Línea de Comandos** es el método tradicional y más antiguo de administración. Es la clásica pantalla negra con texto (a la que te conectas por protocolos como **SSH** o el antiguo _Telnet_) donde escribes comandos a mano para configurar el equipo.
+- **El problema:** Está diseñada para **humanos**, no para máquinas. Si quieres automatizar una red con CLI, tienes que crear un script de Python que simule que estás escribiendo en el teclado, lea la respuesta en texto plano y use expresiones regulares (`regex`) para raspar el texto y buscar los datos. Si el fabricante cambia una sola coma en la respuesta de un comando en la nueva versión de su software, tu script se rompe.
+### 2. SNMP Protocol & SNMP/MIB
+**SNMP (Simple Network Management Protocol)** nació para solucionar el problema del monitoreo masivo. En lugar de entrar router por router a ver cuánta CPU están usando, usas un servidor central (llamado _NMS_ o Sistema de Gestión de Red) que le pregunta periódicamente a todos los equipos su estado a través de SNMP (usualmente sobre **UDP puertos 161 y 162**).
+Para que esto funcione, SNMP se apoya en dos conceptos clave: **SMI** (la estructura) y las **MIB**.
+### ¿Qué es una MIB? (Management Information Base)
+La MIB es una **base de datos jerárquica y virtual** que reside dentro del router o switch. Imagínala como un árbol de carpetas ordenadas donde cada "archivo" contiene un dato específico del equipo (por ejemplo: los bytes que pasan por la interfaz `GigabitEthernet0/1`, la temperatura del chasis, o el tiempo que lleva encendido).
+- **Los OID (Object Identifiers):** Para pedir un dato exacto, SNMP usa un número largo separado por puntos llamado OID, que indica el camino exacto en ese árbol.
+- > **Ejemplo de OID:** El ID `.1.3.6.1.2.1.1.3.0` corresponde exactamente al _sysUpTime_ (el tiempo de actividad del sistema). Cuando el servidor le pide ese número al router mediante SNMP, el router busca en su MIB y le devuelve el valor.
+### 3. NETCONF / YANG (La evolución moderna)
+Aunque SNMP es excelente para _monitorear_ (leer datos), es muy malo y peligroso para _configurar_ (escribir datos) a gran escala. Además, la industria necesitaba una forma nativa de programar las redes (ligado a lo que vimos de SDN). Ahí es donde nace el dúo dinámico: **NETCONF y YANG**.
+Hacen un trabajo en equipo idéntico al de una página web moderna: **YANG es el plano arquitectónico (el modelo) y NETCONF es el camión que transporta los ladrillos (el protocolo).**
+### YANG (El Modelo de Datos)
+YANG no es un protocolo, es un **lenguaje de modelado de datos**. Sirve para definir de forma estrictamente estructurada y lógica qué cosas se pueden configurar en un equipo.
+A diferencia del texto plano del CLI, YANG define con precisión de software: _"La interfaz debe tener un nombre (que es un texto de máximo 20 caracteres) y una IP (que debe cumplir con el formato IPv4)"_. Al ser un estándar (RFC 6020), tanto un router Cisco como uno Juniper entienden la estructura de la misma manera.
+### NETCONF (Network Configuration Protocol)
+Es el protocolo de red de la capa de aplicación diseñado específicamente para instalar, manipular y borrar la configuración de los dispositivos de red usando los modelos de YANG.
+- **Cómo viaja:** Opera de forma ultra segura sobre **SSH (puerto 830)**.
+- **El formato:** A diferencia de SNMP, NETCONF encapsula los datos estructurados de YANG utilizando **XML** para enviar configuraciones completas en un solo bloque.
+- **Transacciones seguras:** Soporta operaciones tipo "Commit" y "Rollback". Si estás configurando 10 routers al mismo tiempo y uno de ellos falla al aplicar el cambio, NETCONF puede deshacer los cambios en todos automáticamente para no dejar la red a medias.
+![[18edc725033c18cb4e17730287de9f33-95.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-96.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-97.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-98.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-99.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-100.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-101.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-102.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-103.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-104.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-105.jpg]]
+
+![[18edc725033c18cb4e17730287de9f33-106.jpg]]
 # ch6: Link layer and LAN's
 ## Multiple access protocol
 Hay dos tipos de conexion
