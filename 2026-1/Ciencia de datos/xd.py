@@ -6,4 +6,4 @@ with open("Ciencia de datos.md","a") as file:
             dato=f"0{i}"
         else:
             dato=str(i)
-        file.write(f"![[W1_9__Bagging_and_Boosting_page-00{dato}.jpg]]\n\n")
+        file.write(f"![[W1_10__Support_Vector_Machine_page-00{dato}.jpg]]\n\n")

@@ -1032,3 +1032,236 @@ Que Boosting se ajuste con los residuos significa que **cada árbol nuevo ignora
 
 ![[W1_9__Bagging_and_Boosting_page-0052.jpg]]
 
+![[W1_10__Support_Vector_Machine_page-0001.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0002.jpg]]
+Las **SVM** permiten realizar tareas de clasificación y regresion usando el metodo del kernel cuando los datos no se pueden separar linealmente:
+en términos sencillos, el kernel es una **función matemática que toma datos que no se pueden separar en su dimensión actual y los proyecta a una dimensión más alta (añade más variables ficticias) donde sí se pueden separar con un corte recto**.
+### La analogía clásica para entenderlo visualmente
+Imagina que tienes una mesa y sobre ella hay un montón de fichas de juego rojas y azules. Las fichas azules están todas en el centro formando un círculo, y las fichas rojas las rodean por fuera.
+1. **El problema:** Te doy una regla de madera (un separador lineal) y te pido que la pongas sobre la mesa de forma que separe perfectamente las rojas de las azules. **Es imposible.** No importa cómo gires la regla, siempre vas a mezclar colores porque la frontera real es un círculo. Los datos _no son linealmente separables_ en 2D.
+2. **El truco del Kernel:** Imagina que golpeas la mesa por debajo con un patrón específico (esa es la función de kernel). Al golpear, todas las fichas azules del centro **salen volando hacia arriba (ganan altura, una tercera dimensión $Z$)**, mientras que las rojas de los bordes se quedan abajo en la mesa.
+3. **La solución lineal:** Ahora que las azules están flotando en el aire y las rojas están abajo, puedes pasar tu regla de madera de forma completamente plana (un hiperplano en 3D) por el espacio vacío entre ellas. ¡Las separaste perfectamente con un corte recto!
+Cuando devuelves esa hoja de corte al plano original de la mesa (2D), se ve como una frontera circular perfecta.
+### ¿Cómo se ve esto matemáticamente?
+Un kernel toma tus variables originales, por ejemplo $(X_1, X_2)$, y calcula combinaciones no lineales entre ellas para inventarse una nueva dimensión.
+Un ejemplo matemático muy básico es el **Kernel Polinómico**:
+- Tienes tus datos en 2D: $(X_1, X_2)$ donde están mezclados.
+- El kernel los transforma a 3D añadiendo una combinación cuadrática como: $(X_1, X_2, X_1^2 + X_2^2)$. Esa tercera componente es la que les da "altura" y permite que pasemos un plano recto para dividirlos.
+### Los Kernels más famosos que vas a escuchar:
+- **Lineal:** No hace ninguna transformación (asume que ya se pueden separar con una línea recta).
+- **Polinómico:** Eleva las variables a potencias (como el ejemplo anterior).
+- **RBF (Radial Basis Function / Gausiano):** Es el más usado y potente. Proyecta los datos a una dimensión **infinita** basándose en la distancia entre los puntos. Es capaz de modelar fronteras curvas ultra complejas.
+En resumen: El kernel es un **atajo matemático**. Te permite disfrutar de la simplicidad y potencia de los cortes rectos de un modelo lineal, pero aplicados a problemas que son completamente curvos y complejos en el mundo real.
+![[W1_10__Support_Vector_Machine_page-0003.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0004.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0005.jpg]]
+### 1. Clasificador de Margen Máximo (_Maximal Margin Classifier_)
+Es el ancestro directo de la SVM y el concepto más idealista.
+- **La idea:** Imagina que tienes puntos rojos y azules perfectamente separados en el plano. Podrías trazar muchas líneas diagonales distintas que los dividan bien, pero este clasificador busca **la línea perfecta**: aquella que pase exactamente por el medio, maximizando la distancia (el "margen") entre la línea y los puntos más cercanos de cada clase.
+- **El gran problema (la frase en morado):** Exige que las clases sean **perfectamente separables por una línea**. Si un solo punto azul se cruza al lado de los rojos (ruido en los datos), el algoritmo se rompe matemáticamente y no puede encontrar una solución. Es demasiado rígido para el mundo real.
+### 2. Clasificador de Soporte Vectorial (_Support Vector Classifier_ o SVC)
+Como el anterior fallaba con datos reales (donde siempre hay un poco de mezcla o ruido), los científicos crearon esta extensión. También se le conoce como **Clasificador de Margen Blando** (_Soft Margin Classifier_).
+- **La solución:** Mantiene la idea de trazar una línea recta con el máximo margen posible, pero introduce una "tolerancia". **Permite que algunos puntos se metan dentro del margen o que incluso queden clasificados en el lado incorrecto** a cambio de mantener una frontera estable y equilibrada.
+- A los puntos críticos que tocan el margen, se meten en él o lo cruzan se les llama **Vectores de Soporte** (porque son los que "sostienen" y definen la posición de la línea).
+### 3. Máquina de Soporte Vectorial (_Support Vector Machine_ o SVM)
+¿Qué pasa si los datos no son para nada una línea recta, sino que tienen formas curvas complejas o circulares? Ahí es donde entra la **SVM** real.
+- La SVM es la combinación del **Support Vector Classifier (SVC)** + **El truco del Kernel** que vimos en la diapositiva anterior.
+- Toma el clasificador de margen blando (SVC), proyecta los datos a una dimensión más alta usando el kernel y ahí arriba traza la línea recta óptima.
+![[W1_10__Support_Vector_Machine_page-0006.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0007.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0008.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0009.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0010.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0011.jpg]]
+La diapositiva te está diciendo que clasificar con un hiperplano es como trazar una frontera donde la propia línea vale exactamente `0`. Cualquier dato que evalúes en la ecuación te dará un número: si es positivo está en el territorio de los azules, y si es negativo está en el territorio de los púrpuras. Así es como el modelo decide matemáticamente a qué grupo pertenece cada observación.
+![[W1_10__Support_Vector_Machine_page-0012.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0013.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0014.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0015.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0016.jpg]]
+### 1. "Existirá un número infinito de tales hiperplanos"
+Imagina que tienes puntos azules a un lado y puntos rojos al otro, con un espacio vacío en el medio. Puedes trazar una línea diagonal para separarlos. Si la mueves un milímetro a la izquierda, sigue separándolos. Si cambias un poco su ángulo, también.
+- **El concepto:** Matemáticamente hay infinitas líneas rectas válidas que logran separar los datos de entrenamiento sin cometer errores. El problema es: ¿cuál de todas elegimos?
+### 2. La elección natural: "El hiperplano de margen máximo"
+Como no queremos elegir cualquier línea al azar, buscamos la más segura y robusta para cuando lleguen datos nuevos. Esa línea óptima es la que pasa **exactamente por la mitad del camino**, manteniéndose lo más lejos posible de los datos de ambas clases.
+### 3. ¿Qué es el "Margen"?
+Para entenderlo formalmente, el algoritmo hace lo siguiente de forma interna:
+1. Mide la **distancia perpendicular** desde la línea divisoria hasta el punto más cercano de todos (ya sea rojo o azul).
+2. A esa distancia mínima (la zona de seguridad o "tierra de nadie" a cada lado de la línea) se le conoce como el **Margen**.
+### 4. El criterio de optimización
+El último punto resume el objetivo matemático del modelo: el algoritmo ajusta la orientación y posición de la línea con un único propósito en mente: **hacer que ese margen sea lo más ancho (máximo) posible**.
+Los puntos del dataset que quedan justo en el borde de ese margen (rozando la zona de seguridad) son los únicos que determinan dónde se coloca la línea. Si mueves cualquier otro punto que esté lejos, la línea no se altera; pero si mueves uno de estos puntos del borde, la frontera cambia. Por eso a esos puntos clave se les llama **Vectores de Soporte**.
+### En resumen:
+La diapositiva explica que el _Maximal Margin Classifier_ no busca cualquier separación recta, sino **la calle más ancha posible** entre los dos grupos de datos, garantizando que la línea divisoria pase justo por el centro de esa calle.
+![[W1_10__Support_Vector_Machine_page-0017.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0018.jpg]]
+Cuando el _Maximal Margin Classifier_ (o el SVC) está optimizando la ecuación del hiperplano, descarta la gran mayoría de los datos y se queda solo con los puntos que quedaron "rozando" o cruzando el margen (las casas de la orilla).
+Matemáticamente, los coeficientes $\beta$ (los que definen la inclinación y posición de la línea) se calculan basándose **únicamente en las coordenadas de estos vectores de soporte**.
+Por eso se dice que son el subconjunto de datos más importante: si limpiaras tu base de datos y borraras todos los puntos que _no_ son vectores de soporte, y volvieras a entrenar el modelo, **obtendrías exactamente la misma línea recta**.
+![[W1_10__Support_Vector_Machine_page-0019.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0020.jpg]]
+### 1. El objetivo supremo: Maximizar $M$
+El texto en rojo define la meta del algoritmo: encontrar la calle más ancha posible entre las dos clases.
+- $M$ representa el **ancho del margen** (la distancia mínima desde la línea divisoria hasta cualquier punto de entrenamiento). Queremos que $M$ sea lo más grande posible para garantizar la máxima seguridad al clasificar datos nuevos.
+### 2. ¿Qué significa que $M$ sea positivo?
+Si el algoritmo encuentra una solución donde $M > 0$, significa que **los datos son perfectamente separables de forma lineal**. No hay ningún punto rojo invadiendo el territorio azul, ni viceversa; todos los puntos quedaron en el lado correcto de la frontera con un espacio libre de separación.
+### 3. La restricción del "Lado Correcto"
+El texto menciona una restricción matemática basada en una ecuación. Para asegurar que cada observación $i$ esté en su territorio correspondiente, el algoritmo exige que:
+
+$$y_i(\beta_0 + \beta_1x_{i1} + \dots + \beta_px_{ip}) \geq M$$
+
+¿Por qué funciona este truco?
+- Si un punto es de la clase **Azul** ($y_i = 1$), la ecuación del hiperplano debe dar un número positivo mayor o igual a $M$. $(+1) \times (\text{positivo}) \geq M \rightarrow$ **Correcto**.
+- Si un punto es de la clase **Púrpura** ($y_i = -1$), la ecuación del hiperplano debe dar un número negativo. Al multiplicarlo por el $y_i$, se vuelve positivo: $(-1) \times (\text{negativo}) \geq M \rightarrow$ **Correcto**.
+Si algún punto estuviera en el lado incorrecto, esa multiplicación daría un número negativo, rompiendo la restricción.
+### 4. El problema de la escala (La explicación de las notas al pie)
+El último párrafo y las notas de la diapositiva abordan un tecnicismo algebraico muy importante.
+Si tienes una línea recta como $X_1 + X_2 - 5 = 0$, y multiplicas toda la ecuación por $2$ ($2X_1 + 2X_2 - 10 = 0$), **la línea recta sigue estando exactamente en el mismo lugar del plano**. Geométricamente no ha cambiado nada.
+Sin embargo, si intentas medir la distancia matemática desde un punto a la línea usando los coeficientes ($\beta$), al haberlos multiplicado por 2, las distancias calculadas se duplicarían artificialmente sin que la línea se haya movido.
+Para evitar que el algoritmo haga "trampa" agrandando el margen $M$ simplemente multiplicando los coeficientes por un número grande ($k$), se introduce una **restricción de normalización**:
+
+$$\sum_{j=1}^{p} \beta_j^2 = 1$$
+
+Esto obliga a que la magnitud del vector de coeficientes sea fija. Al bloquear la escala, la única forma que tiene el modelo de aumentar el margen $M$ es **moviendo y rotando la línea real** hasta encontrar la orientación óptima.
+### En resumen:
+Esta diapositiva resume el problema de optimización que resuelve el modelo: **Maximizar el ancho de la calle ($M$) sujeto a que nadie se cruce de bando (restricción de signo) y a que las distancias estén bien medidas (restricción de escala de los $\beta$).**
+![[W1_10__Support_Vector_Machine_page-0021.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0022.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0023.jpg]]
+### 1. El gráfico: La geometría del margen
+La imagen ilustra perfectamente lo que veníamos hablando en la diapositiva anterior:
+- Tienes la línea azul central ($x^T\beta + \beta_0 = 0$).
+- Tienes la "calle" amarilla que representa el **margen**.
+- Los puntos verdes y rojos que están justo en el borde de la zona amarilla son tus **vectores de soporte**.
+- Nota que las ecuaciones de los bordes del margen están etiquetadas con una constante $C = \frac{1}{\|\beta\|}$. Esto conecta directamente la geometría con el álgebra: **minimizar la magnitud de los pesos ($\|\beta\|$) es matemáticamente equivalente a maximizar el ancho del margen**.
+### 2. Formulación Primal vs. Formulación Dual
+Para resolver la optimización, puedes plantear las ecuaciones de dos maneras distintas:
+- **La representación Primal (El enfoque directo):**
+    - Se enfoca en buscar directamente los valores óptimos de las variables del hiperplano ($\beta$ y $\beta_0$).
+    - **Su problema:** Si tienes pocas filas ($n$) pero **muchísimas variables ($p$)**, el costo computacional de la forma primal se dispara porque depende fuertemente de la dimensión del espacio.
+- **La representación Dual (El enfoque alternativo):**
+    - En lugar de buscar los pesos $\beta$, el problema se transforma para buscar un conjunto de coeficientes llamados **multiplicadores de Lagrange** ($\alpha_i$), donde hay un coeficiente por cada fila de datos.
+    - **Por qué es brillante:** En la forma dual, los datos solo aparecen en la ecuación en forma de **productos punto** ($x_i \cdot x_j$). Esto significa que el algoritmo solo necesita saber qué tan similares son los puntos entre sí, no la dimensión en la que viven.
+### 3. ¿Por qué importa esto para las SVM?
+La relación primal-dual a través de Lagrange es el secreto que permite que existan los **Kernels** que vimos al principio.
+Como la formulación **Dual** depende exclusivamente de productos punto entre vectores, si quieres llevar tus datos a una dimensión infinita para separar curvas complejas, **no necesitas calcular las coordenadas en esa dimensión infinita** (lo cual sería imposible). Solo necesitas reemplazar el producto punto tradicional por una función de Kernel.
+![[Pasted image 20260623153011.png]]
+![[W1_10__Support_Vector_Machine_page-0024.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0025.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0026.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0027.jpg]]
+Al buscar el hiperplano perfecto provocamos sensibilidad a casos especificos que talvez no representan a la media, esto puede generar **sobreajuste**
+![[W1_10__Support_Vector_Machine_page-0028.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0029.jpg]]
+### 1. Permitir errores para mejorar el resultado global
+El texto en rojo plantea una estrategia de sacrificio muy inteligente: _"SVC puede clasificar erróneamente unas pocas observaciones de entrenamiento con el fin de hacer un mejor trabajo en la clasificación de las observaciones restantes"_.
+- **Por qué se hace:** Si intentas forzar una línea recta que deje al 100% de los puntos en el bando correcto cuando hay datos mezclados, la línea quedará en una posición sumamente forzada, torcida o inestable.
+- Al permitirle al algoritmo equivocarse con un par de puntos aislados (puntos ruidosos o _outliers_), la línea resultante se mantiene recta, estable y mucho más representativa de la tendencia general de los datos.
+### 2. ¿Cómo funciona la tolerancia?
+El segundo punto detalla las dos formas en que las observaciones pueden "romper las reglas":
+1. **Meterse dentro del margen:** El punto está en el lado correcto de la línea divisoria, pero cruzó la línea amarilla del "margen de seguridad".
+2. **Quedar en el lado incorrecto:** El punto cruzó completamente el hiperplano y quedó clasificado de manera errónea en el bando contrario.
+### 3. El Margen Suave (_Soft Margin_)
+La frase en morado resume el concepto central: **El margen es suave**.
+En lugar de ser una muralla de concreto infranqueable (como en el _Maximal Margin Classifier_), el margen del SVC actúa más bien como una **cerca elástica**. Los puntos pueden empujarla, meterse en ella o cruzarla. El algoritmo controla qué tan elástica es esta cerca mediante un parámetro de penalización (comúnmente llamado $C$).
+### Un detalle clave sobre los Vectores de Soporte aquí:
+Recuerdas que antes dijimos que los vectores de soporte eran _solo_ los puntos que tocaban el borde del margen? En el SVC, al ser un margen blando, los **vectores de soporte se expanden**:
+- Los puntos que tocan el borde del margen.
+- Todos los puntos que se meten dentro del margen.
+- Todos los puntos que cruzan la línea y quedan mal clasificados.
+Cualquier observación que viole el margen de alguna forma se convierte automáticamente en un vector de soporte y ayuda a definir la posición final de la línea.
+### En resumen:
+Esta diapositiva te explica que el SVC prefiere **diseñar una frontera equilibrada y realista permitiendo un par de errores controlados**, en lugar de volverse loco buscando una perfección geométrica imposible que arruinaría la capacidad del modelo para generalizar con datos nuevos.
+![[W1_10__Support_Vector_Machine_page-0030.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0031.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0032.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0033.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0034.jpg]]
+### 1. ¿Qué son las variables de holgura ($\xi_i$)?
+Arriba en la diapositiva ves la expresión $\xi_i \geq 0$ (se lee "xi sub i"). Cada observación de tu dataset tiene su propia variable de holgura:
+- Si $\xi_i = 0$, el punto está perfectamente clasificado y fuera del margen (cumple la regla estricta).
+- Si $0 < \xi_i \leq 1$, el punto violó el margen de seguridad, pero todavía está en el lado correcto de la línea divisoria.
+- Si $\xi_i > 1$, el punto es un error total: cruzó el hiperplano y está clasificado en el bando equivocado.
+### 2. El rol de $C$: El "presupuesto de errores"
+La sumatoria $\sum_{i=1}^{n} \xi_i \leq C$ significa que si sumamos todas las violaciones al margen que cometen los puntos, **el total no puede superar un presupuesto máximo fijado por el valor de $C$**.
+Aquí es donde se controla el dilema de **Sesgo vs. Varianza** (los últimos puntos de la diapositiva):
+#### Si $C = 0$ (Cero tolerancia):
+El presupuesto de errores es nulo. Obligas a todas las variables de holgura $\xi_i$ a ser cero. El modelo se vuelve rígido y se transforma exactamente en el **Maximal Margin Classifier** (MMC). Solo funciona si los datos son perfectamente separables.
+#### Si $C$ es bajo (Tolerancia estricta):
+- El modelo permite muy pocas violaciones al margen.
+- **Margen resultante:** Se vuelve más **estrecho**.
+- **Efecto:** El modelo es muy fiel a los datos de entrenamiento. Tiene **bajo sesgo** pero **alta varianza** (riesgo de sobreajuste o _overfitting_ ante el ruido).
+#### Si $C$ es alto (Gran tolerancia):
+- El modelo es súper permisivo; deja que muchos puntos invadan el margen o queden mal clasificados con tal de mantener una línea suave.
+- **Margen resultante:** Se vuelve mucho más **ancho**.
+- **Efecto:** Al ignorar los puntos ruidosos y enfocarse en la masa general, el modelo gana estabilidad. Tiene **baja varianza** (generaliza mejor) pero a costa de un **mayor sesgo** en el entrenamiento.
+### En resumen:
+El parámetro $C$ es la perilla que tú, como desarrollador, mueves mediante **validación cruzada** (Cross-Validation) para encontrar el equilibrio perfecto. Determina si prefieres una frontera que intente imitar con obsesión matemática cada punto del dataset ($C$ bajo) o una frontera más robusta y general que acepte sacrificar algunos datos con tal de tener un margen amplio ($C$ alto).
+![[W1_10__Support_Vector_Machine_page-0035.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0036.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0037.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0038.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0039.jpg]]
+### 1. Clasificador de Margen Máximo (MMC)
+Es el modelo ideal y el ancestro de todos. Su único objetivo es trazar una línea recta (o hiperplano) que separe perfectamente las dos clases, maximizando el espacio vacío ("margen") entre la línea y los puntos más cercanos.
+- **Su debilidad:** Es extremadamente sensible. Si un solo punto de la clase A se mezcla levemente en el territorio de la clase B (ruido), el algoritmo colapsa matemáticamente porque exige que la separación sea perfecta. No sirve para el mundo real.
+### 2. Clasificador de Soporte Vectorial (SVC)
+También conocido como _Clasificador de Margen Blando_ (_Soft Margin_). Nace para solucionar la rigidez del MMC introduciendo **tolerancia al error**. Sigue trazando una línea recta, pero ahora permite que algunos puntos "violen" el margen (metiéndose dentro de la zona de seguridad o incluso cruzando al bando incorrecto) a cambio de mantener una frontera estable y robusta.
+- **El parámetro clave ($C$):** Tú controlas qué tan permisivo es mediante un presupuesto de error ($C$). Si $C$ es muy pequeño o cero, se comporta estrictamente como un MMC. Si $C$ es alto, ensancha el margen tolerando muchas fallas con tal de capturar la tendencia general.
+### 3. Máquina de Soporte Vectorial (SVM)
+Es la evolución final y la que se usa en la práctica para problemas complejos. ¿Qué pasa si tus datos están distribuidos en forma de espiral, círculos concéntricos o patrones donde una línea recta (por más blanda que sea) comete muchísimos errores?
+- **El truco del Kernel:** La SVM toma la estructura del SVC (el margen blando con parámetro $C$) y le añade una **función de Kernel**. El kernel proyecta matemáticamente tus datos a una dimensión mucho más alta donde sí se pueden separar con un corte recto. Al devolver ese corte plano al espacio original, se transforma en una **frontera de decisión curva y ultra flexible**.
+![[W1_10__Support_Vector_Machine_page-0040.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0041.jpg]]
+Cuando tenemos problemas que no puedan ser separado por metodo lineal, podemos ampliar la dimensionalidad para encontrar un hiperplano
+![[W1_10__Support_Vector_Machine_page-0042.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0043.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0044.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0045.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0046.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0047.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0048.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0049.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0050.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0051.jpg]]
+
+![[W1_10__Support_Vector_Machine_page-0052.jpg]]
+
