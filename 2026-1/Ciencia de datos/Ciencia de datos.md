@@ -743,3 +743,143 @@ Estos indicadores son esenciales para la **selección de características (Featu
 ![[todoDel1-7_page-0284.jpg]]
 
 ![[todoDel1-7_page-0285.jpg]]
+# Unidad 2
+![[Graphs-2_page-0018.jpg]]
+
+![[Graphs-2_page-0017.jpg]]
+
+![[Graphs-2_page-0016.jpg]]
+
+![[Graphs-2_page-0015.jpg]]
+
+![[Graphs-2_page-0014.jpg]]
+
+![[Graphs-2_page-0013.jpg]]
+
+![[Graphs-2_page-0012.jpg]]
+
+![[Graphs-2_page-0011.jpg]]
+
+![[Graphs-2_page-0010.jpg]]
+![[Graphs-2_page-0009.jpg]]
+
+![[Graphs-2_page-0008.jpg]]
+
+![[Graphs-2_page-0007.jpg]]
+
+![[Graphs-2_page-0006.jpg]]
+
+![[Graphs-2_page-0005.jpg]]
+
+![[Graphs-2_page-0004.jpg]]
+
+![[Graphs-2_page-0003.jpg]]
+
+![[Graphs-2_page-0002.jpg]]
+
+![[Graphs-2_page-0001.jpg]]![[W1_8__KMeans_KNN_page-0053.jpg]]
+
+![[W1_8__KMeans_KNN_page-0052.jpg]]
+Los algoritmos KNN, buscan en una plano de n dimensiones los puntos mas cercanos y les calcula la media
+![[W1_8__KMeans_KNN_page-0051.jpg]]
+El KNN es costoso y requiere limpieza de outliers
+![[W1_8__KMeans_KNN_page-0050.jpg]]
+Menor dataset = menor k = mas sensible al ruido y outliers
+mayor dataset = mas k = mas general
+![[W1_8__KMeans_KNN_page-0049.jpg]]
+
+![[W1_8__KMeans_KNN_page-0048.jpg]]
+
+![[W1_8__KMeans_KNN_page-0047.jpg]]
+
+![[W1_8__KMeans_KNN_page-0046.jpg]]
+
+![[W1_8__KMeans_KNN_page-0045.jpg]]
+
+![[W1_8__KMeans_KNN_page-0044.jpg]]
+
+![[W1_8__KMeans_KNN_page-0043.jpg]]
+
+![[W1_8__KMeans_KNN_page-0042.jpg]]
+
+![[W1_8__KMeans_KNN_page-0041.jpg]]
+
+![[W1_8__KMeans_KNN_page-0040.jpg]]
+Aqui estamos usando KNN para encontrar a que etiqueta pertence el dato, en este caso es class B
+![[W1_8__KMeans_KNN_page-0039.jpg]]
+
+![[W1_8__KMeans_KNN_page-0038.jpg]]
+**$N_0 =$** es el punto mas cercano
+![[W1_8__KMeans_KNN_page-0037.jpg]]
+
+![[W1_8__KMeans_KNN_page-0036.jpg]]
+
+![[W1_8__KMeans_KNN_page-0035.jpg]]
+KNN es **no parametrico y no requiere entrenamiento iterativo**, si no solo guardar datos en memoria
+![[W1_8__KMeans_KNN_page-0034.jpg]]
+KNN tambien sirve para multiclase y puede servir como algoritmoo regresivo
+![[W1_8__KMeans_KNN_page-0033.jpg]]
+
+![[W1_8__KMeans_KNN_page-0032.jpg]]
+
+![[W1_8__KMeans_KNN_page-0031.jpg]]
+
+![[W1_8__KMeans_KNN_page-0030.jpg]]
+Usa muestra aleatorias para crear el centroide de datos o sea las clasificaciones
+![[W1_8__KMeans_KNN_page-0029.jpg]]
+Es mas eficiente
+![[W1_8__KMeans_KNN_page-0028.jpg]]
+
+![[W1_8__KMeans_KNN_page-0027.jpg]]
+
+![[W1_8__KMeans_KNN_page-0026.jpg]]
+
+![[W1_8__KMeans_KNN_page-0025.jpg]]
+
+![[W1_8__KMeans_KNN_page-0024.jpg]]
+
+![[W1_8__KMeans_KNN_page-0023.jpg]]
+
+![[W1_8__KMeans_KNN_page-0022.jpg]]
+
+![[W1_8__KMeans_KNN_page-0021.jpg]]
+
+![[W1_8__KMeans_KNN_page-0020.jpg]]
+**K-means++** elije punto mas apartados entre si para sus centrides de esa manera los centroides estan apartados
+![[W1_8__KMeans_KNN_page-0019.jpg]]
+**K-means** depende mucho de la seleccion de centroides
+![[W1_8__KMeans_KNN_page-0018.jpg]]
+
+![[W1_8__KMeans_KNN_page-0017.jpg]]
+El metodo del codo usca la cantidad optima de cluster lo sufficiente para no tener tanto errores, pero menos que para hacer overfitting
+![[W1_8__KMeans_KNN_page-0016.jpg]]
+
+![[W1_8__KMeans_KNN_page-0015.jpg]]
+
+![[W1_8__KMeans_KNN_page-0014.jpg]]
+**La inercia** es un valor de que tan bien agrupados es tan los valores del cluster respecto al centroide
+![[W1_8__KMeans_KNN_page-0013.jpg]]
+
+![[W1_8__KMeans_KNN_page-0012.jpg]]
+
+![[W1_8__KMeans_KNN_page-0011.jpg]]
+
+![[W1_8__KMeans_KNN_page-0010.jpg]]
+
+![[W1_8__KMeans_KNN_page-0009.jpg]]
+el cluster divide en conjuntos el dataset, hay que minimizar las distancia
+![[W1_8__KMeans_KNN_page-0008.jpg]]
+
+![[W1_8__KMeans_KNN_page-0007.jpg]]
+
+![[W1_8__KMeans_KNN_page-0006.jpg]]
+
+![[W1_8__KMeans_KNN_page-0005.jpg]]
+
+![[W1_8__KMeans_KNN_page-0004.jpg]]
+
+![[W1_8__KMeans_KNN_page-0003.jpg]]
+
+![[W1_8__KMeans_KNN_page-0002.jpg]]
+
+![[W1_8__KMeans_KNN_page-0001.jpg]]
