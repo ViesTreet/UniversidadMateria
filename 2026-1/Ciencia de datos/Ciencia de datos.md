@@ -811,7 +811,7 @@ Aqui estamos usando KNN para encontrar a que etiqueta pertence el dato, en este 
 ![[W1_8__KMeans_KNN_page-0038.jpg]]
 **$N_0 =$** es el punto mas cercano
 ![[W1_8__KMeans_KNN_page-0037.jpg]]
-
+**sirve para clasificación. mientras que Kmeans sirve para agrupacio**
 ![[W1_8__KMeans_KNN_page-0036.jpg]]
 
 ![[W1_8__KMeans_KNN_page-0035.jpg]]
@@ -882,4 +882,153 @@ el cluster divide en conjuntos el dataset, hay que minimizar las distancia
 
 ![[W1_8__KMeans_KNN_page-0002.jpg]]
 
-![[W1_8__KMeans_KNN_page-0001.jpg]]
+![[W1_8__KMeans_KNN_page-0001.jpg]]![[W1_9__Bagging_and_Boosting_page-0001.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0002.jpg]]
+**Bagging:** reduce la varianza
+**Boosting:** reduce el sesgo y tambien la varianza
+![[W1_9__Bagging_and_Boosting_page-0003.jpg]]
+En resumen si tenemos un modelo simple puede que tengamos sesgo y varianza pero si tenemos un modelo demasiado complejo podemos tener overfitting
+![[W1_9__Bagging_and_Boosting_page-0004.jpg]]
+El baggin usa **paralelismo** y luego combina los modelos para obtener un modelo complejo mientras que boosting usa **iteracion** usa un modelo y luego lo va mejorando
+![[W1_9__Bagging_and_Boosting_page-0005.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0006.jpg]]
+Los arboles de decisiones suelen tener baja precision pero son faciles  de entender, su funcion es  como un arbol n-ario
+![[W1_9__Bagging_and_Boosting_page-0007.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0008.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0009.jpg]]
+Las hojas sin hijos seran las soluciones, y en cada nodo se tomar una condicion para elegir el camino, las condiciones pueden ser en varios ambitos, un nodo puede preguntar por el salario y otro por la edad
+![[W1_9__Bagging_and_Boosting_page-0010.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0011.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0012.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0013.jpg]]
+Lo que te está diciendo la diapositiva es que, como buscar el árbol de decisión perfecto es imposible por tiempo de cómputo, los algoritmos (como CART) toman el camino práctico: empiezan con todos los datos juntos y van haciendo cortes rápidos, binarios y "egoístas" paso a paso hasta que se cumple alguna condición de parada(no le importa el futuro).
+![[W1_9__Bagging_and_Boosting_page-0014.jpg]]
+Elegimos la particion que nos de menos suma de errores cuadraticos(RSS)
+![[W1_9__Bagging_and_Boosting_page-0015.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0016.jpg]]
+Luego ya no dividimos los predictores(nuestras variables) si no que partimos las regiones donde estan las decisiones(las hojas terminales son una region)
+![[W1_9__Bagging_and_Boosting_page-0017.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0018.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0019.jpg]]
+A pesar de representar el arbol como una figura 2D la realidad es que ocupa una superficie 3D
+![[W1_9__Bagging_and_Boosting_page-0020.jpg]]
+Los arboles pueden generar overfitting, por lo que es recomendable construir el arbol entero  y luego ir podandolo en vase a la validacion cruzada
+![[W1_9__Bagging_and_Boosting_page-0021.jpg]]
+Esta ecuacion nos permite generar subarboles mas pequeños esto se llama **poda por complejidad de costo**
+![[W1_9__Bagging_and_Boosting_page-0022.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0023.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0024.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0025.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0026.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0027.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0028.jpg]]
+**Los arboles de clasificación** son similares a los arboles de regresion pero su respuesta es cualitativa, se generan de manera similar a la regresion, con una division binaria recursiva pero el RSS no es aplicable
+![[W1_9__Bagging_and_Boosting_page-0029.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0030.jpg]]
+Cuando el árbol está buscando de manera **voraz** (paso a paso) dónde cortar el espacio predictor, evalúa el Índice de Gini antes y después de cada posible corte. El algoritmo **elegirá el corte que logre reducir al máximo el Índice de Gini** (es decir, el que deje los nodos hijos lo más puros posibles), trata que cada hoja solo sea una posibilidad para no dejar nodos impuros
+![[W1_9__Bagging_and_Boosting_page-0031.jpg]]
+Es similar a Gini pero usamos la incertidumbre para calcular la pureza, cuando el valor es 0 es que el nodo es puro:
+**Usamos Gini y entropia** para crecer el arbol, pero para podralo usamos tasa de error
+![[W1_9__Bagging_and_Boosting_page-0032.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0033.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0034.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0035.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0036.jpg]]
+La diferencia entre un modelo lineal y un arbol de decision, es que el modelo separa todo en una linea recta, mientras que los arboles de decisiones, generan particiones en el plano donde puede caer una clasificación
+![[W1_9__Bagging_and_Boosting_page-0037.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0038.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0039.jpg]]
+En resumen **bagging** junta varios modelos mas debiles los cuales entrenan y luego los promedia, lo que reduce la varianza
+![[W1_9__Bagging_and_Boosting_page-0040.jpg]]
+Bagging genera arboles con muestras del dataframe, no los poda y promedia las prediciones, de esta manera estos arboles que tenian alta varianza, pero nulo overffiting(sesgo) logran reducir su varianza mejorando la presicion
+![[W1_9__Bagging_and_Boosting_page-0041.jpg]]
+Entonces cada arbol decide en donde clasificar y luego se toma por mayoria la votacion de todos los arboles para clasificar
+![[W1_9__Bagging_and_Boosting_page-0042.jpg]]
+### 1. El contexto: El muestreo por Bootstrap
+Cuando haces _bagging_, creas muchos árboles distintos (por ejemplo, B=100 árboles). Para que no sean todos iguales, cada árbol se entrena con una muestra aleatoria de tus datos original extraída **con reemplazo** (puedes repetir filas).
+- Matemáticamente, cuando haces esto, cada árbol termina usando más o menos las **2/3 partes (63.2%)** de tus datos para entrenarse.
+- **El 1/3 restante (36.8%)** de los datos se queda fuera. A ese grupo de datos que el árbol "nunca vio" se le llama **Out-of-Bag (OOB)** o "fuera de la bolsa".
+### 2. El truco: ¿Cómo se calcula el error OOB?
+Imagina que tienes una fila de datos específica, llamémosla la **Observación i**:
+1. El algoritmo busca **cuáles árboles NO usaron la observación i** durante su entrenamiento (que serán aproximadamente B/3 árboles del total). Para esos árboles específicos, la observación i es un dato totalmente nuevo (de prueba).
+2. Le pides a esos árboles "ignorantes" que predigan el valor de la observación i.
+3. Juntas sus respuestas: si es regresión las promedias, y si es clasificación haces una votación por mayoría.
+4. Repites esto para **todas** las observaciones de tu dataset.
+Al final, comparas esa predicción "limpia" de cada fila con su valor real y calculas el error global. Ese es el **Error OOB**.
+### 3. ¿Por qué es tan genial?
+- **Es una estimación del error de prueba ("Test Error") súper honesta:** Como la predicción de cada fila se hizo usando únicamente árboles que jamás la habían visto, no hay trampa ni sobreajuste (_overfitting_).
+- **Equivalencia teórica:** La nota al pie en morado dice que si construyes suficientes árboles (B grande), el error OOB es matemáticamente casi idéntico a hacer un **Leave-One-Out Cross-Validation (LOOCV)**, pero de manera gratuita, automática y mientras entrenas el modelo.
+En resumen: El error OOB es la forma que tiene Random Forest/Bagging de auto-evaluarse sobre la marcha usando los datos sobrantes de cada árbol.
+![[W1_9__Bagging_and_Boosting_page-0043.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0044.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0045.jpg]]
+### 1. El problema del Bagging tradicional (La correlación)
+Imagina que estás entrenando un modelo de Bagging para predecir el precio de casas y tienes 13 variables ($p = 13$). Una de ellas es _"Cantidad de metros cuadrados"_, que es un predictor **ultra dominante** (tiene un peso gigante sobre el precio).
+Como en Bagging cada árbol puede mirar _todas_ las variables en cada corte, **prácticamente todos los árboles elegirán "metros cuadrados" para su primera división en la raíz**.
+- **El problema:** Aunque los árboles se entrenen con muestras de datos ligeramente distintas (Bootstrap), todos terminan siendo estructuralmente muy parecidos. Están altamente **correlacionados**. Si promedias muchos árboles que cometen casi los mismos errores, el beneficio del "comité" se pierde.
+### 2. La solución de Random Forest: Forzar la variedad
+Random Forest introduce una regla estricta para romper esa correlación: cada vez que un árbol va a hacer un corte (un split), **se le prohíbe mirar todas las variables**.
+- **Muestreo aleatorio de predictores ($m$):** En cada nodo de cada árbol, el algoritmo selecciona al azar un subconjunto de solo $m$ variables de entre las $p$ totales disponibles. El árbol está obligado a elegir el mejor corte usando **únicamente** ese grupo reducido.
+- **La regla de oro:** Típicamente se elige $m \approx \sqrt{p}$. Como muestra el ejemplo de la diapositiva, si tienes $p = 13$ variables en total, en cada nodo el árbol solo podrá elegir entre $m = 4$ variables seleccionadas al azar.
+### 3. ¿Por qué funciona tan bien? (Menor Varianza)
+Al limitar las opciones, obligas a que en muchos nodos el predictor dominante (los metros cuadrados) **ni siquiera esté disponible**. Esto fuerza a los árboles a buscar segundas y terceras mejores opciones (como la cantidad de baños o el barrio).
+El resultado es brillante:
+- Creas árboles muy **distintos (descorrelacionados)** entre sí.
+- Algunos árboles individuales serán peores que otros por separado, pero al combinarlos (promediar sus predicciones), los errores aleatorios de uno se cancelan con los aciertos del otro.
+- Matemáticamente: **Menos correlación $\rightarrow$ Menor Varianza global $\rightarrow$ El modelo generaliza mucho mejor con datos nuevos.**
+### Las notas finales de la diapositiva:
+- **Si $m = p$:** Si dejas que el número de variables elegidas al azar sea igual al total de variables, destruyes el truco y Random Forest se convierte exactamente en Bagging tradicional.
+- **Si hay alta correlación y muchas variables ($high\ p$):** Forzar un $m$ muy pequeño ($m \ll p$) es donde Random Forest realmente destruye en rendimiento a otros modelos basados en árboles simples.
+![[W1_9__Bagging_and_Boosting_page-0046.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0047.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0048.jpg]]
+**Boosting** a diferencia de baggin, toma un modelo debil y va mejorando iterativamente el modelo anterior, se usa el mismo conjunto de entrenamiento y se ajusta con los residuos
+![[W1_9__Bagging_and_Boosting_page-0049.jpg]]
+### El proceso secuencial de Boosting
+En lugar de intentar predecir el precio real de la casa desde el principio con un árbol gigante, Boosting hace lo siguiente:
+1. **Árbol 1 (El modelo inicial):** Hace una predicción muy vaga y simple (a veces un árbol de un solo corte o una constante). Comete muchos errores.
+2. **Calcular Residuos:** El algoritmo calcula qué tan lejos se quedó el Árbol 1 para cada fila de datos.
+3. **Árbol 2 (Ajustado a los residuos):** Aquí está la clave. La variable objetivo de este segundo árbol **ya no es el precio real de la casa**, sino **los residuos del Árbol 1**. Este árbol se entrena para predecir el error.
+4. **Actualizar el modelo:** Ahora tu predicción global es: $\text{Predicción} = \text{Árbol 1} + \lambda(\text{Árbol 2})$ (donde $\lambda$ es una tasa de aprendizaje pequeña).
+5. **Repetir:** Se vuelven a calcular los nuevos residuos (lo que todavía no se ha podido explicar) y el Árbol 3 se entrena para predecir esos nuevos errores.
+### Una analogía para entenderlo a la primera
+Imagina que estás esculpiendo una estatua en un bloque de piedra:
+- **El Árbol 1** toma un martillo gigante y le da un golpe tosco a la piedra. Le da una forma vaga, pero comete muchos errores (deja mucha piedra sobrante). Esa piedra sobrante son los **residuos**.
+- **El Árbol 2** no vuelve a golpear el bloque desde cero. Mira fijamente dónde se equivocó el primer golpe (los residuos) y usa un cincel más pequeño para quitar los trozos sobrantes específicos.
+- **El Árbol 3** viene a corregir lo que le faltó al Árbol 2.
+Al final, si sumas el trabajo de los 100 árboles secuenciales, obtienes una escultura perfecta.
+### En resumen:
+Que Boosting se ajuste con los residuos significa que **cada árbol nuevo ignora lo que el modelo ya sabe hacer bien y se enfoca exclusivamente en lo que el modelo todavía está haciendo mal**. Esto hace que sea un algoritmo increíblemente preciso, aunque más propenso al sobreajuste si no se controla el número de árboles.
+![[W1_9__Bagging_and_Boosting_page-0050.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0051.jpg]]
+
+![[W1_9__Bagging_and_Boosting_page-0052.jpg]]
+
