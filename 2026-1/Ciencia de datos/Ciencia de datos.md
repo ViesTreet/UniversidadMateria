@@ -1265,3 +1265,319 @@ Cuando tenemos problemas que no puedan ser separado por metodo lineal, podemos a
 
 ![[W1_10__Support_Vector_Machine_page-0052.jpg]]
 
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0001.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0002.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0003.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0004.jpg]]
+**Las series de tiempo** son algoritmos que  consideran el historias de la variable y para sus predicciones
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0005.jpg]]
+Este nos permite evaluar aspectos mas reales que ocurren en el mundo
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0006.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0007.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0008.jpg]]
+Exploraremos sistemas como **Medias moviles(MA), Modelos autoregresivos(AR) y ARIMA**
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0009.jpg]]
+Asimumos que el futuro sera igual a los ultimos valores observados
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0010.jpg]]
+**La media movil** es un metodo simple que suaviza series de tiempo, para ello usamos una ventana que se refiere que tan al paso tomas los datos, la ventana va recorriendo la serie
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0011.jpg]]
+Ejemplo de **MA** con una ventana de 12
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0012.jpg]]
+Tambien podemos usar el **promedio movil** para predecir un mes que todavia no existe
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0013.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0014.jpg]]
+**Las medias moviles ponderadas(WMA)** le asignan distintos pesos a cada punto de la ventana, permitiendo capturar tendencias mas recientes y el **Suavizado exponencial** hace que los pesos sean mayores en ventanas mas recientes
++ este modelo es solo a corto plazo
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0015.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0016.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0017.jpg]]
+Con estos podemos obtener:
++ **Tendencias($T_t$):** la evolucion, caidas, etc
++ **Estacionalidad($S_t$):** Patrones que se repiten en intervalos regulares
++ **Residuo($R_t$):** variaciones no explicadas por los anteriores, puntos que no encajan en el resto
+**Todo lo anterior** se usa para predicciones
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0018.jpg]]
+**La estacionalidad** son patrones fijos y predecibles, mientras que **los ciclos** son fluctuaciones sin periodicidad fija y no son predecibles con *t*, suelen quedar en el residuo 
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0019.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0020.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0021.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0022.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0023.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0024.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0025.jpg]]
+### 1. Modelo Aditivo
+En este modelo, simplemente **sumas** los componentes para reconstruir el valor real de la serie:
+$$y_t = T_t + S_t + R_t$$
+- **La regla de oro:** La amplitud de las fluctuaciones estacionales **se mantiene constante en el tiempo**, sin importar si la tendencia general va hacia arriba o hacia abajo.
+- **Ejemplo intuitivo:** Imagina las ventas de una tienda de helados. Si cada verano (estacionalidad) vendes exactamente **$5,000 extra** en comparación con el promedio del año, el modelo es aditivo. Si en el año 1 el promedio era de $10,000, en verano vendes $15,000. Si en el año 5 la tienda creció y el promedio es de $50,000, en verano vendes $55,000. El pico veraniego siempre suma la misma cantidad fija.
+### 2. Modelo Multiplicativo
+Aquí, los componentes **se multiplican**:
+$$y_t = T_t \times S_t \times R_t$$
+- **La regla de oro:** La amplitud de las fluctuaciones estacionales **cambia en proporción directa con la tendencia**. Si la tendencia sube, los picos estacionales se vuelven más altos y los valles más profundos (la variación se amplifica).
+- **El truco matemático (Tu diapositiva):** Como es multiplicativo, la estacionalidad ($S_t$) y el residuo ($R_t$) no se miden en las mismas unidades físicas que los datos, sino como **porcentajes o factores de escala**. Por eso para aislar la tendencia divides la serie por la estacionalidad ($y_t / S_t$), y el residuo se calcula dividiendo el valor real por la multiplicación de los otros dos ($R_t = \frac{y_t}{T_t \times S_t}$).
+- **Ejemplo intuitivo:** Volvamos a la heladería. El verano no te da una cantidad fija de dinero, sino que **duplica tus ventas habituales** ($S_{\text{verano}} = 2.0$). Si el promedio inicial es de $10,000, en verano vendes $20,000 (un pico de +$10,000). Pero si en el año 5 tu promedio subió a $50,000, en verano vendes $100,000 (¡un pico de +$50,000!). El gráfico se va abriendo como un abanico.
+**Todo esto pertence a los promedios moviles**
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0026.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0027.jpg]]
+**Los modelos autorregresivos(AR)** modelan series temporales donde el valor actual depende linealmente de los valores pesados
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0028.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0029.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0030.jpg]]
+Los valores de entradas se multiplica por un peso y se le suma un intercepto, a diferencias del **MA** trata de reducir el error cuadratico medio, no es necesario que sume uno e incluye el intercepto
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0031.jpg]]
+**El modelo AR** asume que es estacionaria la serie, o sea que la media y la varianza son constante en el tiempo, no muestra tenndencias ni estacionalidad persistentes
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0032.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0033.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0034.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0035.jpg]]
+### 1. El problema: La Estacionariedad
+Un modelo autorregresivo clásico (**AR**) tiene una regla matemática estricta: **la serie temporal debe ser estacionaria**. Esto significa que su media, su varianza y su co-varianza no deben cambiar a lo largo del tiempo (gráficamente, la serie debe fluctuar de forma constante alrededor de una línea horizontal fija).
+- **El problema real:** La inmensa mayoría de las series de tiempo del mundo real (como el precio de una acción, el PIB o el crecimiento de usuarios de una app) **no son estacionarias**: tienen tendencias alcistas o bajistas estables.
+- Si le aplicas un modelo **AR** directo a una serie con tendencia, las predicciones matemáticamente fallarán por completo.
+### 2. La solución: Diferenciación
+Para eliminar la tendencia y forzar a la serie a volverse horizontal (estacionaria), en lugar de analizar los valores absolutos directamente, calculas la **variación o cambio neto entre un periodo y el anterior**.
+$$\Delta Y_t = Y_t - Y_{t-1}$$
+- **El grado de diferenciación ($dd$):** Si diferencias una vez ($d=1$) y la serie todavía mantiene una ligera curva o tendencia, puedes volver a aplicar el proceso sobre la serie ya diferenciada ($\Delta(\Delta Y_t)$). A esto se le conoce como **grado de diferenciación**. Típicamente con $d=1$ o $d=2$ es suficiente para limpiar cualquier tendencia.
+### 3. Diferencia entre un AR normal y este enfoque (AR con Diferenciación / ARI)
+La diferencia estructural en las ecuaciones te lo dejará clarísimo:
+#### Modelo AR(1) Normal (Sin Diferenciación)
+Intenta predecir el valor absoluto de hoy ($Y_t$) usando una proporción del valor absoluto de ayer ($Y_{t-1}$):
+$$Y_t = c + \phi_1 Y_{t-1} + \epsilon_t$$
+- **Cuándo se usa:** Solo si tus datos originales ya fluctúan en un canal plano sin ninguna tendencia.
+#### Modelo ARI(1, 1) (AR con 1 grado de Diferenciación)
+Como los datos originales tenían tendencia, primero aplicamos la resta ($Y_t - Y_{t-1}$). El modelo ahora predice el **cambio o crecimiento de hoy** basándose en el **cambio o crecimiento que hubo ayer**:
+$$\Delta Y_t = c + \phi_1 \Delta Y_{t-1} + \epsilon_t$$
+$$(Y_t - Y_{t-1}) = c + \phi_1 (Y_{t-1} - Y_{t-2}) + \epsilon_t$$
+- **Cuándo se usa:** Siempre que tus datos muestren una tendencia marcada a subir o bajar en el tiempo.
+### En resumen:
+La diferencia es que el **AR normal** trabaja con los datos en bruto y asume que no tienen tendencia; mientras que este enfoque **"estabiliza" la serie primero mediante restas consecutivas (diferenciación)** para luego poder aplicar de forma segura la lógica autorregresiva sobre las puras variaciones limpias. Al final, el software simplemente "reinvierte" la resta para entregarte la proyección en los niveles reales de la serie original.
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0036.jpg]]
+Para la prueba reservamos una muestra aleatoria, por ejemplo los ultimos 12 meses y con eso evaluamos el modelo, penalizamos los errores con el RMSE
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0037.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0038.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0039.jpg]]
+**ARIMA:** combina autorregresion, integración y media movil
+**SARIMA:** extiende ARIMA incorporando estacionalidades explicitas
+**SARIMAX:** incluye variables que estan fuera de la serie que queremos modelar
+**Prophet:** modelo aditivo que incorpora multiples estacionalidades y eventos especiales
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0040.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0041.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0042.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0043.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0044.jpg]]
+Si bien podemos usar modelos clasicos para predecir secuencias temporales hay que cambiar el enfoque y definir una ventana en donde los meses por ejemplo sean los inputs, esto puede capturar patrones pero carece de memoria, por eso tenemos opciones como **LSTM(Long Short-Term Memory), GRU(Gated Recurrent Unit), CNNs temporales y Transformers para series de tiempo**
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0045.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0046.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0047.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0048.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0049.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0050.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0051.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0052.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0053.jpg]]
+### 1. La definición formal ($h(k) = n_k$)
+Imagina una imagen en blanco y negro (escala de grises).
+- **$k$ representa el nivel de gris:** Va desde `0` (negro absoluto) hasta un valor máximo $L$ (blanco puro). En las imágenes digitales típicas de 8 bits, $L = 255$, por lo que tienes 256 niveles posibles de gris.
+- **$n_k$ es el contador de píxeles:** Te dice cuántos píxeles de toda la imagen tienen exactamente el tono de gris $k$.
+- **$h(k)$ es la función del histograma:** Si graficas esto, el eje horizontal ($X$) muestra los tonos de gris (de negro a blanco) y el eje vertical ($Y$) muestra la cantidad de píxeles.
+### 2. El Histograma Normalizado ($p(k) = \frac{n_k}{n}$)
+El segundo y tercer punto explican un truco estadístico muy usado. Si tienes una imagen gigante de $4000 \times 3000$ píxeles y otra pequeña de $400 \times 300$, sus histogramas directos se verán altísimos en una y bajísimos en la otra, haciendo imposible compararlas matemáticamente aunque sean la misma foto.
+Para solucionarlo, se calcula la **versión normalizada**: divides la cantidad de píxeles de cada tono ($n_k$) por el **número total de píxeles que tiene la imagen ($n$)**.
+- Al hacer esto, los valores del eje $Y$ ya no son cantidades absolutas, sino que quedan acotados en un rango de **0 a 1** (o de 0% a 100%).
+- **La interpretación probabilística:** Como bien dice la slide, puedes interpretar $p(k)$ como **la probabilidad de que, si eliges un píxel al azar en esa imagen, este sea del color o tono de gris $k$**.
+### 3. ¿Para qué sirve? Aplicación en Segmentación en Tiempo Real
+El último punto destaca por qué es una herramienta tan potente. El histograma te da una "radiografía" instantánea de la iluminación y el contraste de una escena:
+- Si las barras están todas agrupadas a la izquierda, la imagen es muy oscura.
+- Si están agrupadas a la derecha, está muy iluminada o sobreexpuesta.
+- Si hay dos "montañas" muy claras y separadas (por ejemplo, una montaña de píxeles oscuros y otra de píxeles claros), tienes una imagen con un objeto oscuro sobre un fondo claro.
+Esto último permite hacer **Segmentación por Umbralización (Thresholding)**: puedes decirle a la computadora _"busca el punto medio entre las dos montañas del histograma y corta la imagen ahí; todo lo que sea más oscuro es el fondo y todo lo que sea más claro es el objeto"_.
+Como calcular un histograma es simplemente recorrer la matriz de la imagen contando píxeles, es una operación **súper rápida y de muy bajo costo computacional**, ideal para algoritmos de visión artificial que necesitan correr en **tiempo real** (como cámaras de seguridad, sensores industriales o filtros de video).
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0054.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0055.jpg]]
+
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0056.jpg]]
+### 1. El concepto geométrico y el rango $[0, 1]$
+La Distancia de Bhattacharyya mide el **grado de superposición (overlap)** entre dos distribuciones estadísticas (en este caso, tus dos histogramas, $h_1$ y $h_2$).
+- Entrega un valor normalizado que va **estrictamente entre 0 y 1**.
+- **Si el resultado es 0:** Significa que los dos histogramas son **idénticos** (tienen la misma forma exacta, cero distancia).
+- **Si el resultado es 1:** Significa que los histogramas son **completamente disjuntos** (no comparten ningún tono, por ejemplo, uno es puramente negro y el otro puramente blanco; distancia máxima).
+### 2. La ecuación matemática
+La fórmula que ves en la slide es:
+$$D_B(h_1, h_2) = \sqrt{1 - \sum_{i=1}^{N} \sqrt{h_1^{(i)} \times h_2^{(i)}}}$$
+- **$N$:** Es el número de "bins" o barras que tienen tus histogramas.
+- **La sumatoria ($\sum \sqrt{h_1 \times h_2}$):** Se conoce como el _Coeficiente de Bhattacharyya_. Multiplica barra por barra el valor del primer histograma con el del segundo. Si en un tono gris específico ambos histogramas tienen muchos píxeles, esa multiplicación da un número grande; si uno de los dos tiene cero, se anula. Es una medida de **similitud**.
+- **El complemento ($1 - \text{similitud}$):** Al restarle esa similitud a $1$, transformas la métrica de "qué tan parecidos son" a **"qué tan distantes están"**.
+### 3. El código en C++ (El bloque azul)
+El recuadro azul te muestra una implementación real y limpia en código (utilizando tipos de datos `float` y `double`)
+- El ciclo `for` calcula el Coeficiente de Bhattacharyya acumulando la raíz cuadrada de la multiplicación de cada posición de los arreglos (`D += sqrt(h1[i] * h2[i])`).
+- Al final, la línea `return 1 - D < 0 ? 0.0 : sqrt(1 - D);` es un control de seguridad numérica por si acaso por errores de redondeo flotante `1 - D` diera un número negativo muy pequeño, evitando que la función `sqrt` (raíz cuadrada) falle. Devuelve el valor final de la distancia.
+### 4. ¿Para qué se usa en la práctica? (El último punto)
+Como dice la frase final: _"Se puede usar para clasificar regiones, según objetos de interés"_.
+Imagina que estás construyendo un algoritmo para rastrear una pelota de tenis amarilla en un video:
+1. Calculas el histograma de referencia de la pelota (tu objetivo).
+2. En el siguiente fotograma del video, analizas diferentes regiones o ventanas de la imagen y calculas sus respectivos histogramas.
+3. Calculas la **Distancia de Bhattacharyya** entre el histograma de referencia y el de cada ventana.
+4. La región de la imagen que entregue la **distancia más cercana a 0** es, con altísima probabilidad, la pelota que estás buscando.
+Es una técnica clásica y sumamente eficiente para tareas de seguimiento (_tracking_), segmentación de texturas y recuperación de imágenes por contenido.
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0057.jpg]]
+### 1. Los Parámetros de la Función `cv::threshold`
+- **`src` y `dst`:** La imagen de entrada (`source`) y dónde se guardará el resultado (`destination`). Tienen que ser de un solo canal (habitualmente escala de grises).
+- **`threshold`:** El valor límite o corte (la línea roja punteada en los gráficos).
+- **`max_value`:** El valor que se le asignará al píxel si cumple la condición del algoritmo (por ejemplo, `255` para volverlo blanco puro).
+- **`type`:** El número que define la estrategia matemática que se va a aplicar.
+### 2. Los Métodos Visualizados en las Gráficas
+Imagina que la línea azul u ondulada de la primera gráfica (`Original`) representa los niveles de gris de una fila de píxeles. La línea roja punteada es tu umbral. Mira cómo cambia según el `type`:
+- **0: Binario (`Binary`):** * _La regla:_ Todo lo que esté por **encima** del umbral se convierte en el valor máximo (blanco) y todo lo que esté por **debajo** se vuelve `0` (negro). El resultado es puramente blanco o negro (una onda cuadrada perfecta).
+- **1: Binario Invertido (`Binary Inverted`):** * _La regla:_ Al revés del anterior. Lo que está por **debajo** del umbral se vuelve blanco y lo que está por **arriba** se vuelve negro.
+- **2: Truncado (`Truncated`):** * _La regla:_ Todo lo que supere al umbral "se corta" y se queda exactamente en el valor del umbral. Lo que esté por debajo del umbral no se toca, mantiene sus valores originales. Por eso la gráfica se ve plana arriba pero conserva las curvas abajo.
+- **3: Umbral a Cero (`To Zero`):** * _La regla:_ Si el píxel está por **debajo** del umbral, se destruye (se vuelve `0`, negro). Si está por **encima**, no se altera en absoluto, mantiene su tono original. (Ideal para limpiar ruidos oscuros de fondo manteniendo los detalles del objeto luminoso).
+### ¿Cómo se conecta esto con el examen o laboratorio?
+Si en el código de tu proyecto necesitas separar, por ejemplo, un texto negro sobre una hoja blanca, usas `cv::threshold` con tipo `0` o `1`. Al elegir el valor del corte en base al punto medio del histograma, puedes convertir toda la imagen en una máscara binaria ultra limpia de alto contraste, facilitando que el algoritmo reconozca las formas en tiempo real.
+![[W1_12__Basic_Image_Processing_and_Time_Series_Analysis_page-0058.jpg]]
+![[W1_13__Deployment_page-0001.jpg]]
+
+![[W1_13__Deployment_page-0002.jpg]]
+
+![[W1_13__Deployment_page-0003.jpg]]
+
+![[W1_13__Deployment_page-0004.jpg]]
+
+![[W1_13__Deployment_page-0005.jpg]]
+
+![[W1_13__Deployment_page-0006.jpg]]
+
+![[W1_13__Deployment_page-0007.jpg]]
+Un **sistema embebido** (o sistema empotrado/integrado) es un sistema de computación diseñado para realizar **una función específica o un conjunto muy limitado de tareas dedicadas**, frecuentemente dentro de un sistema mecánico o eléctrico más grande.
+![[W1_13__Deployment_page-0008.jpg]]
+
+![[W1_13__Deployment_page-0009.jpg]]
+
+![[W1_13__Deployment_page-0010.jpg]]
+
+![[W1_13__Deployment_page-0011.jpg]]
+
+![[W1_13__Deployment_page-0012.jpg]]
+
+![[W1_13__Deployment_page-0013.jpg]]
+
+![[W1_13__Deployment_page-0014.jpg]]
+
+![[W1_13__Deployment_page-0015.jpg]]
+
+![[W1_13__Deployment_page-0016.jpg]]
+
+![[W1_13__Deployment_page-0017.jpg]]
+
+![[W1_13__Deployment_page-0018.jpg]]
+
+![[W1_13__Deployment_page-0019.jpg]]
+
+![[W1_13__Deployment_page-0020.jpg]]
+
+![[W1_13__Deployment_page-0021.jpg]]
+
+![[W1_13__Deployment_page-0022.jpg]]
+
+![[W1_13__Deployment_page-0023.jpg]]
+
+![[W1_13__Deployment_page-0024.jpg]]
+
+![[W1_13__Deployment_page-0025.jpg]]
+
+![[W1_13__Deployment_page-0026.jpg]]
+
+![[W1_13__Deployment_page-0027.jpg]]
+
+![[W1_13__Deployment_page-0028.jpg]]
+
+![[W1_13__Deployment_page-0029.jpg]]
+
+![[W1_13__Deployment_page-0030.jpg]]
+
+![[W1_13__Deployment_page-0031.jpg]]
+
+![[W1_13__Deployment_page-0032.jpg]]
+
+![[W1_13__Deployment_page-0033.jpg]]
+
+![[W1_13__Deployment_page-0034.jpg]]
+
+![[W1_13__Deployment_page-0035.jpg]]
+
+![[W1_13__Deployment_page-0036.jpg]]
+
+![[W1_13__Deployment_page-0037.jpg]]
+
+![[W1_13__Deployment_page-0038.jpg]]
+
+![[W1_13__Deployment_page-0039.jpg]]
+
+![[W1_13__Deployment_page-0040.jpg]]
+
+![[W1_13__Deployment_page-0041.jpg]]
+
+![[W1_13__Deployment_page-0042.jpg]]
+
+![[W1_13__Deployment_page-0043.jpg]]
+
+![[W1_13__Deployment_page-0044.jpg]]
+
+![[W1_13__Deployment_page-0045.jpg]]
+
+![[W1_13__Deployment_page-0046.jpg]]
+
+![[W1_13__Deployment_page-0047.jpg]]
+
+![[W1_13__Deployment_page-0048.jpg]]
+
+![[W1_13__Deployment_page-0049.jpg]]
+
+![[W1_13__Deployment_page-0050.jpg]]
+
+![[W1_13__Deployment_page-0051.jpg]]
+
+![[W1_13__Deployment_page-0052.jpg]]
+
+![[W1_13__Deployment_page-0053.jpg]]
+
+![[W1_13__Deployment_page-0054.jpg]]
+
+![[W1_13__Deployment_page-0055.jpg]]
+
+![[W1_13__Deployment_page-0056.jpg]]
+

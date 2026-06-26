@@ -1,9 +1,9 @@
 
 
 with open("Ciencia de datos.md","a") as file:
-    for i in range(1,53):
+    for i in range(1,57):
         if (i<10):
             dato=f"0{i}"
         else:
             dato=str(i)
-        file.write(f"![[W1_10__Support_Vector_Machine_page-00{dato}.jpg]]\n\n")
+        file.write(f"![[W1_13__Deployment_page-00{dato}.jpg]]\n\n")
