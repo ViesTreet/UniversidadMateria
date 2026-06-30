@@ -559,3 +559,109 @@ Se debe tener procesos para estas situaciones incluyendo:
 ![[Pasted image 20260527234327.png]]
 ![[Pasted image 20260527234401.png]]
 ![[Pasted image 20260527234417.png]]
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0001.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0002.jpg]]
+Debemos hacer seguimiento, medición, análisis y evaluación con el fin de lograr la satisfacción del cliente
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0003.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0004.jpg]]
+Los datos deben permanecer en secreto, deben ser recolectados de manera legal y aprobada por los usuarios y deben ser eliminadas si quieren
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0005.jpg]]
+Los resultados deben servir para retroalimentar y mejorar
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0006.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0007.jpg]]
+Las empresas tiene la obligación de respetar marcos legales de ciberseguridad para mantener los datos seguros
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0008.jpg]]
+Se debe mantener una evualuacion de desempeño ambiental de la empresa, manteniendo registro y haciendo seguimiento de las variables
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0009.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0010.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0011.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0012.jpg]]
+### 1. El Principio Fundamental
+Establece y resguarda el derecho constitucional de todas las personas a **vivir en un medio ambiente libre de contaminación**, además de la protección del medio ambiente, la preservación de la naturaleza y la conservación del patrimonio ambiental.
+### 2. El SEIA (Sistema de Evaluación de Impacto Ambiental)
+Es la herramienta más importante de la ley. Obliga a que cualquier proyecto (minero, inmobiliario, industrial, etc.) que pueda causar un impacto ambiental pase por una revisión _antes_ de construirse. Se evalúa de dos formas:
+- **Declaración de Impacto Ambiental (DIA):** Para proyectos simplificados que aseguran no generar riesgos graves.
+- **Estudio de Impacto Ambiental (EIA):** Para proyectos grandes que sí generan riesgos, reasentamientos humanos, alteración de recursos protegidos, etc. Requiere planes de mitigación y compensación.
+### 3. La Institucionalidad Ambiental
+Aunque la ley es de 1994, una reforma mayor (Ley 20.417) modernizó los organismos que la ejecutan, creando el diseño actual:
+- **Ministerio del Medio Ambiente (MMA):** Diseña las políticas y las leyes.
+- **Servicio de Evaluación Ambiental (SEA):** Administra el SEIA y evalúa los proyectos.
+- **Superintendencia del Medio Ambiente (SMA):** Fiscaliza y sanciona a quienes no cumplen las reglas.
+### 4. Responsabilidad por Daño Ambiental
+Introduce el principio de **"el que contamina, paga"**. Establece que quien cause daño ambiental de manera negligente o con dolo (intencionalidad) está obligado a repararlo materialmente a su costo, además de arriesgar multas severas por parte de la SMA.
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0013.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0014.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0015.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0016.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0017.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0018.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0019.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0020.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0021.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0022.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0023.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0024.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0025.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0026.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0027.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0028.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0029.jpg]]
+**se debe recordar** que se debe mantener información documentada de las auditorias por parte de la dirección
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0030.jpg]]
+La información se debe usar con el fin de mejorar
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0031.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0032.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0033.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0034.jpg]]
+Las empresas deben tomar acciones oportunas y eficaces para mitigar riesgos y no conformidades
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0035.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0036.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0037.jpg]]
+En este proceso de mejora se debe promover el sistema de gestion y pedir apoyo a los trabajadores
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0038.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0039.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0040.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0041.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0042.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0043.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0044.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0045.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0046.jpg]]
+
+![[PPT Contenidos tercer certamen SIG-USM 2026_page-0047.jpg]]
+
