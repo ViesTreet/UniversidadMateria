@@ -4,7 +4,6 @@ import subprocess
 from pdf2image import convert_from_path
 from time import time
 
-tempStamp = int(time())
 carpetaAdj = "2026-2/Adjuntos/"
 rutaInput = None
 rutaOutput = None
@@ -34,18 +33,20 @@ def get_file_path_input_output():
         rutaOutput = file_path
     
 def general_convert():
-    if ".pdf" in rutaInput:
-        imagenes = convert_from_path(rutaInput)
-    else:
-        convert_ppt_to_pdf()
-        imagenes = convert_from_path(rutaInput)
-        subprocess.run(["rm", rutaInput], check=True)
+    tempStamp = int(time())
+    if(rutaInput != None and rutaOutput != None):
+        if ".pdf" in rutaInput:
+            imagenes = convert_from_path(rutaInput)
+        else:
+            convert_ppt_to_pdf()
+            imagenes = convert_from_path(rutaInput)
+            subprocess.run(["rm", rutaInput], check=True)
 
 
-    with open(rutaOutput, "a", encoding="utf-8") as f:
-        for i, imagen in enumerate(imagenes):
-            imagen.save(f'{carpetaAdj}{tempStamp}_{i+1}.png', 'PNG')
-            f.write(f"![[{tempStamp}_{i+1}.png]]\n\n")
+        with open(rutaOutput, "a", encoding="utf-8") as f:
+            for i, imagen in enumerate(imagenes):
+                imagen.save(f'{carpetaAdj}{tempStamp}_{i+1}.png', 'PNG')
+                f.write(f"![[{tempStamp}_{i+1}.png]]\n\n")
 
     
 
