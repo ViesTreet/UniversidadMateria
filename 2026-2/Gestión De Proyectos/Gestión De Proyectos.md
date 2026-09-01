@@ -112,7 +112,7 @@ La PMO es un área que tiene el fin de mejorar la gestión del proyecto, esto co
 ![[1788059808_7.png]]
 
 ![[1788059808_8.png]]
-
+El estandar nos da una guia a considedarar pero la metodologia nos dice como llevarlo a cabo
 ![[1788059808_9.png]]
 
 ![[1788059808_10.png]]
