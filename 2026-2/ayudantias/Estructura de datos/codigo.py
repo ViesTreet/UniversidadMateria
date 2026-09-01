@@ -1,4 +1,4 @@
-"""Un atacante vulneró una red local en el Gran Concepción y borró los registros principales. Sin embargo, el equipo de seguridad logró interceptar un archivo JSON con logs de conexiones en bruto. Los chiquillos deben crear un script en Python que procese estos diccionarios, limpie los datos corruptos (validando información, igual que en las notas del ejemplo que me pasaste) y encuentre el RUT del principal sospechoso. Ese RUT será la clave para la "Terminal de Desencriptación" (el HTML)."""
+"""Un atacante vulneró una red local en el Gran Concepción y borró los registros principales. Sin embargo, el equipo de seguridad logró interceptar un archivo JSON con logs de conexiones en bruto."""
 
 print("--- SISTEMA DE ANÁLISIS FORENSE INICIADO ---")
 
