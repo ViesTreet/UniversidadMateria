@@ -1,14 +1,17 @@
+import json
 """Un atacante vulneró una red local en el Gran Concepción y borró los registros principales. Sin embargo, el equipo de seguridad logró interceptar un archivo JSON con logs de conexiones en bruto."""
 
 print("--- SISTEMA DE ANÁLISIS FORENSE INICIADO ---")
 
 try:
-    with open("HackerLogs.json", "r", encoding="utf-8") as archivo:
+    with open("hackerLogs.json", "r", encoding="utf-8") as archivo:
         logs_interceptados = json.load(archivo)
     print(f"[+] Archivo logs.json cargado exitosamente. Se leyeron {len(logs_interceptados)} registros.\n")
 except json.JSONDecodeError:
     print("[-] ERROR: El archivo 'logs.json' está corrupto o mal formateado.")
     logs_interceptados = {}
+
+print(logs_interceptados)
 
 def limpiar_datos(diccionario: dict) -> dict:
     """

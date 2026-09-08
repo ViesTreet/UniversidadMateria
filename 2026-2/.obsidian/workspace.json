@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Gestión De Proyectos/Gestión De Proyectos.md",
+                "file": "ayudantias/Matematica de la ingenieria/Resumen.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Gestión De Proyectos"
+              "title": "Resumen"
             }
           }
         ]
@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ea0c3d1b86f65395",
@@ -189,25 +188,32 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "9a9f4b6e94dbec37",
+  "active": "bd2577e7154bfa03",
   "lastOpenFiles": [
-    "Gestión Del Emprendimiento/Gestión Del Emprendimiento.md",
+    "ayudantias/Estructura de datos/Tarea2.ipynb",
+    "Inteligencia De Negocios/Inteligencia De Negocios.md",
+    "ayudantias/Matematica de la ingenieria/Resumen.md",
+    "ayudantias/Estructura de datos/codigoResuleto.py",
+    "Adjuntos/1788305668_13.png",
+    "Adjuntos/1788305668_12.png",
+    "Adjuntos/1788305668_11.png",
+    "Adjuntos/1788305668_10.png",
+    "Adjuntos/1788305668_9.png",
+    "Adjuntos/1788305668_8.png",
+    "Adjuntos/1788305668_7.png",
+    "Adjuntos/1788305668_6.png",
+    "Adjuntos/1788305668_5.png",
+    "Adjuntos/1788305668_4.png",
+    "Adjuntos/OLTP - OLAP.pdf",
+    "Adjuntos/lu59271nssd.tmp",
+    "Adjuntos/Catedra Clase 2.pdf",
+    "Adjuntos/lu55911n94s.tmp",
     "Gestión De Proyectos/Gestión De Proyectos.md",
-    "Adjuntos/1788059828_29.png",
-    "Adjuntos/1788059828_28.png",
-    "Adjuntos/1788059828_27.png",
-    "Adjuntos/1788059828_26.png",
-    "Adjuntos/1788059828_25.png",
-    "Adjuntos/1788059828_24.png",
-    "Adjuntos/1788059828_23.png",
-    "Adjuntos/1788059828_22.png",
-    "Adjuntos/1788059828_21.png",
-    "Adjuntos/1788059828_20.png",
+    "Gestión Del Emprendimiento/Gestión Del Emprendimiento.md",
     "Adjuntos/Clase 1 - Intro.pdf",
     "Adjuntos/lu73679f4z2y.tmp",
     "Adjuntos/1788058648.md",
     "1788058648.md",
-    "ayudantias/Matematica de la ingenieria/Resumen.md",
     "ayudantias/Matematica de la ingenieria/Resumen.pdf"
   ]
 }

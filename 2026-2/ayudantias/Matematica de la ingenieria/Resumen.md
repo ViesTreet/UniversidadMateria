@@ -2,6 +2,10 @@
 title: "Matrices y Determinantes — Ayudantía"
 subtitle: "MAT021B — Matemática de Ingeniería"
 ---
+---
+title: "Matrices y Determinantes — Ayudantía"
+subtitle: "MAT021B — Matemática de Ingeniería"
+---
 
 # Matrices y Determinantes
 
@@ -24,7 +28,7 @@ $$
 
 Cada $a_{ij}$ es una **entrada**: el subíndice $i$ indica la fila, el subíndice $j$ la columna. Si $m = n$, la matriz se llama **cuadrada** de orden $n$.
 
-> [!tip] Truco para recordar el orden
+> **Truco para recordar el orden**  
 > $A$ es de orden $\color{blue}{m} \times \color{red}{n}$ → primero **filas** (azul), después **columnas** (rojo). "Filas por columnas", como en el cine: fila 3, asiento (columna) 5.
 
 **Ejemplo.** $A = \begin{pmatrix} 2 & -3 \\ -4 & 5 \\ 7 & -1 \end{pmatrix}$ es de orden $3\times2$ (3 filas, 2 columnas).
@@ -54,7 +58,7 @@ Se multiplica **cada entrada** por el escalar $\alpha$.
 
 ### 2.3 Producto de matrices — la parte que hay que dominar
 
-> [!warning] Regla de compatibilidad
+> **Regla de compatibilidad**  
 > El producto $A \cdot B$ **solo existe** si el número de **columnas de $A$** coincide con el número de **filas de $B$**.
 
 $$
@@ -64,7 +68,7 @@ $$
 - 🔴 Los números **rojos** ($n$) deben ser **iguales**: eso es lo que se revisa para saber si "se puede multiplicar".
 - 🔵 Los números **azules** ($m$ y $p$) sobreviven y forman el **orden del resultado** $C$.
 
-> [!example] Regla mnemotécnica
+> **Regla mnemotécnica**  
 > Escribe los dos órdenes seguidos: $(m \times \color{#e74c3c}{n})(\color{#e74c3c}{n} \times p)$. Si los números del medio (rojos) **chocan y son iguales**, se cancelan, y quedan los de las puntas (azules): el resultado es $m \times p$.
 
 **¿Cómo se calcula cada entrada del resultado?**
@@ -92,7 +96,7 @@ $$
 AB = \begin{pmatrix} 1 & -5 & 2 \\ -1 & 9 & -6 \end{pmatrix}
 $$
 
-> [!danger] Ojo
+> **Ojo**  
 > El producto de matrices **no es conmutativo**: en general $AB \neq BA$. De hecho, en el ejemplo anterior, $B \cdot A$ **ni siquiera está definido**, porque $B$ es $3\times3$ y $A$ es $2\times3$: las columnas de $B$ (3) no coinciden con las filas de $A$ (2).
 
 ### 2.4 Matriz identidad
@@ -169,7 +173,7 @@ $$\det(A) = \color{#e74c3c}{[(1)(1)(1)+(0)(-1)(3)+(-1)(2)(2)]} - \color{blue}{[(
 
 Dada $A$ cuadrada, buscamos $B$ tal que $A\cdot B = B \cdot A = I_n$. Si existe, $B = A^{-1}$.
 
-> [!important] Teorema (existencia)
+> **Teorema (existencia)**  
 > $A$ es invertible $\iff \det(A) \neq 0$.
 
 ### 4.1 Método 1: operaciones elementales por filas
@@ -416,8 +420,8 @@ $$\boxed{X = -5\,M^{-1}N = \begin{pmatrix}7&-1\\8&1\\-11&-2\end{pmatrix}}$$
 Sistema:
 $$
 \begin{cases}
-4x+y-2z=-3\\
-3x-y+4z=-2\\
+4x+y-2z=-3 \\
+3x-y+4z=-2 \\
 -x+y+z=5
 \end{cases}
 $$
@@ -446,8 +450,472 @@ $$\boxed{x=-1,\quad y=3,\quad z=1}$$
 
 ---
 
-> [!success] Resumen rápido de fórmulas
+> **Resumen rápido de fórmulas**  
 > - $2\times2$: $\det = ad-bc$
 > - $A$ invertible $\iff \det(A)\neq0$
 > - $A^{-1}=\dfrac{1}{\det A}(\mathrm{Cof}\,A)^T$
 > - $AX=B \Rightarrow X=A^{-1}B$ — pero $XA=B \Rightarrow X=B\,A^{-1}$ (¡el lado importa!)
+
+---
+
+---
+
+# Sistemas de Ecuaciones Lineales
+
+> Apunte de ayudantía: teoría + resolución completa de la Práctica 3.
+
+---
+
+## 1. Sistema lineal y forma matricial
+
+Un **sistema lineal** de $m$ ecuaciones con $n$ incógnitas se escribe como:
+
+$$
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n = b_1 \\
+a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n = b_2 \\
+\quad \vdots \\
+a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n = b_m
+\end{cases}
+$$
+
+que en forma matricial es $A \cdot X = B$, con $A$ la **matriz de coeficientes** ($m\times n$), $X$ el vector de incógnitas y $B$ el vector de términos independientes.
+
+Para resolverlo trabajamos con la **matriz ampliada** $[A \mid B]$, que junta los coeficientes con los términos independientes en una sola matriz.
+
+> **¿Por qué ampliada?**  
+> Aplicar operaciones de fila sobre $[A\mid B]$ es exactamente lo mismo que operar sobre las ecuaciones del sistema (sumarlas, restarlas, multiplicarlas por una constante), pero de forma mucho más ordenada.
+
+---
+
+## 2. Eliminación de Gauss-Jordan
+
+Se aplican operaciones elementales por fila sobre $[A\mid B]$ hasta llevar $A$ a su **forma escalonada reducida** (un $1$ como **pivote** en cada fila no nula, con ceros arriba y abajo de cada pivote):
+
+$$ [A\mid B] \xrightarrow{\text{operaciones de fila}} [A' \mid B'] $$
+
+**Ejemplo rápido.** Para $\begin{cases}x+y=5 \\ 2x-y=1\end{cases}$:
+
+$$ \left(\begin{array}{cc|c}1&1&5\\2&-1&1\end{array}\right)\xrightarrow[]{F_2-2F_1\to F_2}\left(\begin{array}{cc|c}1&1&5\\0&-3&-9\end{array}\right)\xrightarrow[]{F_2\to-\frac13F_2}\left(\begin{array}{cc|c}1&1&5\\0&1&3\end{array}\right)\xrightarrow[]{F_1-F_2\to F_1}\left(\begin{array}{cc|c}1&0&2\\0&1&3\end{array}\right) $$
+
+Se lee directamente: $x=2,\ y=3$.
+
+---
+
+## 3. ¿Cuándo tiene solución? — Teorema de Rouché-Frobenius
+
+Sea $n$ el número de incógnitas, $\mathrm{rg}(A)$ el rango de la matriz de coeficientes y $\mathrm{rg}(A\mid B)$ el rango de la matriz ampliada.
+
+$$ \boxed{\mathrm{rg}(A) \neq \mathrm{rg}(A\mid B)} \Longrightarrow \color{#e74c3c}{\textbf{Sistema incompatible}} \text{ (sin solución)} $$
+
+$$ \mathrm{rg}(A) = \mathrm{rg}(A\mid B) \Longrightarrow \color{#2ecc71}{\textbf{Sistema compatible}} 
+\begin{cases} 
+\mathrm{rg}(A) = n \Rightarrow \textbf{Determinado (solución única)} \\ 
+\mathrm{rg}(A) < n \Rightarrow \textbf{Indeterminado (infinitas soluciones, con } n-\mathrm{rg}(A) \textbf{ parámetros libres)} 
+\end{cases} $$
+
+> **Cómo se ve en la forma escalonada**  
+> 
+> - **Incompatible:** aparece una fila del tipo $\left(0\ 0\ \cdots\ 0 \mid \color{#e74c3c}{k}\right)$ con $k\neq0$ — una ecuación imposible como $0=k$.
+> - **Determinado:** cada columna de $A$ tiene un pivote (no quedan variables "libres").
+> - **Indeterminado:** sobran columnas sin pivote → esas variables quedan como **parámetros libres**.
+
+---
+
+## 4. Sistemas homogéneos
+
+Un sistema es **homogéneo** cuando $B=O$ (todos los términos independientes son $0$). Siempre es compatible (al menos tiene la solución trivial $X=O$), y es indeterminado (infinitas soluciones) exactamente cuando $\mathrm{rg}(A)<n$.
+
+## 5. Sistemas con un parámetro
+
+Cuando el sistema depende de un parámetro (llamémoslo $m$ o $\alpha$), la estrategia es:
+
+1. Calcular $\det(A)$ en función del parámetro (si $A$ es cuadrada).
+2. Los valores que anulan $\det(A)$ son los **candidatos** a no tener solución única — ahí NO se puede usar la regla de Cramer ni invertir $A$.
+3. Para cada uno de esos valores, **reemplazar y comparar** $\mathrm{rg}(A)$ con $\mathrm{rg}(A\mid B)$ para decidir si es incompatible o compatible indeterminado.
+4. Para todos los demás valores del parámetro: solución única ($\det(A)\neq0$).
+
+---
+
+---
+
+# Práctica 3 — Solución
+
+## Ejercicio 1 — Compatibilidad y solución de cada sistema
+
+### a) $\begin{cases}-2x+y+z=6 \\ 3x-z=-7 \\ -x-5y+2z=7\end{cases}$
+
+$$ \left(\begin{array}{ccc|c}-2&1&1&6\\3&0&-1&-7\\-1&-5&2&7\end{array}\right) \xrightarrow{\text{Gauss-Jordan}} \left(\begin{array}{ccc|c}1&0&0&-\frac{6}{5}\\0&1&0&\frac{1}{5}\\0&0&1&\frac{17}{5}\end{array}\right) $$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=3=n$ → **Compatible determinado**.
+
+$$\boxed{x=-\frac{6}{5},\quad y=\frac{1}{5},\quad z=\frac{17}{5}}$$
+
+### b) $\begin{cases}-3x+y-z=-4 \\ 5x-2y+z=6 \\ -x+y+3z=0\end{cases}$
+
+$$ \left(\begin{array}{ccc|c}-3&1&-1&-4\\5&-2&1&6\\-1&1&3&0\end{array}\right) \xrightarrow{\text{Gauss-Jordan}} \left(\begin{array}{ccc|c}1&0&0&2\\0&1&0&2\\0&0&1&0\end{array}\right) $$
+
+**Compatible determinado.**
+
+$$\boxed{x=2,\quad y=2,\quad z=0}$$
+
+### c) (P) $\begin{cases}-2x+y-z=0 \\ x-2y+3z=13 \\ -x+y+4z=9\end{cases}$
+
+$$ \left(\begin{array}{ccc|c}-2&1&-1&0\\1&-2&3&13\\-1&1&4&9\end{array}\right)\xrightarrow[F_3-F_2\to F_3]{F_1+2F_2\to F_1}\left(\begin{array}{ccc|c}0&-3&5&26\\1&-2&3&13\\0&3&1&-4\end{array}\right) $$
+
+$$ \xrightarrow[]{F_1\leftrightarrow F_2}\left(\begin{array}{ccc|c}1&-2&3&13\\0&-3&5&26\\0&3&1&-4\end{array}\right)\xrightarrow[]{F_3+F_2\to F_3}\left(\begin{array}{ccc|c}1&-2&3&13\\0&-3&5&26\\0&0&6&22\end{array}\right) $$
+
+Despejando desde la última fila hacia arriba: $z=\frac{22}{6}=\frac{11}{3}$... completando el escalonado reducido se llega a:
+
+$$ \left(\begin{array}{ccc|c}1&0&0&-\frac{7}{2}\\0&1&0&-\frac{9}{2}\\0&0&1&\frac{5}{2}\end{array}\right) $$
+
+**Compatible determinado.**
+
+$$\boxed{x=-\frac{7}{2},\quad y=-\frac{9}{2},\quad z=\frac{5}{2}}$$
+
+### d) $\begin{cases}x+y+z+t=1 \\ x-y+z-t=0 \\ x+y-z-t=-1 \\ x+y+z-t=2\end{cases}$
+
+$$ \left(\begin{array}{cccc|c}1&1&1&1&1\\1&-1&1&-1&0\\1&1&-1&-1&-1\\1&1&1&-1&2\end{array}\right) \xrightarrow{\text{Gauss-Jordan}} \left(\begin{array}{cccc|c}1&0&0&0&-1\\0&1&0&0&1\\0&0&1&0&\frac{3}{2}\\0&0&0&1&-\frac{1}{2}\end{array}\right) $$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=4=n$ → **Compatible determinado**.
+
+$$\boxed{x=-1,\quad y=1,\quad z=\frac{3}{2},\quad t=-\frac{1}{2}}$$
+
+### e) (P) $\begin{cases}x-2y-z+3t=0 \\ 2x+4y+5z-5t=3 \\ 3x-6y-6z+8t=2\end{cases}$
+
+$$ \left(\begin{array}{cccc|c}1&-2&-1&3&0\\2&4&5&-5&3\\3&-6&-6&8&2\end{array}\right)\xrightarrow[F_3-3F_1\to F_3]{F_2-2F_1\to F_2}\left(\begin{array}{cccc|c}1&-2&-1&3&0\\0&8&7&-11&3\\0&0&-3&-1&2\end{array}\right) $$
+
+Aquí solo **3 pivotes para 4 incógnitas** ($x,y,z,t$): la columna de $t$ queda sin pivote → $t$ es **parámetro libre**. Terminando el escalonamiento:
+
+$$ \left(\begin{array}{cccc|c}1&0&0&0&\frac{5}{4}\\0&1&0&-\frac{5}{3}&\frac{23}{24}\\0&0&1&\frac{1}{3}&-\frac{2}{3}\end{array}\right) $$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=3<n=4$ → **Compatible indeterminado** (1 parámetro libre).
+
+$$\boxed{x=\frac{5}{4},\quad y=\frac{23}{24}+\frac{5}{3} t,\quad z=-\frac{2}{3}-\frac{1}{3} t,\quad t\in\mathbb{R}}$$
+
+### f) $\begin{cases}x-5y+4z=-3 \\ 2x-7y+3z=-2 \\ -2x+y+7z=-1\end{cases}$
+
+$$ \left(\begin{array}{ccc|c}1&-5&4&-3\\2&-7&3&-2\\-2&1&7&-1\end{array}\right) \xrightarrow{\text{Gauss-Jordan}} \left(\begin{array}{ccc|c}1&0&-\frac{13}{3}&0\\0&1&-\frac{5}{3}&0\\0&0&0&\color{#e74c3c}{1}\end{array}\right) $$
+
+La última fila dice $0x+0y+0z=\color{#e74c3c}{1}$: una contradicción. $\mathrm{rg}(A)=2\neq\mathrm{rg}(A|B)=3$.
+
+$$\boxed{\textbf{Sistema incompatible — no tiene solución}}$$
+
+### g) $\begin{cases}x-y+z+t=0 \\ x+y+z-t=2 \\ x-y-z+t=2\end{cases}$
+
+$$ \left(\begin{array}{cccc|c}1&-1&1&1&0\\1&1&1&-1&2\\1&-1&-1&1&2\end{array}\right) \xrightarrow{\text{Gauss-Jordan}} \left(\begin{array}{cccc|c}1&0&0&0&2\\0&1&0&-1&1\\0&0&1&0&-1\end{array}\right) $$
+
+3 pivotes para 4 incógnitas → columna de $t$ libre. $\mathrm{rg}(A)=\mathrm{rg}(A|B)=3<n=4$ → **Compatible indeterminado**.
+
+$$\boxed{x=2,\quad y=1+t,\quad z=-1,\quad t\in\mathbb{R}}$$
+
+### h) $\begin{cases}5x-y+3z=-6 \\ x+3y-z=10 \\ 2x-y+4z=-2\end{cases}$
+
+$$ \left(\begin{array}{ccc|c}5&-1&3&-6\\1&3&-1&10\\2&-1&4&-2\end{array}\right) \xrightarrow{\text{Gauss-Jordan}} \left(\begin{array}{ccc|c}1&0&0&-1\\0&1&0&4\\0&0&1&1\end{array}\right) $$
+
+**Compatible determinado.**
+
+$$\boxed{x=-1,\quad y=4,\quad z=1}$$
+
+### i) (P) $\begin{cases}x-3y+3z=9 \\ 2x-y+z=3 \\ 3x+y-z=-3 \\ 2x+4y-4z=-12\end{cases}$
+
+$$ \left(\begin{array}{ccc|c}1&-3&3&9\\2&-1&1&3\\3&1&-1&-3\\2&4&-4&-12\end{array}\right)\xrightarrow[\substack{F_3-3F_1\to F_3 \\ F_4-2F_1\to F_4}]{F_2-2F_1\to F_2}\left(\begin{array}{ccc|c}1&-3&3&9\\0&5&-5&-15\\0&10&-10&-30\\0&10&-10&-30\end{array}\right) $$
+
+Las filas 3 y 4 quedan proporcionales a la fila 2 ($\times2$) → se anulan al restar, y solo quedan **2 filas no nulas** para 3 incógnitas. Escalonando:
+
+$$ \left(\begin{array}{ccc|c}1&0&0&0\\0&1&-1&-3\\0&0&0&0\\0&0&0&0\end{array}\right) $$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=2<n=3$ → **Compatible indeterminado** (1 parámetro libre, $z$).
+
+$$\boxed{x=0,\quad y=-3+z,\quad z\in\mathbb{R}}$$
+
+### j) $\begin{cases}2x-3y+z=6 \\ x+y-z=-2 \\ 4x-y-z=2\end{cases}$
+
+$$ \left(\begin{array}{ccc|c}2&-3&1&6\\1&1&-1&-2\\4&-1&-1&2\end{array}\right) \xrightarrow{\text{Gauss-Jordan}} \left(\begin{array}{ccc|c}1&0&-\frac{2}{5}&0\\0&1&-\frac{3}{5}&-2\\0&0&0&0\end{array}\right) $$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=2<n=3$ → **Compatible indeterminado** (parámetro $z$).
+
+$$\boxed{x=\frac{2}{5} z,\quad y=-2+\frac{3}{5} z,\quad z\in\mathbb{R}}$$
+
+### k) $\begin{cases}-3x+y-z=-4 \\ 5x-2y+z=6 \\ -x+y+3z=0\end{cases}$
+
+Es exactamente el mismo sistema que el **ítem b)**.
+
+$$\boxed{x=2,\quad y=2,\quad z=0}$$
+
+### l) $\begin{cases}x+y+z=6 \\ x-y-z=-4 \\ 3x+y+z=7\end{cases}$
+
+$$ \left(\begin{array}{ccc|c}1&1&1&6\\1&-1&-1&-4\\3&1&1&7\end{array}\right) \xrightarrow{\text{Gauss-Jordan}} \left(\begin{array}{ccc|c}1&0&0&0\\0&1&1&0\\0&0&0&\color{#e74c3c}{1}\end{array}\right) $$
+
+$\mathrm{rg}(A)=2\neq\mathrm{rg}(A|B)=3$.
+
+$$\boxed{\textbf{Sistema incompatible — no tiene solución}}$$
+
+---
+
+## Ejercicio 2 (P) — Valores de $m$
+
+$$\begin{cases}2x+3y+5z=8 \\ 4x+4y+2mz=12 \\ x+y+2z=3\end{cases}$$
+
+$$ A=\begin{pmatrix}2&3&5\\4&4&2m\\1&1&2\end{pmatrix},\qquad \det(A)=2m-8 $$
+
+$$\det(A)=0 \iff m=4$$
+
+**Analizamos $m=4$:** la matriz ampliada escalona a
+
+$$ \left(\begin{array}{ccc|c}1&0&1&1\\0&1&1&2\\0&0&0&0\end{array}\right) $$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=2<3$ → compatible **indeterminado**, nunca incompatible en este caso.
+
+$$\boxed{\text{a) Solución única: } m\neq4} \qquad \boxed{\text{b) No tiene solución: para ningún valor de } m} \qquad \boxed{\text{c) Infinitas soluciones: } m=4}$$
+
+*(Dato curioso: para $m\neq4$ la solución única resulta ser siempre $(x,y,z)=(1,2,0)$, independiente de $m$, porque el coeficiente $2m$ multiplica a $z=0$.)*
+
+---
+
+## Ejercicio 3 — Valores de $\alpha$
+
+$$\begin{cases}x+\alpha y+2z=1 \\ x+(2\alpha-1)y+z=1 \\ x+\alpha y+(\alpha+3)z=2\alpha-1\end{cases}$$
+
+$$ A=\begin{pmatrix}1&\alpha&2\\1&2\alpha-1&1\\1&\alpha&\alpha+3\end{pmatrix},\qquad \det(A) = (\alpha-1)(\alpha+1) $$
+
+$$\det(A)=0 \iff \alpha=1 \ \lor\ \alpha=-1$$
+
+**Caso $\alpha=-1$:** $\mathrm{rg}(A)=2$, $\mathrm{rg}(A|B)=3$ → **incompatible**.
+
+**Caso $\alpha=1$:** el sistema queda $\begin{cases}x+y+2z=1 \\ x+y+z=1 \\ x+y+4z=1\end{cases}$, que escalona a
+
+$$ \left(\begin{array}{ccc|c}1&1&0&1\\0&0&1&0\\0&0&0&0\end{array}\right) $$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=2<3$ → **compatible indeterminado**.
+
+$$\boxed{\text{a) Solución única: } \alpha\notin\{-1,1\}} \qquad \boxed{\text{b) No tiene solución: } \alpha=-1} \qquad \boxed{\text{c) Infinitas soluciones: } \alpha=1}$$
+
+Para $\alpha\notin\{-1,1\}$, resolviendo con la fórmula $X=A^{-1}B$ se obtiene la solución única:
+
+$$x=\frac{5(1-\alpha)}{\alpha+1},\qquad y=\frac{2}{\alpha+1},\qquad z=\frac{2(\alpha-1)}{\alpha+1}$$
+
+---
+
+## Ejercicio 4 — Problemas de planteo
+
+### a) Los tres números
+
+Sean $a,b,c$ los números. "El segundo es 1 más que tres veces el primero" → $b=3a+1$. "El tercero es 1 menos que el doble del segundo" → $c=2b-1$. Y $a+b+c=12$.
+
+Sustituyendo en la suma:
+
+$$a+(3a+1)+\big(2(3a+1)-1\big)=12 \;\Longrightarrow\; 10a+2=12 \;\Longrightarrow\; a=1$$
+
+$$\boxed{a=1,\quad b=4,\quad c=7}$$
+
+*(Comprobación: $1+4+7=12$ ✓)*
+
+### b) (P) Plan de comidas — carne, pescado y verduras
+
+Sean $C$, $P$, $V$ las raciones de carne, pescado y verduras.
+
+$$ \begin{cases} 15C+12P+4V=514 & \text{(proteína total)}\\ C+P+V=44 & \text{(raciones totales)}\\ C=P+V & \text{(condición de carne)} \end{cases} $$
+
+De la 2ª y 3ª ecuación: $C+C=44 \Rightarrow C=22$, y por lo tanto $P+V=22$.
+
+Reemplazando en la 1ª: $15(22)+12P+4V=514 \Rightarrow 12P+4V=184 \Rightarrow 3P+V=46$.
+
+Con $V=22-P$: $3P+(22-P)=46 \Rightarrow 2P=24 \Rightarrow P=12$, luego $V=10$.
+
+$$\boxed{\text{Carne: 22 raciones}\quad\text{Pescado: 12 raciones}\quad\text{Verduras: 10 raciones}}$$
+
+### c) Votación del viaje de curso
+
+Sean $Pu$ (Pucón), $PV$ (Puerto Varas) y $PA$ (Punta Arenas). $Pu=3PA$. "El 40% de $PV$ coincide con la quinta parte de la suma de los otros dos" → $0.4\,PV = \frac{1}{5}(Pu+PA)$. Además $Pu+PV+PA=30$.
+
+Como $Pu=3PA$: $Pu+PA=4PA$, entonces $0.4\,PV=\frac{1}{5}(4PA)=0.8PA \Rightarrow PV=2PA$.
+
+$$3PA+2PA+PA=30 \;\Longrightarrow\; 6PA=30 \;\Longrightarrow\; PA=5$$
+
+$$\boxed{\text{Pucón: 15 votos}\quad\text{Puerto Varas: 10 votos}\quad\text{Punta Arenas: 5 votos}}$$
+
+### d) Fotografías de Andrea
+
+Sean $S$, $M$, $L$ el número de fotos pequeñas, medianas y grandes. "Vende tantas pequeñas como medianas y grandes juntas" → $S=M+L$. "El doble de medianas que grandes" → $M=2L$. Costo del puesto: $1000S+1500M+4000L=30000$.
+
+$$S=M+L=2L+L=3L$$
+
+$$1000(3L)+1500(2L)+4000L=30000 \;\Longrightarrow\; 10,000L=30,000 \;\Longrightarrow\; L=3$$
+
+$$\boxed{\text{Pequeñas: } S=9 \quad \text{Medianas: } M=6 \quad \text{Grandes: } L=3}$$
+
+*(18 fotos en total; comprobación: $9(1000)+6(1500)+3(4000)=9000+9000+12000=30,000$ ✓)*
+
+### e) Parábola por tres puntos
+
+Buscamos $y=Ax^2+Bx+C$ que pase por $(2,-7),(3,-1),(4,9)$. Cada punto entrega una ecuación lineal en $A,B,C$:
+
+$$ \begin{cases} 4A+2B+C=-7 \\ 9A+3B+C=-1 \\ 16A+4B+C=9 \end{cases} $$
+
+Resolviendo el sistema (Gauss-Jordan o restando ecuaciones consecutivas para eliminar $C$):
+
+$$\boxed{A=2,\quad B=-4,\quad C=-7 \qquad\Longrightarrow\qquad y=2x^2-4x-7}$$
+
+*(Comprobación en $x=2$: $2(4)-4(2)-7=8-8-7=-7$ ✓)*
+
+---
+
+> **Resumen rápido — Rouché-Frobenius**  
+> 
+> - $\mathrm{rg}(A)\neq\mathrm{rg}(A|B)$ → **incompatible** (aparece una fila $0=k$, $k\neq0$).
+> - $\mathrm{rg}(A)=\mathrm{rg}(A|B)=n$ → **compatible determinado** (solución única).
+> - $\mathrm{rg}(A)=\mathrm{rg}(A|B)<n$ → **compatible indeterminado** (infinitas soluciones, $n-\mathrm{rg}(A)$ parámetros libres).
+
+---
+title: "Ensayo Certamen 1 — Solución"
+subtitle: "MAT021B — Matemática de Ingeniería"
+
+# Ensayo Certamen 1 — Solución
+
+Resolución paso a paso. La teoría de matrices, determinantes, inversa y sistemas lineales usada aquí está desarrollada en los apuntes de Práctica 2 y Práctica 3.
+
+## Ejercicio 1
+
+$$M=\begin{pmatrix}1&3&0\\-1&0&-1\\1&1&2\end{pmatrix}\qquad N=\begin{pmatrix}2&6\\-1&-1\\-3&4\end{pmatrix}$$
+
+### a) ¿$M$ tiene inversa?
+
+Por Sarrus:
+
+$$\det(M) = \big[(1)(0)(2)+(3)(-1)(1)+(0)(-1)(1)\big]-\big[(0)(0)(1)+(1)(-1)(1)+(3)(-1)(2)\big]$$
+
+$$=(0-3+0)-(0-1-6) = -3-(-7)=4 \neq 0$$
+
+Sí tiene inversa. La calculamos con operaciones elementales por fila:
+
+$$
+\begin{pmatrix}1&3&0&1&0&0\\-1&0&-1&0&1&0\\1&1&2&0&0&1\end{pmatrix}\xrightarrow[F_3-F_1\to F_3]{F_2+F_1\to F_2}\begin{pmatrix}1&3&0&1&0&0\\0&3&-1&1&1&0\\0&-2&2&-1&0&1\end{pmatrix}
+$$
+
+$$
+\xrightarrow[]{F_2\to\frac{1}{3}F_2}\begin{pmatrix}1&3&0&1&0&0\\0&1&-\frac{1}{3}&\frac{1}{3}&\frac{1}{3}&0\\0&-2&2&-1&0&1\end{pmatrix}\xrightarrow[]{F_3+2F_2\to F_3}\begin{pmatrix}1&3&0&1&0&0\\0&1&-\frac{1}{3}&\frac{1}{3}&\frac{1}{3}&0\\0&0&\frac{4}{3}&-\frac{1}{3}&\frac{2}{3}&1\end{pmatrix}
+$$
+
+$$
+\xrightarrow[]{F_3\to\frac{3}{4}F_3}\begin{pmatrix}1&3&0&1&0&0\\0&1&-\frac{1}{3}&\frac{1}{3}&\frac{1}{3}&0\\0&0&1&-\frac{1}{4}&\frac{1}{2}&\frac{3}{4}\end{pmatrix}\xrightarrow[F_2+\frac{1}{3}F_3\to F_2]{F_1-3F_2\to F_1}\begin{pmatrix}1&0&0&\frac{1}{4}&-\frac{3}{2}&-\frac{3}{4}\\0&1&0&\frac{1}{4}&\frac{1}{2}&\frac{1}{4}\\0&0&1&-\frac{1}{4}&\frac{1}{2}&\frac{3}{4}\end{pmatrix}
+$$
+
+$$\boxed{M^{-1}=\begin{pmatrix}\frac{1}{4}&-\frac{3}{2}&-\frac{3}{4}\\[2pt]\frac{1}{4}&\frac{1}{2}&\frac{1}{4}\\[2pt]-\frac{1}{4}&\frac{1}{2}&\frac{3}{4}\end{pmatrix}}$$
+
+### b) $X$ tal que $4M\cdot X = N$
+
+$$4MX=N \implies MX=\frac{1}{4}N \implies X = M^{-1}\left(\frac{1}{4}N\right) = \frac{1}{4}M^{-1}N$$
+
+Primero $M^{-1}N$:
+
+$$
+M^{-1}N=\begin{pmatrix}\frac{1}{4}&-\frac{3}{2}&-\frac{3}{4}\\[2pt]\frac{1}{4}&\frac{1}{2}&\frac{1}{4}\\[2pt]-\frac{1}{4}&\frac{1}{2}&\frac{3}{4}\end{pmatrix}\begin{pmatrix}2&6\\-1&-1\\-3&4\end{pmatrix}=\begin{pmatrix}\frac{17}{4}&0\\[2pt]-\frac{3}{4}&2\\[2pt]-\frac{13}{4}&1\end{pmatrix}
+$$
+
+*(Fila 1, columna 1: $\frac{1}{4}(2)+(-\frac{3}{2})(-1)+(-\frac{3}{4})(-3)=\frac{1}{2}+\frac{3}{2}+\frac{9}{4}=\frac{17}{4}$, y así con el resto de entradas.)*
+
+$$\boxed{X=\frac{1}{4}M^{-1}N=\begin{pmatrix}\frac{17}{16}&0\\[2pt]-\frac{3}{16}&\frac{1}{2}\\[2pt]-\frac{13}{16}&\frac{1}{4}\end{pmatrix}}$$
+
+---
+
+## Ejercicio 2
+
+$$P=\begin{pmatrix}0&1\\k&-1\\0&2\end{pmatrix}\qquad Q=\begin{pmatrix}1&k&0\\1&0&1\end{pmatrix}$$
+
+Buscamos $k$ tal que $(Q-P^T)\cdot P = \begin{pmatrix}0&1\\5&-3\end{pmatrix}$.
+
+**Paso 1 — Transponer $P$:**
+$$P^T=\begin{pmatrix}0&k&0\\1&-1&2\end{pmatrix}$$
+
+**Paso 2 — Calcular $Q-P^T$** *(mismo orden $2\times3$, se restan entrada a entrada)*:
+$$Q-P^T=\begin{pmatrix}1-0&k-k&0-0\\1-1&0-(-1)&1-2\end{pmatrix}=\begin{pmatrix}1&0&0\\0&1&-1\end{pmatrix}$$
+
+>[!tip] Observación
+>El parámetro $k$ se cancela al restar, porque tanto $Q$ como $P^T$ tienen un $k$ en la misma posición $(1,2)$. Esto significa que $k$ solo puede aparecer más adelante a través de la matriz $P$ en la multiplicación.
+
+**Paso 3 — Multiplicar por $P$** *($2\times3$ por $3\times2 \to$ resultado $2\times2$)*:
+$$(Q-P^T)\cdot P = \begin{pmatrix}1&0&0\\0&1&-1\end{pmatrix}\begin{pmatrix}0&1\\k&-1\\0&2\end{pmatrix} = \begin{pmatrix}1(0)+0(k)+0(0) & 1(1)+0(-1)+0(2)\\0(0)+1(k)+(-1)(0) & 0(1)+1(-1)+(-1)(2)\end{pmatrix}=\begin{pmatrix}0&1\\k&-3\end{pmatrix}$$
+
+**Paso 4 — Igualar con el resultado pedido:**
+$$\begin{pmatrix}0&1\\k&-3\end{pmatrix}=\begin{pmatrix}0&1\\5&-3\end{pmatrix} \implies k=5$$
+
+$$\boxed{k=5}$$
+
+---
+
+## Ejercicio 3
+
+$$\begin{cases}-x+3y+(a-1)z=-1\\(a-1)x+y+z=-2\\x+(a-1)y+z=1\end{cases}$$
+
+### a) Para $a=2$: ¿compatible?
+
+Con $a=2$, tenemos $a-1=1$, y el sistema queda:
+
+$$\begin{cases}-x+3y+z=-1\\x+y+z=-2\\x+y+z=1\end{cases}$$
+
+>[!warning] Contradicción inmediata
+>Las ecuaciones 2 y 3 tienen exactamente el mismo lado izquierdo ($x+y+z$) pero distinto lado derecho ($-2$ y $1$). Eso ya basta para concluir sin más cálculo.
+>Confirmando con rango: $\mathrm{rg}(A)=2$ pero $\mathrm{rg}(A|B)=3$.
+
+$$\boxed{\text{Para } a=2 \text{ el sistema es \textbf{incompatible}}}$$
+
+### b) Para $a=-1$: compatible indeterminado + 4 soluciones particulares
+
+Con $a=-1$, $a-1=-2$, y el sistema es:
+
+$$\begin{cases}-x+3y-2z=-1\\-2x+y+z=-2\\x-2y+z=1\end{cases}$$
+
+Escalonando la matriz ampliada:
+
+$$
+\begin{pmatrix}-1&3&-2&-1\\-2&1&1&-2\\1&-2&1&1\end{pmatrix} \xrightarrow{\text{Gauss-Jordan}} \begin{pmatrix}1&0&-1&1\\0&1&-1&0\\0&0&0&0\end{pmatrix}
+$$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=2 < n=3 \implies$ compatible indeterminado, con $z$ como parámetro libre:
+
+$$\boxed{x=1+z,\qquad y=z,\qquad z\in\mathbb{R}}$$
+
+**Cuatro soluciones particulares** (reemplazando $z$ por valores distintos):
+
+| $z$ | Solution $(x,y,z)$ |
+| :---: | :---: |
+| $0$ | $(1,0,0)$ |
+| $1$ | $(2,1,1)$ |
+| $2$ | $(3,2,2)$ |
+| $-1$ | $(0,-1,-1)$ |
+
+*(Comprobación con $(2,1,1)$: $-2+3-2=-1$ ✓; $-4+1+1=-2$ ✓; $2-2+1=1$ ✓)*
+
+---
+
+## Ejercicio 4 — Presupuesto de remodelación
+
+Sean $C$, $F$, $Al$ los metros cuadrados de cerámica, piso flotante y alfombra respectivamente.
+
+**Datos:**
+* Área total: $C+F+Al=180$
+* Costo cerámica: $\$6.000/\text{m}^2$.
+* Piso flotante ($25\%$ más barato): $\$6.000 \times 0{,}75 = \$4.500/\text{m}^2$.
+* Alfombra: $\$3.000/\text{m}^2$.
+* Presupuesto total: $6000C+4500F+3000Al=900.000$
+* La alfombra excede en $24\,\text{m}^2$ al piso flotante: $Al=F+24$
+
+**Sistema:**
+$$\begin{cases}C+F+Al=180\\6000C+4500F+3000Al=900.000\\Al-F=24\end{cases}$$
+
+Sustituyendo $Al=F+24$ en las otras dos ecuaciones:
+
+$$C+F+(F+24)=180 \implies C+2F=156 \quad (\star)$$
+
+$$6000C+4500F+3000(F+24)=900.000 \implies 6000C+7500F=828.000 \implies 4C+5F=552 \quad (\star\star)$$
+
+De $(\star)$: $C=156-2F$. Reemplazando en $(\star\star)$:
+
+$$4(156-2F)+5F=552 \implies 624-8F+5F=552 \implies -3F=-72 \implies F=24$$
+
+$$C=156-2(24)=108,\qquad Al=24+24=48$$
+
+$$\boxed{\text{Cerámica: } 108\ \text{m}^2 \qquad \text{Piso flotante: } 24\ \text{m}^2 \qquad \text{Alfombra: } 48\ \text{m}^2}$$
+
+*(Comprobación: Área $108+24+48=180$ ✓; Costo $6000(108)+4500(24)+3000(48)=648.000+108.000+144.000=900.000$ ✓; $Al-F=48-24=24$ ✓)*
