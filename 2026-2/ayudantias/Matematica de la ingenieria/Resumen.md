@@ -919,3 +919,421 @@ $$C=156-2(24)=108,\qquad Al=24+24=48$$
 $$\boxed{\text{Cerámica: } 108\ \text{m}^2 \qquad \text{Piso flotante: } 24\ \text{m}^2 \qquad \text{Alfombra: } 48\ \text{m}^2}$$
 
 *(Comprobación: Área $108+24+48=180$ ✓; Costo $6000(108)+4500(24)+3000(48)=648.000+108.000+144.000=900.000$ ✓; $Al-F=48-24=24$ ✓)*
+
+---
+title: "Ensayo Certamen 1 — Solución"
+subtitle: "MAT021B — Matemática de Ingeniería"
+---
+
+# Ensayo Certamen 1 — Solución
+
+Resolución paso a paso. La teoría de matrices, determinantes, inversa y sistemas lineales usada aquí está desarrollada en los apuntes de Práctica 2 y Práctica 3.
+
+## Ejercicio 1
+
+$$M=\begin{pmatrix}1&3&0\\-1&0&-1\\1&1&2\end{pmatrix}\qquad N=\begin{pmatrix}2&6\\-1&-1\\-3&4\end{pmatrix}$$
+
+### a) ¿$M$ tiene inversa?
+
+Por Sarrus:
+
+$$\det(M) = \big[(1)(0)(2)+(3)(-1)(1)+(0)(-1)(1)\big]-\big[(0)(0)(1)+(1)(-1)(1)+(3)(-1)(2)\big]$$
+
+$$=(0-3+0)-(0-1-6) = -3-(-7)=4 \neq 0$$
+
+Sí tiene inversa. La calculamos con operaciones elementales por fila:
+
+$$
+\begin{pmatrix}1&3&0&1&0&0\\-1&0&-1&0&1&0\\1&1&2&0&0&1\end{pmatrix}\xrightarrow[F_3-F_1\to F_3]{F_2+F_1\to F_2}\begin{pmatrix}1&3&0&1&0&0\\0&3&-1&1&1&0\\0&-2&2&-1&0&1\end{pmatrix}
+$$
+
+$$
+\xrightarrow[]{F_2\to\frac{1}{3}F_2}\begin{pmatrix}1&3&0&1&0&0\\0&1&-\frac{1}{3}&\frac{1}{3}&\frac{1}{3}&0\\0&-2&2&-1&0&1\end{pmatrix}\xrightarrow[]{F_3+2F_2\to F_3}\begin{pmatrix}1&3&0&1&0&0\\0&1&-\frac{1}{3}&\frac{1}{3}&\frac{1}{3}&0\\0&0&\frac{4}{3}&-\frac{1}{3}&\frac{2}{3}&1\end{pmatrix}
+$$
+
+$$
+\xrightarrow[]{F_3\to\frac{3}{4}F_3}\begin{pmatrix}1&3&0&1&0&0\\0&1&-\frac{1}{3}&\frac{1}{3}&\frac{1}{3}&0\\0&0&1&-\frac{1}{4}&\frac{1}{2}&\frac{3}{4}\end{pmatrix}\xrightarrow[F_2+\frac{1}{3}F_3\to F_2]{F_1-3F_2\to F_1}\begin{pmatrix}1&0&0&\frac{1}{4}&-\frac{3}{2}&-\frac{3}{4}\\0&1&0&\frac{1}{4}&\frac{1}{2}&\frac{1}{4}\\0&0&1&-\frac{1}{4}&\frac{1}{2}&\frac{3}{4}\end{pmatrix}
+$$
+
+$$\boxed{M^{-1}=\begin{pmatrix}\frac{1}{4}&-\frac{3}{2}&-\frac{3}{4}\\[2pt]\frac{1}{4}&\frac{1}{2}&\frac{1}{4}\\[2pt]-\frac{1}{4}&\frac{1}{2}&\frac{3}{4}\end{pmatrix}}$$
+
+### b) $X$ tal que $4M\cdot X = N$
+
+$$4MX=N \implies MX=\frac{1}{4}N \implies X = M^{-1}\left(\frac{1}{4}N\right) = \frac{1}{4}M^{-1}N$$
+
+Primero $M^{-1}N$:
+
+$$
+M^{-1}N=\begin{pmatrix}\frac{1}{4}&-\frac{3}{2}&-\frac{3}{4}\\[2pt]\frac{1}{4}&\frac{1}{2}&\frac{1}{4}\\[2pt]-\frac{1}{4}&\frac{1}{2}&\frac{3}{4}\end{pmatrix}\begin{pmatrix}2&6\\-1&-1\\-3&4\end{pmatrix}=\begin{pmatrix}\frac{17}{4}&0\\[2pt]-\frac{3}{4}&2\\[2pt]-\frac{13}{4}&1\end{pmatrix}
+$$
+
+*(Fila 1, columna 1: $\frac{1}{4}(2)+(-\frac{3}{2})(-1)+(-\frac{3}{4})(-3)=\frac{1}{2}+\frac{3}{2}+\frac{9}{4}=\frac{17}{4}$, y así con el resto de entradas.)*
+
+$$\boxed{X=\frac{1}{4}M^{-1}N=\begin{pmatrix}\frac{17}{16}&0\\[2pt]-\frac{3}{16}&\frac{1}{2}\\[2pt]-\frac{13}{16}&\frac{1}{4}\end{pmatrix}}$$
+
+---
+
+## Ejercicio 2
+
+$$P=\begin{pmatrix}0&1\\k&-1\\0&2\end{pmatrix}\qquad Q=\begin{pmatrix}1&k&0\\1&0&1\end{pmatrix}$$
+
+Buscamos $k$ tal que $(Q-P^T)\cdot P = \begin{pmatrix}0&1\\5&-3\end{pmatrix}$.
+
+**Paso 1 — Transponer $P$:**
+$$P^T=\begin{pmatrix}0&k&0\\1&-1&2\end{pmatrix}$$
+
+**Paso 2 — Calcular $Q-P^T$** *(mismo orden $2\times3$, se restan entrada a entrada)*:
+$$Q-P^T=\begin{pmatrix}1-0&k-k&0-0\\1-1&0-(-1)&1-2\end{pmatrix}=\begin{pmatrix}1&0&0\\0&1&-1\end{pmatrix}$$
+
+>[!tip] Observación
+>El parámetro $k$ se cancela al restar, porque tanto $Q$ como $P^T$ tienen un $k$ en la misma posición $(1,2)$. Esto significa que $k$ solo puede aparecer más adelante a través de la matriz $P$ en la multiplicación.
+
+**Paso 3 — Multiplicar por $P$** *($2\times3$ por $3\times2 \to$ resultado $2\times2$)*:
+$$(Q-P^T)\cdot P = \begin{pmatrix}1&0&0\\0&1&-1\end{pmatrix}\begin{pmatrix}0&1\\k&-1\\0&2\end{pmatrix} = \begin{pmatrix}1(0)+0(k)+0(0) & 1(1)+0(-1)+0(2)\\0(0)+1(k)+(-1)(0) & 0(1)+1(-1)+(-1)(2)\end{pmatrix}=\begin{pmatrix}0&1\\k&-3\end{pmatrix}$$
+
+**Paso 4 — Igualar con el resultado pedido:**
+$$\begin{pmatrix}0&1\\k&-3\end{pmatrix}=\begin{pmatrix}0&1\\5&-3\end{pmatrix} \implies k=5$$
+
+$$\boxed{k=5}$$
+
+---
+
+## Ejercicio 3
+
+$$\begin{cases}-x+3y+(a-1)z=-1\\(a-1)x+y+z=-2\\x+(a-1)y+z=1\end{cases}$$
+
+### a) Para $a=2$: ¿compatible?
+
+Con $a=2$, tenemos $a-1=1$, y el sistema queda:
+
+$$\begin{cases}-x+3y+z=-1\\x+y+z=-2\\x+y+z=1\end{cases}$$
+
+>[!warning] Contradicción inmediata
+>Las ecuaciones 2 y 3 tienen exactamente el mismo lado izquierdo ($x+y+z$) pero distinto lado derecho ($-2$ y $1$). Eso ya basta para concluir sin más cálculo.
+>Confirmando con rango: $\mathrm{rg}(A)=2$ pero $\mathrm{rg}(A|B)=3$.
+
+$$\boxed{\text{Para } a=2 \text{ el sistema es \textbf{incompatible}}}$$
+
+### b) Para $a=-1$: compatible indeterminado + 4 soluciones particulares
+
+Con $a=-1$, $a-1=-2$, y el sistema es:
+
+$$\begin{cases}-x+3y-2z=-1\\-2x+y+z=-2\\x-2y+z=1\end{cases}$$
+
+Escalonando la matriz ampliada:
+
+$$
+\begin{pmatrix}-1&3&-2&-1\\-2&1&1&-2\\1&-2&1&1\end{pmatrix} \xrightarrow{\text{Gauss-Jordan}} \begin{pmatrix}1&0&-1&1\\0&1&-1&0\\0&0&0&0\end{pmatrix}
+$$
+
+$\mathrm{rg}(A)=\mathrm{rg}(A|B)=2 < n=3 \implies$ compatible indeterminado, con $z$ como parámetro libre:
+
+$$\boxed{x=1+z,\qquad y=z,\qquad z\in\mathbb{R}}$$
+
+**Cuatro soluciones particulares** (reemplazando $z$ por valores distintos):
+
+| $z$ | Solution $(x,y,z)$ |
+| :---: | :---: |
+| $0$ | $(1,0,0)$ |
+| $1$ | $(2,1,1)$ |
+| $2$ | $(3,2,2)$ |
+| $-1$ | $(0,-1,-1)$ |
+
+*(Comprobación con $(2,1,1)$: $-2+3-2=-1$ ✓; $-4+1+1=-2$ ✓; $2-2+1=1$ ✓)*
+
+---
+
+## Ejercicio 4 — Presupuesto de remodelación
+
+Sean $C$, $F$, $Al$ los metros cuadrados de cerámica, piso flotante y alfombra respectivamente.
+
+**Datos:**
+* Área total: $C+F+Al=180$
+* Costo cerámica: $\$6.000/\text{m}^2$.
+* Piso flotante ($25\%$ más barato): $\$6.000 \times 0{,}75 = \$4.500/\text{m}^2$.
+* Alfombra: $\$3.000/\text{m}^2$.
+* Presupuesto total: $6000C+4500F+3000Al=900.000$
+* La alfombra excede en $24\,\text{m}^2$ al piso flotante: $Al=F+24$
+
+**Sistema:**
+$$\begin{cases}C+F+Al=180\\6000C+4500F+3000Al=900.000\\Al-F=24\end{cases}$$
+
+Sustituyendo $Al=F+24$ en las otras dos ecuaciones:
+
+$$C+F+(F+24)=180 \implies C+2F=156 \quad (\star)$$
+
+$$6000C+4500F+3000(F+24)=900.000 \implies 6000C+7500F=828.000 \implies 4C+5F=552 \quad (\star\star)$$
+
+De $(\star)$: $C=156-2F$. Reemplazando en $(\star\star)$:
+
+$$4(156-2F)+5F=552 \implies 624-8F+5F=552 \implies -3F=-72 \implies F=24$$
+
+$$C=156-2(24)=108,\qquad Al=24+24=48$$
+
+$$\boxed{\text{Cerámica: } 108\ \text{m}^2 \qquad \text{Piso flotante: } 24\ \text{m}^2 \qquad \text{Alfombra: } 48\ \text{m}^2}$$
+
+*(Comprobación: Área $108+24+48=180$ ✓; Costo $6000(108)+4500(24)+3000(48)=648.000+108.000+144.000=900.000$ ✓; $Al-F=48-24=24$ ✓)*
+
+---
+title: "Práctica 5 — Soluciones"
+subtitle: "MAT021B — Matemática de Ingeniería"
+tags: [matemáticas, integrales, fracciones-parciales]
+---
+
+# Práctica 5 — Fracciones Parciales
+
+Resolución paso a paso de las integrales indefinidas mediante el método de fracciones parciales.
+
+---
+
+## Ejercicio 1.a
+
+$$\int \frac{3}{2(x^2 + 5x - 14)}\, dx$$
+
+### Paso 1: Factorizar el denominador
+$$x^2 + 5x - 14 = (x + 7)(x - 2)$$
+
+### Paso 2: Descomponer en fracciones parciales
+$$\frac{3}{2(x+7)(x-2)} = \frac{1}{2} \left[ \frac{A}{x+7} + \frac{B}{x-2} \right]$$
+
+$$3 = A(x - 2) + B(x + 7)$$
+
+* Para $x = 2$: $3 = B(9) \implies B = \frac{1}{3}$
+* Para $x = -7$: $3 = A(-9) \implies A = -\frac{1}{3}$
+
+### Paso 3: Integrar
+$$\int \frac{3}{2(x^2 + 5x - 14)}\, dx = \frac{1}{2} \int \left( \frac{-1/3}{x+7} + \frac{1/3}{x-2} \right) dx$$
+
+$$= \frac{1}{6} \left( -\ln|x+7| + \ln|x-2| \right) + C = \frac{1}{6} \ln\left| \frac{x-2}{x+7} \right| + C$$
+
+$$\boxed{\frac{1}{6} \ln\left| \frac{x-2}{x+7} \right| + C}$$
+
+---
+
+## Ejercicio 1.b
+
+$$\int \frac{x + 14}{(x + 5)(x - 2)}\, dx$$
+
+### Paso 1: Descomponer en fracciones parciales
+$$\frac{x + 14}{(x + 5)(x - 2)} = \frac{A}{x + 5} + \frac{B}{x - 2}$$
+
+$$x + 14 = A(x - 2) + B(x + 5)$$
+
+* Para $x = 2$: $16 = B(7) \implies B = \frac{16}{7}$
+* Para $x = -5$: $9 = A(-7) \implies A = -\frac{9}{7}$
+
+### Paso 2: Integrar
+$$\int \left( \frac{-9/7}{x + 5} + \frac{16/7}{x - 2} \right) dx = -\frac{9}{7} \ln|x + 5| + \frac{16}{7} \ln|x - 2| + C$$
+
+$$\boxed{-\frac{9}{7} \ln|x + 5| + \frac{16}{7} \ln|x - 2| + C}$$
+
+---
+
+## Ejercicio 1.c
+
+$$\int \frac{x + 3}{1 - x^2}\, dx$$
+
+### Paso 1: Factorizar el denominador
+$$1 - x^2 = (1 - x)(1 + x)$$
+
+### Paso 2: Descomponer en fracciones parciales
+$$\frac{x + 3}{(1 - x)(1 + x)} = \frac{A}{1 - x} + \frac{B}{1 + x}$$
+
+$$x + 3 = A(1 + x) + B(1 - x)$$
+
+* Para $x = 1$: $4 = A(2) \implies A = 2$
+* Para $x = -1$: $2 = B(2) \implies B = 1$
+
+### Paso 3: Integrar
+$$\int \left( \frac{2}{1 - x} + \frac{1}{1 + x} \right) dx$$
+
+*(Cuidado con la derivada de $1 - x$, que aporta un signo negativo)*:
+
+$$= -2 \ln|1 - x| + \ln|1 + x| + C$$
+
+$$\boxed{-2 \ln|1 - x| + \ln|1 + x| + C}$$
+
+---
+
+## Ejercicio 1.d (P)
+
+$$\int \frac{4x^2 + 13x - 9}{x^3 + 2x^2 - 3x}\, dx$$
+
+### Paso 1: Factorizar el denominador
+$$x^3 + 2x^2 - 3x = x(x^2 + 2x - 3) = x(x + 3)(x - 1)$$
+
+### Paso 2: Descomponer en fracciones parciales
+$$\frac{4x^2 + 13x - 9}{x(x + 3)(x - 1)} = \frac{A}{x} + \frac{B}{x + 3} + \frac{C}{x - 1}$$
+
+$$4x^2 + 13x - 9 = A(x + 3)(x - 1) + B x(x - 1) + C x(x + 3)$$
+
+* Para $x = 0$: $-9 = A(3)(-1) \implies A = 3$
+* Para $x = 1$: $4 + 13 - 9 = C(1)(4) \implies 8 = 4C \implies C = 2$
+* Para $x = -3$: $36 - 39 - 9 = B(-3)(-4) \implies -12 = 12B \implies B = -1$
+
+### Paso 3: Integrar
+$$\int \left( \frac{3}{x} - \frac{1}{x + 3} + \frac{2}{x - 1} \right) dx = 3 \ln|x| - \ln|x + 3| + 2 \ln|x - 1| + C$$
+
+$$\boxed{3 \ln|x| - \ln|x + 3| + 2 \ln|x - 1| + C}$$
+
+---
+
+## Ejercicio 1.e
+
+$$\int \frac{1}{x^3 - x}\, dx$$
+
+### Paso 1: Factorizar el denominador
+$$x^3 - x = x(x^2 - 1) = x(x - 1)(x + 1)$$
+
+### Paso 2: Descomponer en fracciones parciales
+$$\frac{1}{x(x - 1)(x + 1)} = \frac{A}{x} + \frac{B}{x - 1} + \frac{C}{x + 1}$$
+
+$$1 = A(x - 1)(x + 1) + B x(x + 1) + C x(x - 1)$$
+
+* Para $x = 0$: $1 = A(-1)(1) \implies A = -1$
+* Para $x = 1$: $1 = B(1)(2) \implies B = \frac{1}{2}$
+* Para $x = -1$: $1 = C(-1)(-2) \implies C = \frac{1}{2}$
+
+### Paso 3: Integrar
+$$\int \left( -\frac{1}{x} + \frac{1/2}{x - 1} + \frac{1/2}{x + 1} \right) dx = -\ln|x| + \frac{1}{2} \ln|x - 1| + \frac{1}{2} \ln|x + 1| + C$$
+
+$$\boxed{-\ln|x| + \frac{1}{2} \ln|x^2 - 1| + C}$$
+
+---
+
+## Ejercicio 1.f
+
+$$\int \frac{6x^2 + 6}{x^3 - 4x^2 + 3x}\, dx$$
+
+### Paso 1: Factorizar el denominador
+$$x^3 - 4x^2 + 3x = x(x^2 - 4x + 3) = x(x - 1)(x - 3)$$
+
+### Paso 2: Descomponer en fracciones parciales
+$$\frac{6x^2 + 6}{x(x - 1)(x - 3)} = \frac{A}{x} + \frac{B}{x - 1} + \frac{C}{x - 3}$$
+
+$$6x^2 + 6 = A(x - 1)(x - 3) + B x(x - 3) + C x(x - 1)$$
+
+* Para $x = 0$: $6 = A(-1)(-3) \implies A = 2$
+* Para $x = 1$: $12 = B(1)(-2) \implies B = -6$
+* Para $x = 3$: $60 = C(3)(2) \implies C = 10$
+
+### Paso 3: Integrar
+$$\int \left( \frac{2}{x} - \frac{6}{x - 1} + \frac{10}{x - 3} \right) dx = 2 \ln|x| - 6 \ln|x - 1| + 10 \ln|x - 3| + C$$
+
+$$\boxed{2 \ln|x| - 6 \ln|x - 1| + 10 \ln|x - 3| + C}$$
+
+---
+
+## Ejercicio 1.g
+
+$$\int \frac{5x - 2}{(x + 3)^2}\, dx$$
+
+### Paso 1: Descomponer en fracciones parciales
+$$\frac{5x - 2}{(x + 3)^2} = \frac{A}{x + 3} + \frac{B}{(x + 3)^2}$$
+
+$$5x - 2 = A(x + 3) + B$$
+
+* Para $x = -3$: $-17 = B$
+* Igualando coeficientes de $x$: $A = 5$
+
+### Paso 2: Integrar
+$$\int \left( \frac{5}{x + 3} - \frac{17}{(x + 3)^2} \right) dx = 5 \ln|x + 3| + \frac{17}{x + 3} + C$$
+
+$$\boxed{5 \ln|x + 3| + \frac{17}{x + 3} + C}$$
+
+---
+
+## Ejercicio 1.h
+
+$$\int \frac{x^2 - 5x + 16}{(2x - 1)(x - 2)^2}\, dx$$
+
+### Paso 1: Descomponer en fracciones parciales
+$$\frac{x^2 - 5x + 16}{(2x - 1)(x - 2)^2} = \frac{A}{2x - 1} + \frac{B}{x - 2} + \frac{C}{(x - 2)^2}$$
+
+$$x^2 - 5x + 16 = A(x - 2)^2 + B(2x - 1)(x - 2) + C(2x - 1)$$
+
+* Para $x = 2$: $10 = C(3) \implies C = \frac{10}{3}$
+* Para $x = \frac{1}{2}$: $\frac{55}{4} = A\left(-\frac{3}{2}\right)^2 \implies A = \frac{55}{9}$
+* Para $x = 0$: $16 = 4A + 2B - C \implies 16 = \frac{220}{9} + 2B - \frac{10}{3} \implies B = -\frac{23}{9}$
+
+### Paso 2: Integrar
+$$\int \left( \frac{55/9}{2x - 1} - \frac{23/9}{x - 2} + \frac{10/3}{(x - 2)^2} \right) dx$$
+
+$$= \frac{55}{18} \ln|2x - 1| - \frac{23}{9} \ln|x - 2| - \frac{10}{3(x - 2)} + C$$
+
+$$\boxed{\frac{55}{18} \ln|2x - 1| - \frac{23}{9} \ln|x - 2| - \frac{10}{3(x - 2)} + C}$$
+
+---
+
+## Ejercicio 1.i (P)
+
+$$\int \frac{3x^3 - 8x^2 + 10}{x(x - 1)^3}\, dx$$
+
+### Paso 1: Descomponer en fracciones parciales
+$$\frac{3x^3 - 8x^2 + 10}{x(x - 1)^3} = \frac{A}{x} + \frac{B}{x - 1} + \frac{C}{(x - 1)^2} + \frac{D}{(x - 1)^3}$$
+
+* Para $x = 0$: $10 = -A \implies A = -10$
+* Para $x = 1$: $5 = D$
+* Coeficiente de $x^3$: $3 = A + B \implies B = 13$
+* Evaluando en $x = 2$: $2 = -10 + 26 + 2C + 10 \implies C = -12$
+
+### Paso 2: Integrar
+$$\int \left( -\frac{10}{x} + \frac{13}{x - 1} - \frac{12}{(x - 1)^2} + \frac{5}{(x - 1)^3} \right) dx$$
+
+$$\boxed{-10 \ln|x| + 13 \ln|x - 1| + \frac{12}{x - 1} - \frac{5}{2(x - 1)^2} + C}$$
+
+---
+
+## Ejercicio 1.j
+
+$$\int \frac{1}{s^2(s - 1)^2}\, ds$$
+
+### Paso 1: Descomponer en fracciones parciales
+$$\frac{1}{s^2(s - 1)^2} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{s - 1} + \frac{D}{(s - 1)^2}$$
+
+* Para $s = 0$: $1 = B$
+* Para $s = 1$: $1 = D$
+* Coeficiente de $s^3$: $0 = A + C \implies C = -A$
+* Evaluando en $s = 2$: $1 = 2A + 1 - 4A + 4 \implies A = 2 \implies C = -2$
+
+### Paso 2: Integrar
+$$\int \left( \frac{2}{s} + \frac{1}{s^2} - \frac{2}{s - 1} + \frac{1}{(s - 1)^2} \right) ds$$
+
+$$\boxed{2 \ln\left|\frac{s}{s - 1}\right| - \frac{1}{s} - \frac{1}{s - 1} + C}$$
+
+---
+
+## Ejercicio 1.k (P)
+
+$$\int \frac{9t^2}{(t - 1)^2(t + 2)^2}\, dt$$
+
+### Paso 1: Descomponer en fracciones parciales
+$$\frac{9t^2}{(t - 1)^2(t + 2)^2} = \frac{A}{t - 1} + \frac{B}{(t - 1)^2} + \frac{C}{t + 2} + \frac{D}{(t + 2)^2}$$
+
+* Para $t = 1$: $9 = 9B \implies B = 1$
+* Para $t = -2$: $36 = 9D \implies D = 4$
+* Coeficiente de $t^3$: $0 = A + C \implies C = -A$
+* Evaluando en $t = 0$: $0 = -4A + 4 - 2A + 4 \implies A = \frac{4}{3} \implies C = -\frac{4}{3}$
+
+### Paso 2: Integrar
+$$\int \left( \frac{4/3}{t - 1} + \frac{1}{(t - 1)^2} - \frac{4/3}{t + 2} + \frac{4}{(t + 2)^2} \right) dt$$
+
+$$\boxed{\frac{4}{3} \ln\left|\frac{t - 1}{t + 2}\right| - \frac{1}{t - 1} - \frac{4}{t + 2} + C}$$
+
+---
+
+## Ejercicio 1.l
+
+$$\int \frac{x^2 + 1}{(x - 3)^2 x^3}\, dx$$
+
+### Paso 1: Descomponer en fracciones parciales
+$$\frac{x^2 + 1}{x^3(x - 3)^2} = \frac{A}{x} + \frac{B}{x^2} + \frac{C}{x^3} + \frac{D}{x - 3} + \frac{E}{(x - 3)^2}$$
+
+* Para $x = 0$: $1 = 9C \implies C = \frac{1}{9}$
+* Para $x = 3$: $10 = 27E \implies E = \frac{10}{27}$
+* Resolviendo sistema para $A$, $B$, $D$: $A = \frac{4}{27}$, $B = \frac{2}{27}$, $D = -\frac{4}{27}$
+
+### Paso 2: Integrar
+$$\int \left( \frac{4/27}{x} + \frac{2/27}{x^2} + \frac{1/9}{x^3} - \frac{4/27}{x - 3} + \frac{10/27}{(x - 3)^2} \right) dx$$
+
+$$\boxed{\frac{4}{27} \ln\left|\frac{x}{x - 3}\right| - \frac{2}{27x} - \frac{1}{18x^2} - \frac{10}{27(x - 3)} + C}$$

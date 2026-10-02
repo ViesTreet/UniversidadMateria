@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ayudantias/Matematica de la ingenieria/Resumen.md",
+                "file": "Visualización/Visualización.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Resumen"
+              "title": "Visualización"
             }
           }
         ]
@@ -83,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ea0c3d1b86f65395",
@@ -188,22 +189,23 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "bd2577e7154bfa03",
+  "active": "9a9f4b6e94dbec37",
   "lastOpenFiles": [
-    "ayudantias/Estructura de datos/Tarea2.ipynb",
-    "Inteligencia De Negocios/Inteligencia De Negocios.md",
     "ayudantias/Matematica de la ingenieria/Resumen.md",
+    "Visualización/Visualización.md",
+    "Adjuntos/1790897608_32.png",
+    "Adjuntos/1790897608_31.png",
+    "Adjuntos/1790897608_30.png",
+    "Adjuntos/1790897608_29.png",
+    "Adjuntos/1790897608_28.png",
+    "Adjuntos/1790897608_27.png",
+    "Adjuntos/1790897608_26.png",
+    "Adjuntos/1790897608_25.png",
+    "Adjuntos/1790897608_24.png",
+    "Adjuntos/1790897608_23.png",
+    "Inteligencia De Negocios/Inteligencia De Negocios.md",
+    "ayudantias/Estructura de datos/Tarea2.ipynb",
     "ayudantias/Estructura de datos/codigoResuleto.py",
-    "Adjuntos/1788305668_13.png",
-    "Adjuntos/1788305668_12.png",
-    "Adjuntos/1788305668_11.png",
-    "Adjuntos/1788305668_10.png",
-    "Adjuntos/1788305668_9.png",
-    "Adjuntos/1788305668_8.png",
-    "Adjuntos/1788305668_7.png",
-    "Adjuntos/1788305668_6.png",
-    "Adjuntos/1788305668_5.png",
-    "Adjuntos/1788305668_4.png",
     "Adjuntos/OLTP - OLAP.pdf",
     "Adjuntos/lu59271nssd.tmp",
     "Adjuntos/Catedra Clase 2.pdf",
