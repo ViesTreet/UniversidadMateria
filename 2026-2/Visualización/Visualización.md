@@ -1,4 +1,4 @@
-![[1790897364_1.png]]
+# Certamen 1![[1790897364_1.png]]
 
 ![[1790897364_2.png]]
 
@@ -2456,3 +2456,17 @@ $$
 |**Filtro mediano**|Suavizado no lineal especialmente útil contra ruido de sal y pimienta.|
 |**Otsu**|Encuentra automáticamente un umbral para separar dos clases.|
 |**Varianza inter-clase**|Medida utilizada por Otsu para determinar el mejor umbral.|
+# Certamen 2
+## Técnicas de visualización para clasificación y predicción
+> GroundTruth = es la información que se usa para evaluar si un resultado para un algoritmo es cierta o no, o sea son los valores esperados que debería arrojar un algoritmo
+
+En el caso de medir el exito o fallo de un algoritmo se usa 4 categorías generales:
++ ==🟢**Verdadero positivos(TP)** : Cuando detecta una situación real o sea que está en el== ==🟢Groundtruth.==
++ ==🔴**Falso negativo(FN)** : Es una situacion real que el algoritmo no detecta, en el caso de clasificación seria una etiqueta no puesta correctamente segun el groundtruth.==
++ ==🔴**Falso positivo(FT)** : El algoritmo detecta una situacion irreal.== 
++ ==🟢**Verdadero negativo(TN)**: No aparece en el groundtruth ni en el algoritmo== 
+La manera óptima de visualizar esta información sería una matriz de confusión:
+![[Pasted image 20261116143623.png]]
+De estas metricas ademas salen nuevos valores como por ejemplo:
++ **Precisión**: Mide la proporción de verdaderos positivos sobre todos los casos positivos detectados por el algoritmo
+$$\text{Precisión}=\frac{TP}{TP+FP}$$

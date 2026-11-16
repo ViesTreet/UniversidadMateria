@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ea0c3d1b86f65395",
@@ -191,6 +190,7 @@
   },
   "active": "9a9f4b6e94dbec37",
   "lastOpenFiles": [
+    "Adjuntos/Pasted image 20261116143623.png",
     "ayudantias/Matematica de la ingenieria/Resumen.md",
     "Visualización/Visualización.md",
     "Adjuntos/1790897608_32.png",
