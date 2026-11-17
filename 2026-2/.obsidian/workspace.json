@@ -83,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ea0c3d1b86f65395",
@@ -190,19 +191,21 @@
   },
   "active": "9a9f4b6e94dbec37",
   "lastOpenFiles": [
-    "Adjuntos/Pasted image 20261116143623.png",
-    "ayudantias/Matematica de la ingenieria/Resumen.md",
+    "Adjuntos/Pasted image 20261116212644.png",
+    "Adjuntos/Pasted image 20261116211439.png",
+    "Adjuntos/Pasted image 20261116205838.png",
+    "Adjuntos/Pasted image 20261116205804.png",
+    "Adjuntos/Pasted image 20261116205726.png",
+    "Adjuntos/Pasted image 20261116205319.png",
+    "file:/home/viestreet/Descargas/Lab_S11___Procesamiento_y_visualización__de_imágenes.pdf",
     "Visualización/Visualización.md",
-    "Adjuntos/1790897608_32.png",
-    "Adjuntos/1790897608_31.png",
-    "Adjuntos/1790897608_30.png",
-    "Adjuntos/1790897608_29.png",
-    "Adjuntos/1790897608_28.png",
-    "Adjuntos/1790897608_27.png",
-    "Adjuntos/1790897608_26.png",
-    "Adjuntos/1790897608_25.png",
-    "Adjuntos/1790897608_24.png",
-    "Adjuntos/1790897608_23.png",
+    "Adjuntos/Pasted image 20261116204617.png",
+    "file:/home/viestreet/Descargas/Lab_S9___Visualización_para_clasificación_y_predicción.pdf",
+    "Adjuntos/Pasted image 20261116204251.png",
+    "Adjuntos/Pasted image 20261116204209.png",
+    "Adjuntos/Pasted image 20261116204120.png",
+    "Adjuntos/Pasted image 20261116204102.png",
+    "ayudantias/Matematica de la ingenieria/Resumen.md",
     "Inteligencia De Negocios/Inteligencia De Negocios.md",
     "ayudantias/Estructura de datos/Tarea2.ipynb",
     "ayudantias/Estructura de datos/codigoResuleto.py",
@@ -215,7 +218,6 @@
     "Adjuntos/Clase 1 - Intro.pdf",
     "Adjuntos/lu73679f4z2y.tmp",
     "Adjuntos/1788058648.md",
-    "1788058648.md",
-    "ayudantias/Matematica de la ingenieria/Resumen.pdf"
+    "1788058648.md"
   ]
 }

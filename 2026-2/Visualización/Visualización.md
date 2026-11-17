@@ -2458,6 +2458,7 @@ $$
 |**Varianza inter-clase**|Medida utilizada por Otsu para determinar el mejor umbral.|
 # Certamen 2
 ## Técnicas de visualización para clasificación y predicción
+### Clasificación
 > GroundTruth = es la información que se usa para evaluar si un resultado para un algoritmo es cierta o no, o sea son los valores esperados que debería arrojar un algoritmo
 
 En el caso de medir el exito o fallo de un algoritmo se usa 4 categorías generales:
@@ -2470,3 +2471,332 @@ La manera óptima de visualizar esta información sería una matriz de confusió
 De estas metricas ademas salen nuevos valores como por ejemplo:
 + **Precisión**: Mide la proporción de verdaderos positivos sobre todos los casos positivos detectados por el algoritmo
 $$\text{Precisión}=\frac{TP}{TP+FP}$$
++ **Sensibilidad**: Es la proporción de verdaderos positivos sobre todas las situaciones reales
+$$\text{Sensibilidad}=\frac{TP}{TP+FN}$$
+* **Especificidad**: Es la proporción de verdaderos negativos sobre todos los casos negativos
+$$\text{Especificidad}=\frac{TN}{TN+FP}$$
++ **Exactitud o *acurracy***: Es el total de predicciones correctas sobre la cantidad de predicciones realizadas
+$$\text{Exactitud}=\frac{TP+TN}{TP+TN+FP+FN}$$
+Todas tienen su utilidad y nos genera una base solida para evaluarlo enfrente del groundtruth.
+### Curva ROC
+
+
+![[Pasted image 20261116203304.png]]
+#### ¿Qué es la curva ROC?
+Es un gráfico utilizado para evaluar **modelos de clasificación binaria**. Permite visualizar simultáneamente dos tipos de errores (la sensibilidad y uno menos la especificidad) para todos los umbrales de decisión posibles. Su nombre proviene de la teoría de comunicaciones (_Receiver Operating Characteristics_).
+#### Conceptos Clave
+- **Sensibilidad (TPR):** Tasa de verdaderos positivos (casos correctamente identificados).
+- **1 - Especificidad (FPR):** Tasa de falsos positivos (casos negativos clasificados incorrectamente como positivos).
+- **AUC (Área Bajo la Curva):** Mide el rendimiento global del clasificador considerando todos los umbrales.
+    - **Cercano a 1.0:** Indica un clasificador excelente (la curva se acerca a la esquina superior izquierda).
+    - **0.5:** Representa un modelo que no es mejor que el azar. Un buen clasificador debe superar significativamente este valor en datos de prueba independientes.
+#### Utilidad y Restricciones
+- **Utilidad:** Es muy útil para **comparar distintos clasificadores** de manera global, ya que evalúa su comportamiento ante cualquier umbral posible al variar las probabilidades de clase.
+- **Restricción:** Requiere obligatoriamente que el modelo proporcione **probabilidades o un puntaje continuo** para cada muestra.
+#### Reglas y Guía para la Evaluación de Modelos de Regresión
+
+##### 1. Métricas de Error Principales y Fórmulas
+Para evaluar el rendimiento de algoritmos de regresión, se utilizan métricas estándar que miden la diferencia entre los valores reales ($y_i$) y los predichos ($\hat{y}_i$):
+
+* **MAE (Mean Absolute Error / Error Absoluto Medio):**
+  $$MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$
+  * *Para qué sirve:* Mide el promedio de la magnitud de los errores absolutos. Al no elevar los errores al cuadrado, da la misma ponderación a todas las desviaciones, siendo más tolerante y robusto ante valores atípicos (*outliers*).
+
+* **MSE (Mean Squared Error / Error Cuadrático Medio):**
+  $$MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
+  * *Para qué sirve:* Eleva al cuadrado los errores antes de promediar. Esto penaliza de forma mucho más severa los errores grandes, siendo ideal cuando equivocarse por mucho es crítico.
+
+* **RMSE (Root Mean Squared Error / Raíz del Error Cuadrático Medio):**
+  $$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$
+  * *Para qué sirve:* Es la raíz cuadrada del MSE. Su principal ventaja es que **devuelve la métrica a las unidades originales** de la variable predicha, lo que facilita enormemente su interpretación física o práctica.
+
+* **$R^2$ (Coeficiente de Determinación):**
+  $$R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}$$
+  * *Para qué sirve:* Mide qué tan bien el modelo explica la variabilidad de los datos en comparación con un modelo base simple (la media). Varía típicamente entre 0 y 1 (donde 1 es un ajuste perfecto).
+
+---
+
+##### 2. Visualización de Métricas (Validación Cruzada)
+* **Uso de Box Plots y Barras de Desviación:** Cuando se obtienen múltiples mediciones (por ejemplo, a través de *cross-validation* o validación cruzada), no basta con usar un solo valor resumido (como la media), ya que este puede ocultar inestabilidad. Es obligatorio representar la variación entre *folds* mediante **box plots** o barras de desviación estándar.
+
+---
+
+##### 3. Gráficos de Diagnóstico Esenciales
+Las métricas resumidas ocultan patrones ocultos en los errores, por lo que se deben complementar con:
+
+* **Valor Real vs. Valor Predicho:** Los puntos ideales caen sobre la diagonal $y = x$. La dispersión permite ver si el modelo tiende a sobreestimar o subestimar sistemáticamente ciertos rangos.![[Pasted image 20261116204120.png]]
+* **Residuos vs. Valor Predicho:** Los residuos ($y - \hat{y}$) deben distribuirse aleatoriamente alrededor de cero.
+  * *Si hay curvaturas:* El modelo no está capturando relaciones no lineales.
+  * *Si tiene forma de embudo:* Hay varianza de error no constante (*heterocedasticidad*).![[Pasted image 20261116204209.png]]
+* **Histograma de Residuos:** Permite verificar si los errores están centrados en cero y detectar de forma visual valores atípicos.![[Pasted image 20261116204251.png]]
+
+---
+
+##### 4. Restricción de la Curva ROC en Regresión
+* **Inaplicabilidad directa:** La curva ROC no se puede aplicar directamente a problemas de regresión porque estos entregan valores continuos y no categorías binarias o probabilidades de clase.
+* **Transformación:** Para usar una curva ROC en regresión, es necesario **transformar el problema en uno de clasificación binaria**, definiendo un umbral (*threshold*) para convertir el valor continuo en una clase de 0 o 1.
+#### Explicabilidad de Modelos con SHAP (SHapley Additive exPlanations)
+
+##### 1. ¿Qué es SHAP y por qué es importante?
+Un alto rendimiento predictivo no garantiza que un modelo sea comprensible. La explicabilidad (o interpretabilidad) busca responder **por qué** un modelo emite una predicción específica, lo cual es fundamental en dominios críticos como la salud, donde las decisiones requieren justificación y contraste con el conocimiento experto. 
+
+Los valores SHAP se basan en los **valores de Shapley** de la teoría de juegos cooperativos, donde la predicción de un modelo se "reparte" equitativamente entre las variables de entrada según su contribución real.
+
+##### 2. Fórmulas Matemáticas Clave y su Utilidad
+
+* **Cálculo del Valor de Shapley ($\phi_i$):**
+  $$\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|! (|F| - |S| - 1)!}{|F|!} \left[ f(S \cup \{i\}) - f(S) \right]$$
+  * *Para qué sirve:* Representa el promedio ponderado de la contribución marginal de una variable $i$ al ser integrada en todos los subconjuntos posibles $S$ del conjunto total de variables $F$. Mide cuánto cambia la predicción del modelo cuando se añade dicha variable.
+
+* **Propiedad de Aditividad:**
+  $$f(x) = \phi_0 + \sum_{i=1}^{|F|} \phi_i$$
+  * *Para qué sirve:* Garantiza que la predicción final del modelo para una instancia concreta ($f(x)$) se desglose de forma exacta como la suma de un valor base $\phi_0$ (la predicción promedio obtenida sobre un conjunto de datos de referencia o *background*) más la contribución individual ($\phi_i$) de cada una de las variables del modelo.
+
+---
+
+##### 3. Conceptos Clave para la Interpretación
+* **Explicaciones Locales y Globales:** 
+  * *Locales:* Explican predicciones de instancias individuales (por ejemplo, mediante gráficos tipo *waterfall*).
+  * *Globales:* Agregan múltiples explicaciones individuales para ofrecer una perspectiva general de cuáles son las variables más influyentes a nivel macro (por ejemplo, con gráficos *bar* o *beeswarm*).
+* **Explicadores Específicos y Agnósticos al Modelo:** 
+  * Para modelos lineales existen métodos eficientes y exactos (`LinearExplainer`).
+  * Para modelos arbitrarios (como KNN), los valores SHAP deben aproximarse mediante muestreo y permutaciones, lo que resulta más costoso computacionalmente y depende del conjunto de referencia seleccionado.
+* **Unidades de la Explicación:** 
+  * Los valores SHAP se expresan en las **unidades de la salida del modelo** (ej. *log-odds* en regresión logística, o probabilidad en modelos como KNN). Debido a esto, las magnitudes absolutas no son comparables directamente entre modelos distintos, aunque sí es posible contrastar sus rankings de importancia con cautela.
+![[Pasted image 20261116204617.png]]
+Las **partes más gruesas o abultadas** de cada fila no significan que el impacto sea mayor o menor por sí solo, sino que representan la **densidad o concentración de puntos (instancias)**.
+
+##### 4. Limitaciones de SHAP
+* **No determina causalidad:** SHAP explica cómo se comporta el *modelo*, no la realidad física o biológica. Una variable con un alto valor SHAP significa que el modelo la usa intensivamente, pero no demuestra que sea la causa directa del fenómeno analizado.
+* **Efecto de variables correlacionadas:** Si existen variables altamente correlacionadas entre sí, el impacto e importancia de estas puede repartirse de maneras complejas y poco intuitivas entre ellas.
+## Procesamiento y Visualización de imágenes
+### Kernels en el Procesamiento y Visualización de Imágenes
+
+##### 1. ¿Qué es un Kernel?
+Un **kernel** (o filtro convolucional) es una pequeña matriz numérica que se utiliza en el procesamiento digital de imágenes para modificar la intensidad de los píxeles. Permite transformar la imagen original localmente para destacar o atenuar ciertas características visuales.
+![[Pasted image 20261116205319.png]]
+
+---
+
+##### 2. La Operación de Convolución y su Fórmula
+Mediante la **convolución**, el kernel se desplaza sistemáticamente sobre la imagen, efectuando una combinación ponderada de los píxeles vecinos para generar una nueva imagen procesada.
+
+* **Fórmula Matemática:**
+  $$h(u, v) * g(u, v) = \sum_{i=-k}^{k} \sum_{j=-k}^{k} h(u + i, v + j) \cdot g(i, j)$$
+
+* **¿Qué significa cada término y para qué sirve?**
+  * **$h(u, v)$:** Es la imagen original evaluada en las coordenadas espaciales $(u, v)$.
+  * **$g(i, j)$:** Es el kernel (la matriz de pesos o coeficientes).
+  * **Los límites de la sumatoria ($\sum_{i=-k}^{k} \sum_{j=-k}^{k}$):** Definen el tamaño del vecindario alrededor del píxel central que se va a procesar (por ejemplo, un kernel de $3 \times 3$ implica un radio $k=1$).
+  * **¿Para qué sirve la operación?** Multiplica de forma cruzada los valores del kernel con los píxeles vecinos de la imagen y suma los productos. El resultado de esta suma se asigna como la nueva intensidad del píxel central, permitiendo realizar transformaciones espaciales basadas en el contexto del entorno.
+
+---
+
+##### 3. Principales Usos de los Kernels
+Dependiendo de la configuración numérica de sus valores, la operación de convolución se emplea para distintos fines:
+* **Suavizado (*Smoothing*):** Difumina la imagen para reducir ruido y detalles menores.
+* **Realce de bordes y Detección de contornos:** Destaca los cambios drásticos de intensidad lumínica para identificar los límites de los objetos.
+* **Eliminación de ruido:** Limpia imperfecciones puntuales en la matriz de píxeles.
+#### Filtros de Procesamiento de Imágenes: Laplaciano, Sobel y Prewitt
+
+##### 1. Filtro Laplaciano
+* **Kernel:**
+  $$L = \begin{bmatrix} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0 \end{bmatrix}$$
+* **Cómo funciona y por qué tiene esos valores:**
+  El filtro Laplaciano se basa en calcular la **segunda derivada** de la intensidad de la imagen para identificar zonas donde la intensidad cambia bruscamente (es decir, los bordes).
+  * *Por qué esos valores:* El centro de la matriz tiene un valor de $-4$ y sus cuatro vecinos ortogonales (arriba, abajo, izquierda y derecha) tienen un valor de $1$. Las esquinas tienen $0$ porque solo evalúa los cambios directos en cruz. 
+  * *Ejemplo práctico:* Si se aplica en una zona plana de la imagen donde todos los píxeles vecinos y el central valen $10$, la operación resulta en:
+    $$(1 \times 10) + (1 \times 10) + (1 \times 10) + (1 \times 10) + (-4 \times 10) = 40 - 40 = 0$$
+    (No hay cambio, por lo que da negro o fondo neutro). En cambio, si el píxel central es un borde brillante con valor $50$ rodeado de fondo oscuro con valor $10$, la suma da $(1 \times 10) \times 4 + (-4 \times 50) = 40 - 200 = -160$, generando un valor alto que resalta el contorno.
+![[Pasted image 20261116205726.png]]
+---
+
+##### 2. Filtro Sobel
+* **Kernels:**
+  $$S_x = \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix} \quad \text{y} \quad S_y = \begin{bmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1 \end{bmatrix}$$
+* **Cómo funciona y por qué tiene esos valores:**
+  Calcula una aproximación del gradiente de la imagen en dos direcciones (horizontal $S_x$ y vertical $S_y$) para detectar la orientación de los bordes.
+  * *Por qué esos valores en $S_x$ (bordes verticales):* Resta la columna izquierda de la columna derecha para medir el cambio horizontal. Los pesos de $2$ y $-2$ en la fila central sirven para **dar mayor importancia al píxel central** y suavizar un poco el ruido verticalmente.
+  * *Por qué esos valores en $S_y$ (bordes horizontales):* Resta la fila superior de la fila inferior, aplicando pesos de $2$ en la columna central para dar mayor estabilidad al centro.
+  * *Magnitud final:* Los resultados de ambos se combinan mediante la fórmula de la norma del gradiente $G = \sqrt{S_x^2 + S_y^2}$ para mostrar los contornos brillantes.
+![[Pasted image 20261116205804.png]]
+---
+
+##### 3. Filtro Prewitt
+* **Kernels:**
+  $$P_x = \begin{bmatrix} -1 & 0 & 1 \\ -1 & 0 & 1 \\ -1 & 0 & 1 \end{bmatrix} \quad \text{y} \quad P_y = \begin{bmatrix} -1 & -1 & -1 \\ 0 & 0 & 0 \\ 1 & 1 & 1 \end{bmatrix}$$
+* **Cómo funciona y por qué tiene esos valores:**
+  Funciona bajo el mismo principio de gradiente que el filtro Sobel, pero utiliza coeficientes más simples.
+  * *Por qué esos valores:* A diferencia de Sobel, Prewitt elimina los pesos dobles ($2$ y $-2$), dejando únicamente valores uniformes de $-1$, $0$ y $1$. 
+  * *Propósito:* Esto **reduce la carga computacional** ya que simplifica las operaciones matemáticas a sumas y restas puras, evitando multiplicar por factores de ponderación. Como contraparte, al no priorizar el centro, es ligeramente más sensible al ruido que el filtro Sobel.
+
+![[Pasted image 20261116205838.png]]
+### Técnicas para Evitar la Pérdida de Información en los Bordes
+
+##### 1. El Problema de los Bordes en la Convolución
+Durante la aplicación de un kernel, cuando este se sitúa sobre los píxeles de los extremos de la imagen, parte del kernel queda fuera del dominio útil. Para solucionar esto y conservar la integridad visual, se utiliza el **padding** (relleno de bordes) para extender la imagen artificialmente antes del filtrado.
+
+---
+
+##### 2. Zero Padding (Relleno con Ceros)
+* **Matriz de ejemplo:**
+  $$\begin{bmatrix} 0 & 0 & 0 & 0 & 0 \\ 0 & a & b & c & 0 \\ 0 & d & e & f & 0 \\ 0 & g & h & i & 0 \\ 0 & 0 & 0 & 0 & 0 \end{bmatrix}$$
+* **Cómo funciona y por qué es así:**
+  Consiste en rodear la matriz original de la imagen ($3 \times 3$ con elementos $a$ hasta $i$) con un marco de ceros.
+  * *Por qué esa estructura:* Al añadir una capa de ceros alrededor, el tamaño de la imagen aumenta (por ejemplo, de $3 \times 3$ a $5 \times 5$), permitiendo que el píxel original de la esquina (como $a$) pase a ser el centro de un vecindario de $3 \times 3$ completo. 
+  * *Efecto:* Mantiene el tamaño de salida idéntico al original, pero al introducir ceros puros, puede generar un oscurecimiento artificial o falsos bordes oscuros en los contornos.
+
+---
+
+##### 3. Replicación de Bordes (Edge Replication)
+* **Matriz de ejemplo:**
+  $$\begin{bmatrix} a & a & b & c & c \\ a & a & b & c & c \\ d & d & e & f & f \\ g & g & h & i & i \\ g & g & h & i & i \end{bmatrix}$$
+* **Cómo funciona y por qué es así:**
+  Duplica o replica los valores de los píxeles más externos hacia el exterior.
+  * *Por qué esa estructura:* Si observas las esquinas y los bordes exteriores, el valor del píxel extremo se duplica en las celdas añadidas (por ejemplo, el elemento de la esquina superior izquierda $a$ se extiende para llenar el espacio vacío). 
+  * *Efecto:* Evita el contraste drástico que causan los ceros, ya que la transición hacia afuera imita exactamente el último color o intensidad real que tenía el borde de la imagen, reduciendo la distorsión.
+
+---
+
+##### 4. Reflejo (Reflect Padding)
+* **Matriz de ejemplo:**
+  $$\begin{bmatrix} c & b & a & b & c \\ f & e & d & e & f \\ i & h & g & h & i \\ f & e & d & e & f \\ c & b & a & b & c \end{bmatrix}$$
+* **Cómo funciona y por qué es así:**
+  Extiende la imagen creando una imagen especular (reflejada) de los valores adyacentes al borde.
+  * *Por qué esa estructura:* En lugar de repetir simplemente el mismo número (como en la replicación), hace un "espejo". Si la fila original de arriba es $a \ b \ c$, al reflejarse hacia la izquierda y derecha de forma simétrica se genera la secuencia $c \ b \ a \ b \ c$.
+  * *Efecto:* Es la técnica preferida en librerías avanzadas (como OpenCV o `scipy.ndimage`) porque produce la transición más natural y matemáticamente continua, evitando saltos bruscos de intensidad en los bordes.
+
+---
+
+##### 5. Wrap Padding (Relleno Circular / Periódico)
+* **Cómo funciona y por qué es así:**
+  Trata la imagen como si fuera una superficie toroidal (un mapa continuo donde el borde derecho se conecta con el izquierdo, y el superior con el inferior).
+  * *Por qué esa estructura:* Los píxeles del extremo opuesto se copian al otro lado. Si sales por el borde derecho, "apareces" por el izquierdo.
+  * *Efecto:* Es muy útil en procesamiento de señales y transformadas matemáticas específicas (como la Transformada de Fourier), pero en fotografías o imágenes naturales reales suele producir artefactos visuales extraños al unir extremos que no tienen relación temática.
+### Método de Otsu para Binarización Automática
+
+##### 1. ¿Qué es el Método de Otsu?
+Es una técnica de binarización automática diseñada para separar los píxeles de una imagen en dos clases: **fondo** y **objeto**. Su propósito principal es calcular un umbral óptimo $t^*$ de forma algorítmica, maximizando la diferencia estadística (varianza entre clases) para lograr una segmentación precisa sin intervención manual.
+
+---
+
+##### 2. Funcionamiento y Análisis del Histograma
+* **Cómo funciona:** Analiza el histograma de la imagen asumiendo una distribución bimodal (dos grupos principales de píxeles). Evalúa todos los umbrales posibles $t$ hasta encontrar aquel que separa de manera óptima las intensidades lumínicas.
+![[Pasted image 20261116211439.png]]
+---
+
+##### 3. Formulación Matemática y Fórmulas Clave
+* **Histograma Normalizado y Probabilidades Acumuladas:**
+  * Probabilidad de aparición de la intensidad $i$: 
+    $$p(i) = \frac{n_i}{N}$$ (donde $n_i$ es el número de píxeles con intensidad $i$ y $N$ es el total de píxeles).
+  * La imagen se divide en dos clases según el umbral $t$: $C_1 = [0, t]$ (fondo) y $C_2 = [t + 1, L - 1]$ (objeto).
+  * Proporción de píxeles de cada clase ($\omega_1$ y $\omega_2$):
+    $$\omega_1(t) = \sum_{i=0}^{t} p(i), \quad \omega_2(t) = \sum_{i=t+1}^{L-1} p(i)$$
+
+* **Medias de las Clases y Media Total:**
+  * Promedio de intensidades de cada grupo ($\mu_1$ y $\mu_2$):
+    $$\mu_1(t) = \frac{\sum_{i=0}^{t} i \cdot p(i)}{\omega_1(t)}, \quad \mu_2(t) = \frac{\sum_{i=t+1}^{L-1} i \cdot p(i)}{\omega_2(t)}$$
+  * Media total de la imagen ($\mu_T$):
+    $$\mu_T = \sum_{i=0}^{L-1} i \cdot p(i)$$
+
+* **Varianza entre Clases ($\sigma_B^2(t)$):**
+  $$\sigma_B^2(t) = \omega_1(t)[\mu_1(t) - \mu_T]^2 + \omega_2(t)[\mu_2(t) - \mu_T]^2$$
+  * *Para qué sirve:* Mide cuán separadas están las intensidades promedio del fondo y del objeto. A mayor valor, más clara es la distinción.
+
+* **Cálculo del Umbral Óptimo ($t^*$):**
+  $$t^* = \arg \max_t \sigma_B^2(t)$$
+  * *Para qué sirve:* Selecciona el valor exacto de $t$ que maximiza la varianza entre clases.
+
+---
+
+##### 4. Interpretación Práctica
+* **Punto de corte:** El umbral $t^*$ define el límite en el histograma entre el fondo y el objeto.
+* **Asignación de valores:** Los píxeles con intensidad menor o igual a $t^*$ se convierten en el fondo (valor $0$ o negro), mientras que los superiores se asignan al objeto (valor $255$ o blanco en una imagen binaria estándar).
+## Interfaz gráfica para el procesamiento de imágenes
+### Tkinter e Interfaces Nativas en Python
+
+##### 1. ¿Qué es Tkinter?
+Es el kit de herramientas de GUI (Interfaz Gráfica de Usuario) estándar de Python. Funciona como una envoltura ligera sobre Tcl/Tk y, al formar parte de la biblioteca estándar, **no requiere instalación previa**.
+
+##### 2. Conceptos Clave de Tkinter
+* **Ventana Raíz (*Root Window*):** La ventana principal de la aplicación creada mediante `tk.Tk()`.
+* **Widgets:** Componentes visuales de la interfaz (botones, etiquetas, deslizadores). Ejemplos: `tk.Button`, `tk.Label`, `tk.Scale`.
+* **Gestores de Geometría:** Métodos que organizan la disposición de los widgets en la ventana. Los más comunes son `.pack()` (apila elementos) y `.grid()` (los distribuye en forma de cuadrícula).
+* **Manejo de Eventos:** Conecta la interacción del usuario (por ejemplo, un clic) con una función de Python utilizando el argumento `command`.
+* **Loop Principal (*Main Loop*):** `root.mainloop()` es una llamada bloqueante que inicia el bucle de eventos, manteniendo la aplicación abierta y atenta a la interacción del usuario.
+
+*Nota de integración:* Tkinter no puede mostrar una imagen de NumPy u OpenCV directamente. Se requiere una biblioteca intermediaria (**Pillow / PIL**) siguiendo el flujo: 
+`NumPy (OpenCV) → PIL Image → ImageTk.PhotoImage → tk.Label`
+
+---
+
+### Análisis de Componentes Principales (PCA) en Imágenes
+#### ¿Qué es realmente el PCA? (Intuición Geométrica)
+
+El **Análisis de Componentes Principales (PCA)** es una técnica de aprendizaje automático no supervisado que sirve para **reducir la dimensionalidad** de un conjunto de datos.
+
+Imagina que tienes un conjunto de datos representado en un espacio de 3 dimensiones (o de 100 dimensiones). Visualizar o procesar tantas variables es complejo y muchas están correlacionadas entre sí (es decir, dicen casi lo mismo).
+
+- **La idea geométrica:** Piensa en una nube de puntos tridimensional con forma de "cigarro" o elipse alargada. Si miras esa nube desde el ángulo correcto, puedes aplanarla en un plano 2D (o incluso en una línea 1D) **perdiendo la menor cantidad de información posible**.
+    
+- Esos nuevos ejes rotados que maximizan la dispersión de los datos son las llamadas **Componentes Principales**. La primera componente ($PC1\text{PC}_1PC1$​) apunta en la dirección donde los datos varían más; la segunda ($PC2\text{PC}_2PC2$​) es perpendicular a la primera y captura la segunda mayor cantidad de varianza, y así sucesivamente.
+    
+
+#### ¿Cómo funciona paso a paso bajo el capó?
+
+Matemáticamente, el PCA no selecciona qué variables conservar (como hacen otras técnicas de selección de características), sino que **crea nuevas variables sintéticas** que son combinaciones lineales de las originales. El proceso interno sigue estos pasos:
+
+##### 1. Centrado de los datos (Normalización)
+
+A cada variable original se le resta su media ($μ\muμ$). Esto desplaza la nube de puntos para que su centro coincida con el origen de coordenadas (0,0)(0,0)(0,0). Este paso es vital porque el PCA busca maximizar la varianza, y si una variable tiene valores numéricos gigantes en comparación con otra, sesgaría todo el análisis.
+
+##### 2. Cálculo de la Matriz de Covarianza
+
+Una vez centrados los datos, el algoritmo calcula la **matriz de covarianza**. Esta matriz mide cómo se relacionan todas las variables entre sí:
+
+- Si la covarianza entre la variable AAA y la variable BBB es alta y positiva, significa que ambas crecen juntas.
+    
+- Nos permite entender la estructura de redundancia y dependencia lineal de todo el conjunto de datos.
+    
+
+##### 3. Descomposición Eigencial (Autovalores y Autovectores)
+
+Este es el corazón matemático del PCA. A partir de la matriz de covarianza, se extraen dos elementos fundamentales:
+
+- **Autovectores (_Eigenvectors_):** Son vectores que definen la **dirección** de los nuevos ejes (las componentes principales). Tienen la propiedad matemática de ser ortogonales (forman ángulos de 90 grados entre sí), lo que garantiza que las nuevas variables no estén correlacionadas.
+    
+- **Autovalores (_Eigenvalues_):** Son números reales asociados a cada autovector que miden la **magnitud** de la varianza explicada por ese eje.
+    
+
+##### 4. Ordenamiento y Selección (kkk componentes)
+
+Se ordenan los autovalores de mayor a menor.
+
+- El autovector con el autovalor más alto se convierte en la **Componente Principal 1 ($PC1\text{PC}_1PC1$​)** porque explica la mayor parte de la variabilidad del sistema.
+    
+- El usuario decide cuántas componentes (kkk) conservar según el porcentaje de varianza acumulada que desea retener (por ejemplo, retener los componentes necesarios para explicar el 95% de la varianza total).
+    
+
+##### 5. Proyección (Rotación del espacio)
+
+Finalmente, se multiplican los datos originales centrados por la matriz formada por los autovectores seleccionados. Esto proyecta las observaciones sobre el nuevo sistema de coordenadas más pequeño, completando la reducción dimensional.
+
+#### ¿Por qué es tan potente y cuáles son sus límites?
+
+- **Ventajas principales:**
+    
+    - **Elimina la multicolinealidad:** Al transformar las variables en componentes ortogonales, resuelve el problema de tener variables altamente correlacionadas en modelos de regresión.
+        
+    - **Compresión y velocidad:** Reduce drásticamente el costo computacional en algoritmos pesados (como en procesamiento de imágenes o genómica) manteniendo la esencia de la información.
+        
+- **Limitaciones importantes:**
+    
+    - **Suposición de linealidad:** El PCA asume que las relaciones entre las variables son lineales. Si tus datos forman estructuras circulares o espirales complejas, el PCA tradicional falla (para eso existen variantes avanzadas como _Kernel PCA_).
+        
+    - **Pérdida de interpretabilidad:** Como las nuevas componentes son combinaciones matemáticas de todas las variables originales (ej. PC1=0.5x1−0.8x2+…\text{PC}_1 = 0.5x_1 - 0.8x_2 + \dotsPC1​=0.5x1​−0.8x2​+…), dejas de ver características físicas claras y pasas a ver conceptos abstractos.
+![[Pasted image 20261116212644.png]]
+##### 3. Explicación del Código de Implementación
+* **Centrar la media (`img_norm`):** Resta la media a la imagen para normalizar los datos antes de aplicar el análisis.
+* **Aplicar PCA (`PCA(n_components=k)`):** Reduce la dimensionalidad quedándose solo con las $k$ componentes principales más importantes mediante `fit_transform`.
+* **Transformación inversa (`inverse_transform`):** Proyecta los datos reducidos de vuelta al espacio dimensional original.
+* **Ajuste final (`np.clip`):** Suma nuevamente la media y recorta los valores con `np.clip` para asegurar que se mantengan estrictamente en el rango de píxeles válidos de 0 a 255 (`np.uint8`).
