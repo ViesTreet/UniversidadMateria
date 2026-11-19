@@ -2,5 +2,6 @@
   "cssTheme": "Tokyo Night",
   "enabledCssSnippets": [
     "fix"
-  ]
+  ],
+  "showRibbon": true
 }

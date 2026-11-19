@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Visualización/Visualización.md",
+                "file": "Taller De Administración De Sistemas/Repaso C2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Visualización"
+              "title": "Repaso C2"
             }
           }
         ]
@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ea0c3d1b86f65395",
@@ -191,32 +190,35 @@
   },
   "active": "9a9f4b6e94dbec37",
   "lastOpenFiles": [
-    "Adjuntos/Pasted image 20261116212644.png",
-    "Adjuntos/Pasted image 20261116211439.png",
-    "Adjuntos/Pasted image 20261116205838.png",
-    "Adjuntos/Pasted image 20261116205804.png",
-    "Adjuntos/Pasted image 20261116205726.png",
-    "Adjuntos/Pasted image 20261116205319.png",
-    "file:/home/viestreet/Descargas/Lab_S11___Procesamiento_y_visualización__de_imágenes.pdf",
+    "Taller De Administración De Sistemas/Repaso C2.pdf",
+    "Adjuntos/Pasted image 20261119192854.png",
+    "Adjuntos/Pasted image 20261119191918.png",
+    "Adjuntos/Pasted image 20261119184933.png",
+    "Adjuntos/Pasted image 20261119174806.png",
+    "Adjuntos/Pasted image 20261119171343.png",
+    "Taller De Administración De Sistemas/Taller De Administración De Sistemas.md",
+    "Taller De Administración De Sistemas/Repaso C2.md",
     "Visualización/Visualización.md",
-    "Adjuntos/Pasted image 20261116204617.png",
-    "file:/home/viestreet/Descargas/Lab_S9___Visualización_para_clasificación_y_predicción.pdf",
-    "Adjuntos/Pasted image 20261116204251.png",
-    "Adjuntos/Pasted image 20261116204209.png",
-    "Adjuntos/Pasted image 20261116204120.png",
-    "Adjuntos/Pasted image 20261116204102.png",
+    "Adjuntos/Pasted image 20261117232409.png",
+    "file:/home/viestreet/Descargas/Copia de CV Español.pdf",
+    "Adjuntos/Pasted image 20261117224432.png",
+    "Adjuntos/Pasted image 20261117223907.png",
+    "Adjuntos/Pasted image 20261117223801.png",
+    "file:/home/viestreet/Descargas/Lab_S13___Laboratorio_de_Týcnicas_para_visualizaciýn_en_series_de_tiempo.pdf",
+    "file:/home/viestreet/Descargas/Lab_S12__Interfaz_grýfica_para_el_procesamiento_de_imýgenes.pdf",
+    "file:/home/viestreet/Descargas/Lab_S11___Procesamiento_y_visualización__de_imágenes.pdf",
+    "ayudantias/Estructura de datos/ayudantia 17-11/guia_ayudantia.md",
+    "file:/home/viestreet/Descargas/banco/BancoPython_USM.pdf",
+    "ayudantias/Estructura de datos/ayudantia 17-11/config.py",
+    "ayudantias/Estructura de datos/ayudantia 17-11/inventario.py",
+    "ayudantias/Estructura de datos/ayudantia 17-11/productos.csv",
+    "ayudantias/Estructura de datos/ayudantia 17-11/ventas.csv",
+    "ayudantias/Estructura de datos/ayudantia 17-11/producto.py",
+    "Adjuntos/Pasted image 20261116212644.png",
     "ayudantias/Matematica de la ingenieria/Resumen.md",
     "Inteligencia De Negocios/Inteligencia De Negocios.md",
-    "ayudantias/Estructura de datos/Tarea2.ipynb",
-    "ayudantias/Estructura de datos/codigoResuleto.py",
-    "Adjuntos/OLTP - OLAP.pdf",
-    "Adjuntos/lu59271nssd.tmp",
-    "Adjuntos/Catedra Clase 2.pdf",
-    "Adjuntos/lu55911n94s.tmp",
     "Gestión De Proyectos/Gestión De Proyectos.md",
     "Gestión Del Emprendimiento/Gestión Del Emprendimiento.md",
-    "Adjuntos/Clase 1 - Intro.pdf",
-    "Adjuntos/lu73679f4z2y.tmp",
     "Adjuntos/1788058648.md",
     "1788058648.md"
   ]
