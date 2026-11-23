@@ -225,23 +225,45 @@ El estandar nos da una guia a considedarar pero la metodologia nos dice como lle
 ![[1795399722_2.png]]
 
 ![[1795399722_3.png]]
-
+> O sea en resumen los estándares en general proporcionan buenas prácticas, principios, procesos y vocabulario común.
 ![[1795399722_4.png]]
-
-![[1795399722_5.png]]
+> PMI es un instituto dedicado a desarrollar estándares, PMBOK es una des sus guías.
+![[1795399722_5.png]]El PMBOK se aplica en las siguientes fases del proyecto:
++ Inicio
++ Planificación
++ Ejecución
++ Monitoreo y control
++ Cierre
 
 ![[1795399722_6.png]]
 
 ![[1795399722_7.png]]
-
+La versión 8 del PMBOK no es solo una actualización de los anteriores, si no que agrega nuevos enfoques y principios, siendo la última versión la que se enfoca en el valor, desempeño y aplicación práctica.
 ![[1795399722_8.png]]
-
+Se enfoca en la adapacion, no es una metodologia rigida, son estandares y referencias
 ![[1795399722_9.png]]
-
++ **Versión holística:** Un proyecto como un sistema más amplio que interactúa con el entorno
++ **Enfocarse en el valor:** Enfocado en generar resultado y beneficios
++ **Incorporar la calidad en los procesos y entregables:** Integrar la calidad como una base durante todo el proyecto
++ **Ser un líder responsable:** Ejercer un liderazgo efectivo y responsable
++ **Integrar la sostenibilidad:** Buscamos generar valor sostenible
++ **Construir una cultura de equipo empoderada:** Crear un entorno donde se provee confianza, colaboración y autonomía para los miembros del equipo.
 ![[1795399722_10.png]]
 
 ![[1795399722_11.png]]
-
+Tenemos 5 grupos de procesos:
++ Procesos de inicio
++ Procesos de planificación
++ Procesos de ejecución
++ Procesos de cierre
+En 7 areas claves:
+1. Gobernanza
+2. Alcance
+3. Cronograma
+4. Finanzas
+5. Interesados
+6. Recursos
+7. Riesgos
 ![[1795399722_12.png]]
 
 ![[1795399722_13.png]]
@@ -266,6 +288,16 @@ El estandar nos da una guia a considedarar pero la metodologia nos dice como lle
 
 ![[1795399722_23.png]]
 
+| Gestión/Procesos | Inicio | Planificación | Ejecución | Monitoreo y control | Cierre | 40 Procesos |
+| ---------------- | ------ | ------------- | --------- | ------------------- | ------ | ----------- |
+| Gobernanza       | 1      | 2             | 3         | 2                   | 1      | 9           |
+| Alcance          |        | 4             |           | 2                   |        | 6           |
+| Cronograma       |        | 2             |           | 1                   |        | 3           |
+| Finanzas         |        | 3             |           | 1                   |        | 4           |
+| Interesados      | 1      | 2             | 2         | 2                   |        | 7           |
+| Recursos         |        | 2             | 2         | 1                   |        | 5           |
+| Riesgos          |        | 4             | 1         | 1                   |        | 6           |
+
 ![[1795399722_24.png]]
 
 ![[1795399722_25.png]]
@@ -279,7 +311,7 @@ El estandar nos da una guia a considedarar pero la metodologia nos dice como lle
 ![[1795399722_29.png]]
 
 ![[1795399722_30.png]]
-
+## Clase 8
 ![[1795399739_1.png]]
 
 ![[1795399739_2.png]]
