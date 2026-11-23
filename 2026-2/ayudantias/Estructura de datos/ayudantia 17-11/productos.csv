@@ -1,0 +1,21 @@
+codigo,nombre,categoria,precio,stock
+1,Notebook 14,Computacion,449990,8
+2,Mouse inalambrico,Computacion,12990,35
+3,Teclado mecanico,Computacion,39990,12
+4,Monitor 24,Computacion,119990,6
+5,Audifonos BT,Audio,24990,20
+6,Parlante portatil,Audio,34990,4
+7,Microfono USB,Audio,29990,9
+8,Smartphone A15,Telefonia,199990,10
+9,Cargador rapido,Telefonia,9990,50
+10,Funda silicona,Telefonia,4990,3
+11,Cable USB-C,Telefonia,3990,60
+12,Silla gamer,Muebles,129990,5
+13,Escritorio 120cm,Muebles,89990,7
+14,Lampara LED,Muebles,14990,18
+15,Pendrive 64GB,Almacenamiento,6990,40
+16,Disco SSD 1TB,Almacenamiento,69990,11
+17,Disco externo 2TB,Almacenamiento,84990,2
+18,Webcam HD,Computacion,27990,14
+19,Router WiFi,Redes,34990,9
+20,Switch 8 puertos,Redes,19990,0
