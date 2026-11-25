@@ -1391,7 +1391,123 @@ El área clave **3. Cronograma** cuenta con **3 procesos** en total (**2 en Plan
 ![[1795399866_26.png]]
 
 ![[1795399866_27.png]]
+### PMBOK® 8: Fase de Planificación — Finanzas y Gobernanza (Calidad)
 
+#### 1. Área Clave 4: Finanzas — Visión General y Conceptos Clave
+El área clave de **Finanzas** gestiona los recursos financieros del proyecto mediante la estimación de costos, elaboración del presupuesto y seguimiento del desempeño financiero para utilizar los fondos de manera adecuada. Consta de **4 procesos** en total (**3 en Planificación** y 1 en Monitoreo y Control):
+
+1. **4.1 Planificar la gestión financiera** *(Planificación)*
+2. **4.2 Estimar los costos** *(Planificación)*
+3. **4.3 Desarrollar el presupuesto** *(Planificación)*
+4. **4.4 Monitorear y controlar las finanzas** *(Monitoreo y Control)*
+
+##### Relación Entre Recursos, Costos y Presupuesto
+* **Recursos *(¿Con qué lo hacemos?)*:** Personas (desarrolladores, analista, diseñador, etc.), equipos (computadores, servidores, licencias) y materiales/servicios (comunicaciones, nube, etc.).
+* **Costos *(¿Cuánto cuesta?)*:** Valor monetario del uso de un recurso (calculado a partir de tarifa/costo unitario y cantidad/duración); incluye costo por actividad y paquete de trabajo, costos directos e indirectos, y considera riesgos (contingencia).
+* **Presupuesto *(¿Cuánto dinero se necesita y cuándo se gasta?)*:** Suma de los costos de todas las actividades más reservas (contingencia y gestión) y su distribución en el tiempo (curva de costos o curva S).
+
+*Ejemplo de elementos financieros en Sistema de Reservas de Laboratorios USM:* Equipo de desarrollo, infraestructura tecnológica (servidores, licencias), servicios (pruebas, capacitación) y gestión del proyecto.
+
+##### Clasificación de Costos
+Según su comportamiento frente a la producción/actividad y su relación con el producto, servicio o proyecto:
+
+| Tipo de Costo | Definición | Ejemplo (*Reserva USM*) |
+| :--- | :--- | :--- |
+| **Costo Fijo** | No varía en función de las cantidades producidas o nivel de actividad. | Servidor en la nube (pago mensual fijo); licencia de software (monto fijo). |
+| **Costo Variable** | Varía en forma proporcional en función de las cantidades producidas o nivel de uso. | Costo por hora adicional de uso de infraestructura en la nube; pago por aumento de almacenamiento de datos. |
+| **Costo Directo** | Está directamente relacionado con el producto, servicio o actividad que se desarrolla y es imputable de forma inequívoca. | Horas de desarrollo del sistema de reservas; pruebas funcionales del sistema. |
+| **Costo Indirecto** | Es necesario para la operación o el proyecto, pero no es directamente imputable a un entregable o actividad específica. | Costos de administración del proyecto; servicios generales (electricidad, internet); capacitación del equipo. |
+| **Costo Hundido** | Costo ya incurrido en el pasado que no puede recuperarse y no debe influir en la decisión de continuar o no con el proyecto. | Equipos comprados previamente que no pueden recuperarse; gastos de análisis inicial ya realizados. |
+
+---
+
+#### 2. Proceso 4.1: Planificar la Gestión Financiera
+Define la forma en que se gestionarán los costos del proyecto a lo largo de su ciclo de vida, estableciendo políticas, métodos, herramientas y niveles de control:
+* **Estimar:** Cómo se determinarán los costos de los recursos y actividades.
+* **Registrar:** Qué información de costos se registrará.
+* **Organizar:** Cómo se estructurarán los costos en categorías y reportes.
+* **Controlar:** Qué mecanismos se utilizarán para dar seguimiento y controlar el gasto.
+
+##### Insumos Previos Necesarios para Estimar Costos
+La estimación de costos se apoya en los resultados de procesos anteriores de Planificación:
+* **Alcance / EDT *(¿Qué se va a hacer?)*:** Entregables, paquetes de trabajo y actividades (ej. Módulos de Usuarios, Reservas, Reportes).
+* **Cronograma *(¿Cuándo se va a hacer?)*:** Secuencia, duración, fechas de inicio/fin e hitos.
+* **Recursos *(¿Con qué lo vamos a hacer?)*:** Roles/perfiles, hardware, software/licencias, materiales, servicios y cantidades requeridas.
+* **Riesgos *(¿Qué podría afectar los costos?)*:** Eventos que pueden generar costos adicionales, su probabilidad/impacto y necesidad de reserva de contingencia.
+
+---
+
+#### 3. Proceso 4.2: Estimar los Costos
+Elabora una primera aproximación de los costos de los recursos necesarios para ejecutar las actividades del proyecto.
+
+* **Recurso vs. Costo:** El **recurso** es la persona, equipo, material o servicio (expresado en cantidad y duración, sin valor monetario por sí mismo); el **costo** es el valor monetario del uso de ese recurso ($\text{Cantidad/Duración} \times \text{Costo unitario}$).
+
+##### Técnicas de Estimación de Costos
+1. **Estimación análoga:** Utiliza información histórica de proyectos similares anteriores y la ajusta al contexto actual (rapidez y sencillez, pero menor precisión si hay diferencias importantes).
+   * *Ejemplo:* Un módulo de reservas similar costó `$1.500.000`; por mayor complejidad se estima un `20%` adicional:
+     $$\$1.500.000 \times 1,20 = \$1.800.000$$
+2. **Estimación paramétrica:** Aplica una fórmula o modelo estadístico que relaciona una variable cuantitativa del proyecto (tamaño, cantidad de elementos, complejidad, pantallas, líneas de código, etc.) con el costo.
+   * *Ejemplo:* Desarrollar una pantalla cuesta `$200.000`; para `8` pantallas:
+     $$8 \times \$200.000 = \$1.600.000$$
+3. **Estimación ascendente (*Bottom-up*):** Estima el costo de cada actividad o paquete de trabajo del nivel más bajo y luego suma hacia niveles superiores hasta obtener el total (mayor detalle y precisión).
+   * *Ejemplo (Módulo de reservas):* Diseño `$400.000` + Programación `$1.200.000` + Pruebas `$300.000` = **Total módulo `$1.900.000`**.
+
+###### Ejemplo de Desglose de Costos por Actividad (*Desarrollo de módulo de reservas — Reserva USM*)
+
+| Actividad | Recurso | Cantidad | Unidad | Costo Unitario (CLP) | Costo Total (CLP) |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Desarrollo de módulo de reservas** | Desarrollador backend | 160 | horas | $25.000 | $4.000.000 |
+| **Desarrollo de módulo de reservas** | Diseñador UX/UI | 80 | horas | $20.000 | $1.600.000 |
+| **Desarrollo de módulo de reservas** | Servidor de pruebas | 6 | meses | $100.000 | $600.000 |
+| **Total actividad** | | | | | **$6.200.000** |
+
+---
+
+#### 4. Proceso 4.3: Desarrollar el Presupuesto
+Agrega los costos estimados de actividades individuales o paquetes de trabajo para establecer una **línea base de costos** autorizada y determinar el **presupuesto total del proyecto**.
+
+##### Jerarquía y Diferencia Entre Estimación, Línea Base y Presupuesto
+De abajo hacia arriba (agregación de costos y reservas):
+1. **Estimación de actividades:** Costo estimado para cada actividad individual.
+2. **Estimación de paquetes de trabajo:** Suma de las actividades del paquete.
+3. **Estimación de cuentas de control:** Suma de los paquetes de trabajo asociados a cada cuenta de control.
+4. **Estimación de costos (estimación del proyecto):** Suma de los paquetes de trabajo / cuentas de control del proyecto.
+5. **Reserva de contingencia:** Monto adicional para cubrir **riesgos identificados** del proyecto; forma parte de la línea base de costos. Se calcula mediante el Valor Monetario Esperado ($\text{VME} = \text{Probabilidad} \times \text{Impacto}$) sobre los riesgos conocidos/identificados (más eventual contingencia adicional) o como porcentaje de la línea base.
+6. **Línea base de costos:** Versión aprobada del presupuesto por fases (sin reserva de gestión), que solo puede cambiarse mediante control formal de cambios. Sirve de base para medir el desempeño real del proyecto:
+   $$\text{Línea base de costos} = \text{Estimación de costos} + \text{Reserva de contingencia}$$
+7. **Reserva de gestión:** Monto adicional reservado para **incertidumbre no prevista** en el plan del proyecto (no asociada a riesgos específicos identificados, como cambios de alcance, variaciones de precios, nuevos requerimientos del cliente/sponsor o imprevistos). Se define como porcentaje de la línea base o según políticas organizacionales y **no forma parte de la línea base de costos**, pero sí del presupuesto total.
+8. **Presupuesto total del proyecto:** Suma de la línea base de costos y la reserva de gestión:
+   $$\text{Presupuesto total} = \text{Línea base de costos} + \text{Reserva de gestión}$$
+
+###### Ejemplo Numérico Completo (*Proyecto: Sistema de Reserva USM*, en miles de CLP / `M$`)
+* **Estimación de actividades y paquetes de trabajo:**
+  * `PT1 - Diseño`: `1.800` miles CLP (compuesto por `A1.1 Levantamiento de requerimientos`: `400`, `A1.2 Análisis y diseño`: `800`, `A1.3 Prototipos de interfaz`: `600`).
+  * `PT2 - Programación`: `1.900` miles CLP.
+  * `PT3 - Implementación de infraestructura`: `2.000` miles CLP.
+  * `PT4 - Pruebas y puesta en marcha`: `2.000` miles CLP.
+* **Estimación de cuentas de control / Estimación de costos:** $1.800 + 1.900 + 2.000 + 2.000 = \mathbf{7.700\text{ miles de CLP}}$.
+* **Reserva de contingencia:** $\mathbf{1.000\text{ miles de CLP}}$.
+* **Línea base de costos:** $7.700 + 1.000 = \mathbf{8.700\text{ miles de CLP}}$.
+* **Reserva de gestión:** $\mathbf{1.300\text{ miles de CLP}}$.
+* **Presupuesto total del proyecto:** $8.700 + 1.300 = \mathbf{10.000\text{ miles de CLP}}$ (`$10.000.000 CLP`).
+
+---
+
+#### 5. Gobernanza del Proyecto — Proceso 1.3 / 3: Planificar la Calidad
+* **Definición:** Definir cómo se asegurará que los entregables del proyecto cumplan con los requisitos de calidad establecidos.
+* **Propósito:** Establecer criterios de calidad desde el inicio, definir cómo verificar el cumplimiento, reducir errores, retrabajos y costos adicionales, y contribuir al éxito del proyecto y a la satisfacción de los usuarios.
+* **Elementos principales del Plan de Calidad:** Requisitos de calidad, indicadores o criterios de aceptación, métodos de verificación (pruebas, revisión, inspección, etc.), responsables y frecuencia/momento de las revisiones.
+
+###### Ejemplo: Plan de Calidad (*Sistema de Reserva USM*)
+
+| Requisito / Aspecto de Calidad | Indicador o Criterio de Aceptación                 | Método de Verificación                     | Responsable       |
+| :----------------------------- | :------------------------------------------------- | :----------------------------------------- | :---------------- |
+| **Disponibilidad del sistema** | $\ge 99\%$ de tiempo de funcionamiento             | Prueba de carga y monitoreo                | Equipo de pruebas |
+| **Reservas sin conflictos**    | `0` reservas duplicadas del mismo laboratorio      | Prueba funcional                           | Desarrollador     |
+| **Seguridad de acceso**        | Solo usuarios autorizados pueden reservar          | Prueba de autenticación y control de roles | Desarrollador     |
+| **Usabilidad**                 | Completar una reserva en máximo 3 minutos          | Pruebas de usabilidad con usuarios         | Equipo de pruebas |
+| **Notificaciones**             | `100%` de reservas confirmadas enviadas por correo | Prueba funcional                           | Desarrollador     |
+| **Satisfacción del usuario**   | $\ge 80\%$ de usuarios satisfechos en encuesta     | Encuesta de satisfacción                   | Product Owner     |
 ![[1795399886_1.png]]
 
 ![[1795399886_2.png]]
@@ -1407,4 +1523,477 @@ El área clave **3. Cronograma** cuenta con **3 procesos** en total (**2 en Plan
 ![[1795399886_7.png]]
 
 ![[1795399886_8.png]]
+### PMBOK® 8 — Fase de Planificación: Integración del Plan de Gestión del Proyecto (PGP)
 
+#### 1. ¿Qué significa integrar la planificación?
+
+Integrar la planificación consiste en **reunir, organizar, relacionar, validar y consolidar** todos los entregables generados durante el inicio y la planificación en un único documento coherente y accionable: el **Plan de Gestión del Proyecto (PGP)**.
+
+A diferencia de trabajar con documentos aislados donde cada área avanza por separado, la integración garantiza que las decisiones de **alcance, cronograma, recursos, costos, riesgos, calidad e interesados** estén alineadas entre sí antes de pasar a la ejecución y al control.
+
+* **Entregables individuales:** cada proceso o área genera documentos específicos (por ejemplo, el *Acta de constitución*, el *Registro de interesados*, la *EDT y su diccionario*, el *Cronograma*, el *Presupuesto*, el *Registro y plan de respuesta a riesgos* o el *Plan de calidad*).
+* **Plan de Gestión del Proyecto:** informe maestro que unifica los resultados clave de esos entregables en una estructura común y respalda el detalle en anexos técnicos (como planillas Excel o archivos de GanttProject).
+* **Beneficios de la integración:**
+  * **Visión completa del proyecto:** permite ver el panorama integral en lugar de fragmentos desconectados.
+  * **Coherencia entre componentes:** evita contradicciones entre lo que se promete entregar, cuándo se hace, quién lo ejecuta, cuánto cuesta y qué riesgos existen.
+  * **Toma de decisiones informadas:** facilita evaluar impactos de cambios y priorizar acciones durante la ejecución y el monitoreo y control.
+  * **Mayor probabilidad de éxito:** reduce retrabajos, vacíos de responsabilidad y sorpresas presupuestarias o de plazos.
+
+---
+
+#### 2. De los entregables al Plan de Gestión del Proyecto
+
+El informe integrado se construye incorporando la información principal de los entregables previos (habitualmente redactados en documento de texto) y adjuntando los respaldos detallados (como planillas de cálculo o archivos de programación) como anexos.
+
+* **1. Acta de constitución:** aporta objetivos, justificación, restricciones, límites iniciales, sponsor y aprobación formal del proyecto.
+* **2. Registro de interesados:** aporta la identificación de involucrados, sus necesidades/expectativas y el análisis inicial de involucramiento.
+* **3. Alcance, EDT y diccionarios:** aporta la definición del alcance del proyecto, entregables, exclusiones, Estructura de Desglose del Trabajo (EDT), paquetes de trabajo y actividades.
+* **4. Cronograma:** aporta actividades, dependencias, duraciones estimadas, fechas de inicio/fin, hitos y Diagrama de Gantt (además del respaldo en herramienta de programación o planilla).
+* **5. RR. HH. (Rol – RAM – EDT):** aporta la estructura del equipo, roles, responsabilidades, competencias y la Matriz de Asignación de Responsabilidades vinculada a la EDT/actividades.
+* **6. Gestión de riesgos:** aporta la identificación de amenazas y oportunidades, análisis cualitativo/cuantitativo, priorización y estrategias/planes de respuesta.
+* **7. Comunicación e interesados:** aporta la estrategia de involucramiento y la matriz de comunicaciones (qué se comunica, a quién, cuándo, cómo y quién es responsable).
+* **8. Presupuesto:** aporta la estimación de costos, línea base de costos, reservas (contingencia y gestión) y presupuesto total.
+* **9. Calidad:** aporta los requisitos de calidad, indicadores/criterios de aceptación, métodos de verificación y responsables/momentos de revisión.
+* **10. Anexos:** reúne los archivos fuente o complementarios (planillas Excel de alcance/EDT, cronograma, recursos, presupuesto y riesgos, archivos `.gan` de GanttProject y otros respaldos).
+
+---
+
+#### 3. Índice Propuesto del Informe Integrado (PGP)
+
+Una estructura clara para consolidar el informe integrado abarca las siguientes secciones:
+
+1. **Información general**
+   * `1.1` Resumen del proyecto
+   * `1.2` Objetivos y justificación
+   * `1.3` Alcance general y entregables principales
+2. **Gobernanza e inicio**
+   * `2.1` Roles y responsabilidades de gobernanza
+   * `2.2` Estructura de toma de decisiones
+3. **Alcance del proyecto**
+   * `3.1` Definición de alcance
+   * `3.2` EDT y diccionario de la EDT
+   * `3.3` Entregables y exclusiones
+4. **Cronograma**
+   * `4.1` Actividades y dependencias
+   * `4.2` Hitos principales
+   * `4.3` Diagrama de Gantt
+5. **Recursos (RR. HH.)**
+   * `5.1` Estructura del equipo
+   * `5.2` Matriz de asignación de responsabilidades (RAM)
+   * `5.3` Relación con la EDT
+6. **Costos y presupuesto**
+   * `6.1` Estimación de costos
+   * `6.2` Línea base y reservas
+   * `6.3` Resumen del presupuesto
+7. **Riesgos**
+   * `7.1` Identificación y análisis de riesgos
+   * `7.2` Plan de respuesta
+8. **Calidad**
+   * `8.1` Requisitos de calidad
+   * `8.2` Indicadores y criterios de aceptación
+   * `8.3` Verificación y control
+9. **Interesados y comunicaciones**
+   * `9.1` Registro de interesados
+   * `9.2` Estrategia de involucramiento
+   * `9.3` Matriz de comunicaciones
+10. **Anexos**
+    * `10.1` Archivos Excel (alcance/EDT/diccionario, cronograma, recursos, presupuesto, riesgos) y archivos de cronograma (ej. GanttProject)
+    * `10.2` Otros documentos de respaldo
+
+---
+
+#### 4. Cómo se Relacionan los Entregables en el Proyecto
+
+Los componentes del PGP no son independientes: cada uno alimenta o restringe a los demás. En un proyecto como el **Sistema de Reserva de Laboratorios USM**, las interdependencias clave se articulan así:
+
+* **Acta de constitución $\rightarrow$ Alcance e Interesados:** autoriza el proyecto, define su propósito, objetivos y límites generales, e identifica al sponsor y el marco de partida.
+* **Registro de interesados $\rightarrow$ Alcance, Calidad y Comunicaciones:** las necesidades, restricciones y expectativas de estudiantes, docentes, administradores y áreas técnicas influyen en los requisitos, criterios de aceptación y canales de comunicación.
+* **Alcance, EDT y diccionarios $\rightarrow$ Cronograma, Recursos y Costos:** desglosa el trabajo en entregables, paquetes de trabajo y actividades concretas; sin una EDT clara no es posible secuenciar tareas, asignar responsables ni estimar costos de forma confiable.
+* **Recursos (RR. HH.) $\rightarrow$ Cronograma y Costos:** define roles, capacidades, disponibilidad y asignaciones en la matriz RAM; la cantidad y perfil de recursos determinan velocidades de ejecución y tarifas/costos.
+* **Cronograma $\rightarrow$ Costos:** las duraciones, secuencias y fechas de inicio/fin determinan por cuánto tiempo se utilizan recursos (horas de desarrollo, arriendo de servidores, licencias mensuales) y cuándo se producen los desembolsos en el tiempo.
+* **Gestión de riesgos $\rightarrow$ Cronograma, Costos y Calidad:** las amenazas y oportunidades identificadas pueden exigir holguras o reservas de tiempo, reservas de contingencia en el presupuesto o controles/pruebas adicionales en calidad.
+* **Calidad $\rightarrow$ Alcance, Cronograma y Costos:** fija estándares, métricas y métodos de verificación (pruebas funcionales, de carga, usabilidad, seguridad) que deben incorporarse como actividades, tiempos y costos reales dentro del plan.
+
+---
+
+### 5. Verificación de Coherencia entre Entregables (Checklist y Correcciones)
+
+Antes de dar por cerrado el informe integrado, es fundamental auditar la consistencia cruzada entre documentos. Si un elemento cambia en un entregable, debe actualizarse en todos los demás que dependan de él.
+
+#### Puntos Críticos de Coherencia a Revisar
+* **EDT vs. Cronograma:** toda actividad o paquete de trabajo relevante de la EDT debe tener reflejo en el cronograma (y viceversa, no deben aparecer actividades "huérfanas" fuera del alcance aprobado).
+* **Cronograma vs. Recursos (RAM):** todo rol o persona asignada como responsable de una actividad en el cronograma debe existir en la estructura de recursos / matriz de roles con sus responsabilidades y disponibilidad definidas.
+* **Cronograma / EDT vs. Presupuesto:** toda actividad con costo asociado (horas de equipo, infraestructura, pruebas, herramientas) debe estar contemplada en la estimación de costos y el presupuesto.
+* **Riesgos vs. Cronograma, Presupuesto y Calidad:** los riesgos relevantes y sus estrategias de respuesta deben reflejarse, cuando corresponda, en reservas de tiempo/cronograma, reservas de contingencia de costo y/o actividades de control y aseguramiento de calidad.
+* **Fechas y precedencias:** las fechas de inicio y fin de cada actividad deben respetar las relaciones de precedencia (`FS`, `SS`, `FF`, `SF`), duraciones estimadas e hitos.
+
+#### Ejemplos de Inconsistencias Típicas y Cómo Corregirlas
+
+| Área / Cruce | Inconsistencia Detectada | Corrección Aplicada |
+| :--- | :--- | :--- |
+| **EDT y Cronograma** | En la EDT figura *Desarrollo del módulo de reservas* (y *Pruebas del sistema*), pero en el cronograma falta la actividad o las fechas/secuencia no calzan (por ejemplo, pruebas iniciando antes de que termine el desarrollo). | Incorporar la actividad faltante en el cronograma con su duración, predecesoras lógicas y responsable; ajustar fechas para que la secuencia sea coherente. |
+| **Recursos (RR. HH.) y Cronograma** | En el cronograma se asigna *Implementar backend* al rol *Desarrollador*, pero en la matriz de roles solo figuran *Jefe de proyecto* y *Analista*. | Agregar el rol *Desarrollador* en la matriz de roles con sus responsabilidades y asegurar que todos los responsables del cronograma existan en la estructura de recursos. |
+| **Presupuesto y Cronograma** | El cronograma incluye *Pruebas del sistema* (a cargo de *Equipo QA*), pero el presupuesto solo contempla *Desarrollo* e *Implementación*. | Incorporar el costo de *Pruebas del sistema* en el presupuesto, considerando horas/recursos, herramientas o entornos requeridos. |
+| **Riesgos, Cronograma y Calidad** | Se identifica el riesgo *Retraso en la validación de requisitos* (probabilidad `4`, impacto `4`, estrategia *Mitigar*), pero no hay margen/reserva en el cronograma/presupuesto ni control en calidad. | Añadir una reserva de tiempo/contingencia asociada al riesgo y sumar una actividad de control en el plan de calidad (por ejemplo, *Revisión y validación de requisitos con el usuario / key stakeholder*). |
+
+---
+
+### 6. Buenas Prácticas para Integrar el Documento en Equipo
+
+* **Dividir el trabajo por secciones o entregables:** asignar responsables claros para consolidar cada bloque del informe y validar los anexos correspondientes.
+* **Mantener una única fuente de verdad:** si se ajusta una duración, un costo unitario o el nombre de un rol en el Excel o en GanttProject, actualizar de inmediato el resumen del informe en Word/Markdown para evitar versiones desfasadas.
+* **Documentar supuestos y anexos:** dejar explícito qué proviene de cada planilla o archivo adjunto, asegurando que nombres de actividades, códigos de la EDT, roles y montos coincidan exactamente entre el texto principal y los anexos.
+![[1795571082_1.png]]
+
+![[1795571082_2.png]]
+
+![[1795571082_3.png]]
+
+![[1795571082_4.png]]
+
+![[1795571082_5.png]]
+
+![[1795571082_6.png]]
+
+![[1795571082_7.png]]
+
+![[1795571082_8.png]]
+
+![[1795571082_9.png]]
+
+![[1795571082_10.png]]
+
+![[1795571082_11.png]]
+
+![[1795571082_12.png]]
+
+![[1795571082_13.png]]
+
+![[1795571082_14.png]]
+
+![[1795571082_15.png]]
+
+![[1795571082_16.png]]
+
+![[1795571082_17.png]]
+### PMBOK® 8: Fase de Ejecución
+
+La fase de **Ejecución** corresponde al conjunto de procesos destinados a poner en marcha el trabajo del proyecto, utilizando los planes, líneas base y decisiones aprobadas durante la Planificación para generar los entregables previstos y crear valor para los interesados. En resumen: **transforma la planificación en resultados reales**.
+
+* **Nota estructural del estándar:** El PMBOK® 8 cuenta con **40 procesos** distribuidos en **7 Dominios de Desempeño** (Gobernanza, Alcance, Cronograma, Finanzas, Interesados, Recursos y Riesgos) y **5 Áreas de Enfoque / Grupos de Procesos** (Inicio: 2, Planificación: 19, Ejecución: 8, Monitoreo y Control: 10, Cierre: 1). Estos procesos interactúan dinámicamente a lo largo del ciclo de vida y **no son fases secuenciales rígidas**.
+
+---
+
+#### 1. Transición de la Planificación a la Ejecución
+
+En la planificación se define el *cómo* (estrategias, líneas base y roles) mediante el **Plan de Gestión del Proyecto integrado**. En la ejecución se opera sobre dicho plan:
+
+| Dimensión | Enfoque en Planificación (Qué se define) | Acción en Ejecución (Cómo se materializa) |
+| :--- | :--- | :--- |
+| **Alcance** | Qué se entregará y cómo se estructurará (EDT / WBS). | **Ejecutar el trabajo:** Realizar las actividades planificadas y desarrollar los entregables. |
+| **Cronograma** | Cuándo se realizará cada actividad. | **Coordinar actividades:** Seguir el cronograma y gestionar incidencias operativas. |
+| **Presupuesto** | Cuánto costará y qué recursos financieros se requerirán. | **Utilizar los recursos:** Ejecutar compras, contrataciones y consumo asignado. |
+| **Recursos** | Quién realizará el trabajo, roles y responsabilidades. | **Liderar el equipo:** Adquirir personas/equipos, asignar tareas, coordinar y apoyar el desempeño. |
+| **Interesados** | Quiénes participan y cómo se comunicarán. | **Involucrar a los interesados:** Promover su participación activa y ejecutar el plan de comunicaciones. |
+| **Riesgos** | Qué puede afectar el proyecto y cómo se responderá. | **Implementar respuestas:** Ejecutar las acciones contingentes o preventivas definidas ante los riesgos. |
+| **Calidad** | Qué criterios y métricas se usarán para verificar entregables. | **Aplicar la calidad:** Utilizar procedimientos y asegurar que los entregables cumplan los estándares. |
+
+---
+
+#### 2. Características y Resultados Esperados de la Ejecución
+
+* **Características principales:**
+  * Se basa estrictamente en los planes elaborados durante la planificación.
+  * Exige coordinación continua entre personas, recursos materiales/tecnológicos y actividades.
+  * Implica la participación activa y constante de los interesados.
+  * Genera entregables tangibles, resultados y evidencias verificables del trabajo realizado.
+  * Aplica en la práctica los procedimientos de calidad, comunicaciones, riesgos y gestión de recursos.
+* **Resultados esperados al ejecutar:**
+  * Entregables del proyecto desarrollados y actividades del cronograma ejecutadas.
+  * Recursos asignados, operativos y en uso eficiente; equipo de trabajo funcionando de forma cohesionada.
+  * Interesados informados, alineados y participando.
+  * Procedimientos de calidad aplicados y verificados.
+  * Respuestas a riesgos implementadas y adquisiciones realizadas según necesidad.
+  * Lecciones aprendidas documentadas durante el proceso.
+
+---
+
+#### 3. Los 8 Procesos de la Fase de Ejecución (por Dominio)
+
+La fase de Ejecución abarca **8 procesos** distribuidos en **4 dominios** (Alcance, Cronograma y Finanzas no tienen procesos propios de ejecución directa, pues se ejecutan a través de Gobernanza y Recursos):
+
+##### A. Dominio: Gobernanza (Dirigir y asegurar la ejecución)
+1. **1.4 Gestionar la Ejecución del Proyecto (Dirigir el trabajo del proyecto):**
+   * *Propósito:* Coordinar actividades, ejecutar el plan y gestionar incidencias del día a día.
+   * *Actividades:* Coordinar tareas del equipo, ejecutar el plan del proyecto, gestionar incidencias y resolver bloqueos operativos.
+   * *Resultados:* Actividades ejecutadas, equipo operando y problemas resueltos.
+2. **1.5 Gestionar el Aseguramiento de la Calidad (Gestionar la calidad):**
+   * *Propósito:* Aplicar los procedimientos y estándares de calidad planificados (aseguramiento preventivo sobre los procesos, distinto del control de calidad que inspecciona el producto final en Monitoreo).
+   * *Actividades:* Aplicar procedimientos de calidad, verificar el cumplimiento de estándares y promover la mejora continua en el equipo.
+   * *Resultados:* Entregables conformes a los estándares, calidad verificada/documentada y mayor satisfacción de los interesados.
+3. **1.6 Gestionar el Conocimiento del Proyecto (y las Adquisiciones):**
+   * *Propósito:* Obtener bienes/servicios externos necesarios y capturar el aprendizaje organizacional generado durante el trabajo.
+   * *Actividades:* Coordinar las adquisiciones necesarias (contratos, proveedores) y documentar los aprendizajes del proyecto en tiempo real.
+   * *Resultados:* Bienes y servicios adquiridos según lo planificado y **Registro de lecciones aprendidas** documentado y disponible para el equipo.
+
+##### B. Dominio: Interesados (Involucrar y comunicar)
+4. **5.4 Gestionar el Involucramiento de los Interesados:**
+   * *Propósito:* Ejecutar estrategias de participación y gestionar expectativas para mantener el apoyo y minimizar resistencias.
+   * *Actividades:* Ejecutar estrategias de participación, comunicar proactivamente, mantener informados a los actores clave y gestionar sus expectativas.
+   * *Resultados:* Interesados comprometidos y participando, información oportuna y expectativas alineadas con los objetivos del proyecto.
+5. **5.5 Gestionar las Comunicaciones:**
+   * *Propósito:* Garantizar el flujo efectivo de información mediante la distribución prevista, reuniones y registro formal de acuerdos.
+   * *Actividades:* Distribuir la información del proyecto según el plan, realizar reuniones de seguimiento y documentar formalmente acuerdos y decisiones (minutas/actas).
+   * *Resultados:* Información clara y oportuna, interesados alineados y acuerdos documentados.
+
+##### C. Dominio: Recursos (Adquirir y liderar al equipo)
+6. **6.3 Adquirir Recursos:**
+   * *Propósito:* Obtener y asignar los recursos humanos, técnicos y materiales definidos en la planificación.
+   * *Actividades:* Obtener los recursos necesarios (internos o externos), asignarlos al equipo y confirmar su disponibilidad real.
+   * *Resultados:* Recursos disponibles y asignados, equipo habilitado para ejecutar y uso eficiente de los mismos.
+7. **6.4 Liderar el Equipo:**
+   * *Propósito:* Coordinar responsabilidades, motivar, gestionar conflictos y potenciar el desempeño del equipo.
+   * *Actividades:* Coordinar responsabilidades y carga de trabajo, motivar y reconocer logros, gestionar conflictos interpersonales o técnicos y brindar apoyo continuo.
+   * *Resultados:* Equipo comprometido y productivo, ambiente colaborativo y respetuoso, mejor desempeño y foco en los objetivos.
+
+##### D. Dominio: Riesgos (Implementar respuestas planificadas)
+8. **7.5 Implementar las Respuestas a los Riesgos:**
+   * *Propósito:* Ejecutar las acciones planificadas cuando se disparan riesgos o se aplican medidas preventivas.
+   * *Actividades:* Ejecutar las acciones de respuesta definidas, monitorear su efectividad y actualizar el registro de riesgos.
+   * *Resultados:* Acciones de respuesta ejecutadas, riesgos controlados o mitigados y registro de riesgos actualizado.
+
+---
+
+#### 4. Integración de Procesos y Documentos de Entrada
+
+En la práctica, los 8 procesos operan de forma interconectada alimentándose de los artefactos generados en la Planificación:
+
+* **Dirigir el trabajo del proyecto** $\leftarrow$ *Plan de Gestión del Proyecto y documentos base (alcance, cronograma, recursos, riesgos).*
+* **Gestionar la calidad** $\leftarrow$ *Plan de Gestión de la Calidad, métricas y criterios de aceptación.*
+* **Gestionar adquisiciones y conocimiento** $\leftarrow$ *Plan de Gestión de las Adquisiciones, contratos/proveedores y Registro de lecciones aprendidas.*
+* **Gestionar el involucramiento** $\leftarrow$ *Plan de Gestión de los Interesados y Registro de interesados.*
+* **Gestionar las comunicaciones** $\leftarrow$ *Plan de Gestión de las Comunicaciones y Registro de interesados.*
+* **Adquirir recursos** $\leftarrow$ *Plan de Gestión de Recursos (roles, responsables y disponibilidad).*
+* **Liderar el equipo** $\leftarrow$ *Plan de Gestión de Recursos (roles y responsabilidades).*
+* **Implementar las respuestas a riesgos** $\leftarrow$ *Plan de Gestión de Riesgos y Registro de riesgos.*
+
+---
+
+#### 5. Caso Aplicado: Sistema de Reserva de Laboratorios USM
+
+Ejemplo práctico de cómo se estructura el arranque de la fase de ejecución en un proyecto de desarrollo de software:
+
+1. **Reunión de inicio de ejecución (Kick-off operativo):**
+   * El equipo revisa el plan y toma decisiones iniciales: priorizar el módulo core (reserva de laboratorios), asignar responsables por tarea, confirmar recursos técnicos necesarios (servidor de pruebas, entorno de software) y definir la frecuencia de las reuniones de seguimiento.
+   * *Resultado:* Tareas asignadas y equipo alineado.
+2. **Asignación de responsabilidades (Primer Sprint de ejecución):**
+   * Se desglosan las actividades iniciales del cronograma con responsables y fechas concretas:
+
+| Tarea | Responsable | Fecha de inicio |
+| :--- | :--- | :--- |
+| Configuración del entorno de desarrollo | Ana | 06/10/2026 |
+| Desarrollo de módulo de reserva | Benjamín | 06/10/2026 |
+| Diseño de base de datos | Camila | 07/10/2026 |
+| Pruebas iniciales del módulo | Diego | 09/10/2026 |
+
+3. **Uso activo de documentos de planificación:**
+   * *Plan de Gestión del Proyecto:* Guía las líneas de trabajo y roles.
+   * *Cronograma:* Define las tareas de la primera iteración y fechas de inicio.
+   * *Plan de Gestión de Recursos:* Valida disponibilidad y recursos necesarios.
+   * *Plan de Gestión de Riesgos:* Mantiene visibles los riesgos identificados y sus respuestas.
+4. **Puesta en marcha del trabajo:**
+   * Se inicia el desarrollo del módulo (interfaz de selección de laboratorios como *Lab. Informática 1*, *Lab. Electrónica*, *Lab. Redes* y gestión de estados de reserva: *Confirmada*, *Pendiente*) y se deja operativo el entorno de pruebas.
+![[1795571096_1.png]]
+
+![[1795571096_2.png]]
+
+![[1795571096_3.png]]
+
+![[1795571096_4.png]]
+
+![[1795571096_5.png]]
+
+![[1795571096_6.png]]
+
+![[1795571096_7.png]]
+
+![[1795571096_8.png]]
+
+![[1795571096_9.png]]
+
+![[1795571096_10.png]]
+
+![[1795571096_11.png]]
+
+![[1795571096_12.png]]
+
+![[1795571096_13.png]]
+
+![[1795571096_14.png]]
+
+![[1795571096_15.png]]
+
+![[1795571096_16.png]]
+
+![[1795571096_17.png]]
+
+![[1795571096_18.png]]
+
+![[1795571096_19.png]]
+
+![[1795571096_20.png]]
+
+![[1795571096_21.png]]
+
+![[1795571096_22.png]]
+
+![[1795571096_23.png]]
+
+![[1795571096_24.png]]
+
+![[1795571096_25.png]]
+
+![[1795571096_26.png]]
+
+![[1795571096_27.png]]
+
+![[1795571096_28.png]]
+
+![[1795571096_29.png]]
+### PMBOK® 8: Fase de Monitoreo y Control del Proyecto
+
+La fase de **Monitoreo y Control** corresponde al conjunto de procesos orientados a dar seguimiento continuo al desempeño del proyecto, medir el avance real frente a las líneas base y planes aprobados, detectar desviaciones y aplicar acciones correctivas o preventivas para mantener el proyecto alineado con sus objetivos.
+
+* **Relación temporal:** El Monitoreo y Control ocurre de forma **continua y simultánea** con la **Ejecución** (no es una etapa aislada al final), alimentando un ciclo de retroalimentación constante (*Planificar $\rightarrow$ Ejecutar $\rightarrow$ Monitorear y Controlar $\rightarrow$ Corregir*).
+* **Alcance en PMBOK® 8:** Agrupa **10 procesos** repartidos entre los **7 Dominios de Desempeño** del estándar.
+
+---
+
+#### 1. Conceptos Fundamentales y Comparación con la Línea Base
+
+* **Objetivo:** Verificar el avance y el desempeño real del proyecto, identificar desviaciones de forma temprana y tomar decisiones fundamentadas (acciones correctivas, preventivas o actualizaciones de planes/líneas base).
+* **Características clave:**
+  * Se ejecuta en paralelo y de manera continua durante la ejecución.
+  * Contrasta el **desempeño real** con la **línea base de desempeño** (referencia aprobada de alcance, cronograma y costos).
+  * Detecta desvíos en alcance, cronograma, costos, recursos, riesgos, comunicaciones, involucramiento y calidad.
+  * Permite tomar decisiones oportunas basadas en métricas, evidencias y documentos del proyecto.
+* **Resultados esperados:**
+  * Desempeño del proyecto verificado y documentado (informes de desempeño).
+  * Solicitudes de cambio y desvíos gestionados formalmente.
+  * Acciones correctivas o preventivas implementadas.
+  * Proyecto ajustado y alineado con sus objetivos y líneas base.
+
+##### Ejemplo de Comparación: Avance Real vs. Línea Base de Cronograma
+* **Avance planificado (línea base):** 100% acumulado al punto evaluado.
+* **Avance real (ejecutado):** 80% acumulado.
+* **Desviación:** -20 puntos porcentuales $\rightarrow$ **Retraso en el cronograma**.
+* **Criterio de decisión:** Analizar causas raíz del retraso, definir acciones correctivas (ej. reasignar recursos, ajustar actividades o priorizar rutas críticas) y actualizar planes/líneas base si corresponde mediante control integrado de cambios.
+
+---
+
+#### 2. Los 10 Procesos de Monitoreo y Control (por Dominio)
+
+| Dominio | Procesos en Monitoreo y Control | Aplicación Principal |
+| :--- | :--- | :--- |
+| **Gobernanza** | • 1.7 Monitorear y controlar el desempeño / trabajo del proyecto<br>• 1.8 Evaluar e implementar cambios (Control integrado de cambios) | Revisar el desempeño integral y evaluar/decidir cambios de forma controlada. |
+| **Alcance** | • 2.5 Monitorear y controlar el alcance<br>• 2.6 Validar el alcance | Evitar desviaciones (scope creep o trabajo incompleto) y obtener aceptación formal de entregables. |
+| **Cronograma** | • 3.3 Monitorear y controlar el cronograma | Comparar fechas/avances reales vs. planificados, gestionar hitos y corregir retrasos/adelantos. |
+| **Finanzas** | • 4.4 Monitorear y controlar las finanzas | Revisar costos reales frente al presupuesto (línea base) y gestionar variaciones. |
+| **Interesados** | • 5.6 Monitorear el involucramiento de los interesados<br>• 5.7 Monitorear las comunicaciones | Evaluar nivel de participación/expectativas y verificar oportunidad y efectividad de la información. |
+| **Recursos** | • 6.5 Monitorear y controlar los recursos | Verificar disponibilidad, utilización real (sobreuso/subuso/faltantes) y atender nuevas necesidades. |
+| **Riesgos** | • 7.6 Monitorear los riesgos | Revisar evolución de riesgos activos, detectar nuevos riesgos y verificar efectividad de respuestas. |
+
+---
+
+#### 3. Detalle de Cada Proceso
+
+##### A. Dominio: Gobernanza
+1. **Monitorear y controlar el trabajo / desempeño del proyecto:**
+   * *Qué es:* Seguimiento continuo del trabajo para verificar avance, detectar brechas respecto al plan y mantener el control de ejecución.
+   * *Flujo de aplicación:* Revisar el plan $\rightarrow$ Medir avance real $\rightarrow$ Comparar (plan vs. real) $\rightarrow$ Identificar desviaciones $\rightarrow$ Definir acciones.
+   * *Entradas principales:* Plan de Gestión del Proyecto, líneas base (alcance, cronograma, costos), informes de desempeño, registro de riesgos y registro de problemas.
+   * *Salidas:* Informes de desempeño del proyecto, acciones correctivas o preventivas y actualización de planes (si aplica).
+   * *Ejemplo de desviación:* Actividad *A. Análisis* planificada en `S1–S2` y ejecutada en `S1–S2` (sin desvío); Actividad *B. Diseño* planificada en `S2–S3` y ejecutada en `S2–S4` $\rightarrow$ **Retraso de 1 semana en Diseño**, impactando el inicio de *C. Desarrollo* (`S3–S4`).
+
+2. **Evaluar e implementar cambios (Control integrado de cambios):**
+   * *Qué es:* Gestión formal y controlada de solicitudes de cambio sobre alcance, cronograma, costos, recursos u otros componentes del proyecto.
+   * *Flujo de aplicación (4 pasos):*
+     1. *Solicitar:* Formalizar la necesidad de cambio.
+     2. *Evaluar:* Analizar impacto en alcance, tiempo, costo, riesgos, calidad y recursos.
+     3. *Aprobar:* Decidir (aprobar, rechazar o ajustar) a través de la instancia/autoridad de control de cambios correspondiente.
+     4. *Registrar:* Documentar la decisión en el historial/registro de cambios y actualizar planes y líneas base si fue aprobado.
+   * *Entradas principales:* Solicitud de cambio, Plan de Gestión del Proyecto, líneas base y análisis de impacto.
+   * *Salidas:* Decisión del cambio (aprobado, rechazado o modificado), actualización de planes/líneas base y registro de cambios.
+
+##### B. Dominio: Alcance
+3. **Monitorear y controlar el alcance:**
+   * *Qué es:* Seguimiento del estado del alcance del producto/proyecto y de la línea base del alcance para evitar desvíos (trabajo fuera del alcance o entregables incompletos).
+   * *Ejemplo:* Detectar que el equipo está construyendo funcionalidades no contempladas en el alcance aprobado y canalizarlas a evaluación/control de cambios o reconducir el trabajo.
+4. **Validar el alcance (aceptar entregables):**
+   * *Qué es:* Revisión formal de los entregables terminados junto con el cliente o patrocinador para verificar que cumplen los requisitos del alcance y obtener su aceptación formal.
+   * *Diferencia clave:* **Controlar el alcance** mantiene el trabajo dentro de lo planificado y gestiona cambios; **Validar el alcance** confirma y acepta formalmente los entregables completados (a diferencia del *control de calidad*, que verifica corrección técnica/estándares internos antes o en paralelo).
+
+##### C. Dominio: Cronograma
+5. **Monitorear y controlar el cronograma:**
+   * *Qué es:* Seguimiento del avance temporal para comparar fechas/avances reales con la línea base del cronograma, gestionar hitos y aplicar acciones correctivas o de replanificación.
+   * *Flujo:* Comparar avance real vs. planificado $\rightarrow$ Analizar desviaciones (retrasos o adelantos) $\rightarrow$ Definir e implementar acciones correctivas o replanificación.
+   * *Entradas:* Cronograma (línea base), reportes de avance, solicitudes de cambio.
+   * *Salidas:* Cronograma actualizado, registro de desviaciones, acciones correctivas implementadas.
+   * *Ejemplo:* Retraso de 5 días / 1 semana en el desarrollo de un módulo crítico $\rightarrow$ Reasignar recursos adicionales, ajustar dependencias/actividades críticas y actualizar el cronograma.
+
+##### D. Dominio: Finanzas
+6. **Monitorear y controlar las finanzas:**
+   * *Qué es:* Seguimiento del desempeño financiero comparando costos reales incurridos frente al presupuesto (línea base de costos) y gestionando variaciones.
+   * *Flujo:* Comparar costos reales vs. presupuesto $\rightarrow$ Analizar variaciones $\rightarrow$ Implementar acciones correctivas o de replanificación.
+   * *Entradas:* Presupuesto (línea base), costos reales (reportes de avance), solicitudes de cambio.
+   * *Salidas:* Desempeño financiero controlado, variaciones identificadas/gestionadas, presupuesto actualizado (si aplica).
+   * *Ejemplo:* Sobrecosto del 10% o aumento de $300.000 en adquisición de equipos/recursos $\rightarrow$ Analizar la causa del desvío, aplicar medidas de control de gasto y ajustar presupuesto/línea base si corresponde.
+
+##### E. Dominio: Interesados
+7. **Monitorear el involucramiento de los interesados:**
+   * *Qué es:* Seguimiento del nivel de participación y compromiso de los interesados, atendiendo expectativas y aplicando acciones para sostener o mejorar su involucramiento.
+   * *Flujo:* Evaluar nivel de involucramiento $\rightarrow$ Analizar expectativas y retroalimentación $\rightarrow$ Definir e implementar acciones.
+   * *Entradas:* Registro de interesados, Plan de involucramiento, información del desempeño (reportes, feedback).
+   * *Salidas:* Involucramiento sostenido, expectativas gestionadas, acciones de mejora implementadas.
+   * *Ejemplo:* Bajo involucramiento del patrocinador $\rightarrow$ Reforzar seguimiento mediante reuniones periódicas y reportes de avance focalizados.
+8. **Monitorear las comunicaciones:**
+   * *Qué es:* Seguimiento de la ejecución del plan de comunicaciones para asegurar que la información se entregue de forma oportuna, clara, adecuada y efectiva.
+   * *Flujo:* Verificar ejecución del plan $\rightarrow$ Evaluar oportunidad y calidad de la información $\rightarrow$ Ajustar mensajes, canales o frecuencia si es necesario.
+   * *Entradas:* Plan de comunicaciones, Registro de interesados, información del desempeño (reportes, avances, cambios).
+   * *Salidas:* Comunicaciones ejecutadas según lo planificado, información relevante y oportuna, ajustes en la estrategia de comunicación.
+   * *Ejemplo:* Reportes de avance no llegan a tiempo al patrocinador $\rightarrow$ Ajustar frecuencia y canal (ej. correo estructurado + reunión quincenal).
+
+##### F. Dominio: Recursos
+9. **Monitorear y controlar los recursos:**
+   * *Qué es:* Seguimiento de recursos humanos, físicos y tecnológicos para asegurar su disponibilidad, uso eficiente y atención oportuna de nuevas necesidades.
+   * *Flujo:* Comparar uso real vs. planificado $\rightarrow$ Identificar desviaciones (sobreuso, subuso o falta de recursos) $\rightarrow$ Gestionar ajustes o solicitudes adicionales.
+   * *Entradas:* Plan de gestión de recursos, asignaciones y calendarios de recursos, reportes de desempeño.
+   * *Salidas:* Uso de recursos controlado, disponibilidad asegurada, acciones de ajuste (reasignación, incorporación, etc.).
+   * *Ejemplo:* Sobrecarga del equipo de desarrollo $\rightarrow$ Redistribuir tareas e incorporar apoyo/recurso adicional para sostener el cronograma.
+
+##### G. Dominio: Riesgos
+10. **Monitorear los riesgos:**
+    * *Qué es:* Seguimiento de riesgos activos para evaluar su evolución y exposición, identificar nuevos riesgos y verificar la efectividad de las respuestas ejecutadas.
+    * *Flujo:* Monitorear riesgos identificados (estado y exposición) $\rightarrow$ Identificar y analizar nuevos riesgos $\rightarrow$ Evaluar efectividad de respuestas y ajustarlas.
+    * *Entradas:* Registro de riesgos actualizado, Plan de respuesta a los riesgos, información del desempeño (avances, incidentes, cambios).
+    * *Salidas:* Estado actualizado de los riesgos, nuevos riesgos incorporados, respuestas ajustadas o implementadas.
+    * *Ejemplo:* Nuevo riesgo de retraso en entrega de un proveedor $\rightarrow$ Analizar impacto, registrar en el plan/registro de riesgos y definir respuesta (ej. proveedor alternativo).
+
+---
+
+#### 4. Caso Aplicado: Reserva de Laboratorios USM
+
+Escenario de situaciones detectadas durante la ejecución y su tratamiento integrado:
+
+| Situación Detectada | Proceso de Monitoreo y Control | Documentos Clave a Revisar / Actualizar | Decisión / Acción Propuesta |
+| :--- | :--- | :--- | :--- |
+| **Retraso de 5 días** en módulo de reservas | Monitorear y controlar el cronograma *(y trabajo del proyecto)* | Cronograma (línea base), reportes de avance, registro de desviaciones | Reprogramar el cronograma y recuperar actividades críticas. |
+| **Aumento de costos de $300.000** | Monitorear y controlar las finanzas | Presupuesto (línea base), registro de costos reales, solicitudes de cambio | Analizar la causa de la desviación respecto a la línea base de costos, controlar gasto y ajustar presupuesto si aplica. |
+| **Solicitud de nueva funcionalidad** no contemplada en el alcance | Evaluar e implementar cambios *(y monitorear/controlar el alcance)* | Línea base del alcance, EDT/WBS, solicitud de cambio, análisis de impacto | Evaluar formalmente mediante solicitud de cambio (alcance, tiempo, costo, riesgos) antes de aprobar, rechazar o ajustar. |
+| **Entregable presentado** para aceptación | Validar el alcance | Definición del alcance, requisitos, criterios de aceptación | Revisar criterios acordados con el interesado/cliente y aceptar formalmente si cumple. |
+| **Riesgo técnico materializado** | Monitorear los riesgos | Registro de riesgos, plan de respuesta a los riesgos | Implementar/evaluar la respuesta al riesgo técnico y actualizar el registro de riesgos. |
+
+* **Aprendizajes centrales del caso:**
+  * Las desviaciones en un área suelen propagarse a otras (ej. un retraso o un cambio de alcance afecta cronograma, costos, recursos y riesgos), por lo que el control debe ser **integrado**.
+  * Las decisiones deben respaldarse en evidencias, métricas y documentos formales del proyecto.
+  * La comunicación clara y el control disciplinado de cambios evitan desvíos descontrolados y protegen la entrega de valor.

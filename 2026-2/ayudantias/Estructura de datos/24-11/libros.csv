@@ -1,0 +1,9 @@
+id_libro,titulo,autor,anio,copias
+1,Estructuras de Datos en Python,Luis Martínez,2021,3
+2,Algoritmos y Complejidad,Ana Torres,2018,2
+3,Bases de Datos Relacionales,Carlos Rojas,2019,2
+4,Redes de Computadoras,Andrew Tanenbaum,2011,1
+5,Sistemas Operativos Modernos,Andrew Tanenbaum,2015,2
+6,Cálculo de una Variable,James Stewart,2016,4
+7,Arquitectura de Computadores,John Hennessy,2017,1
+8,Ingeniería de Software,Ian Sommerville,2016,2
